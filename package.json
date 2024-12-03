@@ -40,38 +40,41 @@
     "pages": "npm run storybook:build && cp -r storybook-static _site"
   },
   "dependencies": {
-    "@uswds/uswds": "^3.9.0",
+    "@uswds/uswds": "^3.10.0",
     "lit": "^3.2.1",
-    "sass": "^1.79.4"
+    "sass": "^1.81.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.8.0",
     "@custom-elements-manifest/analyzer": "^0.10.3",
-    "@storybook/addon-a11y": "^8.3.5",
-    "@storybook/addon-docs": "^8.3.5",
-    "@storybook/addon-essentials": "^8.3.5",
-    "@storybook/addon-links": "^8.3.5",
-    "@storybook/blocks": "^8.3.5",
-    "@storybook/manager-api": "^8.3.5",
-    "@storybook/test": "^8.3.5",
+    "@storybook/addon-a11y": "^8.4.4",
+    "@storybook/addon-docs": "^8.4.4",
+    "@storybook/addon-essentials": "^8.4.4",
+    "@storybook/addon-links": "^8.4.4",
+    "@storybook/blocks": "^8.4.4",
+    "@storybook/manager-api": "^8.4.4",
+    "@storybook/test": "^8.4.4",
     "@storybook/test-runner": "^0.19.0",
+    "@storybook/theming": "^8.4.4",
+    "@storybook/web-components": "^8.4.4",
+    "@storybook/web-components-vite": "^8.4.4",
     "@vitest/eslint-plugin": "^1.1.4",
     "@vitest/ui": "^1.6.0",
     "axe-playwright": "^2.0.3",
     "concurrently": "^8.2.2",
     "custom-elements-manifest": "^2.1.0",
-    "eslint": "^9.12.0",
+    "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "http-server": "^14.1.1",
     "jsdom": "^24.1.1",
     "prettier": "^3.3.3",
     "shadow-dom-testing-library": "^1.11.3",
-    "storybook": "^8.3.5",
-    "vite": "^5.4.8",
+    "storybook": "^8.4.4",
+    "vite": "^5.4.11",
     "vitest": "^1.6.0",
     "wait-on": "^7.2.0"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
+    "@rollup/rollup-linux-x64-gnu": "^4.27.3"
   }
 }
