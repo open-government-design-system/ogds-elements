@@ -5,7 +5,7 @@
 
 The [United States Web Design System](https://designsystem.digital.gov) includes a library of open source UI components and a visual style guide for U.S. federal government websites.
 
-This repository is for the code for the Web Component-based version of the design system. We maintain another repository for the [current version of the design system](https://github.com/uswds/uswds) as well as [its documentation and website](https://github.com/uswds/uswds-site). To see the design system and its documentation on the web, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
+This repository is for the code for the Web Component-based version of the design system, currently in pre-release, with a goal release of May 2025. We maintain another repository for the [current version of the design system](https://github.com/uswds/uswds) as well as [its documentation and website](https://github.com/uswds/uswds-site). To see the design system and its documentation on the web, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
 
 Over the course of the next several months (and beyond), we will incrementally build new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of design system elements. We intend that, as we ship new Web Components, you will be able to use them existing USWDS components.
 
