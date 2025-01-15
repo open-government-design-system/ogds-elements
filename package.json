@@ -1,7 +1,6 @@
 {
-  "name": "@uswds/web-components",
-  "private": true,
-  "version": "1.0.0-alpha",
+  "name": "@uswds/elements",
+  "version": "1.0.0-alpha.1",
   "type": "module",
   "customElements": "custom-elements.json",
   "files": [
