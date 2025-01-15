@@ -14,6 +14,7 @@ Over the course of the next several months (and beyond), we will incrementally b
 ## Upgrading to Web Components
 
 We are releasing these Web Components incrementally with the intent that they can also be added incrementally to existing sites that are currently using USWDS. If you are not currently using USWDS or you are using a version older than USWDS 3, we recommend adopting version 3 in the near term rather than waiting until the full suite of Web Components is production-ready.
+
 ## Installation
 
 For now, the best way to install USWDS Elements is via npm:
@@ -29,11 +30,10 @@ How you add the component to a page may vary depending on the tools you use in y
 import { UsaBanner } from "@uswds/elements";
 ```
 
-
 ```html
 <!-- importing directy into an HTML page -->
 <script type="module">
-    import { UsaBanner } from "@uswds/elements";
+  import { UsaBanner } from "@uswds/elements";
 </script>
 <usa-banner></usa-banner>
 ```
@@ -41,13 +41,13 @@ import { UsaBanner } from "@uswds/elements";
 > [!IMPORTANT]
 > If you are bundling your application using Vite, you may encounter a JavaScript error when using the `usa-banner` component with Vite's dev server (this also applies to other Vite-based tools such as Astro). To work around this, you may need to run the dev server in production mode by prefixing the command to start the server with `NODE_ENV=production`. For instance, if you run the command `npm run dev` to start your dev server, you should start it with `NODE_ENV=production npm run dev`.
 
-## Documentation 
-
+## Documentation
 
 For more detailed documention, refer to the project's Storybook. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
 
 ## Component Versions
-| Component | Status |
-| --------- | ------- |
-| `usa-banner` | Beta |
-| `usa-link` | Pre-alpha |
+
+| Component    | Status    |
+| ------------ | --------- |
+| `usa-banner` | Beta      |
+| `usa-link`   | Pre-alpha |
