@@ -1,30 +1,53 @@
 > [!CAUTION]
-> Work on the next version of the Design System is happening in this repo. The code in this repository is not yet ready for production use.
+> Work on USWDS Elements, the Web Component version of the Design System, is happening in this repository. This code may not all be suitable for production use. Please refer to the documentation for each component.
 
-# USWDS Web Components
+# USWDS Elements
 
-The [United States Web Design System](https://designsystem.digital.gov) includes a library of open source UI components and a visual style guide for U.S. federal government websites.
+The [United States Web Design System](https://designsystem.digital.gov) is a toolkit of principles, guidance, and code that includes a library of open source user interface components and a visual style guide for U.S. federal government websites.
 
-This repository is for the code for the next version of the design system. We maintain another repository for the [current version of the design system](https://github.com/uswds/uswds) as well as [its documentation and website](https://github.com/uswds/uswds-site). To see the design system and its documentation on the web, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
+This repository contains the code for the Web Component-based version of the design system, which is currently in pre-release status, with a goal release of May 2025. We maintain other repositories for the [current version of the design system](https://github.com/uswds/uswds), which we call USWDS Core, as well as [its documentation and website](https://github.com/uswds/uswds-site). For USWDS Core and its documentation on the web, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
 
-Over the course of the next several months (and beyond), we will incrementally build the next version of the design system. This version will introduce [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of design system elements. We intend that, as we ship new components and new versions of existing components, you will be able to use them alongside older versions of USWDS.
+Over the course of the next several months and beyond, we will incrementally build new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core. As we ship new USWDS Web Components, our intent is that you'll be able to use them alongside existing USWDS code.
 
 - [More on our decision to use Web Components](https://github.com/uswds/uswds-proposals/blob/main/decisions/0001-use-web-components.md)
 
 ## Upgrading to Web Components
 
-We are releasing these Web Components incrementally with the intent that they can also be added incrementally to existing sites that are currently using USWDS. If you are not currently using USWDS or you are using a version older than USWDS 3, we recommend adopting version 3 in the near term rather than waiting until the full suite of Web Components is production-ready.
+We are releasing these Web Components (USWDS Elements) incrementally with the intent that they can also be added gradually to existing sites that are currently using USWDS. If you aren't currently using USWDS or you're using a version older than USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
 
-## Guiding Principles
+## Installation
 
-Work here will accord with the design system's existing [Product Values](https://designsystem.digital.gov/about/product-values/). However, in the course of building out the next version, we will be discovering and road-testing new values as well.
+For now, the best way to install USWDS Elements is via npm:
 
-## Open Questions
+```
+npm install -S @uswds/elements
+```
 
-While this new version is meant to facilitate incremental adoption, the new components themselves represent a big shift in the underlying technologies from previous versions of USWDS. This presents an exciting opportunity to make choices that will help shape future development of the design system, but this will require answering some fundamental questions. Some of the questions we're going to explore in this work are:
+How you add the component to a page may vary depending on the tools you use in your work. If you use Vite, you can add components by importing them into a script that is imported elsewhere into a page:
 
-- **What is the right amount of tooling** If it's a goal to minimize dependencies, how little tooling can the project get away with while still being easy to use?
-- **How should components enable customization?** How much content should come into components via attributes/props as opposed to slots? How much should components use shadow DOM vs. light DOM? Should components be styled through [custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) in the components themselves or through external stylesheets? If the answer is a mixture of both, what is the right balance between the two approaches?
-- **How can we be sure the new components are as accessible as possible?** Existing USWDS components [use JavaScript to progressively enhance semantic HTML](https://designsystem.digital.gov/documentation/developers/) to make them useable to as much of the public as possible. Because web components require JavaScript by default, developing the next version of design system components will require special attention to continuing the progressive enhancement approach.
+```js
+// Importing into a javascript file, like index.js
+import { UsaBanner } from "@uswds/elements";
+```
 
-This is not an exhaustive list, and we expect many more big and small questions to arise over the course of developing these components.
+```html
+<!-- importing directy into an HTML page -->
+<script type="module">
+  import { UsaBanner } from "@uswds/elements";
+</script>
+<usa-banner></usa-banner>
+```
+
+> [!IMPORTANT]
+> If you are bundling your application using Vite, you may encounter a JavaScript error when using the `usa-banner` component with Vite's dev server (this also applies to other Vite-based tools such as Astro). To work around this, you may need to run the dev server in production mode by prefixing the command to start the server with `NODE_ENV=production`. For instance, if you run the command `npm run dev` to start your dev server, you should start it with `NODE_ENV=production npm run dev`.
+
+## Documentation
+
+For more detailed documention, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
+
+## Component Versions
+
+| Component    | Status    |
+| ------------ | --------- |
+| `usa-banner` | Beta      |
+| `usa-link`   | Pre-alpha |
