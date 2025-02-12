@@ -22,7 +22,6 @@
   "scripts": {
     "build": "vite build && npm run manifest:build",
     "build:watch": "vite build --watch",
-
     "dev": "vite",
     "prettier:js": "npx prettier --check './src/components/**/*.js'",
     "prettier:js:fix": "npx prettier --write './src/components/**/*.js'",
