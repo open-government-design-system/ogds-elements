@@ -20,7 +20,7 @@
     "./core/*": "./src/core/*"
   },
   "scripts": {
-    "build": "vite build && npm run manifest:build",
+    "build": "tsc && vite build && npm run manifest:build",
     "build:watch": "vite build --watch",
     "dev": "vite",
     "prettier:js": "npx prettier --check './src/components/**/*.js'",
@@ -69,6 +69,7 @@
     "prettier": "^3.6.2",
     "shadow-dom-testing-library": "^1.11.3",
     "storybook": "^8.5.4",
+    "typescript": "^5.8.3",
     "vite": "^5.4.14",
     "vitest": "^1.6.1",
     "wait-on": "^7.2.0"

@@ -31,18 +31,12 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
  */
 export class UsaBanner extends LitElement {
   static properties = {
-    lang: {
-      type: String,
-      reflect: true,
-    },
+    lang: { type: String, reflect: true },
     data: { attribute: false },
     isOpen: { type: Boolean },
     classes: {},
     label: { type: String },
-    tld: {
-      type: String,
-      reflect: true,
-    },
+    tld: { type: String, reflect: true },
   };
 
   toggle() {
