@@ -9,10 +9,11 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: { includePaths: ["./node_modules/@uswds/uswds/packages"] },
+      scss: { 
+        additionalData: `@import "./node_modules/@uswds/uswds/packages";`
+      },
     },
   },
-  test: { globals: true, environment: "jsdom" },
   build: {
     lib: {
       entry: {
