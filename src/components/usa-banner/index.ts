@@ -39,11 +39,20 @@ export class UsaBanner extends LitElement {
     tld: { type: String, reflect: true },
   };
 
+  // Property declarations
+  lang!: string;
+  data!: any;
+  isOpen!: boolean;
+  classes!: any;
+  label!: string;
+  tld!: string;
+
   toggle() {
     this.isOpen = !this.isOpen;
-    this.shadowRoot
-      .querySelector(".usa-banner__content")
-      .toggleAttribute("hidden");
+    const contentElement = this.shadowRoot?.querySelector(".usa-banner__content");
+    if (contentElement) {
+      contentElement.toggleAttribute("hidden");
+    }
   }
 
   constructor() {
@@ -114,7 +123,7 @@ export class UsaBanner extends LitElement {
     return bannerActionText?.textContent;
   }
 
-  domainTemplate(tld) {
+  domainTemplate(tld: string) {
     const { domain } = this._bannerText;
 
     return html`
@@ -150,7 +159,7 @@ export class UsaBanner extends LitElement {
     `;
   }
 
-  httpsTemplate(tld) {
+  httpsTemplate(tld: string) {
     const { https } = this._bannerText;
 
     return html`
