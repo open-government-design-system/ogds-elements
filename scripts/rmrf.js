@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import fs from "node:fs";
 
 const args = process.argv;

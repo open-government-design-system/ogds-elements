@@ -1,15 +1,28 @@
 import js from "@eslint/js";
+import css from "@eslint/css";
 import eslintConfigPrettierRecommended from "eslint-config-prettier";
-import vitest from "vitest";
+import vitest from "@vitest/eslint-plugin";
 
 export default [
-  js.configs.recommended,
-  eslintConfigPrettierRecommended,
+  { ignores: ["storybook-static/**"] },
   {
-    files: ["**/*.spec.js"],
+    ...js.configs.recommended,
+    ...eslintConfigPrettierRecommended,
+    files: ["src/**/*.js"],
+    rules: {},
+  },
+  {
+    files: ["src/**/*.spec.js"],
     plugins: { vitest },
+    rules: { ...vitest.configs.recommended.rules },
+  },
+  {
+    files: ["core/**/*.css", "src/**/*.css"],
+    plugins: { css },
+    language: "css/css",
     rules: {
-      ...vitest.configs.recommended.rules,
+      ...css.configs.recommended.rules,
+      "css/use-baseline": ["warn", { available: "widely" }],
     },
   },
 ];

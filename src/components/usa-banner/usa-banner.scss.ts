@@ -1,4 +1,5 @@
-import usaBannerStyle from "@uswds/uswds/scss/usa-banner?inline";
+import type { CSSResultGroup } from "lit";
+import usaBannerStyle from "@uswds/uswds/scss/stylesheets/packages/_usa-banner.scss?inline";
 
 ("@uswds/uswds/scss/usa-banner");
 import { unsafeCSS, css } from "lit";
@@ -8,7 +9,7 @@ import expandMore from "@uswds/uswds/img/usa-icons/expand_more.svg";
 import expandLess from "@uswds/uswds/img/usa-icons/expand_less.svg";
 import lock from "@uswds/uswds/img/usa-icons/lock.svg";
 
-export const bannerStyles = [
+export const bannerStyles: CSSResultGroup = [
   unsafeCSS(usaBannerStyle),
   css`
     :host {

@@ -31,25 +31,28 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
  */
 export class UsaBanner extends LitElement {
   static properties = {
-    lang: {
-      type: String,
-      reflect: true,
-    },
+    lang: { type: String, reflect: true },
     data: { attribute: false },
     isOpen: { type: Boolean },
     classes: {},
     label: { type: String },
-    tld: {
-      type: String,
-      reflect: true,
-    },
+    tld: { type: String, reflect: true },
   };
+
+  // Property declarations
+  lang!: string;
+  data!: any;
+  isOpen!: boolean;
+  classes!: any;
+  label!: string;
+  tld!: string;
 
   toggle() {
     this.isOpen = !this.isOpen;
-    this.shadowRoot
-      .querySelector(".usa-banner__content")
-      .toggleAttribute("hidden");
+    const contentElement = this.shadowRoot?.querySelector(".usa-banner__content");
+    if (contentElement) {
+      contentElement.toggleAttribute("hidden");
+    }
   }
 
   constructor() {
@@ -120,7 +123,7 @@ export class UsaBanner extends LitElement {
     return bannerActionText?.textContent;
   }
 
-  domainTemplate(tld) {
+  domainTemplate(tld: string) {
     const { domain } = this._bannerText;
 
     return html`
@@ -156,7 +159,7 @@ export class UsaBanner extends LitElement {
     `;
   }
 
-  httpsTemplate(tld) {
+  httpsTemplate(tld: string) {
     const { https } = this._bannerText;
 
     return html`
