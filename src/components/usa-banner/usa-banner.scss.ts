@@ -1,5 +1,5 @@
 import type { CSSResultGroup } from "lit";
-// import usaBannerStyle from "@uswds/uswds/scss/stylesheets/packages/_usa-banner.scss?inline";
+import usaBannerStyle from "./usa-banner.css?inline";
 
 import { unsafeCSS, css } from "lit";
 
@@ -9,6 +9,7 @@ import expandLess from "@uswds/uswds/img/usa-icons/expand_less.svg";
 import lock from "@uswds/uswds/img/usa-icons/lock.svg";
 
 export const bannerStyles: CSSResultGroup = [
+  unsafeCSS(usaBannerStyle),
   css`
     :host {
       --theme-banner-background-color: var(--usa-base-lightest, #f0f0f0);
