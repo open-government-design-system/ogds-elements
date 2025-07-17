@@ -16,7 +16,7 @@ export const bannerStyles: CSSResultGroup = [
       --theme-banner-font-family: var(--usa-font-ui, system-ui, sans-serif);
       --theme-banner-link-color: var(--theme-link-color, #005ea2);
       --theme-banner-link-color-hover: var(--theme-link-hover-color, #1a4480);
-      // Missing theme-banner-max-width because we can't pass custom property to media queries.
+      --theme-banner-max-width: var(--usa-banner-max-width, 1200px);
     }
 
     * {
