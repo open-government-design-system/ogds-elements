@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "tsc && vite build && npm run manifest:build",
+    "build:tokens": "style-dictionary build --config ./style-dictionary.config.js",
     "build:watch": "vite build --watch",
     "dev": "vite",
     "prettier:js": "npx prettier --check './src/components/**/*.js'",
@@ -69,6 +70,7 @@
     "prettier": "^3.6.2",
     "shadow-dom-testing-library": "^1.11.3",
     "storybook": "^8.5.4",
+    "style-dictionary": "^5.0.1",
     "typescript": "^5.8.3",
     "vite": "^7.0.0",
     "vitest": "^1.6.1",
