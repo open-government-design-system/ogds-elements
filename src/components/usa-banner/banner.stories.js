@@ -2,7 +2,7 @@ import "./index";
 
 import { html, nothing } from "lit";
 
-import { userEvent, expect, waitFor } from "@storybook/test";
+import { userEvent, expect, waitFor } from "storybook/test";
 import { within } from "shadow-dom-testing-library";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 
