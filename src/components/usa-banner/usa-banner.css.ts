@@ -1,15 +1,10 @@
 import type { CSSResultGroup } from "lit";
-import usaBannerStyle from "./usa-banner.css?inline";
-
 import { unsafeCSS, css } from "lit";
 
-import close from "@uswds/uswds/img/usa-icons/close.svg";
-import expandMore from "@uswds/uswds/img/usa-icons/expand_more.svg";
-import expandLess from "@uswds/uswds/img/usa-icons/expand_less.svg";
-import lock from "@uswds/uswds/img/usa-icons/lock.svg";
+import usaBannerStyleText from "./usa-banner.css?raw";
 
 export const bannerStyles: CSSResultGroup = [
-  unsafeCSS(usaBannerStyle),
+  unsafeCSS(usaBannerStyleText),
   css`
     :host {
       --theme-banner-background-color: var(--usa-base-lightest, #f0f0f0);
@@ -17,6 +12,11 @@ export const bannerStyles: CSSResultGroup = [
       --theme-banner-link-color: var(--theme-link-color, #005ea2);
       --theme-banner-link-color-hover: var(--theme-link-hover-color, #1a4480);
       --theme-banner-max-width: var(--usa-banner-max-width, 1200px);
+
+      --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
+      --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
+      --usa-icon-close: url("/src/shared/icons/close.svg");
+      --usa-icon-lock: url("/src/shared/icons/lock.svg");
     }
 
     * {
@@ -50,13 +50,13 @@ export const bannerStyles: CSSResultGroup = [
     /* In USWDS close icon is set via max-width media query, flipped it here. */
     .usa-banner__button::after,
     .usa-banner__header-action::after {
-      background-image: url("${unsafeCSS(expandMore)}");
-      mask-image: url("${unsafeCSS(expandMore)}");
+      background-image: var(--usa-icon-expand-more);
+      mask-image: var(--usa-icon-expand-more);
     }
 
     .usa-banner__button[aria-expanded="true"]::after {
-      background-image: url("${unsafeCSS(close)}");
-      mask-image: url("${unsafeCSS(close)}");
+      background-image: var(--usa-icon-close);
+      mask-image: var(--usa-icon-close);
     }
 
     /**
@@ -67,13 +67,13 @@ export const bannerStyles: CSSResultGroup = [
      * Height and width taken from calculated output in USWDS 3 banner.
      */
     .usa-banner__icon-lock {
-      background-image: url("${unsafeCSS(lock)}");
+      background-image: var(--usa-icon-lock);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       display: inline-block;
       height: 1.5ex;
-      mask-image: url("${unsafeCSS(lock)}");
+      mask-image: var(--usa-icon-lock);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: cover;
@@ -83,8 +83,8 @@ export const bannerStyles: CSSResultGroup = [
 
     @media all and (min-width: 40em) {
       .usa-banner__button[aria-expanded="true"]::after {
-        background-image: url("${unsafeCSS(expandLess)}");
-        mask-image: url("${unsafeCSS(expandLess)}");
+        background-image: var(--usa-icon-expand-less);
+        mask-image: var(--usa-icon-expand-less);
       }
     }
   `,
