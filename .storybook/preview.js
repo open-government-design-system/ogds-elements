@@ -1,7 +1,7 @@
 /**
  * Custom elements for component docs generation.
  */
-import { setCustomElementsManifest } from "@storybook/web-components";
+import { setCustomElementsManifest } from "@storybook/web-components-vite";
 import customElements from "../custom-elements.json";
 
 setCustomElementsManifest(customElements);
@@ -23,7 +23,7 @@ import "./index.css";
 // USWDS Core props.
 import "../src/core/index.css";
 
-/** @type { import('@storybook/web-components').Preview } */
+/** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {
   parameters: {
     controls: {
