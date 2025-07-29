@@ -2,7 +2,7 @@ import { LitElement, html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import { bannerStyles } from "./usa-banner.scss";
+import { bannerStyles } from "./usa-banner.css.ts";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
 import iconDotGov from "@uswds/uswds/img/icon-dot-gov.svg";
@@ -49,7 +49,9 @@ export class UsaBanner extends LitElement {
 
   toggle() {
     this.isOpen = !this.isOpen;
-    const contentElement = this.shadowRoot?.querySelector(".usa-banner__content");
+    const contentElement = this.shadowRoot?.querySelector(
+      ".usa-banner__content",
+    );
     if (contentElement) {
       contentElement.toggleAttribute("hidden");
     }
