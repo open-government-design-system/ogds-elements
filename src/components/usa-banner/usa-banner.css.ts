@@ -54,6 +54,7 @@ export const bannerStyles: CSSResultGroup = [
       font-family: var(--theme-banner-font-family);
       box-sizing: border-box;
       background-color: var(--theme-banner-background-color);
+      font-size: var(--usa-banner-font-size-sm);
     }
 
     section *,
