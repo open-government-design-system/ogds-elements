@@ -10,7 +10,9 @@ export const bannerStyles: CSSResultGroup = [
       --usa-color-transparent: transparent;
 
       --usa-banner-background-color: var(--usa-color-base-lightest);
-      --usa-banner-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --usa-banner-font-family:
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
       --usa-banner-max-width: 1200px;
@@ -54,7 +56,7 @@ export const bannerStyles: CSSResultGroup = [
       font-family: var(--theme-banner-font-family);
       box-sizing: border-box;
       background-color: var(--theme-banner-background-color);
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
     }
 
     section *,
@@ -169,6 +171,7 @@ export const bannerStyles: CSSResultGroup = [
       float: left;
       margin-right: var(--usa-spacing-1);
       width: var(--usa-spacing-2);
+      padding-top: 3px;
     }
 
     @media (min-width: 40em) {
