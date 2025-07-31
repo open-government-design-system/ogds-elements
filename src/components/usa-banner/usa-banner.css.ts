@@ -23,38 +23,38 @@ export const bannerStyles: CSSResultGroup = [
       box-sizing: border-box;
     }
 
-    .usa-banner {
+    section {
       background-color: var(--theme-banner-background-color);
       font-family: var(--theme-banner-font-family);
     }
 
-    .usa-banner__inner {
+    .inner {
       flex-wrap: nowrap;
     }
 
     /* Allows banner action to inherit font variable. */
-    .usa-banner .usa-accordion {
+    section .usa-accordion {
       font-family: inherit;
     }
 
-    .usa-banner__button {
+    button {
       color: var(--theme-banner-link-color);
       cursor: pointer;
       font-family: inherit;
     }
 
-    .usa-banner__button:hover {
+    button:hover {
       color: var(--theme-banner-link-hover-color);
     }
 
     /* In USWDS close icon is set via max-width media query, flipped it here. */
-    .usa-banner__button::after,
-    .usa-banner__header-action::after {
+    button::after,
+    .header-action::after {
       background-image: var(--usa-icon-expand-more);
       mask-image: var(--usa-icon-expand-more);
     }
 
-    .usa-banner__button[aria-expanded="true"]::after {
+    button[aria-expanded="true"]::after {
       background-image: var(--usa-icon-close);
       mask-image: var(--usa-icon-close);
     }
@@ -66,7 +66,7 @@ export const bannerStyles: CSSResultGroup = [
      *
      * Height and width taken from calculated output in USWDS 3 banner.
      */
-    .usa-banner__icon-lock {
+    .icon-lock {
       background-image: var(--usa-icon-lock);
       background-position: center;
       background-repeat: no-repeat;
@@ -82,7 +82,7 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     @media all and (min-width: 40em) {
-      .usa-banner__button[aria-expanded="true"]::after {
+      button[aria-expanded="true"]::after {
         background-image: var(--usa-icon-expand-less);
         mask-image: var(--usa-icon-expand-less);
       }
