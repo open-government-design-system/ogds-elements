@@ -16,20 +16,11 @@ export const bannerStyles: CSSResultGroup = [
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
       --usa-banner-max-width: 1200px;
-      
-      /**
-       * The core value is set to 0.8rem, which results in a font size of 12.8px.
-       * Is subpixel rounding ok or should this be 0.75rem (12px)? 
-       */
-      --usa-banner-font-size-xs: 0.8rem; 
+      --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
-      --usa-banner-font-size-base: 1rem;
+      --usa-banner-font-size-base: 0.94rem;
       --usa-banner-line-height-base: 1.5;
-      /**
-       * The core value is set to 1.1, which results in a line height of 14.08.
-       * Is subpixel rounding ok to retain parity? 
-       */
-      --usa-banner-line-height-sm: 1.1;
+      --usa-banner-line-height-sm: 1.2;
 
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
@@ -126,10 +117,10 @@ export const bannerStyles: CSSResultGroup = [
       max-width: var(--usa-banner-max-width);
       margin-left: auto;
       margin-right: auto;
-      padding-left: var(--usa-spacing-2);
-      padding-right: var(--usa-spacing-2);
-      padding-bottom: var(--usa-spacing-3);
-      padding-top: var(--usa-spacing-3);
+      padding-left: var(--usa-spacing-1);
+      padding-right: var(--usa-spacing-1);
+      padding-bottom: var(--usa-spacing-2);
+      padding-top: var(--usa-spacing-05);
       background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
       overflow: hidden;
