@@ -16,11 +16,20 @@ export const bannerStyles: CSSResultGroup = [
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
       --usa-banner-max-width: 1200px;
-      --usa-banner-font-size-xs: 0.75rem;
+      
+      /**
+       * The core value is set to 0.8rem, which results in a font size of 12.8px.
+       * Is subpixel rounding ok or should this be 0.75rem (12px)? 
+       */
+      --usa-banner-font-size-xs: 0.8rem; 
       --usa-banner-font-size-sm: 0.875rem;
       --usa-banner-font-size-base: 1rem;
       --usa-banner-line-height-base: 1.5;
-      --usa-banner-line-height-sm: 1.4;
+      /**
+       * The core value is set to 1.1, which results in a line height of 14.08.
+       * Is subpixel rounding ok to retain parity? 
+       */
+      --usa-banner-line-height-sm: 1.1;
 
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
@@ -83,6 +92,25 @@ export const bannerStyles: CSSResultGroup = [
       );
       gap: var(--usa-spacing-4);
     }
+    
+    .grid-col-auto {
+      flex: 0 1 auto;
+    }
+    
+    .grid-col-fill {
+      flex: 1 1 0%;
+      width: auto;
+      max-width: 100%;
+      min-width: 1px;
+    }
+    
+    @media (min-width: 40em) {
+      .tablet\\:grid-col-fill {
+        flex: 0 1 auto;
+        width: auto;
+        max-width: 100%;
+      }
+    }
 
     section .tablet\\:grid-col-6 {
       flex: 0 0 auto;
@@ -127,26 +155,27 @@ export const bannerStyles: CSSResultGroup = [
 
     .inner {
       padding-left: var(--usa-spacing-2);
-      padding-right: var(--usa-spacing-2);
+      padding-right: 0;
       max-width: var(--usa-banner-max-width);
       margin-left: auto;
       margin-right: auto;
       display: flex;
       flex-wrap: nowrap;
       align-items: flex-start;
-      padding-right: 0;
     }
 
     @media (min-width: 40em) {
       .inner {
         align-items: center;
+        padding-left: var(--usa-spacing-4);
+        padding-right: var(--usa-spacing-4);
       }
     }
 
     header {
       padding-top: var(--usa-spacing-1);
       padding-bottom: var(--usa-spacing-1);
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       font-weight: 400;
       min-height: var(--usa-size-touch-target);
       position: relative;
@@ -163,7 +192,7 @@ export const bannerStyles: CSSResultGroup = [
     .header-text {
       margin-top: 0;
       margin-bottom: 0;
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       line-height: var(--usa-banner-line-height-sm);
     }
 
@@ -171,7 +200,7 @@ export const bannerStyles: CSSResultGroup = [
       float: left;
       margin-right: var(--usa-spacing-1);
       width: var(--usa-spacing-2);
-      padding-top: 3px;
+      padding-top: 0;
     }
 
     @media (min-width: 40em) {
@@ -201,15 +230,15 @@ export const bannerStyles: CSSResultGroup = [
     .header-action::after {
       content: "";
       display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      margin-left: 0.25rem;
+      width: 1rem;
+      height: 1rem;
       background-color: currentColor;
-      mask-size: contain;
+      mask-size: 1rem 1rem;
       mask-repeat: no-repeat;
       mask-position: center;
       background-image: var(--usa-icon-expand-more);
       mask-image: var(--usa-icon-expand-more);
+      vertical-align: middle;
     }
 
     .expanded .header-action {
@@ -275,7 +304,7 @@ export const bannerStyles: CSSResultGroup = [
       color: var(--theme-banner-link-color);
       text-decoration: underline;
       display: block;
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       height: auto;
       line-height: var(--usa-banner-line-height-sm);
       padding-top: 0;
@@ -319,7 +348,7 @@ export const bannerStyles: CSSResultGroup = [
         mask-repeat: no-repeat;
         mask-position: center;
         position: absolute;
-        top: 3px;
+        top: 0;
         right: -16px;
         background-image: var(--usa-icon-expand-more);
         mask-image: var(--usa-icon-expand-more);
