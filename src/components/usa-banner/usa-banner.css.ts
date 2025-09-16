@@ -90,7 +90,6 @@ export const bannerStyles: CSSResultGroup = [
         auto-fill,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
-      gap: var(--usa-spacing-4);
     }
     
     .grid-col-auto {
@@ -129,14 +128,11 @@ export const bannerStyles: CSSResultGroup = [
       margin-right: auto;
       padding-left: var(--usa-spacing-2);
       padding-right: var(--usa-spacing-2);
+      padding-bottom: var(--usa-spacing-3);
+      padding-top: var(--usa-spacing-3);
       background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
       overflow: hidden;
-      padding-bottom: var(--usa-spacing-2);
-      padding-left: calc(
-        var(--usa-site-margins-mobile-width) - var(--usa-spacing-1)
-      );
-      padding-top: var(--usa-spacing-05);
       width: 100%;
     }
 
