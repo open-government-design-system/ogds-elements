@@ -402,10 +402,10 @@ export const bannerStyles: CSSResultGroup = [
         right: 0;
         content: "";
         display: block;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: var(--usa-size-touch-target);
+        height: var(--usa-size-touch-target);
         background-color: var(--usa-color-blue-60v);
-        mask-size: contain;
+        mask-size: 1.5rem 1.5rem;
         mask-repeat: no-repeat;
         mask-position: center;
         background-image: var(--usa-icon-close);
