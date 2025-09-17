@@ -460,6 +460,12 @@ export const bannerStyles: CSSResultGroup = [
       max-width: 61ex;
       padding-block-start: var(--usa-spacing-2);
     }
+    
+    @media (max-width: 39.99em) {
+      .guidance {
+        padding-inline-end: .75rem;
+      }
+    }
 
     @media (min-width: 40em) {
       .guidance {
