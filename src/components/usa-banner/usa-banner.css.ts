@@ -19,7 +19,7 @@ export const bannerStyles: CSSResultGroup = [
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
       --usa-banner-font-size-base: 0.94rem;
-      --usa-banner-line-height-base: 1.5;
+      --usa-banner-line-height-base: 1.6;
       --usa-banner-line-height-sm: 1.2;
 
       --usa-spacing-05: 0.25rem;
@@ -81,6 +81,7 @@ export const bannerStyles: CSSResultGroup = [
         auto-fill,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
+      gap: var(--usa-spacing-3);
     }
     
     .grid-col-auto {
@@ -95,7 +96,7 @@ export const bannerStyles: CSSResultGroup = [
     }
     
     @media (min-width: 40em) {
-      .tablet\\:grid-col-fill {
+      .tablet\\:grid-col-auto {
         flex: 0 1 auto;
         width: auto;
         max-width: 100%;
@@ -115,6 +116,7 @@ export const bannerStyles: CSSResultGroup = [
 
     .content {
       max-width: var(--usa-banner-max-width);
+      line-height: var(--usa-banner-line-height-base);
       margin-left: auto;
       margin-right: auto;
       padding-left: var(--usa-spacing-1);
@@ -129,8 +131,17 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       .content {
-        padding-left: var(--usa-spacing-2);
-        padding-right: var(--usa-spacing-2);
+        padding-left: var(--usa-spacing-1);
+        padding-right: var(--usa-spacing-1);
+        padding-top: var(--usa-spacing-3);
+        padding-bottom: var(--usa-spacing-3);
+      }
+    } 
+      
+    @media (min-width: 64em) {
+      .content {
+        padding-left: var(--usa-spacing-4);
+        padding-right: var(--usa-spacing-4);
         padding-top: var(--usa-spacing-3);
         padding-bottom: var(--usa-spacing-3);
       }
@@ -154,6 +165,11 @@ export const bannerStyles: CSSResultGroup = [
     @media (min-width: 40em) {
       .inner {
         align-items: center;
+      }
+    }
+    
+    @media (min-width: 64em) {
+      .inner {
         padding-left: var(--usa-spacing-4);
         padding-right: var(--usa-spacing-4);
       }
