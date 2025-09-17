@@ -81,7 +81,12 @@ export const bannerStyles: CSSResultGroup = [
         auto-fill,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
-      gap: var(--usa-spacing-3);
+    }
+    
+    @media (min-width: 40em) {
+      section .grid-row {
+        gap: var(--usa-spacing-3);
+      }
     }
     
     .grid-col-auto {
