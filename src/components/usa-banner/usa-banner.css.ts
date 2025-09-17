@@ -15,7 +15,7 @@ export const bannerStyles: CSSResultGroup = [
         Helvetica, Arial, sans-serif;
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
-      --usa-banner-max-width: 1200px;
+      --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
       --usa-banner-font-size-base: 0.94rem;
@@ -36,6 +36,7 @@ export const bannerStyles: CSSResultGroup = [
       --usa-site-margins-width: 2rem;
 
       --usa-breakpoint-tablet: 40rem;
+      --usa-breakpoint-desktop: 64rem;
 
       --theme-banner-background-color: var(--usa-banner-background-color);
       --theme-banner-font-family: var(--usa-banner-font-family);
@@ -78,7 +79,7 @@ export const bannerStyles: CSSResultGroup = [
     section .grid-row {
       display: grid;
       grid-template-columns: repeat(
-        auto-fill,
+        auto-fit,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
     }
@@ -469,7 +470,7 @@ export const bannerStyles: CSSResultGroup = [
     .guidance {
       display: flex;
       align-items: flex-start;
-      max-width: 72ch;
+      max-width: 61ex;
       padding-top: var(--usa-spacing-2);
     }
 
