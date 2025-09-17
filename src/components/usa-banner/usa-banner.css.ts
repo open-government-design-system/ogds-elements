@@ -80,6 +80,12 @@ export const bannerStyles: CSSResultGroup = [
 
     section .grid-row {
       display: grid;
+      /**
+       * This creates a responsive grid where:
+       * - Columns auto-fit based on available space
+       * - Each column has a minimum width that's the smaller of 100% or half the tablet breakpoint (20rem)
+       * - Columns can grow to fill remaining space (1fr)
+       */
       grid-template-columns: repeat(
         auto-fit,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
@@ -97,7 +103,7 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .grid-col-fill {
-      flex: 1 1 0%;
+      flex: 1 1 0;
       width: auto;
       max-width: 100%;
       min-width: 1px;
@@ -125,12 +131,10 @@ export const bannerStyles: CSSResultGroup = [
     .content {
       max-width: var(--usa-banner-max-width);
       line-height: var(--usa-banner-line-height-base);
-      margin-inline-start: auto;
-      margin-inline-end: auto;
-      padding-inline-start: var(--usa-spacing-1);
-      padding-inline-end: var(--usa-spacing-1);
+      margin-inline: auto;
       padding-block-end: var(--usa-spacing-2);
       padding-block-start: var(--usa-spacing-05);
+      padding-inline: var(--usa-spacing-1);
       background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
       overflow: hidden;
@@ -139,19 +143,13 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       .content {
-        padding-inline-start: var(--usa-spacing-1);
-        padding-inline-end: var(--usa-spacing-1);
-        padding-block-start: var(--usa-spacing-3);
-        padding-block-end: var(--usa-spacing-3);
+        padding-block: var(--usa-spacing-3);
       }
     }
 
     @media (min-width: 64em) {
       .content {
-        padding-inline-start: var(--usa-spacing-4);
-        padding-inline-end: var(--usa-spacing-4);
-        padding-block-start: var(--usa-spacing-3);
-        padding-block-end: var(--usa-spacing-3);
+        padding-inline: var(--usa-spacing-4);
       }
     }
 
@@ -163,8 +161,7 @@ export const bannerStyles: CSSResultGroup = [
       padding-inline-start: var(--usa-spacing-2);
       padding-inline-end: 0;
       max-width: var(--usa-banner-max-width);
-      margin-inline-start: auto;
-      margin-inline-end: auto;
+      margin-inline: auto;
       display: flex;
       flex-wrap: nowrap;
       align-items: flex-start;
@@ -178,14 +175,12 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 64em) {
       .inner {
-        padding-inline-start: var(--usa-spacing-4);
-        padding-inline-end: var(--usa-spacing-4);
+        padding-inline: var(--usa-spacing-4);
       }
     }
 
     header {
-      padding-block-start: var(--usa-spacing-1);
-      padding-block-end: var(--usa-spacing-1);
+      padding-block: var(--usa-spacing-1);
       font-size: var(--usa-banner-font-size-xs);
       font-weight: 400;
       min-height: var(--usa-size-touch-target);
@@ -194,15 +189,13 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       header {
-        padding-block-start: var(--usa-spacing-05);
-        padding-block-end: var(--usa-spacing-05);
+        padding-block: var(--usa-spacing-05);
         min-height: 0;
       }
     }
 
     .header-text {
-      margin-block-start: 0;
-      margin-block-end: 0;
+      margin-block: 0;
       font-size: var(--usa-banner-font-size-xs);
       line-height: var(--usa-banner-line-height-sm);
     }
@@ -212,13 +205,6 @@ export const bannerStyles: CSSResultGroup = [
       margin-inline-end: var(--usa-spacing-1);
       width: var(--usa-spacing-2);
       padding-block-start: 0;
-    }
-
-    @media (min-width: 40em) {
-      .header-flag {
-        margin-inline-end: var(--usa-spacing-1);
-        padding-block-start: 0;
-      }
     }
 
     .header-action {
@@ -313,7 +299,6 @@ export const bannerStyles: CSSResultGroup = [
       top: 0;
       bottom: 0;
       color: var(--theme-banner-link-color);
-      text-decoration: underline;
       display: block;
       font-size: var(--usa-banner-font-size-xs);
       height: auto;
