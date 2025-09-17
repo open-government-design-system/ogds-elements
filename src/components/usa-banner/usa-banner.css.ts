@@ -49,6 +49,7 @@ export const bannerStyles: CSSResultGroup = [
       --usa-icon-close: url("/src/shared/icons/close.svg");
       --usa-icon-lock: url("/src/shared/icons/lock.svg");
     }
+
     * {
       box-sizing: border-box;
     }
@@ -69,13 +70,14 @@ export const bannerStyles: CSSResultGroup = [
     @media (min-width: 40em) {
       section {
         font-size: var(--usa-banner-font-size-xs);
-        padding-bottom: 0;
+        padding-block-end: 0;
       }
     }
 
     section .usa-accordion {
       font-family: inherit;
     }
+
     section .grid-row {
       display: grid;
       grid-template-columns: repeat(
@@ -83,24 +85,24 @@ export const bannerStyles: CSSResultGroup = [
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
     }
-    
+
     @media (min-width: 40em) {
       section .grid-row {
         gap: var(--usa-spacing-3);
       }
     }
-    
+
     .grid-col-auto {
       flex: 0 1 auto;
     }
-    
+
     .grid-col-fill {
       flex: 1 1 0%;
       width: auto;
       max-width: 100%;
       min-width: 1px;
     }
-    
+
     @media (min-width: 40em) {
       .tablet\\:grid-col-auto {
         flex: 0 1 auto;
@@ -123,12 +125,12 @@ export const bannerStyles: CSSResultGroup = [
     .content {
       max-width: var(--usa-banner-max-width);
       line-height: var(--usa-banner-line-height-base);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--usa-spacing-1);
-      padding-right: var(--usa-spacing-1);
-      padding-bottom: var(--usa-spacing-2);
-      padding-top: var(--usa-spacing-05);
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+      padding-inline-start: var(--usa-spacing-1);
+      padding-inline-end: var(--usa-spacing-1);
+      padding-block-end: var(--usa-spacing-2);
+      padding-block-start: var(--usa-spacing-05);
       background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
       overflow: hidden;
@@ -137,19 +139,19 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       .content {
-        padding-left: var(--usa-spacing-1);
-        padding-right: var(--usa-spacing-1);
-        padding-top: var(--usa-spacing-3);
-        padding-bottom: var(--usa-spacing-3);
+        padding-inline-start: var(--usa-spacing-1);
+        padding-inline-end: var(--usa-spacing-1);
+        padding-block-start: var(--usa-spacing-3);
+        padding-block-end: var(--usa-spacing-3);
       }
-    } 
-      
+    }
+
     @media (min-width: 64em) {
       .content {
-        padding-left: var(--usa-spacing-4);
-        padding-right: var(--usa-spacing-4);
-        padding-top: var(--usa-spacing-3);
-        padding-bottom: var(--usa-spacing-3);
+        padding-inline-start: var(--usa-spacing-4);
+        padding-inline-end: var(--usa-spacing-4);
+        padding-block-start: var(--usa-spacing-3);
+        padding-block-end: var(--usa-spacing-3);
       }
     }
 
@@ -158,11 +160,11 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .inner {
-      padding-left: var(--usa-spacing-2);
-      padding-right: 0;
+      padding-inline-start: var(--usa-spacing-2);
+      padding-inline-end: 0;
       max-width: var(--usa-banner-max-width);
-      margin-left: auto;
-      margin-right: auto;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
       display: flex;
       flex-wrap: nowrap;
       align-items: flex-start;
@@ -173,17 +175,17 @@ export const bannerStyles: CSSResultGroup = [
         align-items: center;
       }
     }
-    
+
     @media (min-width: 64em) {
       .inner {
-        padding-left: var(--usa-spacing-4);
-        padding-right: var(--usa-spacing-4);
+        padding-inline-start: var(--usa-spacing-4);
+        padding-inline-end: var(--usa-spacing-4);
       }
     }
 
     header {
-      padding-top: var(--usa-spacing-1);
-      padding-bottom: var(--usa-spacing-1);
+      padding-block-start: var(--usa-spacing-1);
+      padding-block-end: var(--usa-spacing-1);
       font-size: var(--usa-banner-font-size-xs);
       font-weight: 400;
       min-height: var(--usa-size-touch-target);
@@ -192,30 +194,30 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       header {
-        padding-top: var(--usa-spacing-05);
-        padding-bottom: var(--usa-spacing-05);
+        padding-block-start: var(--usa-spacing-05);
+        padding-block-end: var(--usa-spacing-05);
         min-height: 0;
       }
     }
 
     .header-text {
-      margin-top: 0;
-      margin-bottom: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
       font-size: var(--usa-banner-font-size-xs);
       line-height: var(--usa-banner-line-height-sm);
     }
 
     .header-flag {
       float: left;
-      margin-right: var(--usa-spacing-1);
+      margin-inline-end: var(--usa-spacing-1);
       width: var(--usa-spacing-2);
-      padding-top: 0;
+      padding-block-start: 0;
     }
 
     @media (min-width: 40em) {
       .header-flag {
-        margin-right: var(--usa-spacing-1);
-        padding-top: 0;
+        margin-inline-end: var(--usa-spacing-1);
+        padding-block-start: 0;
       }
     }
 
@@ -228,8 +230,8 @@ export const bannerStyles: CSSResultGroup = [
       font: inherit;
       cursor: pointer;
       line-height: var(--usa-banner-line-height-sm);
-      margin-bottom: 0;
-      margin-top: 2px;
+      margin-block-end: 0;
+      margin-block-start: 2px;
     }
 
     .header-action:hover {
@@ -271,7 +273,7 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     header.expanded {
-      padding-right: calc(var(--usa-size-touch-target) + var(--usa-spacing-1));
+      padding-inline-end: calc(var(--usa-size-touch-target) + var(--usa-spacing-1));
     }
 
     @media (min-width: 40em) {
@@ -281,17 +283,17 @@ export const bannerStyles: CSSResultGroup = [
         font-size: var(--usa-banner-font-size-sm);
         font-weight: 400;
         min-height: 0;
-        padding-right: 0;
+        padding-inline-end: 0;
       }
     }
 
     header.expanded .inner {
-      margin-left: 0;
+      margin-inline-start: 0;
     }
 
     @media (min-width: 40em) {
       header.expanded .inner {
-        margin-left: auto;
+        margin-inline-start: auto;
       }
     }
 
@@ -316,8 +318,8 @@ export const bannerStyles: CSSResultGroup = [
       font-size: var(--usa-banner-font-size-xs);
       height: auto;
       line-height: var(--usa-banner-line-height-sm);
-      padding-top: 0;
-      padding-left: 0;
+      padding-block-start: 0;
+      padding-inline-start: 0;
       text-decoration: none;
       width: auto;
     }
@@ -340,7 +342,7 @@ export const bannerStyles: CSSResultGroup = [
       button {
         position: relative;
         display: inline;
-        margin-left: var(--usa-spacing-1);
+        margin-inline-start: var(--usa-spacing-1);
         left: auto;
         top: auto;
         bottom: auto;
@@ -471,12 +473,12 @@ export const bannerStyles: CSSResultGroup = [
       display: flex;
       align-items: flex-start;
       max-width: 61ex;
-      padding-top: var(--usa-spacing-2);
+      padding-block-start: var(--usa-spacing-2);
     }
 
     @media (min-width: 40em) {
       .guidance {
-        padding-top: 0;
+        padding-block-start: 0;
       }
     }
 
