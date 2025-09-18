@@ -15,6 +15,7 @@ export const bannerStyles: CSSResultGroup = [
         Helvetica, Arial, sans-serif;
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
+      --usa-banner-focus-outline-color: #2491ff;
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
@@ -94,7 +95,13 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       section .grid-row {
-        gap: var(--usa-spacing-3);
+        gap: var(--usa-spacing-2);
+      }
+    }
+    
+    @media (min-width: 64em) {
+      section .grid-row {
+        gap: calc(var(--usa-spacing-05) / 2));
       }
     }
 
@@ -259,7 +266,9 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     header.expanded {
-      padding-inline-end: calc(var(--usa-size-touch-target) + var(--usa-spacing-1));
+      padding-inline-end: calc(
+        var(--usa-size-touch-target) + var(--usa-spacing-1)
+      );
     }
 
     @media (min-width: 40em) {
@@ -323,6 +332,10 @@ export const bannerStyles: CSSResultGroup = [
       }
     }
 
+    button:not([disabled]):focus {
+      outline: var(--usa-spacing-05) solid var(--usa-banner-focus-outline-color);
+    }
+
     @media (min-width: 40em) {
       button {
         position: relative;
@@ -345,7 +358,7 @@ export const bannerStyles: CSSResultGroup = [
         mask-position: center;
         position: absolute;
         top: 0;
-        right: -16px;
+        right: -18px;
         background-image: var(--usa-icon-expand-more);
         mask-image: var(--usa-icon-expand-more);
       }
@@ -460,16 +473,17 @@ export const bannerStyles: CSSResultGroup = [
       max-width: 61ex;
       padding-block-start: var(--usa-spacing-2);
     }
-    
+
     @media (max-width: 39.99em) {
       .guidance {
-        padding-inline-end: .75rem;
+        padding-inline-end: 0.75rem;
       }
     }
 
     @media (min-width: 40em) {
       .guidance {
         padding-block-start: 0;
+        padding-inline-end: var(--usa-spacing-1);
       }
     }
 
