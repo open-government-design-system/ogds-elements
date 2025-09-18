@@ -56,9 +56,9 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     section {
-      font-family: var(--theme-banner-font-family);
-      box-sizing: border-box;
       background-color: var(--theme-banner-background-color);
+      box-sizing: border-box;
+      font-family: var(--theme-banner-font-family);
       font-size: var(--usa-banner-font-size-xs);
     }
 
@@ -98,7 +98,7 @@ export const bannerStyles: CSSResultGroup = [
         gap: var(--usa-spacing-2);
       }
     }
-    
+
     @media (min-width: 64em) {
       section .grid-row {
         gap: calc(var(--usa-spacing-05) / 2));
@@ -111,23 +111,23 @@ export const bannerStyles: CSSResultGroup = [
 
     .grid-col-fill {
       flex: 1 1 0;
-      width: auto;
       max-width: 100%;
       min-width: 1px;
+      width: auto;
     }
 
     @media (min-width: 40em) {
       .tablet\\:grid-col-auto {
         flex: 0 1 auto;
-        width: auto;
         max-width: 100%;
+        width: auto;
       }
     }
 
     section .tablet\\:grid-col-6 {
       flex: 0 0 auto;
-      width: 100%;
       gap: var(--usa-spacing-1);
+      width: 100%;
     }
 
     header,
@@ -136,15 +136,15 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .content {
-      max-width: var(--usa-banner-max-width);
+      background-color: var(--usa-color-transparent);
+      font-size: var(--usa-banner-font-size-base);
       line-height: var(--usa-banner-line-height-base);
       margin-inline: auto;
+      max-width: var(--usa-banner-max-width);
+      overflow: hidden;
       padding-block-end: var(--usa-spacing-2);
       padding-block-start: var(--usa-spacing-05);
       padding-inline: var(--usa-spacing-1);
-      background-color: var(--usa-color-transparent);
-      font-size: var(--usa-banner-font-size-base);
-      overflow: hidden;
       width: 100%;
     }
 
@@ -165,13 +165,13 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .inner {
-      padding-inline-start: var(--usa-spacing-2);
-      padding-inline-end: 0;
-      max-width: var(--usa-banner-max-width);
-      margin-inline: auto;
+      align-items: flex-start;
       display: flex;
       flex-wrap: nowrap;
-      align-items: flex-start;
+      margin-inline: auto;
+      max-width: var(--usa-banner-max-width);
+      padding-inline-end: 0;
+      padding-inline-start: var(--usa-spacing-2);
     }
 
     @media (min-width: 40em) {
@@ -187,44 +187,44 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     header {
-      padding-block: var(--usa-spacing-1);
       font-size: var(--usa-banner-font-size-xs);
       font-weight: 400;
       min-height: var(--usa-size-touch-target);
+      padding-block: var(--usa-spacing-1);
       position: relative;
     }
 
     @media (min-width: 40em) {
       header {
-        padding-block: var(--usa-spacing-05);
         min-height: 0;
+        padding-block: var(--usa-spacing-05);
       }
     }
 
     .header-text {
-      margin-block: 0;
       font-size: var(--usa-banner-font-size-xs);
       line-height: var(--usa-banner-line-height-sm);
+      margin-block: 0;
     }
 
     .header-flag {
       float: left;
       margin-inline-end: var(--usa-spacing-1);
-      width: var(--usa-spacing-2);
       padding-block-start: 0;
+      width: var(--usa-spacing-2);
     }
 
     .header-action {
-      color: var(--usa-banner-link-color);
-      text-decoration: underline;
       background: none;
       border: none;
-      padding: 0;
-      font: inherit;
+      color: var(--usa-banner-link-color);
       cursor: pointer;
+      font: inherit;
       line-height: var(--usa-banner-line-height-sm);
       margin-block-end: 0;
       margin-block-start: 2px;
+      padding: 0;
+      text-decoration: underline;
     }
 
     .header-action:hover {
@@ -232,17 +232,17 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .header-action::after {
+      background-color: currentColor;
+      background-image: var(--usa-icon-expand-more);
       content: "";
       display: inline-block;
-      width: 1rem;
       height: 1rem;
-      background-color: currentColor;
-      mask-size: 1rem 1rem;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      background-image: var(--usa-icon-expand-more);
       mask-image: var(--usa-icon-expand-more);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 1rem 1rem;
       vertical-align: middle;
+      width: 1rem;
     }
 
     .expanded .header-action {
