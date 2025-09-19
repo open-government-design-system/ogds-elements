@@ -48,7 +48,7 @@ export const bannerStyles: CSSResultGroup = [
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
       --usa-icon-close: url("/src/shared/icons/close.svg");
-      --usa-icon-lock: url("/src/shared/icons/lock.svg");
+      --usa-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
     }
 
     * {
@@ -101,7 +101,7 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 64em) {
       section .grid-row {
-        gap: calc(var(--usa-spacing-05) / 2));
+        gap: calc(var(--usa-spacing-05) / 2);
       }
     }
 
@@ -470,7 +470,7 @@ export const bannerStyles: CSSResultGroup = [
     .guidance {
       display: flex;
       align-items: flex-start;
-      max-width: 61ex;
+      max-width: 62ex;
       padding-block-start: var(--usa-spacing-2);
     }
 
@@ -510,7 +510,6 @@ export const bannerStyles: CSSResultGroup = [
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: cover;
-      vertical-align: middle;
       width: 1.21875ex;
     }
 
