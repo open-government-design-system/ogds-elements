@@ -3,11 +3,12 @@ import ComponentDocs from "./docs.mdx";
 import { expect, userEvent, waitFor } from "storybook/test";
 import { within } from "shadow-dom-testing-library";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import type { Args, ArgTypes } from "storybook/internal/csf";
 
 const { argTypes, args, template } = getStorybookHelpers("usa-banner");
 
-const filteredArgTypes = (argTypes) => {
-  const filtered = {};
+const filteredArgTypes = (argTypes: ArgTypes) => {
+  const filtered: ArgTypes = {};
 
   for (const [key, value] of Object.entries(argTypes)) {
     // Disable methods and isOpen
@@ -43,7 +44,7 @@ export default {
     },
   },
   argTypes: filteredArgTypes(argTypes),
-  render: (args) => template(args),
+  render: (args: Args) => template(args),
 };
 
 export const Default = {};
@@ -115,7 +116,7 @@ export const ToggleBannerTest = {
       disable: true,
     },
   },
-  play: async ({ canvasElement }) => {
+  play: async ({ canvasElement }: { canvasElement: HTMLElement }) => {
     const canvas = within(canvasElement);
     const button = canvas.getByShadowRole("button");
     const dotGovText = canvas.getByShadowText("Official websites use .gov");
