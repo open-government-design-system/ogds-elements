@@ -1,9 +1,0 @@
-:where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
-:where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {
-  font-size: 22px !important;
-  line-height: 1.4 !important;
-}
-
-.toc-list-item {
-  font-size: 1rem !important;
-}
