@@ -1,6 +1,9 @@
 import { Meta, Markdown, Source } from "@storybook/addon-docs/blocks";
 import AstroExample from "../examples/with-astro/src/pages/index.astro?raw";
 import ReactExample from "../examples/with-react/src/App.tsx?raw";
+import SolidExample from "../examples/with-solid/src/App.tsx?raw";
+import SolidTsconfigExample from "../examples/with-solid/tsconfig.app.json?raw";
+import SolidDTsExample from "../examples/with-solid/src/custom-elements.d.ts?raw";
 
 <Meta title="Documentation/Framework Specific Guidance" />
 
@@ -14,7 +17,9 @@ In all cases, install the project from the npm package registry.
 $ npm install @uswds/elements
 ```
 
-## HTML
+## Examples
+
+### HTML
 
 To use a specific element directly in an HTML page, use the code snippet below. This example also applies if you are using USWDS Elements in a CMS that has its own templating engine (e.g. Drupal, WordPress, etc.).
 
@@ -26,14 +31,30 @@ To use a specific element directly in an HTML page, use the code snippet below. 
 <usa-banner></usa-banner>
 ```
 
-## Astro
+### Astro
 
 This is a minimal example of implementation in [Astro](https://astro.build/). The process is similar to the HTML example above
 
 <Source code={AstroExample} language="astro" />
 
-## React
+### React
 
 This is a minimal example of implementation in [React](https://react.dev/). Do note that USWDS Elements includes a wrapper for React components, and the `import` path is different from the other frameworks in this document.
 
 <Source code={ReactExample} language="jsx" />
+
+### SolidJS
+
+This is a minimal example of implementation in [SolidJS](https://www.solidjs.com/).
+
+<Source code={SolidExample} language="jsx" />
+
+#### TypeScript support
+
+If you are using TypeScript for your SolidJS project, add a `custom-elements.d.ts` file to `src/` directory.
+
+<Source code={SolidDTsExample} language="ts" />
+
+Once you do that, ensure that your `tsconfig.json` file contains`"include": ["src"]` like the example below:
+
+<Source code={SolidTsconfigExample} language="ts" />
