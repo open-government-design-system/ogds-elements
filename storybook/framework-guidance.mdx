@@ -4,6 +4,7 @@ import ReactExample from "../examples/with-react/src/App.tsx?raw";
 import SolidExample from "../examples/with-solid/src/App.tsx?raw";
 import SolidTsconfigExample from "../examples/with-solid/tsconfig.app.json?raw";
 import SolidDTsExample from "../examples/with-solid/src/custom-elements.d.ts?raw";
+import SvelteKitExample from "../examples/with-sveltekit/src/routes/+page.svelte?raw";
 
 <Meta title="Documentation/Framework Specific Guidance" />
 
@@ -58,3 +59,9 @@ If you are using TypeScript for your SolidJS project, add a `custom-elements.d.t
 Once you do that, ensure that your `tsconfig.json` file contains`"include": ["src"]` like the example below:
 
 <Source code={SolidTsconfigExample} language="ts" />
+
+### SvelteKit
+
+This is a minimal example of implementation in [SvelteKit](https://svelte.dev/docs/kit/introduction).
+
+<Source code={SvelteKitExample} language="svelte" />
