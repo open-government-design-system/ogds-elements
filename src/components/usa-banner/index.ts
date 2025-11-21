@@ -278,4 +278,4 @@ export class UsaBanner extends LitElement {
   }
 }
 
-defineCustomElement('usa-banner', UsaBanner);
+defineCustomElement("usa-banner", UsaBanner);
