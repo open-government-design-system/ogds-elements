@@ -5,6 +5,7 @@ import SolidExample from "../examples/with-solid/src/App.tsx?raw";
 import SolidTsconfigExample from "../examples/with-solid/tsconfig.app.json?raw";
 import SolidDTsExample from "../examples/with-solid/src/custom-elements.d.ts?raw";
 import SvelteKitExample from "../examples/with-sveltekit/src/routes/+page.svelte?raw";
+import VueExample from "../examples/with-vue/src/App.vue?raw";
 
 <Meta title="Documentation/Framework Specific Guidance" />
 
@@ -65,3 +66,31 @@ Once you do that, ensure that your `tsconfig.json` file contains`"include": ["sr
 This is a minimal example of implementation in [SvelteKit](https://svelte.dev/docs/kit/introduction).
 
 <Source code={SvelteKitExample} language="svelte" />
+
+### Vue
+
+This is a minimal example of implementation in [Vue](https://vuejs.org/).
+
+<Source code={VueExample} language="vue" />
+
+Additionally, your build tool needs to know about the custom elements so they are not parsed at build time. This is how you do it in Vite:
+
+```
+// vite.config.ts
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Treat all tags starting with 'usa-' as custom elements
+          isCustomElement: (tag) => tag.startsWith("usa-"),
+        },
+      },
+    }),
+  ],
+});
+
+```
