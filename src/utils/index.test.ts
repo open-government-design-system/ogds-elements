@@ -4,7 +4,7 @@ import { defineCustomElement } from "./index";
 describe("defineCustomElement", () => {
   let customElementsDefineSpy: ReturnType<typeof vi.spyOn>;
   let customElementsGetSpy: ReturnType<typeof vi.spyOn>;
-  let Component;
+  let Component: CustomElementConstructor;
   let tagName: string;
 
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe("defineCustomElement", () => {
     defineCustomElement(tagName, Component);
 
     expect(customElementsGetSpy).toHaveBeenCalledWith(tagName);
-    // we still expect this to be called once because of the conditional check
+    // we still expect this to be called once because of the conditional check in our function
     expect(customElementsDefineSpy).toHaveBeenCalledTimes(1);
   });
 });
