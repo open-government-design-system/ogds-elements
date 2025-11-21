@@ -3,3 +3,4 @@ build
 dist
 .changeset
 *.d.ts
+CHANGELOG.md

@@ -11,7 +11,6 @@
   "files": [
     ".storybook",
     "storybook",
-    "internals/scripts",
     "build",
     "dist",
     "src"
@@ -26,6 +25,7 @@
       "default": "./dist/components/index.js"
     },
     "./components/*": "./dist/components/*.js",
+    "./components/frameworks/react/*": "./dist/components/frameworks/react/*.js",
     "./src/components/*": "./src/components/*/index.js",
     "./core/*": "./src/core/*",
     "./styles/*": "./build/*"
@@ -46,7 +46,7 @@
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
     "prestorybook:serve": "npm run storybook:build --quiet",
-    "storybook:serve": "node internals/scripts/serve-storybook.js",
+    "storybook:serve": "node ./internals/scripts/serve-storybook.js",
     "stylelint": "stylelint './src/components/**/*.{css,css.js,css.ts}' --config=./config/stylelint.config.mjs",
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix --config=./config/stylelint.config.mjs",
     "manifest:build": "npx cem analyze --config ./config/custom-elements-manifest.config.js",
@@ -81,6 +81,11 @@
     "axe-playwright": "^2.2.2",
     "browserslist": "^4.28.0",
     "concurrently": "^9.2.1",
+    "custom-element-jsx-integration": "^1.6.0",
+    "custom-element-react-wrappers": "^1.7.3",
+    "custom-element-solidjs-integration": "^1.9.0",
+    "custom-element-svelte-integration": "^1.2.0",
+    "custom-element-vuejs-integration": "^1.4.0",
     "custom-elements-manifest": "^2.1.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",

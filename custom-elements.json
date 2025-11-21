@@ -192,7 +192,8 @@
               "description": "The element's language.",
               "name": "lang",
               "default": "\"en\"",
-              "fieldName": "lang"
+              "fieldName": "lang",
+              "propName": "lang"
             },
             {
               "type": {
@@ -200,7 +201,8 @@
               },
               "description": "The custom aria label users can override.",
               "name": "label",
-              "fieldName": "label"
+              "fieldName": "label",
+              "propName": "label"
             },
             {
               "type": {
@@ -209,7 +211,8 @@
               "description": "The top level domain for the site.",
               "name": "tld",
               "default": "\"gov\"",
-              "fieldName": "tld"
+              "fieldName": "tld",
+              "propName": "tld"
             },
             {
               "name": "isOpen",
@@ -217,7 +220,8 @@
                 "text": "boolean"
               },
               "default": "false",
-              "fieldName": "isOpen"
+              "fieldName": "isOpen",
+              "propName": "isopen"
             }
           ],
           "superclass": {
@@ -326,7 +330,8 @@
               },
               "description": "The url for the link",
               "name": "href",
-              "fieldName": "href"
+              "fieldName": "href",
+              "propName": "href"
             }
           ],
           "superclass": {
