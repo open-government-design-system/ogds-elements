@@ -1,5 +1,6 @@
 import { Meta, Markdown, Source } from "@storybook/addon-docs/blocks";
 import AstroExample from "../examples/with-astro/src/pages/index.astro?raw";
+import ReactExample from "../examples/with-react/src/App.tsx?raw";
 
 <Meta title="Documentation/Framework Specific Guidance" />
 
@@ -15,7 +16,7 @@ $ npm install @uswds/elements
 
 ## HTML
 
-To use a specific element directly in an HTML page, use the code snippet below:
+To use a specific element directly in an HTML page, use the code snippet below. This example also applies if you are using USWDS Elements in a CMS that has its own templating engine (e.g. Drupal, WordPress, etc.).
 
 ```html
 <!-- importing directly into an HTML page -->
@@ -27,8 +28,12 @@ To use a specific element directly in an HTML page, use the code snippet below:
 
 ## Astro
 
-This is a minimal example of implementation in Astro.
+This is a minimal example of implementation in [Astro](https://astro.build/). The process is similar to the HTML example above
 
 <Source code={AstroExample} language="astro" />
 
 ## React
+
+This is a minimal example of implementation in [React](https://react.dev/). Do note that USWDS Elements includes a wrapper for React components, and the `import` path is different from the other frameworks in this document.
+
+<Source code={ReactExample} language="jsx" />
