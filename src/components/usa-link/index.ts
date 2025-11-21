@@ -1,5 +1,6 @@
 import { LitElement, html } from "lit";
 import styles from "./usa-link.css";
+import { defineCustomElement } from "../../utils";
 
 /**
  * @summary The usa-link component.
@@ -62,4 +63,4 @@ export class UsaLink extends LitElement {
   }
 }
 
-customElements.define("usa-link", UsaLink);
+defineCustomElement("usa-link", UsaLink);

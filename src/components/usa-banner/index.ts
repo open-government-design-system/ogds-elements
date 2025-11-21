@@ -10,6 +10,7 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
 import iconClose from "../../shared/icons/close.svg";
 import iconExpandMore from "../../shared/icons/expand_more.svg";
 import iconExpandLess from "../../shared/icons/expand_less.svg";
+import { defineCustomElement } from "../../utils";
 
 interface UsaBannerTranslations {
   banner: {
@@ -277,4 +278,4 @@ export class UsaBanner extends LitElement {
   }
 }
 
-customElements.define("usa-banner", UsaBanner);
+defineCustomElement('usa-banner', UsaBanner);
