@@ -1,0 +1,38 @@
+---
+// pages/index.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+      <style>
+        html, body {
+          margin: 0;
+          text-align: center;
+        }
+      </style>
+  </head>
+  <body>
+    <!-- Import the script with the components you need -->
+    <script>
+      import { UsaBanner } from "@uswds/elements";
+    </script>
+    <style>
+      /**
+       * With the banner, it helps to add a min-height so it doesn't cause a layout shift
+       * when the JavaScript is loaded to define the custom element below.
+       */
+      :global(usa-banner:not(:defined)) {
+        min-height: 1.375rem;
+      }
+    </style>
+    <!-- Add the banner tag to your page or Astro component -->
+    <usa-banner></usa-banner>
+    <main>
+      <h1>My Astro App</h1>
+    </main>
+  </body>
+</html>
