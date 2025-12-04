@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@uswds/elements": "1.0.0-alpha.4",
+    "@uswds/elements": "1.0.0-alpha.5",
     "astro": "^5.16.0"
   }
 }

@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@uswds/elements": "1.0.0-alpha.4",
+    "@uswds/elements": "1.0.0-alpha.5",
     "solid-js": "^1.9.10"
   },
   "devDependencies": {
