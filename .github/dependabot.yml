@@ -1,0 +1,65 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "08:00"
+      timezone: "America/New_York"
+      day: "monday"
+    groups:
+      components:
+        patterns:
+          - "lit"
+          - "typescript"
+          - "*types*"
+          - "@open-wc/form*"
+          - "*custom-element*"
+          - "*shadow-dom*"
+      uswds:
+        patterns:
+          - "*uswds*"
+      vite:
+        patterns:
+          - "vite"
+      utilities:
+        patterns:
+          - "wait-on"
+          - "concurrently"
+      linting:
+        patterns:
+          - "*lint*"
+          - "*prettier*"
+          - "globals"
+          - "husky"
+          - "lint-staged"
+      storybook:
+        patterns:
+          - "*storybook*"
+      testing:
+        patterns:
+          - "*test*"
+          - "*axe*"
+          - "playwright"
+          - "http-server"
+          - "@open-wc/testing-helpers"
+          - "jsdom"
+          - "*express*"
+          - "serve-static"
+          - "web-vitals"
+      assets:
+        patterns:
+          - "*sass*"
+          - "*css*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      time: "08:00"
+      timezone: "America/New_York"
+      day: "monday"
