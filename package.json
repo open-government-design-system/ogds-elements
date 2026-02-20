@@ -59,7 +59,7 @@
   },
   "dependencies": {
     "@uswds/uswds": "^3.13.0",
-    "lit": "^3.3.1",
+    "lit": "^3.3.2",
     "sass": "^1.94.0"
   },
   "devDependencies": {
@@ -73,7 +73,7 @@
     "@storybook/test-runner": "^0.24.1",
     "@storybook/web-components-vite": "^10.0.7",
     "@types/express": "^5.0.5",
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.3.0",
     "@types/serve-static": "^2.2.0",
     "@vitest/eslint-plugin": "^1.4.2",
     "@vitest/ui": "^4.0.8",
