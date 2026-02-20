@@ -109,7 +109,7 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lit-css": "^2.2.2",
     "vitest": "^4.0.8",
-    "wait-on": "^9.0.3",
+    "wait-on": "^9.0.4",
     "web-vitals": "^5.1.0"
   },
   "optionalDependencies": {
