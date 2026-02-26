@@ -9,6 +9,7 @@ interface AlertProps {
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
+  tags: ["beta"],
   render: ({ heading, type, content, noIcon }: AlertProps) => {
     return html`
       <usa-alert type="${type}" ?no-icon="${noIcon}">
