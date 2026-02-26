@@ -6,7 +6,7 @@ import {
   state,
 } from "lit/decorators.js";
 import stylesBaseVariables from "./base-variables.css";
-import styles from "./ogds-alert.css";
+import styles from "./usa-alert.css";
 
 /**
  * @summary The usa-alert component.
