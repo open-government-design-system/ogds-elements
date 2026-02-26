@@ -1,6 +1,11 @@
 import "./index.ts";
 import { html, nothing } from "lit";
-
+interface AlertProps {
+  heading: string;
+  type: string;
+  content: string;
+  noIcon: boolean;
+}
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
