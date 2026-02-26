@@ -29,7 +29,7 @@ export class MDAlert extends LitElement {
   accessor noIcon = false;
 
   @queryAssignedNodes({ slot: "heading", flatten: true })
-  _headingNodes!: Array<Node>;
+  accessor _headingNodes: Node[] = [];
 
   @state()
   private accessor _hasHeader = false;
