@@ -1,16 +1,21 @@
 import "./index.ts";
 import { html, nothing } from "lit";
-interface AlertProps {
-  heading: string;
-  type: string;
-  content: string;
-  noIcon: boolean;
-}
+
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
   tags: ["beta"],
-  render: ({ heading, type, content, noIcon }: AlertProps) => {
+  render: ({
+    heading,
+    type,
+    content,
+    noIcon,
+  }: {
+    heading: string;
+    type: string;
+    content: string;
+    noIcon: boolean;
+  }) => {
     return html`
       <usa-alert type="${type}" ?no-icon="${noIcon}">
         ${heading ? html`<h3 slot="heading">${heading}</h3>` : nothing}
