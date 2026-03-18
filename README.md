@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> This is a work-in-progress fork of USWDS Elements, hence the README saying what it says. Updated docs coming soon! 
+> This is a work-in-progress fork of USWDS Elements, hence the README saying what it says. Updated docs coming soon!
 
 # USWDS Elements
 
