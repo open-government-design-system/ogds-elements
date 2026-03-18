@@ -1,5 +1,5 @@
-> [!CAUTION]
-> Work on development of the HTML Web Component version of the U.S. Web Design System, called USWDS Elements, is happening in this repository. This code may not all be suitable for production use. Work on USWDS Elements is currently taking a slower-than-previous iterative approach to development. Each USWDS Elements component in this repository may be in a different state of development, with USWDS Banner always intended to be closest to stable. Please refer to the documentation for the status of each component.
+> [!IMPORTANT]
+> This is a work-in-progress fork of USWDS Elements, hence the README saying what it says. Updated docs coming soon!
 
 # USWDS Elements
 
