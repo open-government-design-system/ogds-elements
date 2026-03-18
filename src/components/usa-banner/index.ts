@@ -2,6 +2,9 @@ import { LitElement, html, css, unsafeCSS } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
+import colorTokens from "@ogds/tokens/styles/css/colors.css";
+import spacingTokens from "@ogds/tokens/styles/css/spacing.css";
+import breakpointTokens from "@ogds/tokens/styles/css/breakpoints.css";
 import styles from "./usa-banner.css";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
@@ -214,6 +217,9 @@ export class UsaBanner extends LitElement {
         --usa-icon-https: url("${unsafeCSS(iconHttps)}");
       }
     `,
+    breakpointTokens,
+    colorTokens,
+    spacingTokens,
     styles,
   ];
 

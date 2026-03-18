@@ -32,7 +32,6 @@
   },
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
-    "build:tokens": "style-dictionary build --config ./config/style-dictionary.config.js",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
     "dev": "vite --config ./config/vite.config.ts",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
@@ -51,13 +50,14 @@
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix --config=./config/stylelint.config.mjs",
     "manifest:build": "npx cem analyze --config ./config/custom-elements-manifest.config.js",
     "manifest:watch": "npx cem analyze --config ./config/custom-elements-manifest.config.js --watch --dev",
-    "release": "npm run build:tokens && npm run build && changeset publish",
+    "release": "npm run build && changeset publish",
     "test": "vitest --config ./config/vitest.config.js",
     "test:ci": "vitest run --config ./config/vitest.config.js",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
     "vite:preview": "vite preview --config ./config/vite.config.ts"
   },
   "dependencies": {
+    "@ogds/tokens": "^1.0.0-alpha.1",
     "@uswds/uswds": "^3.13.0",
     "lit": "^3.3.2",
     "sass": "^1.97.3"
@@ -99,7 +99,6 @@
     "shadow-dom-testing-library": "^1.13.1",
     "storybook": "^10.0.7",
     "storybook-addon-tag-badges": "^3.0.6",
-    "style-dictionary": "^5.3.2",
     "stylelint": "^17.4.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.0.0",
