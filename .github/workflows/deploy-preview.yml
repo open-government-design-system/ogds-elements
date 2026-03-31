@@ -68,13 +68,10 @@ jobs:
               marker,
               `## Storybook Preview 👀`,
               ``,
-              `| | |`,
-              `|---|---|`,
-              `| **Status** | Deployed! |`,
-              `| **Preview** | [Open Storybook PR Preview](${deploymentUrl}) |`,
-              `| **Branch** | \`${branch}\` |`,
-              `| **Latest Commit** | \`${shortSha}\` |`,
-              `| **Updated** | ${now} (ET) |`,
+              `- **Preview:** [Open Storybook PR Preview](${deploymentUrl})`,
+              `- **Branch:** \`${branch}\``,
+              `- **Latest Commit:** \`${shortSha}\``,
+              `- **Updated:** ${now} (ET)`,
             ].join('\n');
 
             const { data: comments } = await github.rest.issues.listComments({
