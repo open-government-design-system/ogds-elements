@@ -1,0 +1,81 @@
+name: Deploy Storybook Preview
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup project
+        uses: ./.github/actions/setup
+
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy storybook-static --project-name=ogds-elements-storybook
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+          DEPLOYMENT_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
+        with:
+          script: |
+            const marker = '<!-- storybook-preview -->';
+            const shortSha = context.payload.pull_request.head.sha.substring(0, 8);
+            const now = new Date().toLocaleDateString('en-US', {
+              year: 'numeric', month: 'short', day: 'numeric',
+              hour: '2-digit', minute: '2-digit',
+              timeZone: 'UTC'
+            });
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
+            const aliasUrl = process.env.ALIAS_URL;
+
+            const body = `${marker}
+            | Status | Name | Latest Commit | Preview URL | Updated (UTC) |
+            | - | - | - | - | - |
+            | ✅ Deployment successful! | ogds-elements-storybook | ${shortSha} | <a href='${deploymentUrl}'>Commit Preview URL</a><br><br><a href='${aliasUrl}'>Branch Preview URL</a> | ${now} |`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
