@@ -59,7 +59,7 @@ jobs:
             const now = new Date().toLocaleDateString('en-US', {
               year: 'numeric', month: 'short', day: 'numeric',
               hour: '2-digit', minute: '2-digit',
-              timeZone: 'UTC'
+              timeZone: 'America/New_York'
             });
             const deploymentUrl = process.env.DEPLOYMENT_URL;
             const branch = context.payload.pull_request.head.ref;
@@ -73,8 +73,8 @@ jobs:
               `| **Status** | Deployed |`,
               `| **Preview** | [Open Storybook](${deploymentUrl}) |`,
               `| **Branch** | \`${branch}\` |`,
-              `| **Commit** | \`${shortSha}\` |`,
-              `| **Updated** | ${now} (UTC) |`,
+              `| **Latest Commit** | \`${shortSha}\` |`,
+              `| **Updated** | ${now} (ET) |`,
             ].join('\n');
 
             const { data: comments } = await github.rest.issues.listComments({
