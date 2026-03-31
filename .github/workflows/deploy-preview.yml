@@ -66,12 +66,12 @@ jobs:
 
             const body = [
               marker,
-              `### Storybook Preview`,
+              `## Storybook Preview 👀`,
               ``,
               `| | |`,
               `|---|---|`,
-              `| **Status** | Deployed |`,
-              `| **Preview** | [Open Storybook](${deploymentUrl}) |`,
+              `| **Status** | Deployed! |`,
+              `| **Preview** | [Open Storybook PR Preview](${deploymentUrl}) |`,
               `| **Branch** | \`${branch}\` |`,
               `| **Latest Commit** | \`${shortSha}\` |`,
               `| **Updated** | ${now} (ET) |`,
