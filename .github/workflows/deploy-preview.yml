@@ -25,22 +25,29 @@ jobs:
       - name: Build Storybook
         run: npm run storybook:build
 
+      - name: Set worker name
+        id: worker-name
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "name=ogds-elements-pr-${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=ogds-elements" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Deploy to Cloudflare Workers
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          wranglerVersion: "4.72.0"
+          command: deploy --name ${{ steps.worker-name.outputs.name }}
+          wranglerVersion: "4.78.0"
 
       - name: Comment preview URL on PR
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
         env:
           DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
-          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
-          DEPLOYMENT_ID: ${{ steps.deploy.outputs.pages-deployment-id }}
         with:
           script: |
             const marker = '<!-- storybook-preview -->';
@@ -51,12 +58,20 @@ jobs:
               timeZone: 'UTC'
             });
             const deploymentUrl = process.env.DEPLOYMENT_URL;
-            const aliasUrl = process.env.ALIAS_URL;
+            const branch = context.payload.pull_request.head.ref;
 
-            const body = `${marker}
-            | Status | Name | Latest Commit | Preview URL | Updated (UTC) |
-            | - | - | - | - | - |
-            | ✅ Deployment successful! | ogds-elements-storybook | ${shortSha} | <a href='${deploymentUrl}'>Commit Preview URL</a><br><br><a href='${aliasUrl}'>Branch Preview URL</a> | ${now} |`;
+            const body = [
+              marker,
+              `### Storybook Preview`,
+              ``,
+              `| | |`,
+              `|---|---|`,
+              `| **Status** | Deployed |`,
+              `| **Preview** | [Open Storybook](${deploymentUrl}) |`,
+              `| **Branch** | \`${branch}\` |`,
+              `| **Commit** | \`${shortSha}\` |`,
+              `| **Updated** | ${now} (UTC) |`,
+            ].join('\n');
 
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
@@ -66,17 +81,16 @@ jobs:
             const existing = comments.find(c => c.body.includes(marker));
 
             if (existing) {
-              await github.rest.issues.updateComment({
+              await github.rest.issues.deleteComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: existing.id,
-                body,
-              });
-            } else {
-              await github.rest.issues.createComment({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number: context.issue.number,
-                body,
               });
             }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
