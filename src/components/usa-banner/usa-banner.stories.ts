@@ -99,16 +99,16 @@ export const CustomThemeExample = {
     },
   },
   args: {
-    "--usa-banner-background-color": "#0f191c", // blue-cool-90
-    "--usa-banner-button-close-background-color": "#002d3f", // blue-cool-80-vivid
-    "--usa-banner-focus-outline-color": "#52daf2", // cyan-20-vivid
-    "--usa-banner-font-family":
+    "--ogds-banner-background-color": "#0f191c", // blue-cool-90
+    "--ogds-banner-button-close-background-color": "#002d3f", // blue-cool-80-vivid
+    "--ogds-banner-focus-outline-color": "#52daf2", // cyan-20-vivid
+    "--ogds-banner-font-family":
       "ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
-    "--usa-banner-link-hover-color": "#c3ebfa", // blue-cool-10-vivid
-    "--usa-banner-text-color": "#ffffff",
-    "--usa-banner-link-color": "#97d4ea", // blue-cool-20-vivid
-    "--usa-banner-icon-gov-color": "#29e1cb", // mint-cool-20-vivid
-    "--usa-banner-icon-https-color": "#29e1cb", // mint-cool-20-vivid
+    "--ogds-banner-link-hover-color": "#c3ebfa", // blue-cool-10-vivid
+    "--ogds-banner-text-color": "#ffffff",
+    "--ogds-banner-link-color": "#97d4ea", // blue-cool-20-vivid
+    "--ogds-banner-icon-gov-color": "#29e1cb", // mint-cool-20-vivid
+    "--ogds-banner-icon-https-color": "#29e1cb", // mint-cool-20-vivid
   },
 };
 

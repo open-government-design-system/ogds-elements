@@ -57,7 +57,7 @@
     "vite:preview": "vite preview --config ./config/vite.config.ts"
   },
   "dependencies": {
-    "@ogds/tokens": "^1.0.0-alpha.1",
+    "@ogds/tokens": "^1.0.0-alpha.2",
     "@uswds/uswds": "^3.13.0",
     "lit": "^3.3.2",
     "sass": "^1.97.3"
@@ -65,7 +65,8 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@custom-elements-manifest/analyzer": "^0.11.0",
-    "@eslint/css": "^1.0.0",
+    "@eslint/css": "^1.1.0",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.2.10",
     "@storybook/addon-docs": "^10.2.10",
