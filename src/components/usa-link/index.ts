@@ -1,4 +1,5 @@
-import { LitElement, html } from "lit";
+import { html } from "lit";
+import { OgdsElement } from "../../core/OgdsElement";
 import styles from "./usa-link.css";
 import { defineCustomElement } from "../../utils";
 
@@ -16,7 +17,7 @@ import { defineCustomElement } from "../../utils";
  *
  * @tagname usa-link
  */
-export class UsaLink extends LitElement {
+export class UsaLink extends OgdsElement {
   static styles = [styles];
 
   static properties = {

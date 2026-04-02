@@ -244,8 +244,8 @@
             }
           ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
           },
           "tagName": "usa-banner",
           "customElement": true,
@@ -273,10 +273,9 @@
           "name": "UsaHeader",
           "members": [],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
+          }
         }
       ],
       "exports": [
@@ -373,8 +372,8 @@
             }
           ],
           "superclass": {
-            "name": "LitElement",
-            "package": "lit"
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
           },
           "tagName": "usa-link",
           "customElement": true,

@@ -1,4 +1,5 @@
-import { LitElement, html, css, unsafeCSS } from "lit";
+import { html, css, unsafeCSS } from "lit";
+import { OgdsElement } from "../../core/OgdsElement";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
@@ -113,7 +114,7 @@ const USA_BANNER_TRANSLATIONS: Record<
  *
  * @element usa-banner
  */
-export class UsaBanner extends LitElement {
+export class UsaBanner extends OgdsElement {
   static properties = {
     flagSrc: { type: String },
     lang: { type: String, reflect: true },
