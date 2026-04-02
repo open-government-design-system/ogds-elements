@@ -1,0 +1,94 @@
+@layer ogds.components;
+
+@layer ogds.components {
+  .ogds-accordion,
+  ogds-accordion {
+    --accordion-border: 0.25rem solid var(--ogds-theme-color-base-lightest);
+    --accordion-content-padding: 1rem 1.25rem calc(1rem - 0.25rem);
+    --accordion-icon: var(--icon-chevron-pointing-down);
+
+    details {
+      color: var(--ogds-theme-color-base-ink);
+      margin-block-end: 0.5rem;
+      margin-block-start: 0.5rem;
+
+      &[open] {
+        --accordion-icon: var(--icon-chevron-pointing-up);
+      }
+    }
+
+    &.plus {
+      --accordion-icon: var(--icon-plus);
+
+      details[open] {
+        --accordion-icon: var(--icon-minus);
+      }
+    }
+
+    summary {
+      background-color: var(--ogds-theme-color-base-lightest);
+      font-weight: 700;
+      padding: 1rem 1.25rem;
+
+      &:hover {
+        background-color: var(--ogds-color-gray-10);
+      }
+
+      /* TODO: extract this out */
+      &:focus {
+        outline: 0.25rem solid #2491ff;
+      }
+    }
+
+    &.with-icon {
+      summary {
+        display: flex;
+
+        &::marker {
+          content: none;
+        }
+
+        &::before {
+          background-color: currentColor;
+          content: "";
+          display: block;
+          height: 1rem;
+          mask-image: var(--accordion-icon);
+          mask-position: center -2px; /* TODO: fix magic number */
+          width: 1.5rem;
+        }
+      }
+    }
+
+    &.with-icon.right {
+      summary::before {
+        margin-inline-start: auto;
+        order: 2;
+      }
+    }
+
+    @supports selector(::details-content) {
+      details[open]::details-content {
+        padding: var(--accordion-content-padding);
+      }
+
+      &.bordered details[open]::details-content {
+        border-block-end: var(--accordion-border);
+        border-inline-end: var(--accordion-border);
+        border-inline-start: var(--accordion-border);
+      }
+    }
+
+    @supports not selector(::details-content) {
+      .details-content {
+        padding: var(--accordion-content-padding);
+      }
+
+      &.bordered .details-content {
+        border-block-end: var(--accordion-border);
+        border-inline-end: var(--accordion-border);
+        border-inline-start: var(--accordion-border);
+      }
+    }
+  }
+}
