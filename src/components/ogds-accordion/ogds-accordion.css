@@ -3,17 +3,17 @@
 @layer ogds.components {
   .ogds-accordion,
   ogds-accordion {
-    --accordion-border: 0.25rem solid var(--ogds-theme-color-base-lightest);
-    --accordion-content-padding: 1rem 1.25rem calc(1rem - 0.25rem);
-    --accordion-icon-closed: var(--icon-chevron-pointing-down);
-    --accordion-icon-open: var(--icon-chevron-pointing-up);
+    --ogds-accordion-border: 0.25rem solid var(--ogds-theme-color-base-lightest);
+    --ogds-accordion-content-padding: 1rem 1.25rem calc(1rem - 0.25rem);
+    --ogds-accordion-icon-closed: var(--icon-chevron-pointing-down);
+    --ogds-accordion-icon-open: var(--icon-chevron-pointing-up);
 
     &.plus {
-      --accordion-icon-closed: var(--icon-plus);
-      --accordion-icon-open: var(--icon-minus);
+      --ogds-accordion-icon-closed: var(--icon-plus);
+      --ogds-accordion-icon-open: var(--icon-minus);
     }
 
-    --accordion-icon: var(--accordion-icon-closed);
+    --accordion-icon: var(--ogds-accordion-icon-closed);
 
     details {
       color: var(--ogds-theme-color-base-ink);
@@ -21,7 +21,7 @@
       margin-block-start: 0.5rem;
 
       &[open] {
-        --accordion-icon: var(--accordion-icon-open);
+        --accordion-icon: var(--ogds-accordion-icon-open);
       }
     }
 
@@ -42,6 +42,7 @@
 
     &.with-icon {
       summary {
+        align-items: center;
         display: flex;
 
         &::marker {
@@ -52,9 +53,12 @@
           background-color: currentColor;
           content: "";
           display: block;
-          height: 1rem;
+          flex-shrink: 0;
+          height: 1.25rem;
           mask-image: var(--accordion-icon);
-          mask-position: center -2px; /* TODO: fix magic number */
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: contain;
           width: 1.5rem;
         }
       }
@@ -69,25 +73,25 @@
 
     @supports selector(::details-content) {
       details[open]::details-content {
-        padding: var(--accordion-content-padding);
+        padding: var(--ogds-accordion-content-padding);
       }
 
       &.bordered details[open]::details-content {
-        border-block-end: var(--accordion-border);
-        border-inline-end: var(--accordion-border);
-        border-inline-start: var(--accordion-border);
+        border-block-end: var(--ogds-accordion-border);
+        border-inline-end: var(--ogds-accordion-border);
+        border-inline-start: var(--ogds-accordion-border);
       }
     }
 
     @supports not selector(::details-content) {
       .details-content {
-        padding: var(--accordion-content-padding);
+        padding: var(--ogds-accordion-content-padding);
       }
 
       &.bordered .details-content {
-        border-block-end: var(--accordion-border);
-        border-inline-end: var(--accordion-border);
-        border-inline-start: var(--accordion-border);
+        border-block-end: var(--ogds-accordion-border);
+        border-inline-end: var(--ogds-accordion-border);
+        border-inline-start: var(--ogds-accordion-border);
       }
     }
   }

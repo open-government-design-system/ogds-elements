@@ -22,6 +22,14 @@
             "name": "UsaBanner",
             "module": "src/components/index.ts"
           }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/index.ts"
+          }
         }
       ]
     },
@@ -33,23 +41,38 @@
           "kind": "class",
           "description": "",
           "name": "OgdsAccordion",
-          "members": [
+          "cssProperties": [
             {
-              "kind": "field",
-              "name": "_sheet",
-              "type": {
-                "text": "CSSStyleSheet | null"
-              },
-              "privacy": "private",
-              "static": true,
-              "default": "null"
+              "description": "Border used in the bordered variant.",
+              "name": "--ogds-accordion-border"
+            },
+            {
+              "description": "Padding for the expanded content area.",
+              "name": "--ogds-accordion-content-padding"
+            },
+            {
+              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-closed"
+            },
+            {
+              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-open"
             }
           ],
+          "slots": [
+            {
+              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
+              "name": ""
+            }
+          ],
+          "members": [],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "customElement": true
+          "tagName": "ogds-accordion",
+          "customElement": true,
+          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
         }
       ],
       "exports": [
@@ -303,6 +326,32 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/usa-header/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaHeader",
+          "members": [],
+          "superclass": {
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaHeader",
+          "declaration": {
+            "name": "UsaHeader",
+            "module": "src/components/usa-header/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/usa-link/index.ts",
       "declarations": [
         {
@@ -399,32 +448,6 @@
           "declaration": {
             "name": "UsaLink",
             "module": "src/components/usa-link/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/usa-header/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UsaHeader",
-          "members": [],
-          "superclass": {
-            "name": "OgdsElement",
-            "module": "/src/core/OgdsElement"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UsaHeader",
-          "declaration": {
-            "name": "UsaHeader",
-            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
