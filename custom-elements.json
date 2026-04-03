@@ -27,6 +27,44 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/ogds-accordion/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsAccordion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_sheet",
+              "type": {
+                "text": "CSSStyleSheet | null"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "null"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/ogds-accordion/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/usa-banner/index.ts",
       "declarations": [
         {
@@ -361,6 +399,32 @@
           "declaration": {
             "name": "UsaLink",
             "module": "src/components/usa-link/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-header/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaHeader",
+          "members": [],
+          "superclass": {
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaHeader",
+          "declaration": {
+            "name": "UsaHeader",
+            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
