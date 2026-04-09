@@ -45,8 +45,9 @@
         align-items: center;
         display: flex;
 
-        &::marker {
-          content: none;
+        &::marker,
+        &::-webkit-details-marker {
+          display: none;
         }
 
         &::before {
