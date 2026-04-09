@@ -30,6 +30,14 @@ const entries: Array<Entry> = [
 ];
 
 export default defineConfig({
+  esbuild: {
+    tsconfigRaw: {
+      compilerOptions: {
+        experimentalDecorators: true,
+        useDefineForClassFields: false,
+      },
+    },
+  },
   plugins: [
     litCss({
       exclude: ["./src/core/index.css", "./storybook/index.css"],

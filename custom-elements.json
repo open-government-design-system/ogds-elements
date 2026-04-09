@@ -35,6 +35,110 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/ogds-accordion/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Border used in the bordered variant.",
+              "name": "--ogds-accordion-border"
+            },
+            {
+              "description": "Padding for the expanded content area.",
+              "name": "--ogds-accordion-content-padding"
+            },
+            {
+              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-closed"
+            },
+            {
+              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-open"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "useListSemantics",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "useListSemantics"
+            },
+            {
+              "kind": "field",
+              "name": "headingLevel",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "headingLevel"
+            },
+            {
+              "kind": "method",
+              "name": "getDetailsChildren"
+            },
+            {
+              "kind": "method",
+              "name": "addListSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "addHeadingSemantics"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "useListSemantics",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "useListSemantics",
+              "propName": "uselistsemantics"
+            },
+            {
+              "name": "headingLevel",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "headingLevel",
+              "propName": "headinglevel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-accordion",
+          "customElement": true,
+          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/ogds-accordion/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/usa-banner/index.ts",
       "declarations": [
         {
@@ -267,59 +371,6 @@
           "declaration": {
             "name": "UsaBanner",
             "module": "src/components/usa-banner/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ogds-accordion/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OgdsAccordion",
-          "cssProperties": [
-            {
-              "description": "Border used in the bordered variant.",
-              "name": "--ogds-accordion-border"
-            },
-            {
-              "description": "Padding for the expanded content area.",
-              "name": "--ogds-accordion-content-padding"
-            },
-            {
-              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
-              "name": "--ogds-accordion-icon-closed"
-            },
-            {
-              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
-              "name": "--ogds-accordion-icon-open"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
-              "name": ""
-            }
-          ],
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ogds-accordion",
-          "customElement": true,
-          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OgdsAccordion",
-          "declaration": {
-            "name": "OgdsAccordion",
-            "module": "src/components/ogds-accordion/index.ts"
           }
         }
       ]
