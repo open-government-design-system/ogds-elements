@@ -43,7 +43,7 @@ describe("getDetailsChildren", () => {
     const el = mount(`<ogds-accordion></ogds-accordion>`);
     await el.updateComplete;
     expect(errorSpy).toHaveBeenCalledWith(
-      "This component expects to have at least one details element as a child",
+      "<ogds-accordion>: This component expects to have at least one details element as a child",
     );
     errorSpy.mockRestore();
   });

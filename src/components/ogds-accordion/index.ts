@@ -90,7 +90,7 @@ export class OgdsAccordion extends LitElement {
       return detailsEls;
     } else {
       console.error(
-        "This component expects to have at least one details element as a child",
+        "<ogds-accordion>: This component expects to have at least one details element as a child",
       );
     }
   }
