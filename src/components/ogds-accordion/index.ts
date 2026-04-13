@@ -23,8 +23,8 @@ import { property } from "lit/decorators.js";
  * @cssprop --ogds-accordion-content-padding - Padding for the expanded content area.
  * @cssprop --ogds-accordion-icon-closed - Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.
  * @cssprop --ogds-accordion-icon-open - Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.
- * @attribute {boolean} use-list-semantics - Adds `role="list"` to the component and `role="listitem"` to each `<details>` child, conveying the accordion as a list to assistive technologies.
- * @attribute {number} heading-level - Sets a heading level for each `<details>` child by adding `role="heading"` and the corresponding `aria-level`. Has no effect when set to `0` (the default).
+ * @attribute {boolean} use-list-semantics - Adds `role="list"` to the component and `role="listitem"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.
+ * @attribute {number} heading-level - Sets a heading level for each accordion panel by adding `role="heading"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.
  *
  * @slot - The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.
  * @element ogds-accordion
@@ -71,6 +71,14 @@ export class OgdsAccordion extends LitElement {
   }
 
   override firstUpdated() {
+    if (this.useListSemantics && this.headingLevel !== 0) {
+      console.warn(
+        "<ogds-accordion>: use-list-semantics and heading-level are mutually exclusive. " +
+          "Screen readers cannot reliably announce both list position and heading level " +
+          "on the same element. Remove one attribute.",
+      );
+      return;
+    }
     this.addListSemantics();
     this.addHeadingSemantics();
     this.applyChildRoles();
@@ -101,8 +109,11 @@ export class OgdsAccordion extends LitElement {
 
     if (headingLevel !== 0 && this.detailsChildren) {
       Array.from(this.detailsChildren).forEach((el) => {
-        this.childRoles.get(el)?.add("heading");
-        el.setAttribute("aria-level", String(this.headingLevel));
+        const summary = el.querySelector("summary");
+        if (summary) {
+          summary.setAttribute("role", "heading");
+          summary.setAttribute("aria-level", String(headingLevel));
+        }
       });
     }
   }

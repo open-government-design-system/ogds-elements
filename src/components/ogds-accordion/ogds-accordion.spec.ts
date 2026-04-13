@@ -95,7 +95,7 @@ describe("addListSemantics", () => {
 });
 
 describe("addHeadingSemantics", () => {
-  it("adds role=heading and aria-level to each details child when heading-level is set", async () => {
+  it("adds role=heading and aria-level to each summary when heading-level is set", async () => {
     const el = mount(`
       <ogds-accordion heading-level="2">
         <details><summary>One</summary></details>
@@ -103,9 +103,9 @@ describe("addHeadingSemantics", () => {
       </ogds-accordion>
     `);
     await el.updateComplete;
-    el.querySelectorAll("details").forEach((d) => {
-      expect(d.getAttribute("role")).toContain("heading");
-      expect(d.getAttribute("aria-level")).toBe("2");
+    el.querySelectorAll("summary").forEach((s) => {
+      expect(s.getAttribute("role")).toBe("heading");
+      expect(s.getAttribute("aria-level")).toBe("2");
     });
   });
 
@@ -152,8 +152,9 @@ describe("stylesheet adoption", () => {
   });
 });
 
-describe("combined list and heading semantics", () => {
-  it("sets role=listitem heading on children when both attributes are present", async () => {
+describe("use-list-semantics and heading-level used together", () => {
+  it("warns and applies neither when both attributes are present", async () => {
+    const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {});
     const el = mount(`
       <ogds-accordion use-list-semantics heading-level="3">
         <details><summary>One</summary></details>
@@ -161,10 +162,14 @@ describe("combined list and heading semantics", () => {
       </ogds-accordion>
     `);
     await el.updateComplete;
+    expect(warnSpy).toHaveBeenCalledOnce();
+    expect(el.getAttribute("role")).toBeNull();
     el.querySelectorAll("details").forEach((d) => {
-      expect(d.getAttribute("role")).toBe("listitem heading");
-      expect(d.getAttribute("aria-level")).toBe("3");
+      expect(d.getAttribute("role")).toBeNull();
     });
-    expect(el.getAttribute("role")).toBe("list");
+    el.querySelectorAll("summary").forEach((s) => {
+      expect(s.getAttribute("role")).toBeNull();
+    });
+    warnSpy.mockRestore();
   });
 });
