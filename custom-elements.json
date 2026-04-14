@@ -73,7 +73,7 @@
                 "text": "boolean"
               },
               "default": "false",
-              "attribute": "useListSemantics"
+              "attribute": "use-list-semantics"
             },
             {
               "kind": "field",
@@ -82,7 +82,21 @@
                 "text": "number"
               },
               "default": "0",
-              "attribute": "headingLevel"
+              "attribute": "heading-level"
+            },
+            {
+              "kind": "field",
+              "name": "detailsChildren",
+              "type": {
+                "text": "HTMLCollectionOf<HTMLDetailsElement> | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "childRoles",
+              "type": {
+                "text": "Map<HTMLDetailsElement, Set<string>>"
+              }
             },
             {
               "kind": "method",
@@ -95,26 +109,32 @@
             {
               "kind": "method",
               "name": "addHeadingSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "applyChildRoles"
             }
           ],
           "attributes": [
             {
-              "name": "useListSemantics",
               "type": {
                 "text": "boolean"
               },
+              "description": "Adds `role=\"list\"` to the component and `role=\"listitem\"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.",
+              "name": "use-list-semantics",
               "default": "false",
               "fieldName": "useListSemantics",
-              "propName": "uselistsemantics"
+              "propName": "useListSemantics"
             },
             {
-              "name": "headingLevel",
               "type": {
                 "text": "number"
               },
+              "description": "Sets a heading level for each accordion panel by adding `role=\"heading\"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.",
+              "name": "heading-level",
               "default": "0",
               "fieldName": "headingLevel",
-              "propName": "headinglevel"
+              "propName": "headingLevel"
             }
           ],
           "superclass": {
