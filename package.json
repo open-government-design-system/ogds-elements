@@ -28,7 +28,8 @@
     "./components/frameworks/react/*": "./dist/components/frameworks/react/*.js",
     "./src/components/*": "./src/components/*/index.js",
     "./core/*": "./src/core/*",
-    "./styles/*": "./build/*"
+    "./styles/*": "./build/*",
+    "./components/ogds-accordion/styles": "./src/components/ogds-accordion/ogds-accordion.css"
   },
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
