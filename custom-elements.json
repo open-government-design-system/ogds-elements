@@ -168,39 +168,39 @@
           "cssProperties": [
             {
               "description": "Sets banner background color.",
-              "name": "--usa-banner-background-color"
+              "name": "--ogds-banner-background-color"
             },
             {
               "description": "Sets the background color for the close control on smaller viewports.",
-              "name": "--usa-banner-button-close-background-color"
+              "name": "--ogds-banner-button-close-background-color"
             },
             {
               "description": "Sets banner focus outline color.",
-              "name": "--usa-banner-focus-outline-color"
+              "name": "--ogds-banner-focus-outline-color"
             },
             {
               "description": "Sets banner font family.",
-              "name": "--usa-banner-font-family"
+              "name": "--ogds-banner-font-family"
             },
             {
               "description": "Sets the color for the official government domain icon in the expanded state of the banner.",
-              "name": "--usa-banner-icon-gov-color"
+              "name": "--ogds-banner-icon-gov-color"
             },
             {
               "description": "Sets the color for the https icon in the expanded state of the banner.",
-              "name": "--usa-banner-icon-https-color"
+              "name": "--ogds-banner-icon-https-color"
             },
             {
               "description": "Sets the default link color.",
-              "name": "--usa-banner-link-color"
+              "name": "--ogds-banner-link-color"
             },
             {
               "description": "Sets the default link color.",
-              "name": "--usa-banner-link-hover-color"
+              "name": "--ogds-banner-link-hover-color"
             },
             {
               "description": "Sets the default text color.",
-              "name": "--usa-banner-text-color"
+              "name": "--ogds-banner-text-color"
             }
           ],
           "slots": [
@@ -407,7 +407,8 @@
           "superclass": {
             "name": "OgdsElement",
             "module": "/src/core/OgdsElement"
-          }
+          },
+          "customElement": true
         }
       ],
       "exports": [
