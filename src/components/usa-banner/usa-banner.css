@@ -1,25 +1,25 @@
 :host {
   /** Component tokens */
-  --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
-  --usa-banner-button-close-background-color: var(
-    --usa-color-base-lighter,
+  --ogds-banner-background-color: var(--ogds-color-base-lightest, #f0f0f0);
+  --ogds-banner-button-close-background-color: var(
+    --ogds-color-base-lighter,
     #dfe1e2
   );
-  --usa-banner-focus-outline-color: var(--usa-color-blue-vivid-40, #2491ff);
-  --usa-banner-font-family:
+  --ogds-banner-focus-outline-color: var(--ogds-color-blue-vivid-40, #2491ff);
+  --ogds-banner-font-family:
     system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-  --usa-banner-font-size-xs: 0.75rem;
-  --usa-banner-font-size-sm: 0.875rem;
-  --usa-banner-font-size-base: 0.94rem;
-  --usa-banner-icon-gov-color: var(--usa-color-blue-50, #2378c3);
-  --usa-banner-icon-https-color: var(--usa-color-green-vivid-40, #719f2a);
-  --usa-banner-line-height-sm: 1.2;
-  --usa-banner-line-height-base: 1.6;
-  --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
-  --usa-banner-link-hover-color: var(--usa-color-blue-warm-vivid-70, #1a4480);
-  --usa-banner-max-width: var(--usa-breakpoint-desktop);
-  --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
+  --ogds-banner-font-size-xs: 0.75rem;
+  --ogds-banner-font-size-sm: 0.875rem;
+  --ogds-banner-font-size-base: 0.94rem;
+  --ogds-banner-icon-gov-color: var(--ogds-color-blue-50, #2378c3);
+  --ogds-banner-icon-https-color: var(--ogds-color-green-vivid-40, #719f2a);
+  --ogds-banner-line-height-sm: 1.2;
+  --ogds-banner-line-height-base: 1.6;
+  --ogds-banner-link-color: var(--ogds-color-blue-vivid-60, #005ea2);
+  --ogds-banner-link-hover-color: var(--ogds-color-blue-warm-vivid-70, #1a4480);
+  --ogds-banner-max-width: var(--ogds-breakpoint-desktop);
+  --ogds-banner-text-color: var(--ogds-color-base-darkest, #1b1b1b);
 
   /**
    * Icons
@@ -29,7 +29,7 @@
    * data URI. The variable definition below is an exception since it is an ad-hoc
    * icon that is not part of the USWDS icon library.
    */
-  --usa-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
+  --ogds-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
 }
 
 * {
@@ -37,10 +37,10 @@
 }
 
 section {
-  background-color: var(--usa-banner-background-color);
+  background-color: var(--ogds-banner-background-color);
   box-sizing: border-box;
-  font-family: var(--usa-banner-font-family);
-  font-size: var(--usa-banner-font-size-xs);
+  font-family: var(--ogds-banner-font-family);
+  font-size: var(--ogds-banner-font-size-xs);
   text-align: start;
 }
 
@@ -52,7 +52,7 @@ section *::after {
 
 @media (width >= 40em) {
   section {
-    font-size: var(--usa-banner-font-size-xs);
+    font-size: var(--ogds-banner-font-size-xs);
     padding-block-end: 0;
   }
 }
@@ -72,19 +72,19 @@ section .grid-row {
    */
   grid-template-columns: repeat(
     auto-fit,
-    minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
+    minmax(min(100%, calc(var(--ogds-breakpoint-tablet) / 2)), 1fr)
   );
 }
 
 @media (width >= 40em) {
   section .grid-row {
-    gap: var(--usa-spacing-2);
+    gap: var(--ogds-spacing-2);
   }
 }
 
 @media (width >= 64em) {
   section .grid-row {
-    gap: calc(var(--usa-spacing-05) / 2);
+    gap: calc(var(--ogds-spacing-05) / 2);
   }
 }
 
@@ -109,36 +109,36 @@ section .grid-row {
 
 section .tablet\:grid-col-6 {
   flex: 0 0 auto;
-  gap: var(--usa-spacing-1);
+  gap: var(--ogds-spacing-1);
   width: 100%;
 }
 
 header,
 .content {
-  color: var(--usa-banner-text-color);
+  color: var(--ogds-banner-text-color);
 }
 
 .content {
-  font-size: var(--usa-banner-font-size-base);
-  line-height: var(--usa-banner-line-height-base);
+  font-size: var(--ogds-banner-font-size-base);
+  line-height: var(--ogds-banner-line-height-base);
   margin-inline: auto;
-  max-width: var(--usa-banner-max-width);
+  max-width: var(--ogds-banner-max-width);
   overflow: hidden;
-  padding-block-end: var(--usa-spacing-2);
-  padding-block-start: var(--usa-spacing-05);
-  padding-inline: var(--usa-spacing-1);
+  padding-block-end: var(--ogds-spacing-2);
+  padding-block-start: var(--ogds-spacing-05);
+  padding-inline: var(--ogds-spacing-1);
   width: 100%;
 }
 
 @media (width >= 40em) {
   .content {
-    padding-block: var(--usa-spacing-3);
+    padding-block: var(--ogds-spacing-3);
   }
 }
 
 @media (width >= 64em) {
   .content {
-    padding-inline: var(--usa-spacing-4);
+    padding-inline: var(--ogds-spacing-4);
   }
 }
 
@@ -151,9 +151,9 @@ header,
   display: flex;
   flex-wrap: nowrap;
   margin-inline: auto;
-  max-width: var(--usa-banner-max-width);
-  padding-inline-end: var(--usa-spacing-05);
-  padding-inline-start: var(--usa-spacing-2);
+  max-width: var(--ogds-banner-max-width);
+  padding-inline-end: var(--ogds-spacing-05);
+  padding-inline-start: var(--ogds-spacing-2);
 }
 
 @media (width >= 40em) {
@@ -164,45 +164,45 @@ header,
 
 @media (width >= 64em) {
   .inner {
-    padding-inline: var(--usa-spacing-4);
+    padding-inline: var(--ogds-spacing-4);
   }
 }
 
 header {
-  font-size: var(--usa-banner-font-size-xs);
+  font-size: var(--ogds-banner-font-size-xs);
   font-weight: 400;
-  min-height: var(--usa-size-touch-target);
-  padding-block: var(--usa-spacing-1);
+  min-height: var(--ogds-size-touch-target);
+  padding-block: var(--ogds-spacing-1);
   position: relative;
 }
 
 @media (width >= 40em) {
   header {
     min-height: 0;
-    padding-block: var(--usa-spacing-05);
+    padding-block: var(--ogds-spacing-05);
   }
 }
 
 .header-text {
-  font-size: var(--usa-banner-font-size-xs);
-  line-height: var(--usa-banner-line-height-sm);
+  font-size: var(--ogds-banner-font-size-xs);
+  line-height: var(--ogds-banner-line-height-sm);
   margin-block: 0;
 }
 
 .header-flag {
   float: left;
-  margin-inline-end: var(--usa-spacing-1);
+  margin-inline-end: var(--ogds-spacing-1);
   padding-block-start: 0;
-  width: var(--usa-spacing-2);
+  width: var(--ogds-spacing-2);
 }
 
 .header-action {
   background: none;
   border: none;
-  color: var(--usa-banner-link-color);
+  color: var(--ogds-banner-link-color);
   cursor: pointer;
   font: inherit;
-  line-height: var(--usa-banner-line-height-sm);
+  line-height: var(--ogds-banner-line-height-sm);
   margin-block-end: 0;
   margin-block-start: 2px;
   padding: 0;
@@ -210,7 +210,7 @@ header {
 }
 
 .header-action:hover {
-  color: var(--usa-banner-link-hover-color);
+  color: var(--ogds-banner-link-hover-color);
 }
 
 .header-action::after {
@@ -218,7 +218,7 @@ header {
   content: "";
   display: inline-block;
   height: 1rem;
-  mask-image: var(--usa-icon-expand-more);
+  mask-image: var(--ogds-icon-expand-more);
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: 1rem 1rem;
@@ -247,13 +247,15 @@ header {
 }
 
 header.expanded {
-  padding-inline-end: calc(var(--usa-size-touch-target) + var(--usa-spacing-1));
+  padding-inline-end: calc(
+    var(--ogds-size-touch-target) + var(--ogds-spacing-1)
+  );
 }
 
 @media (width >= 40em) {
   header.expanded {
     display: block;
-    font-size: var(--usa-banner-font-size-sm);
+    font-size: var(--ogds-banner-font-size-sm);
     font-weight: 400;
     min-height: 0;
     padding-inline-end: 0;
@@ -278,14 +280,14 @@ button {
   background: none;
   border: none;
   bottom: 0;
-  color: var(--usa-banner-link-color);
+  color: var(--ogds-banner-link-color);
   cursor: pointer;
   display: block;
   font: inherit;
-  font-size: var(--usa-banner-font-size-xs);
+  font-size: var(--ogds-banner-font-size-xs);
   height: auto;
   left: 0;
-  line-height: var(--usa-banner-line-height-sm);
+  line-height: var(--ogds-banner-line-height-sm);
   outline: inherit;
   padding: 0;
   padding-block-start: 0;
@@ -297,7 +299,7 @@ button {
 }
 
 button:hover {
-  color: var(--usa-banner-link-hover-color);
+  color: var(--ogds-banner-link-hover-color);
 }
 
 @media (width <= 39.99em) {
@@ -311,7 +313,7 @@ button:hover {
 }
 
 button:not([disabled]):focus {
-  outline: var(--usa-spacing-05) solid var(--usa-banner-focus-outline-color);
+  outline: var(--ogds-spacing-05) solid var(--ogds-banner-focus-outline-color);
 }
 
 @media (width >= 40em) {
@@ -319,7 +321,7 @@ button:not([disabled]):focus {
     bottom: auto;
     display: inline;
     left: auto;
-    margin-inline-start: var(--usa-spacing-1);
+    margin-inline-start: var(--ogds-spacing-1);
     position: relative;
     top: auto;
   }
@@ -330,7 +332,7 @@ button:not([disabled]):focus {
     display: inline-block;
     height: 1rem;
     margin-block: 0;
-    mask-image: var(--usa-icon-expand-more);
+    mask-image: var(--ogds-icon-expand-more);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
@@ -370,31 +372,31 @@ button[aria-expanded="true"]:hover {
 
 @media (width <= 39.99em) {
   button[aria-expanded="true"]::before {
-    background-color: var(--usa-banner-button-close-background-color);
+    background-color: var(--ogds-banner-button-close-background-color);
     bottom: 0;
     content: "";
     display: block;
-    height: var(--usa-size-touch-target);
+    height: var(--ogds-size-touch-target);
     position: absolute;
     right: 0;
     top: 0;
-    width: var(--usa-size-touch-target);
+    width: var(--ogds-size-touch-target);
   }
 
   button[aria-expanded="true"]::after {
-    background-color: var(--usa-banner-link-color);
+    background-color: var(--ogds-banner-link-color);
     bottom: 0;
     content: "";
     display: block;
-    height: var(--usa-size-touch-target);
-    mask-image: var(--usa-icon-close);
+    height: var(--ogds-size-touch-target);
+    mask-image: var(--ogds-icon-close);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: 1.5rem 1.5rem;
     position: absolute;
     right: 0;
     top: 0;
-    width: var(--usa-size-touch-target);
+    width: var(--ogds-size-touch-target);
   }
 }
 
@@ -407,7 +409,7 @@ button[aria-expanded="true"]:hover {
 
   button[aria-expanded="true"]::after,
   button[aria-expanded="true"]:hover::after {
-    mask-image: var(--usa-icon-expand-less);
+    mask-image: var(--ogds-icon-expand-less);
     position: absolute;
   }
 }
@@ -445,7 +447,7 @@ button[aria-expanded="true"]:hover {
   align-items: flex-start;
   display: flex;
   max-width: 62ex;
-  padding-block-start: var(--usa-spacing-2);
+  padding-block-start: var(--ogds-spacing-2);
 }
 
 @media (width <= 39.99em) {
@@ -457,12 +459,12 @@ button[aria-expanded="true"]:hover {
 @media (width >= 40em) {
   .guidance {
     padding-block-start: 0;
-    padding-inline-end: var(--usa-spacing-1);
+    padding-inline-end: var(--ogds-spacing-1);
   }
 }
 
 .icon {
-  width: var(--usa-spacing-5);
+  width: var(--ogds-spacing-5);
 }
 
 .icon-lock,
@@ -473,7 +475,7 @@ button[aria-expanded="true"]:hover {
   background-size: cover;
   display: inline-block;
   height: 1.5ex;
-  mask-image: var(--usa-icon-lock);
+  mask-image: var(--ogds-icon-lock);
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: cover;
@@ -482,28 +484,28 @@ button[aria-expanded="true"]:hover {
 
 .icon-gov,
 .icon-https {
-  padding-inline-start: calc(var(--usa-spacing-5) + var(--usa-spacing-1));
+  padding-inline-start: calc(var(--ogds-spacing-5) + var(--ogds-spacing-1));
   position: relative;
 
   &::before {
     content: "";
     display: inline-block;
-    height: var(--usa-spacing-5);
+    height: var(--ogds-spacing-5);
     left: 0;
     mask-repeat: no-repeat;
     mask-size: contain;
     position: absolute;
     top: 0;
-    width: var(--usa-spacing-5);
+    width: var(--ogds-spacing-5);
   }
 }
 
 .icon-gov::before {
-  background-color: var(--usa-banner-icon-gov-color);
-  mask-image: var(--usa-icon-gov);
+  background-color: var(--ogds-banner-icon-gov-color);
+  mask-image: var(--ogds-icon-gov);
 }
 
 .icon-https::before {
-  background-color: var(--usa-banner-icon-https-color);
-  mask-image: var(--usa-icon-https);
+  background-color: var(--ogds-banner-icon-https-color);
+  mask-image: var(--ogds-icon-https);
 }
