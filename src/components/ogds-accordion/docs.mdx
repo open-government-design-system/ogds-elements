@@ -66,9 +66,9 @@ The accordion uses the native `<details>` and `<summary>` HTML elements, which p
 
 #### ARIA Support
 
-Depending on the kind of content in the accordion, you may want to add some additional ARIA to provide a better experience for assistive technology users. Before doing this, consider whether additional landmarks are actually necessary (["no ARIA is better than bad ARIA"](https://www.w3.org/WAI/ARIA/apg/practices/read-me-first/)). That said, the `<ogds-accordion>` component provides an easy way to add ARIA that may be helpful depending on your content:
+Depending on the kind of content in the accordion, you may want to add some ARIA to provide a better experience for assistive technology users. Headings and lists in particular, can be important landmarks for screen readers. The `<ogds-accordion>` component provides an easy way to add ARIA that may be helpful depending on your content:
 
-1. **Heading semantics.** The USWDS accordion uses heading elements inside the buttons that toggle the sections. If you want to follow this pattern, you can add a `heading-level=<Number>` attribute to the opening `<ogds-accordion>` tag, and it will automatically set the correct ARIA attributes on each of the child `<summary>` tags to set the heading at the level you tell it. As always, it is important to use the right heading level to preserve the document outline.
+1. **Heading semantics.** The USWDS accordion uses heading elements inside the buttons that toggle the sections. If you want to follow this pattern, you can add a `heading-level=<Number>` attribute to the opening `<ogds-accordion>` tag, and it will automatically set the correct ARIA attributes on each of the child `<summary>` tags to set the heading at the level you tell it. As always, it is important to use the right heading level to preserve the document outline. Even if you are not using the web component version of the component, you can achieve this same effect by including a heading element inside the summary tag, though this may require a little extra CSS to keep the visual appearance consistent.
 2. **List semantics.** If the content in the accordion makes more sense as a list, adding a `use-list-semantics` attribute to the `<ogds-accordion>` tag will add the correct ARIA.
 
 ### Web component usage
