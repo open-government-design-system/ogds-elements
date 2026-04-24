@@ -3,7 +3,7 @@ import { html, nothing } from "lit";
 
 const meta = {
   title: "Components/Alert",
-  component: "usa-alert",
+  component: "ogds-alert",
   tags: ["experimental"],
   render: ({
     heading,
@@ -17,10 +17,10 @@ const meta = {
     noIcon: boolean;
   }) => {
     return html`
-      <usa-alert type="${type}" ?no-icon="${noIcon}">
+      <ogds-alert type="${type}" ?no-icon="${noIcon}">
         ${heading ? html`<h3 slot="heading">${heading}</h3>` : nothing}
         <p slot="body" .innerHTML=${body}></p>
-      </usa-alert>
+      </ogds-alert>
     `;
   },
 };

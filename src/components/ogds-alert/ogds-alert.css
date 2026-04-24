@@ -1,0 +1,119 @@
+:host {
+  --icon-info: var(--ogds-icon-info);
+  --icon-warning: var(--ogds-icon-warning);
+  --icon-success: var(--ogds-icon-check-circle);
+  --icon-error: var(--ogds-icon-error);
+  --icon-emergency: var(--ogds-icon-error);
+
+  box-sizing: border-box;
+}
+
+.ogds-alert {
+  background-color: var(--base-lightest);
+  border-left: var(--alert-bar-width, var(--ogds-spacing-1)) solid
+    var(--base-light);
+
+  .ogds-alert__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: var(--ogds-spacing-4);
+    padding-block: var(--theme-alert-padding-y, var(--ogds-spacing-2));
+    padding-inline: var(--theme-alert-padding-x, var(--ogds-spacing-3));
+
+    .ogds-alert__icon {
+      left: 2rem;
+      position: absolute;
+      width: 2rem; /* TODO */
+    }
+
+    .ogds-alert__heading {
+      align-items: center;
+      display: flex;
+    }
+
+    .ogds-alert__text {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.ogds-alert--success {
+  .ogds-alert__icon {
+    content: var(--icon-success);
+  }
+
+  background-color: var(--ogds-color-green-cool-5);
+  border-left-color: var(--ogds-color-green-cool-vivid-40);
+}
+
+.ogds-alert--info {
+  .ogds-alert__icon {
+    content: var(--icon-info);
+  }
+
+  background-color: var(--ogds-color-cyan-5);
+  border-left-color: var(--ogds-color-cyan-vivid-30);
+}
+
+.ogds-alert--warning {
+  .ogds-alert__icon {
+    content: var(--icon-warning);
+  }
+
+  background-color: var(--ogds-color-yellow-5);
+  border-left-color: var(--ogds-color-gold-vivid-20);
+}
+
+.ogds-alert--error {
+  .ogds-alert__icon {
+    content: var(--icon-error);
+  }
+
+  background-color: var(--ogds-color-red-warm-10);
+  border-left-color: var(--ogds-color-red-warm-vivid-50);
+}
+
+.ogds-alert--slim {
+  .ogds-alert__body {
+    margin-left: 1rem;
+
+    .ogds-alert__icon {
+      width: 1.5rem;
+    }
+  }
+}
+
+.ogds-alert--no-icon {
+  .ogds-alert__body {
+    margin-left: 0;
+
+    .ogds-alert__icon {
+      display: none;
+    }
+  }
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  font-family:
+    "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif; /* TODO */
+
+  font-size: 1.33rem; /* TODO */
+  line-height: 0.9; /* TODO */
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+::slotted(p),
+::slotted(div) {
+  font-family:
+    "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif; /* TODO */
+
+  font-size: 1.06rem; /* TODO */
+  line-height: 1.5; /* TODO */
+  margin-bottom: 0;
+  margin-top: 0;
+}
