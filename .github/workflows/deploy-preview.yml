@@ -1,0 +1,97 @@
+name: Deploy Storybook Preview
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup project
+        uses: ./.github/actions/setup
+
+      - name: Build Storybook
+        run: npm run storybook:build
+
+      - name: Set worker name
+        id: worker-name
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "name=ogds-elements-pr-${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "name=ogds-elements" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Cloudflare Workers
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --name ${{ steps.worker-name.outputs.name }}
+          wranglerVersion: "4.78.0"
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        env:
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+        with:
+          script: |
+            const marker = '<!-- storybook-preview -->';
+            const shortSha = context.payload.pull_request.head.sha.substring(0, 8);
+            const now = new Date().toLocaleDateString('en-US', {
+              year: 'numeric', month: 'short', day: 'numeric',
+              hour: '2-digit', minute: '2-digit',
+              timeZone: 'America/New_York'
+            });
+            const deploymentUrl = process.env.DEPLOYMENT_URL;
+            const branch = context.payload.pull_request.head.ref;
+
+            const body = [
+              marker,
+              `## Storybook Preview 👀`,
+              ``,
+              `- **Preview:** [Open Storybook PR Preview](${deploymentUrl})`,
+              `- **Branch:** \`${branch}\``,
+              `- **Latest Commit:** \`${shortSha}\``,
+              `- **Updated:** ${now} (ET)`,
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+              });
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
