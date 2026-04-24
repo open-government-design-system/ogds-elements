@@ -4,7 +4,7 @@ import { html, nothing } from "lit";
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
-  tags: ["beta"],
+  tags: ["experimental"],
   render: ({
     heading,
     type,
