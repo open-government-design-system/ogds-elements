@@ -95,12 +95,7 @@
   }
 }
 
-::slotted(h1),
-::slotted(h2),
-::slotted(h3),
-::slotted(h4),
-::slotted(h5),
-::slotted(h6) {
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
   font-family:
     "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
     sans-serif; /* TODO */
