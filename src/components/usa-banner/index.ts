@@ -2,6 +2,9 @@ import { LitElement, html, css, unsafeCSS } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
+import colorTokens from "@ogds/tokens/styles/css/colors.css";
+import spacingTokens from "@ogds/tokens/styles/css/spacing.css";
+import breakpointTokens from "@ogds/tokens/styles/css/breakpoints.css";
 import styles from "./usa-banner.css";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
@@ -91,15 +94,15 @@ const USA_BANNER_TRANSLATIONS: Record<
  * @attribute {string} label - The custom aria label users can override.
  * @attribute {string} tld - The top level domain for the site.
  *
- * @cssprop --usa-banner-background-color - Sets banner background color.
- * @cssprop --usa-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
- * @cssprop --usa-banner-focus-outline-color - Sets banner focus outline color.
- * @cssprop --usa-banner-font-family - Sets banner font family.
- * @cssprop --usa-banner-icon-gov-color - Sets the color for the official government domain icon in the expanded state of the banner.
- * @cssprop --usa-banner-icon-https-color - Sets the color for the https icon in the expanded state of the banner.
- * @cssprop --usa-banner-link-color - Sets the default link color.
- * @cssprop --usa-banner-link-hover-color - Sets the default link color.
- * @cssprop --usa-banner-text-color - Sets the default text color.
+ * @cssprop --ogds-banner-background-color - Sets banner background color.
+ * @cssprop --ogds-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
+ * @cssprop --ogds-banner-focus-outline-color - Sets banner focus outline color.
+ * @cssprop --ogds-banner-font-family - Sets banner font family.
+ * @cssprop --ogds-banner-icon-gov-color - Sets the color for the official government domain icon in the expanded state of the banner.
+ * @cssprop --ogds-banner-icon-https-color - Sets the color for the https icon in the expanded state of the banner.
+ * @cssprop --ogds-banner-link-color - Sets the default link color.
+ * @cssprop --ogds-banner-link-hover-color - Sets the default link color.
+ * @cssprop --ogds-banner-text-color - Sets the default text color.
  *
  * @slot banner-text - The text for official government website text.
  * @slot banner-action - Action text label "Here's how you know."
@@ -207,13 +210,16 @@ export class UsaBanner extends LitElement {
     css`
       :host {
         /** Icons */
-        --usa-icon-close: url("${unsafeCSS(iconClose)}");
-        --usa-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
-        --usa-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
-        --usa-icon-gov: url("${unsafeCSS(iconDotGov)}");
-        --usa-icon-https: url("${unsafeCSS(iconHttps)}");
+        --ogds-icon-close: url("${unsafeCSS(iconClose)}");
+        --ogds-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
+        --ogds-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
+        --ogds-icon-gov: url("${unsafeCSS(iconDotGov)}");
+        --ogds-icon-https: url("${unsafeCSS(iconHttps)}");
       }
     `,
+    breakpointTokens,
+    colorTokens,
+    spacingTokens,
     styles,
   ];
 

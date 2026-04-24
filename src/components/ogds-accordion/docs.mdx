@@ -1,0 +1,90 @@
+import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+Accordions show and hide sections of related content on a page.
+
+---
+
+## Default
+
+<Primary />
+
+---
+
+## Variations
+
+<Stories />
+
+## Guidance
+
+### When to use the accordion component
+
+_To organize related content._ Accordions can help reduce page length when there are multiple sections of content that users may not need to read in full.
+
+_To let users get to relevant content faster._ Accordions keep a page focused by allowing users to choose what they read rather than having to scroll past large amounts of content.
+
+### When to consider something else
+
+_If users need most or all of the content._ If users are likely to need most of the content on a page, showing it all at once may be more helpful than hiding it behind an accordion.
+
+_For critical information._ Avoid using accordions to hide important content that all users should see, as users may miss it.
+
+### Usability guidance
+
+_Use clear, descriptive labels._ The summary text should clearly describe the content within. Users should be able to decide whether to expand a section based on the label alone.
+
+_Use icons to reinforce state._ Add the `with-icon` class to provide a visual indicator of open and closed state. Use `with-icon right` to align the icon to the trailing edge of the summary, or `with-icon plus` to use plus/minus icons instead of chevrons.
+
+_Use `bordered` for visual separation._ Add the `bordered` class when the accordion needs stronger visual separation from surrounding content.
+
+#### Built-in `<details>` element functionality
+
+Because the component uses `<details>` elements, you can use all of the built-in functionality that element supports, including:
+
+1. **Exclusive accordion behavior with the `name` attribute.** By default, a user can open multiple accordion panels at once. In some use cases, only allowing one panel to be open at one time may be a better experience. To acheive this behavior, just add a `name="myAccordion"` ([MDN reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details#name)) to each `<details>` that needs to be exclusive (the value of the attribute does not matter as long as it is shared across each of the details elements):
+
+```html
+<ogds-accordion>
+  <details name="anExclusiveAccordion">
+    <summary>Foo</summary>
+  </details>
+  <details name="anExclusiveAccordion">
+    <summary>Bar</summary>
+  </details>
+  <!-- and so on...  -->
+</ogds-accordion>
+```
+
+2. **Make panel `open` by default.** Any `<details>` with an `open` attribute ([MDN Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details#open)) on it will be open when the page loads (be careful when using this with the `name` attribute described above).
+
+### Accessibility guidance
+
+The accordion uses the native `<details>` and `<summary>` HTML elements, which provide built-in keyboard interaction and screen reader support without requiring additional JavaScript.
+
+#### ARIA Support
+
+Depending on the kind of content in the accordion, you may want to add some ARIA to provide a better experience for assistive technology users. Headings and lists in particular, can be important landmarks for screen readers. The `<ogds-accordion>` component provides an easy way to add ARIA that may be helpful depending on your content:
+
+1. **Heading semantics.** The USWDS accordion uses heading elements inside the buttons that toggle the sections. If you want to follow this pattern, you can add a `heading-level=<Number>` attribute to the opening `<ogds-accordion>` tag, and it will automatically set the correct ARIA attributes on each of the child `<summary>` tags to set the heading at the level you tell it. As always, it is important to use the right heading level to preserve the document outline. Even if you are not using the web component version of the component, you can achieve this same effect by including a heading element inside the summary tag, though this may require a little extra CSS to keep the visual appearance consistent.
+2. **List semantics.** If the content in the accordion makes more sense as a list, adding a `use-list-semantics` attribute to the `<ogds-accordion>` tag will add the correct ARIA.
+
+### Web component usage
+
+The stories above show how to use the accordion web component. This component uses all light DOM (no shadow DOM). That means that it's up to you to add the required markup inside the `<ogds-accordion>` tag. As shown, it only needs at least one `details` element.
+
+### CSS-only usage
+
+The accordion component can be used without JavaScript by applying the styles in `ogds-accordion.css` directly to your page. If using the icon variants, you must set the following custom properties to point to your own icon assets:
+
+```css
+ogds-accordion,
+.ogds-accordion {
+  --ogds-accordion-icon-closed: url("/path/to/your/icon-closed.svg");
+  --ogds-accordion-icon-open: url("/path/to/your/icon-open.svg");
+}
+```
+
+Even if you are not using the web component JavaScript, the CSS will work on a `<ogds-accordion>` tag. However, if you'd prefer to stick with built-in elements, all of the above will also work on a `<div class="ogds-accordion">`.

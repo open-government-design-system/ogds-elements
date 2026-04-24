@@ -33,7 +33,7 @@ jobs:
         run: npx playwright test --config=./config/playwright.config.ts --update-snapshots
 
       - name: Upload new screenshots
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-snapshots
           path: e2e/**/*-snapshots/

@@ -22,6 +22,138 @@
             "name": "UsaBanner",
             "module": "src/components/index.ts"
           }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-accordion/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Border used in the bordered variant.",
+              "name": "--ogds-accordion-border"
+            },
+            {
+              "description": "Padding for the expanded content area.",
+              "name": "--ogds-accordion-content-padding"
+            },
+            {
+              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-closed"
+            },
+            {
+              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-open"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "useListSemantics",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "use-list-semantics"
+            },
+            {
+              "kind": "field",
+              "name": "headingLevel",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "heading-level"
+            },
+            {
+              "kind": "field",
+              "name": "detailsChildren",
+              "type": {
+                "text": "HTMLCollectionOf<HTMLDetailsElement> | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "childRoles",
+              "type": {
+                "text": "Map<HTMLDetailsElement, Set<string>>"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getDetailsChildren"
+            },
+            {
+              "kind": "method",
+              "name": "addListSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "addHeadingSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "applyChildRoles"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Adds `role=\"list\"` to the component and `role=\"listitem\"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.",
+              "name": "use-list-semantics",
+              "default": "false",
+              "fieldName": "useListSemantics",
+              "propName": "useListSemantics"
+            },
+            {
+              "type": {
+                "text": "number"
+              },
+              "description": "Sets a heading level for each accordion panel by adding `role=\"heading\"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.",
+              "name": "heading-level",
+              "default": "0",
+              "fieldName": "headingLevel",
+              "propName": "headingLevel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-accordion",
+          "customElement": true,
+          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/ogds-accordion/index.ts"
+          }
         }
       ]
     },
@@ -36,39 +168,39 @@
           "cssProperties": [
             {
               "description": "Sets banner background color.",
-              "name": "--usa-banner-background-color"
+              "name": "--ogds-banner-background-color"
             },
             {
               "description": "Sets the background color for the close control on smaller viewports.",
-              "name": "--usa-banner-button-close-background-color"
+              "name": "--ogds-banner-button-close-background-color"
             },
             {
               "description": "Sets banner focus outline color.",
-              "name": "--usa-banner-focus-outline-color"
+              "name": "--ogds-banner-focus-outline-color"
             },
             {
               "description": "Sets banner font family.",
-              "name": "--usa-banner-font-family"
+              "name": "--ogds-banner-font-family"
             },
             {
               "description": "Sets the color for the official government domain icon in the expanded state of the banner.",
-              "name": "--usa-banner-icon-gov-color"
+              "name": "--ogds-banner-icon-gov-color"
             },
             {
               "description": "Sets the color for the https icon in the expanded state of the banner.",
-              "name": "--usa-banner-icon-https-color"
+              "name": "--ogds-banner-icon-https-color"
             },
             {
               "description": "Sets the default link color.",
-              "name": "--usa-banner-link-color"
+              "name": "--ogds-banner-link-color"
             },
             {
               "description": "Sets the default link color.",
-              "name": "--usa-banner-link-hover-color"
+              "name": "--ogds-banner-link-hover-color"
             },
             {
               "description": "Sets the default text color.",
-              "name": "--usa-banner-text-color"
+              "name": "--ogds-banner-text-color"
             }
           ],
           "slots": [
@@ -259,6 +391,33 @@
           "declaration": {
             "name": "UsaBanner",
             "module": "src/components/usa-banner/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-header/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaHeader",
+          "members": [],
+          "superclass": {
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaHeader",
+          "declaration": {
+            "name": "UsaHeader",
+            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
