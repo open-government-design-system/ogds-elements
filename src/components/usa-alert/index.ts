@@ -22,11 +22,11 @@ import styles from "./usa-alert.css";
 
 @customElement("usa-alert")
 export class MDAlert extends LitElement {
-  @property({ type: String })
-  accessor type = "info";
+  @property()
+  type = "info";
 
   @property({ type: Boolean, attribute: "no-icon" })
-  accessor noIcon = false;
+  noIcon = false;
 
   @queryAssignedNodes({ slot: "heading", flatten: true })
   accessor _headingNodes: Node[] = [];
