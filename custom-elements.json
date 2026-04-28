@@ -509,32 +509,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/usa-header/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UsaHeader",
-          "members": [],
-          "superclass": {
-            "name": "OgdsElement",
-            "module": "/src/core/OgdsElement"
-          }
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UsaHeader",
-          "declaration": {
-            "name": "UsaHeader",
-            "module": "src/components/usa-header/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/usa-link/index.ts",
       "declarations": [
         {
@@ -631,6 +605,32 @@
           "declaration": {
             "name": "UsaLink",
             "module": "src/components/usa-link/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-header/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaHeader",
+          "members": [],
+          "superclass": {
+            "name": "OgdsElement",
+            "module": "/src/core/OgdsElement"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaHeader",
+          "declaration": {
+            "name": "UsaHeader",
+            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
