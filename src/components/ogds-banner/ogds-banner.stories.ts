@@ -5,7 +5,7 @@ import { within } from "shadow-dom-testing-library";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import type { Args, ArgTypes } from "storybook/internal/csf";
 
-const { argTypes, args, template } = getStorybookHelpers("usa-banner");
+const { argTypes, args, template } = getStorybookHelpers("ogds-banner");
 
 const filteredArgTypes = (argTypes: ArgTypes) => {
   const filtered: ArgTypes = {};
@@ -30,7 +30,7 @@ const filteredArgTypes = (argTypes: ArgTypes) => {
 
 export default {
   title: "Components/Banner",
-  component: "usa-banner",
+  component: "ogds-banner",
   tags: ["beta"],
   args: {
     ...args,
