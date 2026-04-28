@@ -10,28 +10,28 @@ import "../src/core/index.css";
 
 setCustomElementsManifest(customElements);
 setStorybookHelpersConfig({
-    hideArgRef: true,
+  hideArgRef: true,
 });
 
 /** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {
-    parameters: {
-        controls: {
-            matchers: {
-                color: /(background|color)$/i,
-                date: /Date$/i,
-            },
-        },
-        docs: {
-            toc: true, // Autogenerate table of contents.
-            theme: OgdsTheme,
-            codePanel: true,
-            canvas: {
-                sourceState: "shown",
-            },
-        },
+  parameters: {
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
     },
-    tags: ["autodocs"],
+    docs: {
+      toc: true, // Autogenerate table of contents.
+      theme: OgdsTheme,
+      codePanel: true,
+      canvas: {
+        sourceState: "shown",
+      },
+    },
+  },
+  tags: ["autodocs"],
 };
 
 export default preview;
