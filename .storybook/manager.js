@@ -1,6 +1,6 @@
 import { addons } from "storybook/manager-api";
-import UswdsTheme from "./UswdsTheme";
+import OgdsTheme from "./OgdsTheme";
 
 addons.setConfig({
-  theme: UswdsTheme,
+    theme: OgdsTheme,
 });
