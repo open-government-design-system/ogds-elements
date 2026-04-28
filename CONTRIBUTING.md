@@ -12,7 +12,7 @@ Thanks for your interest in contributing to OGDS Elements.
 
 ### Filing a bug report
 
-If you discovered a bug that no one else has reported in our [issues backlog](https://github.com/open-government-design-system/ogds-elements/issues), let us know by [submitting an issue](https://github.com/open-government-design-system/ogds-elements/issues/new). 
+If you discovered a bug that no one else has reported in our [issues backlog](https://github.com/open-government-design-system/ogds-elements/issues), let us know by [submitting an issue](https://github.com/open-government-design-system/ogds-elements/issues/new).
 
 ### Starting a discussion
 
