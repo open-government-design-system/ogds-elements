@@ -22,11 +22,6 @@ const entries: Array<Entry> = [
     path: "src/components/ogds-banner/index.ts",
     sizeLimit: "10 kB",
   },
-  {
-    name: "components/usa-link",
-    path: "src/components/usa-link/index.js",
-    sizeLimit: "0.8 kB",
-  },
 ];
 
 export default defineConfig({

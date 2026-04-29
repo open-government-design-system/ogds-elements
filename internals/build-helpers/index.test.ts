@@ -32,17 +32,11 @@ describe("mapEntriesToKeyValue", () => {
         path: "src/components/usa-banner/index.ts",
         sizeLimit: "10 kB",
       },
-      {
-        name: "components/usa-link",
-        path: "src/components/usa-link/index.js",
-        sizeLimit: "0.8 kB",
-      },
     ];
 
     const expected = {
       "components/index": "src/components/index",
       "components/usa-banner": "src/components/usa-banner/index.ts",
-      "components/usa-link": "src/components/usa-link/index.js",
     };
 
     expect(mapEntriesToKeyValue(entries)).toEqual(expected);

@@ -9,14 +9,6 @@
       "exports": [
         {
           "kind": "js",
-          "name": "UsaLink",
-          "declaration": {
-            "name": "UsaLink",
-            "module": "src/components/index.ts"
-          }
-        },
-        {
-          "kind": "js",
           "name": "OgdsBanner",
           "declaration": {
             "name": "OgdsBanner",
@@ -530,108 +522,6 @@
           "declaration": {
             "name": "UsaHeader",
             "module": "src/components/usa-header/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/usa-link/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UsaLink",
-          "cssProperties": [
-            {
-              "description": "Sets the link color",
-              "name": "--theme-link-color"
-            },
-            {
-              "description": "Sets the color for visited links",
-              "name": "--theme-link-visited-color"
-            },
-            {
-              "description": "Sets the hover state link color",
-              "name": "--theme-link-hover-color"
-            },
-            {
-              "description": "Sets the active state link color",
-              "name": "--theme-link-active-color"
-            }
-          ],
-          "slots": [
-            {
-              "description": "This element has a slot",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "href",
-              "privacy": "public",
-              "type": {
-                "text": "string | undefined"
-              },
-              "attribute": "href"
-            },
-            {
-              "kind": "field",
-              "name": "slottedChildren",
-              "type": {
-                "text": "HTMLAnchorElement | undefined"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "hasLinkChild",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "boolean"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "templateWithChildren",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "templateWithSlots",
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string | undefined"
-              },
-              "description": "The url for the link",
-              "name": "href",
-              "fieldName": "href",
-              "propName": "href"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "usa-link",
-          "customElement": true,
-          "summary": "The usa-link component."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UsaLink",
-          "declaration": {
-            "name": "UsaLink",
-            "module": "src/components/usa-link/index.ts"
           }
         }
       ]
