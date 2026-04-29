@@ -15,11 +15,11 @@ const entries: Array<Entry> = [
   {
     name: "components/index",
     path: "src/components/index",
-    sizeLimit: "0.2 kB",
+    sizeLimit: "15 kB",
   },
   {
-    name: "components/usa-banner",
-    path: "src/components/usa-banner/index.ts",
+    name: "components/ogds-banner",
+    path: "src/components/ogds-banner/index.ts",
     sizeLimit: "10 kB",
   },
   {

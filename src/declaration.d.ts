@@ -1,5 +1,10 @@
 /// <reference types="vite/client" />
 
+declare module "*.mdx" {
+  const content: unknown;
+  export default content;
+}
+
 import type { CSSResultGroup } from "lit";
 
 // Asset imports

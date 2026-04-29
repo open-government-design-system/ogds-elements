@@ -1,5 +1,5 @@
 import { UsaLink } from "./usa-link";
-import { UsaBanner } from "./usa-banner";
+import { OgdsBanner } from "./ogds-banner";
 import { OgdsAccordion } from "./ogds-accordion";
 
-export { UsaLink, UsaBanner, OgdsAccordion };
+export { UsaLink, OgdsBanner, OgdsAccordion };
