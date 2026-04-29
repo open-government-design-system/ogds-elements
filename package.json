@@ -1,12 +1,12 @@
 {
-  "name": "@uswds/elements",
+  "name": "@ogds/elements",
   "version": "1.0.0-alpha.6",
   "type": "module",
   "customElements": "custom-elements.json",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uswds/uswds-elements.git"
+    "url": "git+https://github.com/open-government-design-system/ogds-elements.git"
   },
   "files": [
     ".storybook",

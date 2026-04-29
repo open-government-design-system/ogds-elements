@@ -5,7 +5,7 @@ import { classMap } from "lit/directives/class-map.js";
 import colorTokens from "@ogds/tokens/styles/css/colors.css";
 import spacingTokens from "@ogds/tokens/styles/css/spacing.css";
 import breakpointTokens from "@ogds/tokens/styles/css/breakpoints.css";
-import styles from "./usa-banner.css";
+import styles from "./ogds-banner.css";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
 import iconDotGov from "@uswds/uswds/img/icon-dot-gov.svg";
@@ -15,7 +15,7 @@ import iconExpandMore from "../../shared/icons/expand_more.svg";
 import iconExpandLess from "../../shared/icons/expand_less.svg";
 import { defineCustomElement } from "../../utils";
 
-interface UsaBannerTranslations {
+interface OgdsBannerTranslations {
   banner: {
     label: string;
     text: string;
@@ -37,9 +37,9 @@ interface UsaBannerTranslations {
 
 type SupportedLanguage = "en" | "es";
 
-const USA_BANNER_TRANSLATIONS: Record<
+const OGDS_BANNER_TRANSLATIONS: Record<
   SupportedLanguage,
-  UsaBannerTranslations
+  OgdsBannerTranslations
 > = {
   en: {
     banner: {
@@ -88,7 +88,7 @@ const USA_BANNER_TRANSLATIONS: Record<
 };
 
 /**
- * @summary The usa-banner component.
+ * @summary The ogds-banner component.
  *
  * @attribute {string} lang - The element's language.
  * @attribute {string} label - The custom aria label users can override.
@@ -111,9 +111,9 @@ const USA_BANNER_TRANSLATIONS: Record<
  * @slot https-heading - Heading for HTTPs section.
  * @slot https-text - Body text for HTTPs section.
  *
- * @element usa-banner
+ * @element ogds-banner
  */
-export class UsaBanner extends LitElement {
+export class OgdsBanner extends LitElement {
   static properties = {
     flagSrc: { type: String },
     lang: { type: String, reflect: true },
@@ -148,7 +148,9 @@ export class UsaBanner extends LitElement {
   // Get English or Spanish strings. Default to English if an unknown `lang` is passed.
   // Ex: <usa-banner lang="zy"></usa-banner>
   protected get _bannerText() {
-    return USA_BANNER_TRANSLATIONS[this.lang] || USA_BANNER_TRANSLATIONS["en"];
+    return (
+      OGDS_BANNER_TRANSLATIONS[this.lang] || OGDS_BANNER_TRANSLATIONS["en"]
+    );
   }
 
   // Get the action text and use for both mobile & desktop buttons.
@@ -287,4 +289,4 @@ export class UsaBanner extends LitElement {
   }
 }
 
-defineCustomElement("usa-banner", UsaBanner);
+defineCustomElement("ogds-banner", OgdsBanner);

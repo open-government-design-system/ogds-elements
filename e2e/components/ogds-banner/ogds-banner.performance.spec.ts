@@ -1,7 +1,7 @@
 import { test, expect } from "../../fixtures/web-vitals";
 import { StorybookPage } from "../../models/storybook-page";
 
-test.describe("usa-banner performance", () => {
+test.describe("ogds-banner performance", () => {
   test("should have good web vitals", async ({ page, webVitals }) => {
     await webVitals.setup();
 

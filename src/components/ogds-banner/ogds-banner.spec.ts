@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import "./index.js";
 
 function getInsideBanner(): ShadowRoot {
-  const banner = document.body.querySelector("usa-banner");
+  const banner = document.body.querySelector("ogds-banner");
   if (!banner) {
     throw new Error("USA Banner element not found");
   }
@@ -23,7 +23,7 @@ function getBannerButton(): HTMLButtonElement {
 
 describe("USA Banner component", async () => {
   beforeEach(async () => {
-    document.body.innerHTML = "<usa-banner></usa-banner>";
+    document.body.innerHTML = "<ogds-banner></ogds-banner>";
   });
 
   it("renders correctly", () => {
@@ -53,7 +53,7 @@ describe("USA Banner component", async () => {
 
 describe("Spanish variant", async () => {
   beforeEach(async () => {
-    document.body.innerHTML = `<usa-banner lang="es"></usa-banner>`;
+    document.body.innerHTML = `<ogds-banner lang="es"></ogds-banner>`;
   });
 
   it("renders correctly", () => {
@@ -65,7 +65,7 @@ describe("Spanish variant", async () => {
 
 describe("MIL variant", async () => {
   beforeEach(async () => {
-    document.body.innerHTML = `<usa-banner tld="mil"></usa-banner>`;
+    document.body.innerHTML = `<ogds-banner tld="mil"></ogds-banner>`;
   });
 
   it("renders correctly", () => {

@@ -4,7 +4,7 @@
 import { setCustomElementsManifest } from "@storybook/web-components-vite";
 import { setStorybookHelpersConfig } from "@wc-toolkit/storybook-helpers";
 import customElements from "../custom-elements.json";
-import UswdsTheme from "./UswdsTheme";
+import OgdsTheme from "./OgdsTheme";
 import "../storybook/index.css";
 import "../src/core/index.css";
 
@@ -24,7 +24,7 @@ const preview = {
     },
     docs: {
       toc: true, // Autogenerate table of contents.
-      theme: UswdsTheme,
+      theme: OgdsTheme,
       codePanel: true,
       canvas: {
         sourceState: "shown",
