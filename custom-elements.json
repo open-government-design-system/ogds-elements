@@ -27,6 +27,118 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/ogds-accordion-toggle/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsAccordionToggle",
+          "cssParts": [
+            {
+              "description": "The toggle button.",
+              "name": "button"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "controls"
+            },
+            {
+              "kind": "field",
+              "name": "expandLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Expand All\"",
+              "attribute": "expand-label"
+            },
+            {
+              "kind": "field",
+              "name": "collapseLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Collapse All\"",
+              "attribute": "collapse-label"
+            },
+            {
+              "kind": "field",
+              "name": "_anyOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "checkOpen"
+            },
+            {
+              "kind": "method",
+              "name": "toggleAll"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The `id` of the `<ogds-accordion>` to control. Required.",
+              "name": "controls",
+              "default": "\"\"",
+              "fieldName": "controls",
+              "propName": "controls"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
+              "name": "expand-label",
+              "default": "\"Expand All\"",
+              "fieldName": "expandLabel",
+              "propName": "expandLabel"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
+              "name": "collapse-label",
+              "default": "\"Collapse All\"",
+              "fieldName": "collapseLabel",
+              "propName": "collapseLabel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-accordion-toggle",
+          "customElement": true,
+          "summary": "A button that expands or collapses all panels in an associated `<ogds-accordion>`."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsAccordionToggle",
+          "declaration": {
+            "name": "OgdsAccordionToggle",
+            "module": "src/components/ogds-accordion-toggle/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/ogds-accordion/index.ts",
       "declarations": [
         {
@@ -151,112 +263,27 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/ogds-accordion-toggle/index.ts",
+      "path": "src/components/usa-header/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "OgdsAccordionToggle",
-          "cssParts": [
-            {
-              "description": "The toggle button.",
-              "name": "button"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "controls",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "controls"
-            },
-            {
-              "kind": "field",
-              "name": "expandLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Expand All\"",
-              "attribute": "expand-label"
-            },
-            {
-              "kind": "field",
-              "name": "collapseLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Collapse All\"",
-              "attribute": "collapse-label"
-            },
-            {
-              "kind": "field",
-              "name": "_anyOpen",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "method",
-              "name": "checkOpen"
-            },
-            {
-              "kind": "method",
-              "name": "toggleAll"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "The `id` of the `<ogds-accordion>` to control. Required.",
-              "name": "controls",
-              "default": "\"\"",
-              "fieldName": "controls",
-              "propName": "controls"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
-              "name": "expand-label",
-              "default": "\"Expand All\"",
-              "fieldName": "expandLabel",
-              "propName": "expandLabel"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
-              "name": "collapse-label",
-              "default": "\"Collapse All\"",
-              "fieldName": "collapseLabel",
-              "propName": "collapseLabel"
-            }
-          ],
+          "name": "UsaHeader",
+          "members": [],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ogds-accordion-toggle",
-          "customElement": true,
-          "summary": "A button that expands or collapses all panels in an associated `<ogds-accordion>`."
+          "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OgdsAccordionToggle",
+          "name": "UsaHeader",
           "declaration": {
-            "name": "OgdsAccordionToggle",
-            "module": "src/components/ogds-accordion-toggle/index.ts"
+            "name": "UsaHeader",
+            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
@@ -495,33 +522,6 @@
           "declaration": {
             "name": "OgdsBanner",
             "module": "src/components/ogds-banner/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/usa-header/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UsaHeader",
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UsaHeader",
-          "declaration": {
-            "name": "UsaHeader",
-            "module": "src/components/usa-header/index.ts"
           }
         }
       ]
