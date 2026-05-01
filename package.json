@@ -66,7 +66,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@custom-elements-manifest/analyzer": "^0.11.0",
-    "@eslint/css": "^1.1.0",
+    "@eslint/css": "^1.2.0",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
     "@storybook/addon-a11y": "^10.3.5",
@@ -101,7 +101,7 @@
     "shadow-dom-testing-library": "^1.13.1",
     "storybook": "^10.0.7",
     "storybook-addon-tag-badges": "^3.1.0",
-    "stylelint": "^17.8.0",
+    "stylelint": "^17.9.1",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "typescript": "^6.0.3",
