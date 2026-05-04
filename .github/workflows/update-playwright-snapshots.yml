@@ -27,10 +27,10 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: npm run playwright:install
 
       - name: Run Playwright to generate screenshots
-        run: npx playwright test --config=./config/playwright.config.ts --update-snapshots
+        run: npm run playwright:update-snapshots
 
       - name: Upload new screenshots
         uses: actions/upload-artifact@v7
