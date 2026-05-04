@@ -45,6 +45,8 @@
     "prettier:js:fix": "npx prettier --write '**/*.{cjs,css,js,json,jsx,mjs,ts,tsx}' --config ./config/.prettierrc",
     "prettier:md": "npx prettier --check '**/*.{md,mdx}' --config ./config/.prettierrc",
     "prettier:md:fix": "npx prettier --write '**/*.{md,mdx}' --config ./config/.prettierrc",
+    "prettier:github": "npx prettier --check '.github' --config ./config/.prettierrc",
+    "prettier:github:fix": "npx prettier --write '.github' --config ./config/.prettierrc",
     "start": "npm run storybook & npm run manifest:watch",
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
