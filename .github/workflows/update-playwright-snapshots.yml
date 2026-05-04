@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'The branch to checkout and run tests on'
+        description: "The branch to checkout and run tests on"
         required: true
         type: string
 
