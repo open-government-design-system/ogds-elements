@@ -50,7 +50,7 @@ jobs:
 
       - name: Comment preview URL on PR
         if: github.event_name == 'pull_request'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           DEPLOYMENT_URL: ${{ steps.preview.outputs.deployment-url }}
         with:
