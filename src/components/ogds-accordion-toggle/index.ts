@@ -96,7 +96,9 @@ export class OgdsAccordionToggle extends LitElement {
     return html`
       <button @click="${this.toggleAll}" part="button">
         <slot name="expand-label" ?hidden="${this._anyOpen}">Expand All</slot>
-        <slot name="collapse-label" ?hidden="${!this._anyOpen}">Collapse All</slot>
+        <slot name="collapse-label" ?hidden="${!this._anyOpen}"
+          >Collapse All</slot
+        >
       </button>
     `;
   }
