@@ -9,8 +9,9 @@ import styles from "./ogds-accordion-toggle.css";
  * @summary A button that expands or collapses all panels in an associated `<ogds-accordion>`.
  *
  * @attribute {string} controls - The `id` of the `<ogds-accordion>` to control. Required.
- * @attribute {string} expand-label - Button label when all panels are collapsed. Defaults to "Expand All".
- * @attribute {string} collapse-label - Button label when one or more panels are open. Defaults to "Collapse All".
+ *
+ * @slot expand-label - Button label when all panels are collapsed. Defaults to "Expand All".
+ * @slot collapse-label - Button label when one or more panels are open. Defaults to "Collapse All".
  *
  * @csspart button - The toggle button.
  *
@@ -23,14 +24,10 @@ export class OgdsAccordionToggle extends LitElement {
   @property({ type: String, attribute: "controls" })
   controls = "";
 
-  @property({ type: String, attribute: "expand-label" })
-  expandLabel = "Expand All";
-
-  @property({ type: String, attribute: "collapse-label" })
-  collapseLabel = "Collapse All";
-
   @state()
   private _anyOpen = false;
+
+  private _observer: MutationObserver | null = null;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -51,6 +48,22 @@ export class OgdsAccordionToggle extends LitElement {
       return;
     }
     this._anyOpen = this.checkOpen();
+    this._observer = new MutationObserver(() => {
+      this._anyOpen = this.checkOpen();
+    });
+    const accordionEl = document.getElementById(this.controls);
+    if (accordionEl) {
+      this._observer.observe(accordionEl, {
+        subtree: true,
+        attributeFilter: ["open"],
+      });
+    }
+  }
+
+  override disconnectedCallback() {
+    super.disconnectedCallback();
+    this._observer?.disconnect();
+    this._observer = null;
   }
 
   checkOpen() {
@@ -82,7 +95,8 @@ export class OgdsAccordionToggle extends LitElement {
   protected override render(): unknown {
     return html`
       <button @click="${this.toggleAll}" part="button">
-        ${this._anyOpen ? this.collapseLabel : this.expandLabel}
+        <slot name="expand-label" ?hidden="${this._anyOpen}">Expand All</slot>
+        <slot name="collapse-label" ?hidden="${!this._anyOpen}">Collapse All</slot>
       </button>
     `;
   }
