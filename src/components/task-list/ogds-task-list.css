@@ -3,14 +3,14 @@
 }
 
 ul {
-  padding-left: 1.5rem;
   list-style: none;
+  padding-left: 1.5rem;
 }
 
 li {
+  border-block-end: 2px solid var(--ogds-theme-color-base-lightest);
   margin-block-end: 2rem;
   padding-block-end: 1.25rem;
-  border-block-end: 2px solid var(--ogds-theme-color-base-lightest);
 }
 
 .heading {
@@ -18,19 +18,17 @@ li {
 }
 
 .description {
+  color: var(--ogds-theme-color-base);
   margin-block-end: 0.5rem;
-  color: var(--ogds-theme-color-base);;
 }
 
 .completed {
-  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
   color: green;
+  display: inline-flex;
+  gap: 0.4rem;
 }
 
 .step[data-status="not-started"] {
-    color: var(--ogds-theme-color-base);
-  }
-
-
+  color: var(--ogds-theme-color-base);
+}
