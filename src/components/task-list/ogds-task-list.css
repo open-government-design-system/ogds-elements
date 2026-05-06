@@ -22,13 +22,13 @@ li {
   margin-block-end: 0.5rem;
 }
 
-.completed {
-  align-items: center;
-  color: green;
-  display: inline-flex;
-  gap: 0.4rem;
+.action {
+  display: flex;
+  flex-direction: column;
 }
 
-.step[data-status="not-started"] {
-  color: var(--ogds-theme-color-base);
+.completed {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.4rem;
 }

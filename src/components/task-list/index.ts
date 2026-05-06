@@ -6,7 +6,7 @@ import { adoptTokenStyles } from "../../core/token-styles";
 import { property } from "lit/decorators.js";
 
 /**
- * @summary The ogds-task-list component.
+ * @summary The ogds-task-list component. For now, this is intended for non-sequential task lists (order doesn't matter).
  * @element ogds-task-list
  */
 
@@ -35,11 +35,13 @@ export class OgdsTaskList extends LitElement {
   renderAction(step: TaskStep) {
     switch (step.status) {
       case "in-progress":
-        return html` <a href=${step.url}>Resume</a> `;
+        return html`<a href=${step.url}>Continue</a>`;
       case "completed":
-        return html` <span class="completed">Completed</span> `;
+        return html`
+          <span class="completed">Completed</span><a href=${step.url}>Edit</a>
+        `;
       default:
-        return null;
+        return html`<a href=${step.url}>Start </a>`;
     }
   }
 
@@ -50,10 +52,8 @@ export class OgdsTaskList extends LitElement {
           (step) => html`
             <li class="step" data-status=${step.status}>
               <h2 class="heading">${step.title}</h2>
-              <div class="description" ?hidden=${step.status === "not-started"}>
-                ${step.description}
-              </div>
-              ${this.renderAction(step)}
+              <div class="description">${step.description}</div>
+              <div class="action">${this.renderAction(step)}</div>
             </li>
           `,
         )}

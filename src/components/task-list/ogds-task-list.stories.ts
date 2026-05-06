@@ -15,25 +15,26 @@ export default {
 
 const exampleSteps = [
   {
-    title: "Create account",
-    description: "Set up your login credentials.",
-    status: "completed",
-    url: "",
-  },
-  {
-    title: "Verify email",
-    description: "Click the link we sent to your inbox.",
+    title: "Tell us about you",
+    description:
+      " Confirm the legal entity structure, your employer details, and your EIN. ",
     status: "in-progress",
     url: "",
   },
   {
-    title: "Add profile details",
-    description: "Tell us more about yourself.",
-    status: "not-started",
+    title: "Set up your employer profile",
+    description: "Click the link we sent to your inbox.",
+    status: "completed",
     url: "",
   },
   {
-    title: "Review",
+    title: "Enter the employer’s address",
+    description: "Tell us more about yourself.",
+    status: "completed",
+    url: "",
+  },
+  {
+    title: "Submit your Maryland Resident Agent details",
     description: "Review and submit profile details.",
     status: "not-started",
     url: "",
