@@ -1,0 +1,31 @@
+@layer ogds.components;
+
+@layer ogds.components {
+  ogds-accordion-toggle::part(button) {
+    appearance: none;
+    background-color: var(--ogds-theme-button-fill-color);
+    border-color: transparent;
+    border-radius: var(--ogds-theme-button-border-radius);
+    border-width: var(--ogds-theme-button-stroke-width);
+    color: var(--ogds-theme-button-text-color);
+    cursor: pointer;
+    font-family: var(--ogds-theme-button-font-family);
+    font-size: var(--ogds-theme-type-scale-md);
+    font-weight: 700;
+    padding: var(--ogds-spacing-105) var(--ogds-spacing-205);
+
+    &:hover {
+      background-color: color-mix(
+        in srgb,
+        var(--ogds-theme-button-fill-color),
+        black 20%
+      );
+    }
+
+    &:focus {
+      /* :not([disabled]) doesn't seem to be supported on shadow parts */
+      outline: rgb(36 145 255) solid 0.25rem;
+      outline-offset: 0.25rem;
+    }
+  }
+}

@@ -22,6 +22,14 @@
             "name": "OgdsAccordion",
             "module": "src/components/index.ts"
           }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsAccordionToggle",
+          "declaration": {
+            "name": "OgdsAccordionToggle",
+            "module": "src/components/index.ts"
+          }
         }
       ]
     },
@@ -163,6 +171,16 @@
               "name": "button"
             }
           ],
+          "slots": [
+            {
+              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
+              "name": "expand-label"
+            },
+            {
+              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
+              "name": "collapse-label"
+            }
+          ],
           "members": [
             {
               "kind": "field",
@@ -175,30 +193,21 @@
             },
             {
               "kind": "field",
-              "name": "expandLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Expand All\"",
-              "attribute": "expand-label"
-            },
-            {
-              "kind": "field",
-              "name": "collapseLabel",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"Collapse All\"",
-              "attribute": "collapse-label"
-            },
-            {
-              "kind": "field",
               "name": "_anyOpen",
               "type": {
                 "text": "boolean"
               },
               "privacy": "private",
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "privacy": "private",
+              "default": "null"
             },
             {
               "kind": "method",
@@ -219,26 +228,6 @@
               "default": "\"\"",
               "fieldName": "controls",
               "propName": "controls"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
-              "name": "expand-label",
-              "default": "\"Expand All\"",
-              "fieldName": "expandLabel",
-              "propName": "expandLabel"
-            },
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
-              "name": "collapse-label",
-              "default": "\"Collapse All\"",
-              "fieldName": "collapseLabel",
-              "propName": "collapseLabel"
             }
           ],
           "superclass": {

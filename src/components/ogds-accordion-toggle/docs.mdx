@@ -1,0 +1,54 @@
+import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+The accordion toggle provides a single button to expand or collapse all panels in an associated `<ogds-accordion>`.
+
+---
+
+## Default
+
+<Primary />
+
+---
+
+## Variations
+
+<Stories />
+
+## Guidance
+
+### When to use the accordion toggle
+
+_When accordions have many items._ The toggle is most useful when an accordion has more than two or three items, where expanding each individually would be tedious and users may want to scan all of the content at once.
+
+_For cross-browser in-page search._ `Cmd-/Ctrl-F` will find content in collapsed accordion sections and open the relevant sections in Chrome and Chromium-based browsers. However, as of now this behavior is limited to only those browsers (see ["Auto-opens when matched via page search"](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details#browser_compatibility)). Adding the toggle button will allow users to search all of the accordion content in any browser.
+
+_To support users looking to print the page content._ Let users display all of the page's content so it can be printed.
+
+### Usage
+
+Connect the toggle to an accordion using the `controls` attribute, which must match the `id` of the target `<ogds-accordion>`:
+
+```html
+<ogds-accordion-toggle controls="my-accordion"></ogds-accordion-toggle>
+<ogds-accordion id="my-accordion">
+  <details>
+    <summary>Item One</summary>
+    <p>Content</p>
+  </details>
+</ogds-accordion>
+```
+
+### Customizing labels
+
+By default, the button reads "Expand All" when all panels are collapsed and "Collapse All" when any panel is open. Override these with the `expand-label` and `collapse-label` named slots:
+
+```html
+<ogds-accordion-toggle controls="my-accordion">
+  <span slot="expand-label">Show All</span>
+  <span slot="collapse-label">Hide All</span>
+</ogds-accordion-toggle>
+```
