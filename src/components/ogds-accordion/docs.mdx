@@ -75,17 +75,16 @@ Depending on the kind of content in the accordion, you may want to add some ARIA
 
 ### Custom Element Behavior
 
-The examples on this page use the cusom element `<ogds-accordion></ogds-accordion>`. This component uses all light DOM (no shadow DOM). This custom element is used for styling, and it makes it easy to access the icon variations. [Custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) have been [widely supported since 2020](https://caniuse.com/wf-autonomous-custom-elements), but do require JavaScript for some of their functionality.
+The examples on this page use the cusom element `<ogds-accordion></ogds-accordion>`. This custom element uses all light DOM (no [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)). This custom element is used for styling, and it makes it easy to access the icon variations. [Custom elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) have been [widely supported since 2020](https://caniuse.com/wf-autonomous-custom-elements), but do require JavaScript for some of their functionality.
 
 ### Fallbacks without JavaScript
 
-If a user does not have JavaScript for any reason, how will this component work?
+If a user does not have JavaScript for any reason, this component will still generally work.
 
-This component will still work. This approach uses the browser-native `<details>` component, these can be opened in closed without JavaScript in all browsers that support this feature ([widely available since January 2020](https://caniuse.com/details)). In an even older browser, the accordions would all be open by default, so content would not be hidden.
-
-There are two steps you may choose to do:
-
-1. If you are using non-default icons and you also want those to work witohut JavaScript, then you can update your project's CSS styles to point to the svg files:
+1. **Native details component.** This approach uses the browser-native `<details>` component, these can be opened in closed without JavaScript in all browsers that support this feature ([widely available since January 2020](https://caniuse.com/details)). In an even older browser, the accordions would all be open by default, so content would not be hidden.
+2. **Styles.** As long as you have the accordion styles pulled into your application's styles, the visual styling will still work without JavaScript.
+3. **Class-based equivalent.** You can optionally substitute `<div class="ogds-accordion">` in place of `<ogds-accordion>`. These are equivalent, and will not affect styling or behavior for this component.
+4. **Icons.** If you are using non-default icons and you also want those to work witohut JavaScript, then you can update your project's CSS styles to point to the svg files:
 
 ```css
 ogds-accordion,
@@ -94,8 +93,6 @@ ogds-accordion,
   --ogds-accordion-icon-open: url("/path/to/your/icon-open.svg");
 }
 ```
-
-2. You can optionally substitute `<div class="ogds-accordion">` in place of `<ogds-accordion>`. This will not have an effect on styling, either way.
 
 ---
 
