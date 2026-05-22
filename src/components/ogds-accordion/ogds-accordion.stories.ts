@@ -75,3 +75,15 @@ export const WithPlusIconsBordered = {
       >${items}</ogds-accordion
     >`,
 };
+
+export const WithPlusIconsRight = {
+  render: () =>
+    html`<ogds-accordion class="with-icon plus right"
+      >${items}</ogds-accordion
+    >`,
+};
+
+export const WithPlusIconsRightWithoutCustomElement = {
+  render: () =>
+    html`<div class="ogds-accordion with-icon plus right">${items}</div>`,
+};
