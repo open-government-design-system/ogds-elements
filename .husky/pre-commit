@@ -4,4 +4,5 @@ npm run prettier:js:fix
 npm run prettier:md:fix
 npm run prettier:github:fix
 npm run stylelint:fix
+npm run eslint
 npm run test:ci
