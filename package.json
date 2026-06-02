@@ -87,7 +87,7 @@
     "@wc-toolkit/storybook-helpers": "^10.3.0",
     "axe-playwright": "^2.2.2",
     "browserslist": "^4.28.1",
-    "concurrently": "^9.2.1",
+    "concurrently": "^10.0.3",
     "custom-element-jsx-integration": "^1.6.0",
     "custom-element-react-wrappers": "^1.7.3",
     "custom-element-solidjs-integration": "^1.9.0",
@@ -115,7 +115,7 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lit-css": "^2.2.2",
     "vitest": "^4.0.8",
-    "wait-on": "^9.0.5",
+    "wait-on": "^9.0.10",
     "web-vitals": "^5.1.0"
   },
   "optionalDependencies": {
