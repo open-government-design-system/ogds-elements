@@ -7,7 +7,18 @@ import eslintConfigPrettierRecommended from "eslint-config-prettier";
 import vitest from "@vitest/eslint-plugin";
 
 export default [
-  { ignores: ["storybook-static/**", "examples/**", "**/*.ts"] },
+  {
+    ignores: [
+      "storybook-static/**",
+      "examples/**",
+
+      // FIXME: configure ESLint for TypeScript too
+      "**/*.ts",
+
+      // FIXME: stop ignoring this file when the @eslint/css parser can handle it
+      "src/components/ogds-accordion/ogds-accordion.css",
+    ],
+  },
   {
     ...js.configs.recommended,
     ...eslintConfigPrettierRecommended,
