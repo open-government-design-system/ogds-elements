@@ -26,6 +26,7 @@ export default [
     rules: {
       ...css.configs.recommended.rules,
       "css/use-baseline": ["warn", { available: "widely" }],
+      "css/no-invalid-properties": ["error", { allowUnknownVariables: true }],
     },
   },
   ...storybook.configs["flat/recommended"],
