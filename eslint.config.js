@@ -7,7 +7,7 @@ import eslintConfigPrettierRecommended from "eslint-config-prettier";
 import vitest from "@vitest/eslint-plugin";
 
 export default [
-  { ignores: ["storybook-static/**"] },
+  { ignores: ["storybook-static/**", "examples/**"] },
   {
     ...js.configs.recommended,
     ...eslintConfigPrettierRecommended,
