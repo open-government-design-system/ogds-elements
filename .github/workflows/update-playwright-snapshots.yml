@@ -30,7 +30,7 @@ jobs:
         run: npm run playwright:install
 
       - name: Run Playwright to generate screenshots
-        run: npm run playwright:update-snapshots
+        run: npm run playwright:update-screenshots
 
       - name: Upload new screenshots
         uses: actions/upload-artifact@v7
