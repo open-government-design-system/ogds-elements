@@ -60,20 +60,20 @@ const OGDS_BANNER_TRANSLATIONS: Record<
       text2:
         "or <strong>https://</strong> means you’ve safely connected to the",
       text3:
-        "website. Share sensitive information only on official, secure websites.",
+        " website. Share sensitive information only on official, secure websites.",
     },
   },
   es: {
     banner: {
-      label: "Un sitio oficial del Gobierno de Estados Unidos",
-      text: "Un sitio oficial del Gobierno de Estados Unidos",
+      label: "Un sitio oficial del gobierno de Estados Unidos",
+      text: "Un sitio oficial del gobierno de Estados Unidos",
       action: "Así es como usted puede verificarlo",
     },
     domain: {
       heading: "Los sitios web oficiales usan",
       text1: "Un sitio web",
       text2:
-        "pertenece a una organización oficial del Gobierno de Estados Unidos.",
+        "pertenece a una organización oficial del gobierno de Estados Unidos.",
     },
     https: {
       heading1: "Los sitios web seguros",
@@ -82,7 +82,7 @@ const OGDS_BANNER_TRANSLATIONS: Record<
       text2:
         "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web",
       text3:
-        "Comparta información sensible sólo en sitios web oficiales y seguros.",
+        ". Comparta información sensible solo en sitios web oficiales y seguros.",
     },
   },
 };
@@ -201,7 +201,7 @@ export class OgdsBanner extends LitElement {
           ><br />
           <slot name="https-text">
             ${unsafeHTML(https.text1)} (${this.lockIcon()})
-            ${unsafeHTML(https.text2)} .${tld} ${https.text3}
+            ${unsafeHTML(https.text2)} .${tld}${https.text3}
           </slot>
         </p>
       </div>

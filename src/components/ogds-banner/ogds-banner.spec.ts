@@ -58,7 +58,7 @@ describe("Spanish variant", async () => {
 
   it("renders correctly", () => {
     expect(getInsideBanner().textContent).toContain(
-      "Un sitio oficial del Gobierno de Estados Unidos",
+      "Un sitio oficial del gobierno de Estados Unidos",
     );
   });
 });
