@@ -1,5 +1,5 @@
 # Use official Playwright image with all browsers; version should match CI
-FROM mcr.microsoft.com/playwright:v1.55.0-noble
+FROM mcr.microsoft.com/playwright:v1.58.2-noble
 
 # Install system packages needed for development (if any)
 # RUN apt-get update && apt-get install -y <your-packages>

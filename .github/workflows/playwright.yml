@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.55.0-noble
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     env:
       HOME: /root
     steps:
@@ -30,6 +30,7 @@ jobs:
         run: npm run playwright:test
 
       - uses: actions/upload-artifact@v7
+        id: artifact-upload
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
