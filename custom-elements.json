@@ -30,129 +30,21 @@
             "name": "OgdsAccordionToggle",
             "module": "src/components/index.ts"
           }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ogds-accordion/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OgdsAccordion",
-          "cssProperties": [
-            {
-              "description": "Border used in the bordered variant.",
-              "name": "--ogds-accordion-border"
-            },
-            {
-              "description": "Padding for the expanded content area.",
-              "name": "--ogds-accordion-content-padding"
-            },
-            {
-              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
-              "name": "--ogds-accordion-icon-closed"
-            },
-            {
-              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
-              "name": "--ogds-accordion-icon-open"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "useListSemantics",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "use-list-semantics"
-            },
-            {
-              "kind": "field",
-              "name": "headingLevel",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "attribute": "heading-level"
-            },
-            {
-              "kind": "field",
-              "name": "detailsChildren",
-              "type": {
-                "text": "HTMLCollectionOf<HTMLDetailsElement> | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "childRoles",
-              "type": {
-                "text": "Map<HTMLDetailsElement, Set<string>>"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "getDetailsChildren"
-            },
-            {
-              "kind": "method",
-              "name": "addListSemantics"
-            },
-            {
-              "kind": "method",
-              "name": "addHeadingSemantics"
-            },
-            {
-              "kind": "method",
-              "name": "applyChildRoles"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Adds `role=\"list\"` to the component and `role=\"listitem\"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.",
-              "name": "use-list-semantics",
-              "default": "false",
-              "fieldName": "useListSemantics",
-              "propName": "useListSemantics"
-            },
-            {
-              "type": {
-                "text": "number"
-              },
-              "description": "Sets a heading level for each accordion panel by adding `role=\"heading\"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.",
-              "name": "heading-level",
-              "default": "0",
-              "fieldName": "headingLevel",
-              "propName": "headingLevel"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ogds-accordion",
-          "customElement": true,
-          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
-        }
-      ],
-      "exports": [
+        },
         {
           "kind": "js",
-          "name": "OgdsAccordion",
+          "name": "OgdsTaskList",
           "declaration": {
-            "name": "OgdsAccordion",
-            "module": "src/components/ogds-accordion/index.ts"
+            "name": "OgdsTaskList",
+            "module": "src/components/index.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsTaskListStep",
+          "declaration": {
+            "name": "OgdsTaskListStep",
+            "module": "src/components/index.ts"
           }
         }
       ]
@@ -490,27 +382,472 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/usa-header/index.ts",
+      "path": "src/components/ogds-task-list/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsTaskList",
+          "declaration": {
+            "name": "OgdsTaskList",
+            "module": "./ogds-task-list"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsTaskListStep",
+          "declaration": {
+            "name": "OgdsTaskListStep",
+            "module": "./ogds-task-list-step"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TaskStepStatus",
+          "declaration": {
+            "name": "TaskStepStatus",
+            "module": "./ogds-task-list-step"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-task-list/ogds-task-list-step.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "UsaHeader",
-          "members": [],
+          "name": "OgdsTaskListStep",
+          "cssProperties": [
+            {
+              "description": "Color of the top border divider. Defaults to gray-50.",
+              "name": "--ogds-task-list-step-border-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The task title text.",
+              "name": "title"
+            },
+            {
+              "description": "Optional alert (e.g. a USWDS alert). Shown between the badge and description.",
+              "name": "alert"
+            },
+            {
+              "description": "Optional description text.",
+              "name": "description"
+            },
+            {
+              "description": "Optional summary of submitted data (e.g. a `<dl>`) shown below the badge.",
+              "name": "saved-data"
+            },
+            {
+              "description": "The status badge label. Defaults to the English label for the current status.",
+              "name": "status-label"
+            },
+            {
+              "description": "Message shown when status is \"cannot-start-yet\". Defaults to \"Not available until previous tasks are complete.\"",
+              "name": "blocked-message"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "TaskStepStatus"
+              },
+              "default": "\"not-started\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "_badgeLabel",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "TaskStepStatus"
+              },
+              "description": "Completion status. One of: not-started, in-progress, completed, cannot-start-yet.",
+              "name": "status",
+              "default": "\"not-started\"",
+              "fieldName": "status",
+              "propName": "status"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "URL the task title links to. Not used when status is \"cannot-start-yet\".",
+              "name": "url",
+              "default": "\"\"",
+              "fieldName": "url",
+              "propName": "url"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "customElement": true
+          "tagName": "ogds-task-list-step",
+          "customElement": true,
+          "summary": "A single step within an `ogds-task-list`."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "UsaHeader",
+          "name": "OgdsTaskListStep",
           "declaration": {
-            "name": "UsaHeader",
-            "module": "src/components/usa-header/index.ts"
+            "name": "OgdsTaskListStep",
+            "module": "src/components/ogds-task-list/ogds-task-list-step.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-task-list/ogds-task-list.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsTaskList",
+          "cssProperties": [
+            {
+              "description": "Color of the bottom border on the step list. Defaults to gray-50.",
+              "name": "--ogds-task-list-border-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The main heading for the task list.",
+              "name": "heading"
+            },
+            {
+              "description": "Supporting text below the heading (e.g. a claim number).",
+              "name": "subtitle"
+            },
+            {
+              "description": "The label after the computed \"X of Y\" count. Defaults to \"tasks completed\". Use an inline element (e.g. `<span>`).",
+              "name": "counter-label"
+            },
+            {
+              "description": "Text shown below the task counter (e.g. \"Finish all tasks to submit.\").",
+              "name": "instruction"
+            },
+            {
+              "description": "One or more `<ogds-task-list-step>` elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "_completedCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_totalCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-task-list",
+          "customElement": true,
+          "summary": "A task progress list with a completion counter and slotted steps."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsTaskList",
+          "declaration": {
+            "name": "OgdsTaskList",
+            "module": "src/components/ogds-task-list/ogds-task-list.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-accordion/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Border used in the bordered variant.",
+              "name": "--ogds-accordion-border"
+            },
+            {
+              "description": "Padding for the expanded content area.",
+              "name": "--ogds-accordion-content-padding"
+            },
+            {
+              "description": "Icon shown when a panel is closed. Defaults to a chevron pointing down. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-closed"
+            },
+            {
+              "description": "Icon shown when a panel is open. Defaults to a chevron pointing up. CSS-only users must set this to a url() value pointing to their own icon asset.",
+              "name": "--ogds-accordion-icon-open"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The default (only) slot for the <ogds-accordion> expects one or more plain HTML <details> elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "useListSemantics",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "use-list-semantics"
+            },
+            {
+              "kind": "field",
+              "name": "headingLevel",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "heading-level"
+            },
+            {
+              "kind": "field",
+              "name": "detailsChildren",
+              "type": {
+                "text": "HTMLCollectionOf<HTMLDetailsElement> | undefined"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "childRoles",
+              "type": {
+                "text": "Map<HTMLDetailsElement, Set<string>>"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getDetailsChildren"
+            },
+            {
+              "kind": "method",
+              "name": "addListSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "addHeadingSemantics"
+            },
+            {
+              "kind": "method",
+              "name": "applyChildRoles"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Adds `role=\"list\"` to the component and `role=\"listitem\"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.",
+              "name": "use-list-semantics",
+              "default": "false",
+              "fieldName": "useListSemantics",
+              "propName": "useListSemantics"
+            },
+            {
+              "type": {
+                "text": "number"
+              },
+              "description": "Sets a heading level for each accordion panel by adding `role=\"heading\"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.",
+              "name": "heading-level",
+              "default": "0",
+              "fieldName": "headingLevel",
+              "propName": "headingLevel"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-accordion",
+          "customElement": true,
+          "summary": "The ogds-accordion component.\n\nApply these classes to `<ogds-accordion>` to enable variants:\n- `bordered` — adds a border to expanded content\n- `with-icon` — shows a chevron icon on each summary\n- `with-icon plus` — uses plus/minus icons instead of chevrons\n- `with-icon right` — aligns the icon to the right"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsAccordion",
+          "declaration": {
+            "name": "OgdsAccordion",
+            "module": "src/components/ogds-accordion/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-alert/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OGDSAlert",
+          "slots": [
+            {
+              "description": "Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)",
+              "name": "heading"
+            },
+            {
+              "description": "Body content for the alert. Can contain HTML (links, etc).",
+              "name": "body"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"info\"",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "noIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-icon"
+            },
+            {
+              "kind": "field",
+              "name": "_headingNodes",
+              "type": {
+                "text": "Node[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "slotChange"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of alert (info, warning, etc)",
+              "name": "type",
+              "default": "\"info\"",
+              "fieldName": "type",
+              "propName": "type"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Use this attribute to hide the icon",
+              "name": "noIcon",
+              "propName": "noicon"
+            },
+            {
+              "name": "no-icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noIcon",
+              "propName": "noIcon"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-alert",
+          "customElement": true,
+          "summary": "The ogds-alert component."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OGDSAlert",
+          "declaration": {
+            "name": "OGDSAlert",
+            "module": "src/components/ogds-alert/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ogds-alert",
+          "declaration": {
+            "name": "OGDSAlert",
+            "module": "src/components/ogds-alert/index.ts"
           }
         }
       ]
