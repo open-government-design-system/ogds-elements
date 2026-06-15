@@ -159,6 +159,122 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/ogds-alert/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OGDSAlert",
+          "slots": [
+            {
+              "description": "Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)",
+              "name": "heading"
+            },
+            {
+              "description": "Body content for the alert. Can contain HTML (links, etc).",
+              "name": "body"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"info\"",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "noIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-icon"
+            },
+            {
+              "kind": "field",
+              "name": "_headingNodes",
+              "type": {
+                "text": "Node[]"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_hasHeader",
+              "type": {
+                "text": "boolean"
+              },
+              "privacy": "private",
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "slotChange"
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of alert (info, warning, etc)",
+              "name": "type",
+              "default": "\"info\"",
+              "fieldName": "type",
+              "propName": "type"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Use this attribute to hide the icon",
+              "name": "noIcon",
+              "propName": "noicon"
+            },
+            {
+              "name": "no-icon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noIcon",
+              "propName": "noIcon"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-alert",
+          "customElement": true,
+          "summary": "The ogds-alert component."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OGDSAlert",
+          "declaration": {
+            "name": "OGDSAlert",
+            "module": "src/components/ogds-alert/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ogds-alert",
+          "declaration": {
+            "name": "OGDSAlert",
+            "module": "src/components/ogds-alert/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/ogds-accordion-toggle/index.ts",
       "declarations": [
         {
@@ -490,27 +606,49 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/usa-header/index.ts",
+      "path": "src/components/task-list/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "UsaHeader",
-          "members": [],
+          "name": "OgdsTaskList",
+          "members": [
+            {
+              "kind": "method",
+              "name": "renderAction",
+              "parameters": [
+                {
+                  "name": "step",
+                  "type": {
+                    "text": "TaskStep"
+                  }
+                }
+              ]
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
+          "tagName": "ogds-task-list",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "UsaHeader",
+          "name": "OgdsTaskList",
           "declaration": {
-            "name": "UsaHeader",
-            "module": "src/components/usa-header/index.ts"
+            "name": "OgdsTaskList",
+            "module": "src/components/task-list/index.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ogds-task-list",
+          "declaration": {
+            "name": "OgdsTaskList",
+            "module": "src/components/task-list/index.ts"
           }
         }
       ]
