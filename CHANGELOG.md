@@ -1,5 +1,11 @@
 # @uswds/elements
 
+## 1.0.0-alpha.8
+
+### Patch Changes
+
+- 10c8666: Updated spanish translation for banner text
+
 ## 1.0.0-alpha.6
 
 ### Patch Changes
