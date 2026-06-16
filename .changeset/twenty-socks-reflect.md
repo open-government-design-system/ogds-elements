@@ -1,5 +1,5 @@
 ---
-"@uswds/elements": patch
+"@ogds/elements": patch
 ---
 
 Web components: TypeScript conversion and build improvements.

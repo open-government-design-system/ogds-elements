@@ -1,5 +1,5 @@
 ---
-"@uswds/elements": patch
+"@ogds/elements": patch
 ---
 
 Add style tokens to package output
