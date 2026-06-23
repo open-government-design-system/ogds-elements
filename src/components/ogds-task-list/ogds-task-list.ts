@@ -55,9 +55,9 @@ export class OgdsTaskList extends LitElement {
         </p>
         <slot name="instruction"></slot>
       </div>
-      <div class="steps">
+      <ul class="steps">
         <slot @slotchange=${this._onSlotChange}></slot>
-      </div>
+      </ul>
     `;
   }
 }

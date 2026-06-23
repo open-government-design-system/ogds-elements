@@ -49,6 +49,9 @@ export class OgdsTaskListStep extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     adoptTokenStyles();
+    if (!this.hasAttribute("role")) {
+      this.setAttribute("role", "listitem");
+    }
   }
 
   private get _badgeLabel(): string {

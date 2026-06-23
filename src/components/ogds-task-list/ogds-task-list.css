@@ -28,4 +28,7 @@
 .steps {
   border-block-end: 1px solid
     var(--ogds-task-list-border-color, var(--ogds-color-gray-50, #757575));
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
