@@ -70,7 +70,9 @@ export class OgdsTaskListStep extends LitElement {
 
     return html`
       ${isBlocked
-        ? html`<span class="title"><slot name="title"></slot></span>`
+        ? html`<span class="title" aria-describedby="blocked-message"
+            ><slot name="title"></slot
+          ></span>`
         : html`<a class="title" href=${this.url} aria-describedby="badge">
             <slot name="title"></slot
             ><span class="arrow" aria-hidden="true"></span>
@@ -85,7 +87,7 @@ export class OgdsTaskListStep extends LitElement {
       <slot name="description"></slot>
       <slot name="saved-data"></slot>
       ${isBlocked
-        ? html`<p class="blocked-message">
+        ? html`<p class="blocked-message" id="blocked-message">
             <slot name="blocked-message"
               >Not available until previous tasks are complete.</slot
             >
