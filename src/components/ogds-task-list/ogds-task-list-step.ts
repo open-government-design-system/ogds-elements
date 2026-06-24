@@ -71,11 +71,11 @@ export class OgdsTaskListStep extends LitElement {
     return html`
       ${isBlocked
         ? html`<span class="title"><slot name="title"></slot></span>`
-        : html`<a class="title" href=${this.url}>
+        : html`<a class="title" href=${this.url} aria-describedby="badge">
             <slot name="title"></slot
             ><span class="arrow" aria-hidden="true"></span>
           </a>`}
-      <span class="ogds-tag badge">
+      <span class="ogds-tag badge" id="badge">
         ${isCompleted
           ? html`<span class="badge-icon" aria-hidden="true"></span>`
           : nothing}
