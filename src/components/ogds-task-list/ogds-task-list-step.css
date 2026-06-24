@@ -13,7 +13,7 @@
   font-family:
     "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
     sans-serif;
-  font-size: 1.46rem;
+  font-size: var(--ogds-font-size-8);
   font-weight: 700;
   line-height: normal;
 
@@ -107,12 +107,15 @@
 }
 
 ::slotted(*) {
+  margin-block: 0;
+}
+
+::slotted(:not([slot="title"])) {
   font-family:
     "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
     sans-serif;
   font-size: 1.0625rem;
   line-height: 1.5;
-  margin-block: 0;
 }
 
 /* Layout for the saved-data <dl>. dt/dd styles must come from global CSS —

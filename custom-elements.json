@@ -175,232 +175,93 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/ogds-task-list/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OgdsTaskList",
-          "declaration": {
-            "name": "OgdsTaskList",
-            "module": "./ogds-task-list"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "OgdsTaskListStep",
-          "declaration": {
-            "name": "OgdsTaskListStep",
-            "module": "./ogds-task-list-step"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TaskStepStatus",
-          "declaration": {
-            "name": "TaskStepStatus",
-            "module": "./ogds-task-list-step"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ogds-task-list/ogds-task-list-step.ts",
+      "path": "src/components/ogds-accordion-toggle/index.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "OgdsTaskListStep",
-          "cssProperties": [
+          "name": "OgdsAccordionToggle",
+          "cssParts": [
             {
-              "description": "Color of the top border divider. Defaults to gray-50.",
-              "name": "--ogds-task-list-step-border-color"
+              "description": "The toggle button.",
+              "name": "button"
             }
           ],
           "slots": [
             {
-              "description": "The task title text.",
-              "name": "title"
+              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
+              "name": "expand-label"
             },
             {
-              "description": "Optional alert (e.g. a USWDS alert). Shown between the badge and description.",
-              "name": "alert"
-            },
-            {
-              "description": "Optional description text.",
-              "name": "description"
-            },
-            {
-              "description": "Optional summary of submitted data (e.g. a `<dl>`) shown below the badge.",
-              "name": "saved-data"
-            },
-            {
-              "description": "The status badge label. Defaults to the English label for the current status.",
-              "name": "status-label"
-            },
-            {
-              "description": "Message shown when status is \"cannot-start-yet\". Defaults to \"Not available until previous tasks are complete.\"",
-              "name": "blocked-message"
+              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
+              "name": "collapse-label"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "status",
-              "type": {
-                "text": "TaskStepStatus"
-              },
-              "default": "\"not-started\"",
-              "attribute": "status",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "url",
+              "name": "controls",
               "type": {
                 "text": "string"
               },
               "default": "\"\"",
-              "attribute": "url"
+              "attribute": "controls"
             },
             {
               "kind": "field",
-              "name": "_badgeLabel",
+              "name": "_anyOpen",
               "type": {
-                "text": "string"
+                "text": "boolean"
               },
               "privacy": "private",
-              "readonly": true
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "type": {
+                "text": "MutationObserver | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "checkOpen"
+            },
+            {
+              "kind": "method",
+              "name": "toggleAll"
             }
           ],
           "attributes": [
             {
               "type": {
-                "text": "TaskStepStatus"
-              },
-              "description": "Completion status. One of: not-started, in-progress, completed, cannot-start-yet.",
-              "name": "status",
-              "default": "\"not-started\"",
-              "fieldName": "status",
-              "propName": "status"
-            },
-            {
-              "type": {
                 "text": "string"
               },
-              "description": "URL the task title links to. Not used when status is \"cannot-start-yet\".",
-              "name": "url",
+              "description": "The `id` of the `<ogds-accordion>` to control. Required.",
+              "name": "controls",
               "default": "\"\"",
-              "fieldName": "url",
-              "propName": "url"
+              "fieldName": "controls",
+              "propName": "controls"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "ogds-task-list-step",
+          "tagName": "ogds-accordion-toggle",
           "customElement": true,
-          "summary": "A single step within an `ogds-task-list`."
+          "summary": "A button that expands or collapses all panels in an associated `<ogds-accordion>`."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "OgdsTaskListStep",
+          "name": "OgdsAccordionToggle",
           "declaration": {
-            "name": "OgdsTaskListStep",
-            "module": "src/components/ogds-task-list/ogds-task-list-step.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ogds-task-list/ogds-task-list.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OgdsTaskList",
-          "cssProperties": [
-            {
-              "description": "Color of the bottom border on the step list. Defaults to gray-50.",
-              "name": "--ogds-task-list-border-color"
-            }
-          ],
-          "slots": [
-            {
-              "description": "The main heading for the task list.",
-              "name": "heading"
-            },
-            {
-              "description": "Supporting text below the heading (e.g. a claim number).",
-              "name": "subtitle"
-            },
-            {
-              "description": "The label after the computed \"X of Y\" count. Defaults to \"tasks completed\". Use an inline element (e.g. `<span>`).",
-              "name": "counter-label"
-            },
-            {
-              "description": "Text shown below the task counter (e.g. \"Finish all tasks to submit.\").",
-              "name": "instruction"
-            },
-            {
-              "description": "One or more `<ogds-task-list-step>` elements.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "_completedCount",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_totalCount",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "method",
-              "name": "_onSlotChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ogds-task-list",
-          "customElement": true,
-          "summary": "A task progress list with a completion counter and slotted steps."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OgdsTaskList",
-          "declaration": {
-            "name": "OgdsTaskList",
-            "module": "src/components/ogds-task-list/ogds-task-list.ts"
+            "name": "OgdsAccordionToggle",
+            "module": "src/components/ogds-accordion-toggle/index.ts"
           }
         }
       ]
@@ -517,99 +378,6 @@
           "declaration": {
             "name": "OGDSAlert",
             "module": "src/components/ogds-alert/index.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ogds-accordion-toggle/index.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "OgdsAccordionToggle",
-          "cssParts": [
-            {
-              "description": "The toggle button.",
-              "name": "button"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Button label when all panels are collapsed. Defaults to \"Expand All\".",
-              "name": "expand-label"
-            },
-            {
-              "description": "Button label when one or more panels are open. Defaults to \"Collapse All\".",
-              "name": "collapse-label"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "controls",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "controls"
-            },
-            {
-              "kind": "field",
-              "name": "_anyOpen",
-              "type": {
-                "text": "boolean"
-              },
-              "privacy": "private",
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "_observer",
-              "type": {
-                "text": "MutationObserver | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "checkOpen"
-            },
-            {
-              "kind": "method",
-              "name": "toggleAll"
-            }
-          ],
-          "attributes": [
-            {
-              "type": {
-                "text": "string"
-              },
-              "description": "The `id` of the `<ogds-accordion>` to control. Required.",
-              "name": "controls",
-              "default": "\"\"",
-              "fieldName": "controls",
-              "propName": "controls"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "ogds-accordion-toggle",
-          "customElement": true,
-          "summary": "A button that expands or collapses all panels in an associated `<ogds-accordion>`."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "OgdsAccordionToggle",
-          "declaration": {
-            "name": "OgdsAccordionToggle",
-            "module": "src/components/ogds-accordion-toggle/index.ts"
           }
         }
       ]
@@ -848,6 +616,238 @@
           "declaration": {
             "name": "OgdsBanner",
             "module": "src/components/ogds-banner/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-task-list/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsTaskList",
+          "declaration": {
+            "name": "OgdsTaskList",
+            "module": "./ogds-task-list"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "OgdsTaskListStep",
+          "declaration": {
+            "name": "OgdsTaskListStep",
+            "module": "./ogds-task-list-step"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TaskStepStatus",
+          "declaration": {
+            "name": "TaskStepStatus",
+            "module": "./ogds-task-list-step"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-task-list/ogds-task-list-step.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsTaskListStep",
+          "cssProperties": [
+            {
+              "description": "Color of the top border divider. Defaults to gray-50.",
+              "name": "--ogds-task-list-step-border-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The task title text.",
+              "name": "title"
+            },
+            {
+              "description": "Optional alert (e.g. a USWDS alert). Shown between the badge and description.",
+              "name": "alert"
+            },
+            {
+              "description": "Optional description text.",
+              "name": "description"
+            },
+            {
+              "description": "Optional summary of submitted data (e.g. a `<dl>`) shown below the badge.",
+              "name": "saved-data"
+            },
+            {
+              "description": "The status badge label. Defaults to the English label for the current status.",
+              "name": "status-label"
+            },
+            {
+              "description": "Message shown when status is \"cannot-start-yet\". Defaults to \"Not available until previous tasks are complete.\"",
+              "name": "blocked-message"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "type": {
+                "text": "TaskStepStatus"
+              },
+              "default": "\"not-started\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "_badgeLabel",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "TaskStepStatus"
+              },
+              "description": "Completion status. One of: not-started, in-progress, completed, cannot-start-yet.",
+              "name": "status",
+              "default": "\"not-started\"",
+              "fieldName": "status",
+              "propName": "status"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "URL the task title links to. Not used when status is \"cannot-start-yet\".",
+              "name": "url",
+              "default": "\"\"",
+              "fieldName": "url",
+              "propName": "url"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-task-list-step",
+          "customElement": true,
+          "summary": "A single step within an `ogds-task-list`."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsTaskListStep",
+          "declaration": {
+            "name": "OgdsTaskListStep",
+            "module": "src/components/ogds-task-list/ogds-task-list-step.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ogds-task-list/ogds-task-list.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "OgdsTaskList",
+          "cssProperties": [
+            {
+              "description": "Color of the bottom border on the step list. Defaults to gray-50.",
+              "name": "--ogds-task-list-border-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The main heading for the task list.",
+              "name": "heading"
+            },
+            {
+              "description": "Supporting text below the heading (e.g. a claim number).",
+              "name": "subtitle"
+            },
+            {
+              "description": "The label after the computed \"X of Y\" count. Defaults to \"tasks completed\". Use an inline element (e.g. `<span>`).",
+              "name": "counter-label"
+            },
+            {
+              "description": "Text shown below the task counter (e.g. \"Finish all tasks to submit.\").",
+              "name": "instruction"
+            },
+            {
+              "description": "One or more `<ogds-task-list-step>` elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "_completedCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_totalCount",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "default": "0"
+            },
+            {
+              "kind": "method",
+              "name": "_onSlotChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "ogds-task-list",
+          "customElement": true,
+          "summary": "A task progress list with a completion counter and slotted steps."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OgdsTaskList",
+          "declaration": {
+            "name": "OgdsTaskList",
+            "module": "src/components/ogds-task-list/ogds-task-list.ts"
           }
         }
       ]
