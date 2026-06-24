@@ -46,18 +46,20 @@ export class OgdsTaskList extends LitElement {
 
   render() {
     return html`
-      <div class="header">
-        <slot name="heading"></slot>
-        <slot name="subtitle"></slot>
-        <p class="counter">
-          ${this._completedCount} of ${this._totalCount}
-          <slot name="counter-label">tasks completed</slot>
-        </p>
-        <slot name="instruction"></slot>
-      </div>
-      <ul class="steps" role="list">
-        <slot @slotchange=${this._onSlotChange}></slot>
-      </ul>
+      <section aria-labelledby="heading">
+        <div class="header">
+          <div id="heading"><slot name="heading"></slot></div>
+          <slot name="subtitle"></slot>
+          <p class="counter">
+            ${this._completedCount} of ${this._totalCount}
+            <slot name="counter-label">tasks completed</slot>
+          </p>
+          <slot name="instruction"></slot>
+        </div>
+        <ul class="steps" role="list">
+          <slot @slotchange=${this._onSlotChange}></slot>
+        </ul>
+      </section>
     `;
   }
 }
