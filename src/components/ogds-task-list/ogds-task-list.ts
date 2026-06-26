@@ -8,8 +8,6 @@ import type { OgdsTaskListStep } from "./ogds-task-list-step";
 /**
  * @summary A task progress list with a completion counter and slotted steps.
  *
- * @slot heading - The main heading for the task list.
- * @slot subtitle - Supporting text below the heading (e.g. a claim number).
  * @slot counter-label - The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
  * @slot instruction - Text shown below the task counter (e.g. "Finish all tasks to submit.").
  * @slot - One or more `<ogds-task-list-step>` elements.
@@ -46,10 +44,8 @@ export class OgdsTaskList extends LitElement {
 
   render() {
     return html`
-      <section aria-labelledby="heading">
+      <section aria-labelledby="counter">
         <div class="header">
-          <div id="heading"><slot name="heading"></slot></div>
-          <slot name="subtitle"></slot>
           <p class="counter">
             ${this._completedCount} of ${this._totalCount}
             <slot name="counter-label">tasks completed</slot>

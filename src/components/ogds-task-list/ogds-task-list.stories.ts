@@ -17,8 +17,6 @@ export default {
 export const Default = {
   render: () => html`
     <ogds-task-list>
-      <h1 slot="heading">Your application</h1>
-      <p slot="subtitle">Claim #: MD-2024-00123</p>
       <p slot="instruction">Finish all tasks to submit your application.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
@@ -47,7 +45,6 @@ export const Default = {
 export const AllStatuses = {
   render: () => html`
     <ogds-task-list>
-      <h2 slot="heading">Task statuses</h2>
       <p slot="instruction">Each possible task state.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
@@ -82,8 +79,6 @@ export const AllStatuses = {
 export const Translated = {
   render: () => html`
     <ogds-task-list>
-      <h1 slot="heading">Tu solicitud</h1>
-      <p slot="subtitle">Solicitud #: MD-2024-00123</p>
       <span slot="counter-label">tareas completadas</span>
       <p slot="instruction">
         Complete todas las tareas para enviar su solicitud.

@@ -779,14 +779,6 @@
           ],
           "slots": [
             {
-              "description": "The main heading for the task list.",
-              "name": "heading"
-            },
-            {
-              "description": "Supporting text below the heading (e.g. a claim number).",
-              "name": "subtitle"
-            },
-            {
               "description": "The label after the computed \"X of Y\" count. Defaults to \"tasks completed\". Use an inline element (e.g. `<span>`).",
               "name": "counter-label"
             },
