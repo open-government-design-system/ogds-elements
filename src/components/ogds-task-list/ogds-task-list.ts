@@ -1,9 +1,19 @@
 import { html, LitElement, unsafeCSS } from "lit";
-import { state } from "lit/decorators.js";
+import { property, state } from "lit/decorators.js";
+import { html as staticHtml, literal } from "lit/static-html.js";
 import styles from "./ogds-task-list.css";
 import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 import type { OgdsTaskListStep } from "./ogds-task-list-step";
+
+const headingTags = {
+  1: literal`h1`,
+  2: literal`h2`,
+  3: literal`h3`,
+  4: literal`h4`,
+  5: literal`h5`,
+  6: literal`h6`,
+} as const;
 
 /**
  * @summary A task progress list with a completion counter and slotted steps.
@@ -17,6 +27,13 @@ import type { OgdsTaskListStep } from "./ogds-task-list-step";
  * @element ogds-task-list
  */
 export class OgdsTaskList extends LitElement {
+  /**
+   * The heading level for the task counter. Accepts 1–6.
+   * @attr base-heading-level
+   */
+  @property({ type: Number, attribute: "base-heading-level" })
+  baseHeadingLevel: keyof typeof headingTags = 2;
+
   @state() private _completedCount = 0;
   @state() private _totalCount = 0;
 
@@ -43,13 +60,14 @@ export class OgdsTaskList extends LitElement {
   }
 
   render() {
+    const tag = headingTags[this.baseHeadingLevel] ?? headingTags[2];
     return html`
       <section aria-labelledby="counter">
         <div class="header">
-          <p class="counter">
+          ${staticHtml`<${tag} class="counter" id="counter">
             ${this._completedCount} of ${this._totalCount}
             <slot name="counter-label">tasks completed</slot>
-          </p>
+          </${tag}>`}
           <slot name="instruction"></slot>
         </div>
         <ul class="steps" role="list">

@@ -794,6 +794,16 @@
           "members": [
             {
               "kind": "field",
+              "name": "baseHeadingLevel",
+              "type": {
+                "text": "keyof typeof headingTags"
+              },
+              "default": "2",
+              "description": "The heading level for the task counter. Accepts 1–6.",
+              "attribute": "base-heading-level"
+            },
+            {
+              "kind": "field",
               "name": "_completedCount",
               "type": {
                 "text": "number"
@@ -822,6 +832,19 @@
                   }
                 }
               ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "base-heading-level",
+              "type": {
+                "text": "keyof typeof headingTags"
+              },
+              "default": "2",
+              "description": "The heading level for the task counter. Accepts 1–6.",
+              "fieldName": "baseHeadingLevel",
+              "attribute": "base-heading-level",
+              "propName": "baseHeadingLevel"
             }
           ],
           "superclass": {
