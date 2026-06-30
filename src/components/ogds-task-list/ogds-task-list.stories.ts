@@ -96,6 +96,16 @@ export const Translated = {
 };
 
 export const StepOnly = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [
+          // for this example, turn off the listitem role so axe doesn't get mad
+          { id: "listitem", enabled: false },
+        ],
+      },
+    },
+  },
   render: () => html`
     <ogds-task-list-step status="in-progress" url="/some-task">
       <span slot="title">Tell us about your employer</span>
