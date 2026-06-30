@@ -100,8 +100,9 @@ export const StepOnly = {
     a11y: {
       config: {
         rules: [
-          // for this example, turn off the listitem role so axe doesn't get mad
-          { id: "listitem", enabled: false },
+          // aria-required-parent fires because role="listitem" requires a parent
+          // list, but this story renders the step in isolation for design preview.
+          { id: "aria-required-parent", enabled: false },
         ],
       },
     },
