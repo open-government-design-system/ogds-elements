@@ -7,10 +7,7 @@ import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 
 export type TaskStepStatus =
-  | "not-started"
-  | "in-progress"
-  | "completed"
-  | "cannot-start-yet";
+  "not-started" | "in-progress" | "completed" | "cannot-start-yet";
 
 /**
  * @summary A single step within an `ogds-task-list`.
@@ -69,30 +66,36 @@ export class OgdsTaskListStep extends LitElement {
     const isCompleted = this.status === "completed";
 
     return html`
-      ${isBlocked
-        ? html`<span class="title" aria-describedby="blocked-message"
-            ><slot name="title"></slot
-          ></span>`
-        : html`<a class="title" href=${this.url} aria-describedby="badge">
-            <slot name="title"></slot
-            ><span class="arrow" aria-hidden="true"></span>
-          </a>`}
+      ${
+        isBlocked
+          ? html`<span class="title" aria-describedby="blocked-message"
+              ><slot name="title"></slot
+            ></span>`
+          : html`<a class="title" href=${this.url} aria-describedby="badge">
+              <slot name="title"></slot
+              ><span class="arrow" aria-hidden="true"></span>
+            </a>`
+      }
       <span class="ogds-tag badge" id="badge">
-        ${isCompleted
-          ? html`<span class="badge-icon" aria-hidden="true"></span>`
-          : nothing}
+        ${
+          isCompleted
+            ? html`<span class="badge-icon" aria-hidden="true"></span>`
+            : nothing
+        }
         <slot name="status-label">${this._badgeLabel}</slot>
       </span>
       <slot name="alert"></slot>
       <slot name="description"></slot>
       <slot name="saved-data"></slot>
-      ${isBlocked
-        ? html`<p class="blocked-message" id="blocked-message">
-            <slot name="blocked-message"
-              >Not available until previous tasks are complete.</slot
-            >
-          </p>`
-        : nothing}
+      ${
+        isBlocked
+          ? html`<p class="blocked-message" id="blocked-message">
+              <slot name="blocked-message"
+                >Not available until previous tasks are complete.</slot
+              >
+            </p>`
+          : nothing
+      }
     `;
   }
 }
