@@ -12,6 +12,12 @@ updates:
       time: "08:00"
       timezone: "America/New_York"
       day: "monday"
+    ignore:
+      # vite 8 bundles with Rolldown instead of Rollup, which breaks
+      # vite-plugin-lit-css's sourcemap generation and fails the
+      # vite-plugin-bundlesize build check. Remove once that's fixed upstream.
+      - dependency-name: "vite"
+        update-types: ["version-update:semver-major"]
     groups:
       components:
         patterns:
