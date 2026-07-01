@@ -65,7 +65,7 @@
   "dependencies": {
     "@ogds/tokens": "^1.0.0-alpha.2",
     "@uswds/uswds": "^3.13.0",
-    "lit": "^3.3.2",
+    "lit": "^3.3.3",
     "sass": "^1.97.3"
   },
   "devDependencies": {
@@ -80,7 +80,7 @@
     "@storybook/test-runner": "^0.24.4",
     "@storybook/web-components-vite": "^10.4.6",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.1.0",
     "@types/serve-static": "^2.2.0",
     "@vitest/eslint-plugin": "^1.6.16",
     "@vitest/ui": "^4.1.9",
@@ -105,7 +105,7 @@
     "prettier": "^3.8.3",
     "run-pty": "^6.0.2",
     "serve-static": "^2.2.1",
-    "shadow-dom-testing-library": "^1.13.1",
+    "shadow-dom-testing-library": "^1.14.0",
     "storybook": "^10.0.7",
     "storybook-addon-tag-badges": "^3.1.0",
     "stylelint": "^17.10.0",
