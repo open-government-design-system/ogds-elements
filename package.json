@@ -13,7 +13,8 @@
     "storybook",
     "build",
     "dist",
-    "src"
+    "src",
+    "custom-elements.json"
   ],
   "publishConfig": {
     "access": "public"
@@ -49,7 +50,9 @@
     "prettier:github": "prettier --check '.github' --config ./config/.prettierrc",
     "prettier:github:fix": "prettier --write '.github' --config ./config/.prettierrc",
     "start": "run-pty % npm run storybook % npm run manifest:watch",
+    "prestorybook:build": "npm run manifest:build",
     "storybook:build": "storybook build",
+    "prestorybook": "npm run manifest:build",
     "storybook": "storybook dev -p 8008",
     "prestorybook:serve": "npm run storybook:build --quiet",
     "storybook:serve": "node ./internals/scripts/serve-storybook.js",
