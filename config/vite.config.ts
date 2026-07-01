@@ -24,6 +24,14 @@ const entries: Array<Entry> = [
   },
 ];
 
+// detect CI or explicit override for sourcemaps
+const envCI = String(process.env.CI ?? "").toLowerCase();
+const envGHA = String(process.env.GITHUB_ACTIONS ?? "").toLowerCase();
+const envViteSourcemap = String(process.env.VITE_SOURCEMAP ?? "").toLowerCase();
+
+const isCI =
+  envCI === "true" || envCI === "1" || envGHA === "true" || envGHA === "1";
+
 export default defineConfig({
   esbuild: {
     tsconfigRaw: {
@@ -72,7 +80,7 @@ export default defineConfig({
   },
   build: {
     sourcemap:
-      process.env.CI === "true" || process.env.VITE_SOURCEMAP === "true"
+      isCI || envViteSourcemap === "true" || envViteSourcemap === "1"
         ? true
         : "hidden",
     lib: {
