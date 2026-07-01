@@ -71,7 +71,10 @@ export default defineConfig({
     },
   },
   build: {
-    sourcemap: "hidden",
+    sourcemap:
+      process.env.CI === "true" || process.env.VITE_SOURCEMAP === "true"
+        ? true
+        : "hidden",
     lib: {
       entry: mapEntriesToKeyValue(entries),
     },
