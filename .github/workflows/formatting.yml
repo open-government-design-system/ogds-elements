@@ -25,3 +25,6 @@ jobs:
 
       - name: Run stylelint
         run: "npm run stylelint"
+
+      - name: Run eslint
+        run: "npm run eslint"
