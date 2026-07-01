@@ -12,7 +12,7 @@ describe("meta", () => {
 
   function findDockerPlaywrightReferences() {
     const output = execSync(
-      "git ls-files | xargs grep --line-number mcr.microsoft.com/playwright",
+      "git ls-files | xargs grep --line-number --extended-regexp mcr\.microsoft\.com/playwright",
     )
       .toString()
       .trim();
