@@ -9,6 +9,14 @@ const defaultOptions = {
   modulePath: (_, tagName) => `../dist/components/${tagName}.js`,
 };
 
+// Sort modules to make the CEM build deterministic
+const sortModulesPlugin = () => ({
+  name: "sort-modules",
+  packageLinkPhase({ customElementsManifest }) {
+    customElementsManifest.modules.sort((a, b) => a.path.localeCompare(b.path));
+  },
+});
+
 export default {
   plugins: [
     customElementReactWrapperPlugin({
@@ -30,6 +38,8 @@ export default {
       ...defaultOptions,
       fileName: "custom-element-svelte.d.ts",
     }),
+    // Has to run last to preserve the sort order
+    sortModulesPlugin(),
   ],
   globs: ["./src/components/**/*.{js,ts}"],
   exclude: [
