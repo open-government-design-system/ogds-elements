@@ -20,23 +20,23 @@ export const Default = {
       <p slot="instruction">Finish all tasks to submit your application.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
-        <span slot="title">Tell us about you</span>
+        <h3 slot="title">Tell us about you</h3>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="in-progress" url="/step-2">
-        <span slot="title">Set up your employer profile</span>
+        <h3 slot="title">Set up your employer profile</h3>
         <p slot="description">
           Confirm your legal entity structure, employer details, and EIN.
         </p>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="not-started" url="/step-3">
-        <span slot="title">Enter the employer's address</span>
+        <h3 slot="title">Enter the employer's address</h3>
         <p slot="description">Tell us where the business is located.</p>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="cannot-start-yet">
-        <span slot="title">Submit your Maryland Resident Agent details</span>
+        <h3 slot="title">Submit your Maryland Resident Agent details</h3>
       </ogds-task-list-step>
     </ogds-task-list>
   `,
@@ -48,7 +48,7 @@ export const AllStatuses = {
       <p slot="instruction">Each possible task state.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
-        <span slot="title">Completed task</span>
+        <h3 slot="title">Completed task</h3>
         <dl slot="saved-data">
           <dt>Phone number</dt>
           <dd>(410) 123-4567</dd>
@@ -56,21 +56,21 @@ export const AllStatuses = {
       </ogds-task-list-step>
 
       <ogds-task-list-step status="in-progress" url="/step-2">
-        <span slot="title">In progress task</span>
+        <h3 slot="title">In progress task</h3>
         <p slot="description">
           Short description explaining the value of completing this task.
         </p>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="not-started" url="/step-3">
-        <span slot="title">Not started task</span>
+        <h3 slot="title">Not started task</h3>
         <p slot="description">
           Short description explaining the value of completing this task.
         </p>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="cannot-start-yet">
-        <span slot="title">Cannot start yet task</span>
+        <h3 slot="title">Cannot start yet task</h3>
       </ogds-task-list-step>
     </ogds-task-list>
   `,
@@ -85,11 +85,11 @@ export const Translated = {
       </p>
 
       <ogds-task-list-step status="completed" url="/paso-1">
-        <span slot="title">Cuéntanos sobre ti</span>
+        <h3 slot="title">Cuéntanos sobre ti</h3>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="not-started" url="/paso-2">
-        <span slot="title">Configura tu perfil de empleador</span>
+        <h3 slot="title">Configura tu perfil de empleador</h3>
       </ogds-task-list-step>
     </ogds-task-list>
   `,
@@ -109,7 +109,7 @@ export const StepOnly = {
   },
   render: () => html`
     <ogds-task-list-step status="in-progress" url="/some-task">
-      <span slot="title">Tell us about your employer</span>
+      <h3 slot="title">Tell us about your employer</h3>
       <p slot="description">
         We need a few details to verify your business registration.
       </p>
