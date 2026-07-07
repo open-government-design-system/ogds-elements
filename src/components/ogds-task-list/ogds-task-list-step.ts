@@ -68,7 +68,10 @@ export class OgdsTaskListStep extends LitElement {
     return html`
       ${
         isBlocked
-          ? html`<span class="title" aria-describedby="blocked-message"
+          ? html`<span
+              class="title"
+              role="group"
+              aria-describedby="blocked-message"
               ><slot name="title"></slot
             ></span>`
           : html`<a class="title" href=${this.url} aria-describedby="badge">
