@@ -1,4 +1,5 @@
 import { css, html, LitElement, nothing, unsafeCSS } from "lit";
+import type { PropertyValues } from "lit";
 import { property } from "lit/decorators.js";
 import iconCheckCircle from "../../shared/icons/check_circle.svg";
 import iconArrowForward from "../../shared/icons/arrow_forward.svg";
@@ -46,9 +47,34 @@ export class OgdsTaskListStep extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     adoptTokenStyles();
-    if (!this.hasAttribute("role")) {
-      this.setAttribute("role", "listitem");
+  }
+
+  override updated(changed: PropertyValues<this>) {
+    super.updated(changed);
+    this._syncTitleDescribedBy();
+  }
+
+  private _syncTitleDescribedBy = () => {
+    const titleSlot =
+      this.renderRoot?.querySelector<HTMLSlotElement>('slot[name="title"]');
+    if (!titleSlot) return;
+
+    const description = this._badgeText();
+
+    for (const el of titleSlot.assignedElements()) {
+      el.setAttribute("aria-description", description);
     }
+  };
+
+  private _badgeText(): string {
+    const slot = this.renderRoot?.querySelector<HTMLSlotElement>(
+      'slot[name="status-label"]',
+    );
+    const text = (slot?.assignedNodes({ flatten: true }) ?? [])
+      .map((node) => node.textContent ?? "")
+      .join("")
+      .trim();
+    return text || this._badgeLabel;
   }
 
   private get _badgeLabel(): string {
@@ -68,11 +94,17 @@ export class OgdsTaskListStep extends LitElement {
     return html`
       ${
         isBlocked
-          ? html`<span class="title" aria-describedby="blocked-message"
-              ><slot name="title"></slot
+          ? html`<span class="title" aria-describedby="badge"
+              ><slot
+                name="title"
+                @slotchange=${this._syncTitleDescribedBy}
+              ></slot
             ></span>`
           : html`<a class="title" href=${this.url} aria-describedby="badge">
-              <slot name="title"></slot
+              <slot
+                name="title"
+                @slotchange=${this._syncTitleDescribedBy}
+              ></slot
               ><span class="arrow" aria-hidden="true"></span>
             </a>`
       }
@@ -82,7 +114,9 @@ export class OgdsTaskListStep extends LitElement {
             ? html`<span class="badge-icon" aria-hidden="true"></span>`
             : nothing
         }
-        <slot name="status-label">${this._badgeLabel}</slot>
+        <slot name="status-label" @slotchange=${this._syncTitleDescribedBy}
+          >${this._badgeLabel}</slot
+        >
       </span>
       <slot name="alert"></slot>
       <slot name="description"></slot>

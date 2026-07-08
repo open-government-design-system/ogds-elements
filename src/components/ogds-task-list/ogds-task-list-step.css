@@ -119,6 +119,10 @@
   line-height: 1.5;
 }
 
+::slotted([slot="title"]) {
+  font: inherit;
+}
+
 /* Layout for the saved-data <dl>. dt/dd styles must come from global CSS —
    ::slotted() cannot reach descendants of slotted elements. */
 ::slotted(dl) {
