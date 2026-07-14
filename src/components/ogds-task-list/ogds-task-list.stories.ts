@@ -4,7 +4,7 @@ import "./ogds-task-list-step";
 import ComponentDocs from "./docs.mdx";
 
 export default {
-  title: "Components/TaskList",
+  title: "Components/Task List",
   component: "ogds-task-list",
   tags: ["experimental"],
   parameters: {
