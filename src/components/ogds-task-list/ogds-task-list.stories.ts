@@ -20,23 +20,25 @@ export const Default = {
       <p slot="instruction">Finish all tasks to submit your application.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
-        <span slot="title">Tell us about you</span>
+        <span slot="title">Edit your profile</span>
+        <dl slot="saved-data">
+          <dt>Phone number</dt>
+          <dd>(410) 123-4567</dd>
+          <dt>Email address</dt>
+          <dd>example@example.com</dd>
+        </dl>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="in-progress" url="/step-2">
-        <span slot="title">Set up your employer profile</span>
-        <p slot="description">
-          Confirm your legal entity structure, employer details, and EIN.
-        </p>
+        <span slot="title">Edit your address</span>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="not-started" url="/step-3">
-        <span slot="title">Enter the employer's address</span>
-        <p slot="description">Tell us where the business is located.</p>
+        <span slot="title">Submit additional supporting documents</span>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="cannot-start-yet">
-        <span slot="title">Submit your Maryland Resident Agent details</span>
+        <span slot="title">Sign contractual agreement</span>
       </ogds-task-list-step>
     </ogds-task-list>
   `,
@@ -48,7 +50,7 @@ export const AllStatuses = {
       <p slot="instruction">Each possible task state.</p>
 
       <ogds-task-list-step status="completed" url="/step-1">
-        <span slot="title">Completed task</span>
+        <span slot="title">Edit your profile</span>
         <dl slot="saved-data">
           <dt>Phone number</dt>
           <dd>(410) 123-4567</dd>
@@ -56,21 +58,15 @@ export const AllStatuses = {
       </ogds-task-list-step>
 
       <ogds-task-list-step status="in-progress" url="/step-2">
-        <span slot="title">In progress task</span>
-        <p slot="description">
-          Short description explaining the value of completing this task.
-        </p>
+        <span slot="title">Edit your address</span>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="not-started" url="/step-3">
-        <span slot="title">Not started task</span>
-        <p slot="description">
-          Short description explaining the value of completing this task.
-        </p>
+        <span slot="title">Submit more details</span>
       </ogds-task-list-step>
 
       <ogds-task-list-step status="cannot-start-yet">
-        <span slot="title">Cannot start yet task</span>
+        <span slot="title">Sign contractual agreement</span>
       </ogds-task-list-step>
     </ogds-task-list>
   `,
