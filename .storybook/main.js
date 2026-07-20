@@ -1,4 +1,6 @@
 /** @type { import('@storybook/web-components-vite').StorybookConfig } */
+import remarkGfm from "remark-gfm";
+
 const config = {
   stories: [
     "../storybook/**/*.mdx",
@@ -6,7 +8,16 @@ const config = {
   ],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-docs",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
     "@storybook/addon-a11y",
     "storybook-addon-tag-badges",
   ],

@@ -4,20 +4,142 @@ import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
 
 <Title />
 
-A Task List displays user tasks, their status (e.g. "not started", "completed", "in progress"), and an actionable link for each task.
+A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 
----
-
-## Default
+## Example
 
 <Primary />
 
----
+## Guidance
+
+### When to use the component
+
+- **Complex workflows:** Use this for complex workflows that involve completing multiple tasks.
+- **Non-sequential workflows:** Tasks that can be completed independently and in any order. We call them "Tasks" instead of "Steps" because "step" implies a strict order.
+- **Multiple sessions:** Use this for processes that may take someone multiple visits to the website to finish.
+- **Task tracking:** Use this when you need to show the status for each task, such as “In progress” or “Completed”.
+- **Ideal number of tasks:** This component works best for workflows with 3-6 tasks.
+
+### When to consider something else
+
+- **Single-page forms:** Do not use this to replace a single-page form.
+- **Simple workflows:** Do not use this for workflows where all steps must be completed in order.
+- **Destructive actions:** If an action would delete information someone has entered (e.g. use a confirmation modal instead).
+- **Reviewing before submit:** This component is not designed to display all entered information at once for review, before submit. If you need to review entered information before submitting it, that should happen on a separate page.
+
+### Key Characteristics & Behavior
+
+- **Complete in any order:** Someone can complete the tasks in any order they choose (unless a task is blocked by a prerequisite one).
+- **Clear status over position:** To prevent disorientation, tasks should always be displayed in the same order. The status labels show which steps are completed or not.
+- **Review step:** The last task in the list will often be a "Review and submit" task. Keeping this review step inside the main task list is a reminder to finish the overall workflow (e.g., completing a registration or filing a claim).
+- **Informational content:** You can optionally include some contextual details (saved data) within the task steps. This is helpful if someone leaves and returns after a long time, without needing to go into each step.
+  - For completed tasks, you may choose to show a short summary of saved data. Consider what minimum context is needed for someone to remember what they filled out in that task.
+  - For in progress or not started tasks, an alert can be added to emphasize those.
+
+## Task Statuses
+
+Set the status of each task using the status parameter:
+
+| Status  | Default Label    | Description                                                                                                                                                                                                     |
+| ------- | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| todo    | Not started      | The task has not been started.                                                                                                                                                                                  |
+| doing   | In progress      | The task has saved data, but is not finished. This commonly occurs when a user starts a task, saves data, and then leaves.  Not all tasks have In Progress. Some go straight from "Not started" to "Completed". |
+| done    | Completed        | All required information is filled out and validated. Completed tasks must stay available for users to edit before they submit the final form.                                                                  |
+| blocked | Cannot start yet | The task is locked until earlier tasks are finished. This is most often used for the final "Review and submit" step.                                                                                            |
+
+## Content & Accessibility Guidelines
+
+#### Formatting Titles and Labels
+
+- **Action-oriented titles (suggested):** Keep text short and unique. Start each title with an action verb to make it clear what these links are for, such as “Enter your employer address,” not just “Employer address.”
+- **Change titles based on status (suggested)**: Update the title text based on the status. For example, before the person completes the task it might say "Enter your employer address". After the person completes the task, it could say “Edit your employer address”.
+
+#### Status & Focus Management
+
+- **Don't rely on color alone:** Use text labels and/or icons with accessible names to convey status changes.
+- **Text progress over bars:** Do not use linear progress bars or steppers. This component is for non-linear flows, but a linear progress bar implies a linear flow. Instead, use descriptive text, such as "1 out of 3 tasks completed," or “2 out of 3 tasks remaining.”
+
+## Research
+
+### Background Context
+
+The initial version of this component was created by the Family and Medical Leave (FAMLI) Program by Maryland Department of Labor (MD Labor) in June 2026\. This initiative was led by team members Amanda Beall, Casey Watts, and Matt Henry. The biggest inspiration for this component was the Task List component from the [Australian Government Department of Agriculture, Fisheries and Forestry, Desk System](https://design-system.agriculture.gov.au/components/task-list#).
+
+The component uses a custom badge design to communicate status. This sub-component is similar to the USWDS tag component, but addresses some limitations with that component. Later this could be extracted to be its own stand-alone component.
+
+In this document we've described some of the user research and design considerations that went into this design. There is a section of “higher confidence decisions” that our team was pretty certain about. There is also a section of “lower confidence decisions” that could have
+
+### Higher confidence decisions
+
+- Could we make the entire task element clickable?
+  - No, because making the element entirely clickable would make it impossible to highlight and select text within it. It is also more difficult to create a visual affordance for links.
+  - Instead, only the heading and the arrow icon were clickable, and the click area met the minimum height of 44px.
+- Could we use action buttons in this pattern? For example, having an “Edit” button next to each task.
+  - No, because buttons need to clearly describe the destination and action, while avoiding identical text. Having a button in multiple places with the same copy violates this rule.
+  - Instead, the component is designed to include a clickable header describing the action. The “what to do” and the action itself are one and the same. Updating the copy as the task is completed also shows that they are visually and structurally linked. This supports users with high zoom/magnification needs as well.
+- Status
+  - Could we display the status **above** the heading?
+    - No, because content must be below its respective heading, so it is always read correctly by screen readers
+    - Instead, we ensure that the heading is always first and that all other content comes after.
+  - Could we display the status to the **right** of the heading?
+    - No, because we want the status to be skimmable as you read the page.
+      - If the status were immediately after the heading/link, then it would be moving left and right on the page
+      - If the status were right-aligned, then it would often be visually far from the heading, which means “magnifying glass” users wouldn't be able to see it in context.
+  - Could we use the standard USWDS tag component, instead of a custom badge component?
+    - No, because it was noted by our accessibility experts that the standard USWDS tag component actually violates WCAG standards (all caps text, minimal padding, etc)
+    - Instead, we created a new design called Badges to communicate status. Badges are styled to have very rounded corners so they are not confused with button components and considered all WCAG standards
+- Steps
+  - Could we use the USWDS progress bar to show progress?
+    - No, because the task progress list was designed for a non-linear sequence. The USWDS progress bar is designed for a linear sequence, in which one task must be completed before the next. See guidance here: [Step indicator](https://designsystem.digital.gov/components/step-indicator/)
+    - Instead, we used header text to show the counts of completed tasks and tasks remaining.
+  - Could the review step be separate? Example, a disabled button at the top of the page
+    - No, because reviewing the task should be part of the overall process. It's important that all steps are included in the task list so the user knows there are still steps to complete. Also, disabling UI elements is not recommended and should be used sparingly, if at all. See guidance here: [Don't disable form controls](https://adrianroselli.com/2024/02/dont-disable-form-controls.html)
+    - Instead, there is a “Cannot start yet” status in the components. It clearly communicates how to access the task (“Not available until previous tasks are complete.”) without disabling key UI elements.
+- Screen reader navigation
+  - Could we use list semantics (like `<li>`) instead of headings?
+    - No, because there is potentially a lot of content within each section. List semantics are better if it is a simple list, like a list of just links and statuses. Since we often have supporting content in this pattern, headings make this easier to navigate.
+  - Could we use both list semantics AND headings?
+    - Unfortunately we can only use [one or the other: list semantics OR headings](https://matthenry.fyi/posts/semantic-deathmatch/).
+
+## Lower confidence decisions
+
+Here are some open questions that could use further research.  
+Depending on the results of further user testing, we might either:
+
+- If the design decision is strongly validated, we might promote these ideas below up to the “higher confidence decisions” category.
+- If the design decision is not strongly validated, we should incorporate the findings into an improved version of this component.
+
+Lower confidence decisions:
+
+- We currently include an arrow icon with the link
+  - Could this pattern be equally effective (and simpler) by removing the arrow icon?
+    - See June 2026 user research (below) for more details on what has been tested so far
+- We currently encourage using language “complete…” and “edit…” to make it clear that these actions are what is being done if you click the link.
+  - Could this pattern be equally effective (and simpler) without action words like “complete” and “edit”?
+    - See June 2026 user research (below) for more details on what has been tested so far
+- We currently use our new “badge” component (an updated version of the “tag” component)
+  - Does our new “badge” component work well with USWDS typography, in general?
+    - We could test to ensure the baseline grid is maintained in the current version – or adjust it accordingly. The baseline grid makes it easy to skim a page, since words are in predictable locations. Most USWDS components were designed with this in mind.
+  - Should this be a new component? Or should this be a variant of the “tag” component?
+- We currently recommend keeping tasks in the same order every time a user visits the page, regardless of their status.
+  - Could it make sense to move completed tasks to the bottom of the list in some situations? This might improve the visibility of incomplete tasks by bringing them to the top.
+    - Would it be confusing to shift tasks around based on status? Would there be accessibility issues?
+    - Would adjusting the visual style somehow affect this?
+
+## User Research
+
+### June 2026 (Maryland Department of Labor)
+
+The Family and Medical Leave Insurance (FAMLI) program at Maryland Department of Labor (MD Labor) tested this design on five users in June 2026\.
+
+5/5 people we tested with were able to identify that the heading was a link, and that it would take them to the edit page. The pattern we tested had two affordances: action words (“complete” and “edit”) **and** an arrow in the heading link. This pattern performed well – however, we did not test alternatives such as “no action words” or “no arrow”.
+
+Other insights:
+
+1. The styling of the status badge and clear headings helped users understand their progress at a glance.
+2. Links were clearly clickable, actionable, and understandable.
+3. One user had trouble remembering where specific information was saved. That likely has to do with our example content, and not the component pattern.
 
 ## Variations
 
 <Stories />
-
-## Guidance
-
-The Task List is used primarily for lengthy or complex workflows (non-sequential), e.g. registration, rather than simple, short steps.
