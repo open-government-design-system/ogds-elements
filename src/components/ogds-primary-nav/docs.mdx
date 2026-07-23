@@ -1,0 +1,68 @@
+import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+Based on the [USWDS Header component](https://designsystem.digital.gov/components/header/), which documents the primary nav as part of a full site header.
+
+The primary nav lists the main sections of a site. On narrow viewports its submenus behave like an accordion; on wide viewports they become dropdown menus.
+
+## Example Primary Nav
+
+<Primary />
+
+## Author markup
+
+`<ogds-primary-nav>` expects a single `<ul>` of `<li>` items:
+
+- A plain link item contains an `<a>`.
+- A submenu item contains a `<details>` with a `<summary>` (the visible toggle) followed by a nested `<ul>` of `<a>` links.
+
+```html
+<ogds-primary-nav>
+  <ul>
+    <li><a href="/" aria-current="page">Home</a></li>
+    <li>
+      <details>
+        <summary>Benefits</summary>
+        <ul>
+          <li><a href="/benefits/apply">Apply for benefits</a></li>
+          <li><a href="/benefits/status">Check application status</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</ogds-primary-nav>
+```
+
+Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator.
+
+## Guidance
+
+### This component only lays out the nav itself
+
+`<ogds-primary-nav>` handles the nav's own responsive layout — a stacked list that reflows into a horizontal bar with dropdown submenus at the desktop breakpoint (64rem) — and nothing else. It does not hide itself behind a menu button on narrow viewports. That's the responsibility of a parent component, such as a future `ogds-header`, which owns the trigger button, its `aria-expanded` state, and how the reveal looks (a slide-in panel, an overlay, etc.). Keeping that out of this component avoids guessing at a behavior a future `ogds-header` may need to implement differently.
+
+### Submenus require no JavaScript
+
+Submenus use the browser-native `<details>`/`<summary>` elements, so they open and close without JavaScript. `<ogds-primary-nav>` adds one enhancement when it upgrades: it gives every top-level `<details>` a shared `name`, so opening one submenu closes any other open submenu, matching the USWDS dropdown behavior. This is a progressive enhancement — you can opt into it yourself without JavaScript by giving each top-level `<details>` the same `name` attribute.
+
+## Custom Element vs CSS-Only Versions
+
+### Custom Element Behavior
+
+The examples on this page use the custom element `<ogds-primary-nav></ogds-primary-nav>`. This custom element uses all light DOM (no [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM)), and it adds default `role="navigation"` and `aria-label="Primary navigation"` (unless you set your own), plus the submenu-exclusivity behavior described above.
+
+### Fallbacks without JavaScript
+
+1. **Native details/summary.** Submenus keep working without JavaScript because they use the native `<details>` element.
+2. **Styles.** As long as the component's styles are pulled into your application, the visual styling still works without JavaScript.
+3. **Class-based equivalent.** You can substitute `<div class="ogds-primary-nav">` in place of `<ogds-primary-nav>`. These are equivalent for styling, but since there's no JavaScript running you'll need to add `role="navigation"` and `aria-label` yourself, and give shared `name` attributes to top-level `<details>` elements for exclusive submenus.
+
+---
+
+## More Examples
+
+<Stories />

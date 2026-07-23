@@ -20,6 +20,7 @@ const config = {
     },
     "@storybook/addon-a11y",
     "storybook-addon-tag-badges",
+    "storybook/viewport",
   ],
   framework: {
     name: "@storybook/web-components-vite",

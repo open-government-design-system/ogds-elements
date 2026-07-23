@@ -41,4 +41,16 @@ export default [
     },
   },
   ...storybook.configs["flat/recommended"],
+  {
+    // "storybook/viewport" is bundled with the `storybook` package itself as
+    // of Storybook 9+ (no separate addon package to install), which
+    // `no-uninstalled-addons` doesn't yet account for.
+    files: [".storybook/main.@(js|cjs|mjs|ts)"],
+    rules: {
+      "storybook/no-uninstalled-addons": [
+        "error",
+        { ignore: ["storybook/viewport"] },
+      ],
+    },
+  },
 ];
