@@ -140,12 +140,12 @@
 
       > ul > li {
         display: flex;
-      }
 
-      a:hover,
-      details:not([open]) > summary:hover {
-        background-color: transparent;
-        color: var(--ogds-primary-nav-link-hover-color);
+        > a:hover,
+        > details:not([open]) > summary:hover {
+          background-color: transparent;
+          color: var(--ogds-primary-nav-link-hover-color);
+        }
       }
 
       details[open] > summary {
