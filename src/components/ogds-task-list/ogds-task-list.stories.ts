@@ -6,7 +6,7 @@ import ComponentDocs from "./docs.mdx";
 export default {
   title: "Components/Task List",
   component: "ogds-task-list",
-  tags: ["experimental"],
+  tags: ["alpha"],
   parameters: {
     docs: {
       page: ComponentDocs,
