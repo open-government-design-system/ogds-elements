@@ -17,24 +17,29 @@ export type OgdsHeaderVariant = "basic" | "extended";
  *
  * @slot logo - The site logo/wordmark, typically a link to the homepage.
  * @slot info - Optional. A banner/alert row shown between the navbar and the navigation drawer.
- * @slot nav-primary - Expects an `<ogds-primary-nav>` with the site's primary section links.
- * @slot notifications - Optional. Content (e.g. an account or notifications indicator) shown alongside the primary nav.
+ * @slot nav-primary - Expects an `<ogds-primary-nav>` with the site's primary section links, or some other primary nav implementation.
+ * @slot notifications - Optional. Content like an account or notifications indicator shown alongside the primary nav.
  * @slot nav-secondary - Optional. Secondary links and/or a search form. At desktop widths (extended variant), shown aligned with the logo; below the desktop breakpoint it folds into the drawer with the primary nav.
  *
  * @cssprop --ogds-header-menu-btn-background-color - Background color of the menu button.
  * @cssprop --ogds-header-menu-btn-color - Text/icon color of the menu button.
  * @cssprop --ogds-header-nav-background-color - Background color of the navigation drawer.
  * @cssprop --ogds-header-overlay-color - Color of the backdrop behind the open drawer.
- * @cssprop --ogds-header-divider-color - Color of hairline dividers.
+ * @cssprop --ogds-header-divider-color - Color of hairline dividers/borders.
  * @cssprop --ogds-header-drawer-width - Width of the navigation drawer below the desktop breakpoint.
+ * @cssprop --ogds-header-max-width - Max width of the header's content, centered with auto margins (like a USWDS grid container). Unset by default, so content spans the full width of the host.
+ * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
  *
  * @element ogds-header
  */
 export class OgdsHeader extends LitElement {
   @property({ reflect: true }) variant: OgdsHeaderVariant = "extended";
 
+  /** @ignore */
   private _desktopQuery: MediaQueryList | null = null;
+  /** @ignore */
   private _navDialog: HTMLDialogElement | null = null;
+  /** @ignore */
   private _menuBtn: HTMLButtonElement | null = null;
 
   static styles = [
@@ -72,12 +77,15 @@ export class OgdsHeader extends LitElement {
     this._syncNavToViewport();
   }
 
+  /** @ignore */
   private _isDesktop() {
     return this._desktopQuery?.matches ?? true;
   }
 
+  /** @ignore */
   private _onViewportChange = () => this._syncNavToViewport();
 
+  /** @ignore */
   private _syncNavToViewport() {
     const dialog = this._navDialog;
     if (!dialog) return;
@@ -97,27 +105,33 @@ export class OgdsHeader extends LitElement {
     }
   }
 
+  /** @ignore */
   private _onMenuBtnClick() {
     this._navDialog?.showModal();
     this._menuBtn?.setAttribute("aria-expanded", "true");
   }
 
+  /** @ignore */
   private _onCloseBtnClick() {
     this._navDialog?.close();
   }
 
+  /** @ignore */
   private _onDialogClose() {
     if (this._isDesktop()) return;
     this._menuBtn?.setAttribute("aria-expanded", "false");
   }
 
-  /** Clicking the backdrop (outside the drawer's own box) closes it, like clicking the USWDS overlay. */
+  /**
+   * @ignore
+   */
   private _onDialogClick(event: MouseEvent) {
     if (event.target === this._navDialog) {
       this._navDialog?.close();
     }
   }
 
+  /** @ignore */
   private _onOptionalSlotChange(event: Event) {
     const slot = event.target as HTMLSlotElement;
     const wrapper = slot.parentElement;
@@ -127,50 +141,52 @@ export class OgdsHeader extends LitElement {
 
   render() {
     return html`
-      <div class="navbar">
-        <div class="logo"><slot name="logo"></slot></div>
-        <button
-          type="button"
-          class="menu-btn"
-          aria-controls="nav"
-          aria-expanded="false"
-          @click=${this._onMenuBtnClick}
+      <div class="content">
+        <div class="navbar">
+          <div class="logo"><slot name="logo"></slot></div>
+          <button
+            type="button"
+            class="menu-btn"
+            aria-controls="nav"
+            aria-expanded="false"
+            @click=${this._onMenuBtnClick}
+          >
+            Menu
+          </button>
+        </div>
+        <div class="info" hidden>
+          <slot name="info" @slotchange=${this._onOptionalSlotChange}></slot>
+        </div>
+        <dialog
+          id="nav"
+          class="nav"
+          aria-label="Header navigation"
+          @close=${this._onDialogClose}
+          @click=${this._onDialogClick}
         >
-          Menu
-        </button>
-      </div>
-      <div class="info" hidden>
-        <slot name="info" @slotchange=${this._onOptionalSlotChange}></slot>
-      </div>
-      <dialog
-        id="nav"
-        class="nav"
-        aria-label="Header navigation"
-        @close=${this._onDialogClose}
-        @click=${this._onDialogClick}
-      >
-        <button
-          type="button"
-          class="nav-close"
-          aria-label="Close menu"
-          @click=${this._onCloseBtnClick}
-        ></button>
-        <div class="nav-primary-row">
-          <div class="nav-primary"><slot name="nav-primary"></slot></div>
-          <div class="notifications" hidden>
+          <button
+            type="button"
+            class="nav-close"
+            aria-label="Close menu"
+            @click=${this._onCloseBtnClick}
+          ></button>
+          <nav class="nav-secondary" aria-label="Secondary navigation">
             <slot
-              name="notifications"
+              name="nav-secondary"
               @slotchange=${this._onOptionalSlotChange}
             ></slot>
+          </nav>
+          <div class="nav-primary-row">
+            <div class="nav-primary"><slot name="nav-primary"></slot></div>
+            <div class="notifications" hidden>
+              <slot
+                name="notifications"
+                @slotchange=${this._onOptionalSlotChange}
+              ></slot>
+            </div>
           </div>
-        </div>
-        <nav class="nav-secondary" aria-label="Secondary navigation">
-          <slot
-            name="nav-secondary"
-            @slotchange=${this._onOptionalSlotChange}
-          ></slot>
-        </nav>
-      </dialog>
+        </dialog>
+      </div>
     `;
   }
 }
