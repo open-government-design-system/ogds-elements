@@ -33,13 +33,13 @@ Based on the [USWDS Header component](https://designsystem.digital.gov/component
 </ogds-header>
 ```
 
-| Slot            | Required | Notes                                                                                                                                                                 |
-| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `logo`          | Yes      | Typically a link to the homepage.                                                                                                                                     |
-| `nav-primary`   | Yes      | Expects an `<ogds-primary-nav>`.                                                                                                                                      |
+| Slot            | Required | Notes                                                                                                                                                                                                                                                                             |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `logo`          | Yes      | Typically a link to the homepage.                                                                                                                                                                                                                                                 |
+| `nav-primary`   | Yes      | Expects an `<ogds-primary-nav>`.                                                                                                                                                                                                                                                  |
 | `nav-secondary` | No       | Links and/or a search form. Aligned with the logo at desktop widths in the extended variant; folds into the drawer with the primary nav below the desktop breakpoint. The component consumer is responsible for the contents here and ensuring they implement responsive behavior |
-| `notifications` | No       | Shown in the same row as the primary nav. It's called "notifications" but doesn't need to be that.                                                                    |
-| `info`          | No       | A banner/alert row between the navbar and the nav drawer.                                                                                                             |
+| `notifications` | No       | Shown in the same row as the primary nav. It's called "notifications" but doesn't need to be that.                                                                                                                                                                                |
+| `info`          | No       | A banner/alert row between the navbar and the nav drawer.                                                                                                                                                                                                                         |
 
 Optional slots that receive no content aren't rendered. Omit them rather than passing an empty element.
 
