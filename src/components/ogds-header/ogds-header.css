@@ -14,15 +14,22 @@
   --ogds-header-nav-background-color: var(--ogds-color-white, #fff);
   --ogds-header-overlay-color: rgb(0 0 0 / 70%);
 
-  display: grid;
+  display: block;
   font-family: var(--ogds-header-font-family);
-  row-gap: var(--ogds-spacing-2, 1rem);
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+.content {
+  display: grid;
+  margin-inline: auto;
+  max-width: var(--ogds-header-max-width, none);
+  padding-inline: var(--ogds-header-padding-inline, 0);
+  row-gap: var(--ogds-spacing-2, 1rem);
 }
 
 .navbar {
@@ -160,7 +167,7 @@
     translate: 0 0;
   }
 
-  .nav-secondary {
+  .nav-primary-row {
     border-block-start: 1px solid var(--ogds-header-divider-color);
     margin-block-start: var(--ogds-spacing-2, 1rem);
     padding-block-start: var(--ogds-spacing-2, 1rem);
@@ -207,20 +214,41 @@
 
   :host([variant="basic"]) .nav-primary-row {
     flex: 1 1 auto;
-  }
-
-  :host([variant="basic"]) .nav-secondary {
     margin-inline-start: var(--ogds-spacing-2, 1rem);
   }
 
-  :host([variant="extended"]) {
-    position: relative;
+  :host([variant="extended"]) .content {
+    grid-template-areas:
+      "navbar secondary"
+      "info info"
+      "primary primary";
+    grid-template-columns: 1fr auto;
+  }
+
+  :host([variant="extended"]) .navbar {
+    grid-area: navbar;
+  }
+
+  :host([variant="extended"]) .info {
+    border-block-end: none;
+    grid-area: info;
+  }
+
+  :host([variant="extended"]) .nav[open] {
+    display: contents;
+  }
+
+  :host([variant="extended"]) .nav-primary-row {
+    border-block-start: 1px solid var(--ogds-header-divider-color);
+    grid-area: primary;
   }
 
   :host([variant="extended"]) .nav-secondary {
-    inset-block-start: 0;
-    inset-inline-end: 0;
-    position: absolute;
+    align-items: flex-end;
+    align-self: start;
+    flex-direction: column;
+    grid-area: secondary;
+    justify-self: end;
   }
 }
 
