@@ -1,0 +1,60 @@
+import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+Based on the [USWDS Header component](https://designsystem.digital.gov/components/header/), supporting both the basic and extended variants (but not megamenu at the moment).
+
+## Example
+
+<Primary />
+
+## Author markup
+
+`<ogds-header>` is a slot-based shell. The consuming app provides the content, the component provides layout and the responsive layout/drawer behavior.
+
+```html
+<ogds-header variant="extended">
+  <div slot="logo"><a href="/">Project name</a></div>
+  <div slot="notifications">Notifications</div>
+  <div slot="info">Alert or banner content</div>
+
+  <ul slot="nav-secondary">
+    <li><a href="#">One</a></li>
+  </ul>
+  <form slot="nav-secondary"><input type="search" /></form>
+
+  <ogds-primary-nav slot="nav-primary">
+    <ul>
+      <li><a href="#" aria-current="page">Current section</a></li>
+    </ul>
+  </ogds-primary-nav>
+</ogds-header>
+```
+
+| Slot            | Required | Notes                                                                                                                                                                 |
+| --------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `logo`          | Yes      | Typically a link to the homepage.                                                                                                                                     |
+| `nav-primary`   | Yes      | Expects an `<ogds-primary-nav>`.                                                                                                                                      |
+| `nav-secondary` | No       | Links and/or a search form. Aligned with the logo at desktop widths in the extended variant; folds into the drawer with the primary nav below the desktop breakpoint. The component consumer is responsible for the contents here and ensuring they implement responsive behavior |
+| `notifications` | No       | Shown in the same row as the primary nav. It's called "notifications" but doesn't need to be that.                                                                    |
+| `info`          | No       | A banner/alert row between the navbar and the nav drawer.                                                                                                             |
+
+Optional slots that receive no content aren't rendered. Omit them rather than passing an empty element.
+
+## `variant` attribute
+
+- `extended` (default) — secondary nav appears in its own area, aligned with the logo, at desktop widths.
+- `basic` — secondary nav sits inline alongside the primary nav instead.
+
+## Responsive behavior
+
+Below the desktop breakpoint (64rem), the primary and secondary nav collapse into a `<dialog>` drawer that slides in from the right when the menu button is pressed.
+This includes a backdrop, a focus trap, and Escape-to-close, all native to `<dialog>`.
+
+---
+
+## More Examples
+
+<Stories />
