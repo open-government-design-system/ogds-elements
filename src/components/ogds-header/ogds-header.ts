@@ -21,6 +21,10 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @slot notifications - Optional. Content like an account or notifications indicator shown alongside the primary nav.
  * @slot nav-secondary - Optional. Secondary links and/or a search form. At desktop widths (extended variant), shown aligned with the logo; below the desktop breakpoint it folds into the drawer with the primary nav.
  *
+ * @cssprop --ogds-header-navbar-background-color - Background color of the navbar row (logo + menu button). Transparent by default.
+ * @cssprop --ogds-header-info-background-color - Background color of the info row. Transparent by default.
+ * @cssprop --ogds-header-nav-primary-row-background-color - Background color of the row containing the primary nav and notifications. Transparent by default.
+ * @cssprop --ogds-header-nav-secondary-background-color - Background color of the secondary nav area. Transparent by default.
  * @cssprop --ogds-header-menu-btn-background-color - Background color of the menu button.
  * @cssprop --ogds-header-menu-btn-color - Text/icon color of the menu button.
  * @cssprop --ogds-header-nav-background-color - Background color of the navigation drawer.
@@ -29,6 +33,7 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @cssprop --ogds-header-drawer-width - Width of the navigation drawer below the desktop breakpoint.
  * @cssprop --ogds-header-max-width - Max width of the header's content, centered with auto margins (like a USWDS grid container). Unset by default, so content spans the full width of the host.
  * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
+ * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header grid (logo/secondary nav, info, and primary nav).
  *
  * @element ogds-header
  */

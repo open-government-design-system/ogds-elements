@@ -1,6 +1,7 @@
 import { html } from "lit";
 import "./index";
 import "../ogds-primary-nav";
+import "../ogds-accordion";
 import ComponentDocs from "./docs.mdx";
 
 const searchStyles = html`
@@ -120,7 +121,6 @@ export const Extended = {
     <ogds-header variant="extended">
       <div slot="logo"><a href="/">Project name</a></div>
       <div slot="notifications">Notifications</div>
-      <div slot="info">Alert or banner content goes here.</div>
       <ul class="example-secondary-links" slot="nav-secondary">
         <li><a href="#">Secondary link</a></li>
         <li><a href="#">Another secondary link</a></li>
@@ -136,6 +136,64 @@ export const Basic = {
     <ogds-header variant="basic">
       <div slot="logo"><a href="/">Project name</a></div>
       ${genericSearch} ${genericPrimaryNav}
+    </ogds-header>
+  `,
+};
+
+export const EmpXExample = {
+  name: "State agency header with info section",
+  render: () => html`
+    <style>
+      .state-with-info-example {
+        --ogds-header-nav-primary-row-background-color: #fff;
+        background-color: var(--ogds-theme-color-base-lightest);
+
+        ogds-accordion details[open]::details-content {
+          position: absolute;
+          background-color: var(--ogds-theme-color-base-lightest);
+        }
+
+        [slot="info"] {
+          padding: 0.5rem 0;
+        }
+      }
+
+      @media (width >= 64rem) {
+        .state-with-info-example {
+          --ogds-header-row-gap: 0;
+        }
+      }
+    </style>
+    <ogds-header variant="extended" class="state-with-info-example">
+      <a slot="logo" href="/">
+        <img
+          src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"
+          alt="Maryland FAMLI, Family and Medical Leave Insurance"
+          height="49"
+        />
+      </a>
+      <div slot="info">
+        <strong>Employer:</strong> Bagels Bagels Bagels (44-1112222)
+      </div>
+      <ogds-accordion slot="nav-secondary" class="with-icon right">
+        <details>
+          <summary>Signed in as A Person</summary>
+          <ul>
+            <li><a href="javascript:void(0)">Home</a></li>
+            <li><a href="javascript:void(0)">Clients</a></li>
+            <li><a href="javascript:void(0)">Reports & payments</a></li>
+          </ul>
+        </details>
+      </ogds-accordion>
+      <ogds-primary-nav slot="nav-primary">
+        <ul>
+          <li><a href="javascript:void(0)">Home</a></li>
+          <li><a href="javascript:void(0)">Clients</a></li>
+          <li><a href="javascript:void(0)">Reports & payments</a></li>
+          <li><a href="javascript:void(0)">Employer details</a></li>
+          <li><a href="javascript:void(0)">Team members</a></li>
+        </ul>
+      </ogds-primary-nav>
     </ogds-header>
   `,
 };
@@ -231,9 +289,21 @@ export const MarylandFAMLIExample = {
       .famli-search button:hover {
         background-color: var(--ogds-theme-color-primary-dark);
       }
+
+      .logged-out-example {
+        background-color: var(--ogds-theme-color-base-lightest);
+        --ogds-header-nav-primary-row-background-color: #fff;
+        --ogds-header-row-gap: 0;
+
+        [slot="logo"] {
+          display: flex;
+          min-height: 6rem;
+          align-items: center;
+        }
+      }
     </style>
 
-    <ogds-header variant="extended">
+    <ogds-header variant="extended" class="logged-out-example">
       <a slot="logo" href="/">
         <img
           src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"
@@ -243,16 +313,10 @@ export const MarylandFAMLIExample = {
       </a>
 
       <div class="famli-button-group" slot="nav-secondary">
-        <a
-          class="famli-register-button"
-          href="https://account.paidleave.maryland.gov/"
+        <a class="famli-register-button" href="javascript:void(0)"
           >Register with FAMLI or sign in</a
         >
-        <a
-          class="famli-language-button"
-          href="https://translate.google.com/translate?u=https://paidleave.maryland.gov/"
-          >Languages</a
-        >
+        <a class="famli-language-button" href="javascript:void(0)">Languages</a>
       </div>
       <form class="famli-search" slot="nav-secondary" role="search">
         <label class="famli-sr-only" for="famli-search">Search</label>
@@ -312,6 +376,120 @@ export const MarylandFAMLIExample = {
           </li>
           <li><a href="/employees/" aria-current="page">For employees</a></li>
           <li><a href="/connect-with-us/">Connect with us</a></li>
+        </ul>
+      </ogds-primary-nav>
+    </ogds-header>
+  `,
+};
+
+export const WorkerXExample = {
+  name: "State agency example with notifications",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Configuring `ogds-header` to reproduce a state agency header with an account status & search in the secondary nav area, a notification count in the notifications slot, and an `ogds-primary-nav` with several dropdown sections.",
+      },
+    },
+  },
+  render: () => html`
+    ${searchStyles}
+    <style>
+      .example-workerx-header {
+        background-color: var(--ogds-theme-color-base-lightest);
+        --ogds-header-row-gap: 0;
+      }
+
+      .example-account {
+        color: var(--ogds-theme-text-color);
+        font-family: var(--ogds-theme-button-font-family);
+        font-size: var(--ogds-theme-type-scale-2xs);
+      }
+
+      .example-notification-badge {
+        align-items: center;
+        background-color: var(--ogds-theme-color-secondary);
+        border-radius: 50%;
+        color: var(--ogds-color-white, #fff);
+        display: inline-flex;
+        font-size: var(--ogds-theme-type-scale-3xs);
+        font-weight: 700;
+        height: 1.25rem;
+        justify-content: center;
+        margin-inline-start: var(--ogds-spacing-05, 0.25rem);
+        width: 1.25rem;
+      }
+    </style>
+
+    <ogds-header class="example-workerx-header" variant="extended">
+      <a slot="logo" href="/">
+        <img
+          src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"
+          alt="Maryland FAMLI, Family and Medical Leave Insurance"
+          height="49"
+        />
+      </a>
+
+      <div slot="notifications">
+        Notifications
+        <span class="example-notification-badge">10</span>
+      </div>
+
+      ${genericSearch}
+      <div class="example-account" slot="nav-secondary">
+        Signed in as <strong>Mindy</strong>
+      </div>
+
+      <ogds-primary-nav slot="nav-primary">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li>
+            <details open>
+              <summary>Claims Center</summary>
+              <ul>
+                <li><a href="#">File a new claim</a></li>
+                <li><a href="#">Track my claims</a></li>
+                <li><a href="#" aria-current="page">Manage my claims</a></li>
+                <li><a href="#">FAMLI forms and documents</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Leave Center</summary>
+              <ul>
+                <li><a href="#">Navigation link</a></li>
+                <li><a href="#">Navigation link</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Notices &amp; tax forms</summary>
+              <ul>
+                <li><a href="#">Navigation link</a></li>
+                <li><a href="#">Navigation link</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Appeals Center</summary>
+              <ul>
+                <li><a href="#">Navigation link</a></li>
+                <li><a href="#">Navigation link</a></li>
+              </ul>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary>Support</summary>
+              <ul>
+                <li><a href="#">Navigation link</a></li>
+                <li><a href="#">Navigation link</a></li>
+              </ul>
+            </details>
+          </li>
         </ul>
       </ogds-primary-nav>
     </ogds-header>
