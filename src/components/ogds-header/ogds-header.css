@@ -82,7 +82,7 @@
     background-color: var(--ogds-header-menu-btn-background-color-hover);
   }
 
-  &::before {
+  &.with-icon::before {
     background-color: currentColor;
     content: "";
     display: inline-block;
