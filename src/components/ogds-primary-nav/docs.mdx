@@ -37,7 +37,8 @@ The primary nav lists the main sections of a site. On narrow viewports its subme
 </ogds-primary-nav>
 ```
 
-Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator.
+Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator. Because the logic for knowing where the user is in the application
+will depend heavily on the implementation, the app consuming the component is responsible for managing the `aria-current` attribute.
 
 ## Guidance
 

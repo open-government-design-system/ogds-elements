@@ -13,18 +13,21 @@ let instanceCount = 0;
  * @summary A responsive primary navigation list, styled to match the USWDS primary nav.
  *
  * Author the nav as a single top-level `<ul>` of `<li>` items. A plain link item
- * should contain an `<a>`. A submenu item should contain a `<details>` with a
+ * should contain an `<a>`. A subnav item should contain a `<details>` with a
  * `<summary>` (the toggle) followed by a nested `<ul>` of `<a>` links — no
  * JavaScript is required for submenus to open and close.
  *
  * Add `aria-current="page"` to the `<a>` for the current page to show the
- * current-page indicator.
+ * current-page indicator. The logic to add that to the right item at the right time
+ * is up to the consuming application, but because the nav items are all light DOM
+ * that should be straightforward to do.
  *
  * This component only handles the nav's own layout: a stacked list that
  * reflows into a horizontal bar with dropdown submenus at the desktop
  * breakpoint. Hiding the nav behind a menu button on narrow viewports is a
  * parent component's job (e.g. a future `ogds-header`), since that also owns
  * the trigger button, its `aria-expanded` state, and how the reveal looks.
+ *
  *
  * @cssprop --ogds-primary-nav-current-indicator-color - Color of the bar under the current page's link.
  * @cssprop --ogds-primary-nav-focus-outline-color - Focus outline color.
