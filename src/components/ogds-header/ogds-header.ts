@@ -112,6 +112,7 @@ export class OgdsHeader extends LitElement {
 
   /** @ignore */
   private _onMenuBtnClick() {
+    if (this._navDialog?.open) return;
     this._navDialog?.showModal();
     this._menuBtn?.setAttribute("aria-expanded", "true");
   }
