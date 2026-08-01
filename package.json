@@ -77,7 +77,7 @@
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@eslint/css": "^1.4.0",
     "@eslint/js": "^10.0.1",
-    "@playwright/test": "^1.61.1",
+    "@playwright/test": "^1.62.0",
     "@storybook/addon-a11y": "^10.4.6",
     "@storybook/addon-docs": "^10.4.6",
     "@storybook/addon-links": "^10.4.6",
@@ -103,7 +103,7 @@
     "eslint-plugin-storybook": "10.4.6",
     "express": "^5.2.1",
     "husky": "^9.1.7",
-    "jsdom": "^29.1.1",
+    "jsdom": "^30.0.1",
     "lightningcss": "^1.32.0",
     "pkg-pr-new": "^0.0.75",
     "prettier": "^3.9.4",
@@ -123,7 +123,7 @@
     "vite-plugin-lit-css": "^3.0.0",
     "vitest": "^4.0.8",
     "wait-on": "^9.0.10",
-    "web-vitals": "^5.3.0"
+    "web-vitals": "^6.0.1"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.62.2"
