@@ -103,7 +103,8 @@ export class OgdsPrimaryNav extends LitElement {
   private _onDocumentClick = (event: MouseEvent) => {
     const target = event.target as Node | null;
     this._submenus.forEach((details) => {
-      if (details.open && target && !details.contains(target)) {
+      const shouldClose = details.open && target && !details.contains(target);
+      if (shouldClose) {
         details.open = false;
       }
     });
