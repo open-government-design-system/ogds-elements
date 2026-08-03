@@ -1,6 +1,6 @@
 import { LitElement, nothing } from "lit";
 
-import styles from "./ogds-primary-nav.css";
+import cssFileStyles from "./ogds-primary-nav.css";
 import iconChevronDown from "../../shared/icons/expand_more.svg";
 import iconChevronUp from "../../shared/icons/expand_less.svg";
 
@@ -45,7 +45,7 @@ let instanceCount = 0;
  */
 export class OgdsPrimaryNav extends LitElement {
   /** @ignore */
-  private static _sheet: CSSStyleSheet | null = null;
+  private static _stylesheet: CSSStyleSheet | null = null;
 
   private readonly _instanceName = `ogds-primary-nav-${++instanceCount}`;
   private _submenus: HTMLDetailsElement[] = [];
@@ -57,17 +57,18 @@ export class OgdsPrimaryNav extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     adoptTokenStyles();
-    if (!OgdsPrimaryNav._sheet) {
-      OgdsPrimaryNav._sheet = new CSSStyleSheet();
-      OgdsPrimaryNav._sheet.replaceSync(
-        `ogds-primary-nav, .ogds-primary-nav {
-          --ogds-primary-nav-icon-chevron-down: url("${iconChevronDown}");
-          --ogds-primary-nav-icon-chevron-up: url("${iconChevronUp}");
-        }\n` + styles.cssText,
-      );
+    if (!OgdsPrimaryNav._stylesheet) {
+      const localStyles = `ogds-primary-nav, .ogds-primary-nav {
+        --ogds-primary-nav-icon-chevron-down: url("${iconChevronDown}");
+        --ogds-primary-nav-icon-chevron-up: url("${iconChevronUp}");
+      }`;
+      const combinedStylesheetsToAdopt = `${localStyles}\n${cssFileStyles.cssText}`;
+
+      OgdsPrimaryNav._stylesheet = new CSSStyleSheet();
+      OgdsPrimaryNav._stylesheet.replaceSync(combinedStylesheetsToAdopt);
       document.adoptedStyleSheets = [
         ...document.adoptedStyleSheets,
-        OgdsPrimaryNav._sheet,
+        OgdsPrimaryNav._stylesheet,
       ];
     }
 

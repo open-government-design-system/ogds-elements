@@ -40,7 +40,7 @@ function mount(html: string): OgdsPrimaryNav {
 
 beforeEach(() => {
   document.adoptedStyleSheets = [];
-  (OgdsPrimaryNav as any)._sheet = null;
+  (OgdsPrimaryNav as any)._stylesheet = null;
 });
 
 afterEach(() => {
