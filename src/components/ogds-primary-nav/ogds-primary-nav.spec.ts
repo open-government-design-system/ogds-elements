@@ -7,7 +7,7 @@ vi.mock("../../core/token-styles", () => ({ adoptTokenStyles: vi.fn() }));
 
 import { OgdsPrimaryNav } from "./index";
 
-const twoSections = `
+const examplePrimaryNavigation = `
   <ul>
     <li><a href="/" aria-current="page">Home</a></li>
     <li>
@@ -49,28 +49,32 @@ afterEach(() => {
 
 describe("default ARIA", () => {
   it("sets role=navigation when no role is present", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     expect(el.getAttribute("role")).toBe("navigation");
   });
 
   it("does not override an author-supplied role", async () => {
     const el = mount(
-      `<ogds-primary-nav role="menu">${twoSections}</ogds-primary-nav>`,
+      `<ogds-primary-nav role="menu">${examplePrimaryNavigation}</ogds-primary-nav>`,
     );
     await el.updateComplete;
     expect(el.getAttribute("role")).toBe("menu");
   });
 
   it("defaults aria-label to 'Primary navigation'", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     expect(el.getAttribute("aria-label")).toBe("Primary navigation");
   });
 
   it("does not override an author-supplied aria-label", async () => {
     const el = mount(
-      `<ogds-primary-nav aria-label="Site">${twoSections}</ogds-primary-nav>`,
+      `<ogds-primary-nav aria-label="Site">${examplePrimaryNavigation}</ogds-primary-nav>`,
     );
     await el.updateComplete;
     expect(el.getAttribute("aria-label")).toBe("Site");
@@ -78,7 +82,7 @@ describe("default ARIA", () => {
 
   it("does not set aria-label when aria-labelledby is present", async () => {
     const el = mount(
-      `<ogds-primary-nav aria-labelledby="nav-heading">${twoSections}</ogds-primary-nav>`,
+      `<ogds-primary-nav aria-labelledby="nav-heading">${examplePrimaryNavigation}</ogds-primary-nav>`,
     );
     await el.updateComplete;
     expect(el.hasAttribute("aria-label")).toBe(false);
@@ -87,7 +91,9 @@ describe("default ARIA", () => {
 
 describe("submenu exclusivity", () => {
   it("assigns a shared name to top-level submenus so only one stays open", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     const [first, second] = Array.from(el.querySelectorAll("details"));
     expect(first.name).not.toBe("");
@@ -114,7 +120,9 @@ describe("submenu exclusivity", () => {
 
 describe("outside click", () => {
   it("closes an open submenu when clicking outside it", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     const details = el.querySelector("details") as HTMLDetailsElement;
     details.open = true;
@@ -125,7 +133,9 @@ describe("outside click", () => {
   });
 
   it("does not close a submenu when clicking a link inside it", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     const details = el.querySelector("details") as HTMLDetailsElement;
     details.open = true;
@@ -138,7 +148,9 @@ describe("outside click", () => {
 
 describe("keyboard", () => {
   it("on Escape key press, the open submenu is closed and focus moves to its summary ", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     const details = el.querySelector("details") as HTMLDetailsElement;
     details.open = true;
@@ -154,14 +166,20 @@ describe("keyboard", () => {
 
 describe("stylesheet adoption", () => {
   it("adds a stylesheet to document.adoptedStyleSheets on first mount", async () => {
-    const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await el.updateComplete;
     expect(document.adoptedStyleSheets).toHaveLength(1);
   });
 
   it("does not add the stylesheet more than once when multiple navs are mounted", async () => {
-    const el1 = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
-    const el2 = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
+    const el1 = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
+    const el2 = mount(
+      `<ogds-primary-nav>${examplePrimaryNavigation}</ogds-primary-nav>`,
+    );
     await Promise.all([el1.updateComplete, el2.updateComplete]);
     expect(document.adoptedStyleSheets).toHaveLength(1);
   });
