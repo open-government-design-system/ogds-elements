@@ -31,6 +31,8 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @cssprop --ogds-header-overlay-color - Color of the backdrop behind the open drawer.
  * @cssprop --ogds-header-divider-color - Color of hairline dividers/borders.
  * @cssprop --ogds-header-drawer-width - Width of the navigation drawer below the desktop breakpoint.
+ * @cssprop --ogds-header-icon-close-size - Height and width of the drawer's close icon.
+ * @cssprop --ogds-header-icon-menu-size - Height and width of the menu button's icon.
  * @cssprop --ogds-header-max-width - Max width of the header's content, centered with auto margins (like a USWDS grid container). Unset by default, so content spans the full width of the host.
  * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
  * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header grid (logo/secondary nav, info, and primary nav).

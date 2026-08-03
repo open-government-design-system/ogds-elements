@@ -2,6 +2,8 @@
   --ogds-header-divider-color: var(--ogds-color-base-lighter, #dfe1e2);
   --ogds-header-drawer-width: min(90vw, 21rem);
   --ogds-header-font-family: system-ui, sans-serif;
+  --ogds-header-icon-close-size: 1.5rem;
+  --ogds-header-icon-menu-size: 1.25rem;
   --ogds-header-menu-btn-background-color: var(
     --ogds-theme-color-primary,
     #005ea2
@@ -86,12 +88,12 @@
     background-color: currentColor;
     content: "";
     display: inline-block;
-    height: 1.25rem;
+    height: var(--ogds-header-icon-menu-size);
     mask-image: var(--ogds-header-icon-menu);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
-    width: 1.25rem;
+    width: var(--ogds-header-icon-menu-size);
   }
 }
 
@@ -110,13 +112,13 @@
     background-color: currentColor;
     content: "";
     display: block;
-    height: 1.5rem;
+    height: var(--ogds-header-icon-close-size);
     margin-inline: auto;
     mask-image: var(--ogds-header-icon-close);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
-    width: 1.5rem;
+    width: var(--ogds-header-icon-close-size);
   }
 }
 
