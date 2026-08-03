@@ -33,6 +33,7 @@ let instanceCount = 0;
  * @cssprop --ogds-primary-nav-focus-outline-color - Focus outline color.
  * @cssprop --ogds-primary-nav-font-family - Font family for nav text.
  * @cssprop --ogds-primary-nav-font-size - Font size for nav text.
+ * @cssprop --ogds-primary-nav-icon-size - Height and width of the submenu toggle icon.
  * @cssprop --ogds-primary-nav-link-color - Text color for links and submenu toggles.
  * @cssprop --ogds-primary-nav-link-hover-background-color - Background color on hover below the desktop breakpoint.
  * @cssprop --ogds-primary-nav-link-hover-color - Text color on hover at the desktop breakpoint.

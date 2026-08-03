@@ -13,6 +13,7 @@
     );
     --ogds-primary-nav-font-family: system-ui, sans-serif;
     --ogds-primary-nav-font-size: var(--ogds-theme-type-scale-md, 1.0625rem);
+    --ogds-primary-nav-icon-size: 1.25rem;
     --ogds-primary-nav-link-color: var(--ogds-theme-text-color, #1b1b1b);
     --ogds-primary-nav-link-hover-background-color: var(
       --ogds-theme-color-base-lightest,
@@ -104,12 +105,12 @@
         background-color: currentColor;
         content: "";
         flex-shrink: 0;
-        height: 1.25rem;
+        height: var(--ogds-primary-nav-icon-size);
         mask-image: var(--ogds-primary-nav-icon-chevron-down);
         mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
-        width: 1.25rem;
+        width: var(--ogds-primary-nav-icon-size);
       }
     }
 
