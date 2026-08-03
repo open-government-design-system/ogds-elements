@@ -39,8 +39,9 @@ export class OgdsAccordion extends LitElement {
   @property({ type: Number, attribute: "heading-level" })
   headingLevel = 0;
 
-  declare detailsChildren: HTMLCollectionOf<HTMLDetailsElement> | undefined;
-  declare childRoles: Map<HTMLDetailsElement, Set<string>>;
+  declare private detailsChildren:
+    HTMLCollectionOf<HTMLDetailsElement> | undefined;
+  declare private childRoles: Map<HTMLDetailsElement, Set<string>>;
 
   override createRenderRoot() {
     return this;
@@ -84,7 +85,7 @@ export class OgdsAccordion extends LitElement {
     this.applyChildRoles();
   }
 
-  getDetailsChildren() {
+  private getDetailsChildren() {
     const detailsEls = this.getElementsByTagName("details");
     if (detailsEls.length > 0) {
       return detailsEls;
@@ -95,7 +96,7 @@ export class OgdsAccordion extends LitElement {
     }
   }
 
-  addListSemantics() {
+  private addListSemantics() {
     if (this.useListSemantics && this.detailsChildren) {
       Array.from(this.detailsChildren).forEach((el) =>
         this.childRoles.get(el)?.add("listitem"),
@@ -104,7 +105,7 @@ export class OgdsAccordion extends LitElement {
     }
   }
 
-  addHeadingSemantics() {
+  private addHeadingSemantics() {
     const headingLevel = this.headingLevel;
 
     if (headingLevel !== 0 && this.detailsChildren) {
@@ -118,7 +119,7 @@ export class OgdsAccordion extends LitElement {
     }
   }
 
-  applyChildRoles() {
+  private applyChildRoles() {
     this.childRoles.forEach((roles, el) => {
       if (roles.size > 0) el.setAttribute("role", Array.from(roles).join(" "));
     });

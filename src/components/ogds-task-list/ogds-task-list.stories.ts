@@ -5,7 +5,6 @@ import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import type { Args } from "storybook/internal/csf";
 
 const { args, argTypes, template } = getStorybookHelpers("ogds-task-list", {
-  // Internal implementation methods aren't part of the public API.
   excludeCategories: ["methods"],
 });
 

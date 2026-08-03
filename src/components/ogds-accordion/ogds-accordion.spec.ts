@@ -34,8 +34,13 @@ describe("getDetailsChildren", () => {
       </ogds-accordion>
     `);
     await el.updateComplete;
-    expect(el.detailsChildren).toBeDefined();
-    expect(el.detailsChildren?.length).toBe(2);
+    const detailsChildren = (
+      el as unknown as {
+        detailsChildren?: HTMLCollectionOf<HTMLDetailsElement>;
+      }
+    ).detailsChildren;
+    expect(detailsChildren).toBeDefined();
+    expect(detailsChildren?.length).toBe(2);
   });
 
   it("logs a console error when no details children are present", async () => {
