@@ -1,0 +1,37 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories,
+} from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+A single step within an `<ogds-task-list>`. Each `<ogds-task-list-step>` is rendered as a list item with a title, a status badge, and optional supporting content.
+
+---
+
+## Default
+
+<Primary />
+
+---
+
+## Inputs
+
+The component accepts the following inputs (props, slots, and CSS custom properties).
+
+<Controls />
+
+---
+
+## Variations
+
+<Stories />
+
+## Guidance
+
+`<ogds-task-list-step>` elements are meant to be used as children of an [`<ogds-task-list>`](?path=/docs/components-tasklist--docs), which counts completed steps and renders them in an accessible list. The stories on this page render steps outside of that context to preview each variation in isolation.
