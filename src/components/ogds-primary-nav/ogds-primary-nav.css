@@ -148,6 +148,10 @@
         flex-direction: row;
       }
 
+      li {
+        padding-block: var(--ogds-spacing-1, 0.5rem);
+      }
+
       > ul > li {
         display: flex;
 
@@ -171,6 +175,10 @@
         inset-inline-start: 0;
         position: absolute;
         top: 100%;
+
+        a {
+          padding-inline-start: 0;
+        }
       }
     }
   }
