@@ -1,7 +1,7 @@
 import { LitElement, css, html, unsafeCSS } from "lit";
 import { property } from "lit/decorators.js";
 
-import styles from "./ogds-header.css";
+import cssFileStyles from "./ogds-header.css";
 import iconMenu from "../../shared/icons/menu.svg";
 import iconClose from "../../shared/icons/close.svg";
 
@@ -9,6 +9,13 @@ import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 
 const DESKTOP_QUERY = "(width >= 64rem)";
+
+const localStyles = css`
+  :host {
+    --ogds-header-icon-close: url("${unsafeCSS(iconClose)}");
+    --ogds-header-icon-menu: url("${unsafeCSS(iconMenu)}");
+  }
+`;
 
 export type OgdsHeaderVariant = "basic" | "extended";
 
@@ -49,15 +56,7 @@ export class OgdsHeader extends LitElement {
   /** @ignore */
   private _menuBtn: HTMLButtonElement | null = null;
 
-  static styles = [
-    css`
-      :host {
-        --ogds-header-icon-close: url("${unsafeCSS(iconClose)}");
-        --ogds-header-icon-menu: url("${unsafeCSS(iconMenu)}");
-      }
-    `,
-    styles,
-  ];
+  static styles = [localStyles, cssFileStyles];
 
   override connectedCallback() {
     super.connectedCallback();
