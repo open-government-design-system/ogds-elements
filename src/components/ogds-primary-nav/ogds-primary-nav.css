@@ -1,0 +1,186 @@
+@layer ogds.components;
+
+@layer ogds.components {
+  .ogds-primary-nav,
+  ogds-primary-nav {
+    --ogds-primary-nav-current-indicator-color: var(
+      --ogds-theme-color-primary,
+      #005ea2
+    );
+    --ogds-primary-nav-focus-outline-color: var(
+      --ogds-theme-focus-color,
+      #2491ff
+    );
+    --ogds-primary-nav-font-family: system-ui, sans-serif;
+    --ogds-primary-nav-font-size: var(--ogds-theme-type-scale-md, 1.0625rem);
+    --ogds-primary-nav-icon-size: 1.25rem;
+    --ogds-primary-nav-link-color: var(--ogds-theme-text-color, #1b1b1b);
+    --ogds-primary-nav-link-hover-background-color: var(
+      --ogds-theme-color-base-lightest,
+      #f0f0f0
+    );
+    --ogds-primary-nav-link-hover-color: var(
+      --ogds-theme-color-primary,
+      #005ea2
+    );
+    --ogds-primary-nav-submenu-background-color: var(
+      --ogds-theme-color-primary-darker,
+      #162e51
+    );
+    --ogds-primary-nav-submenu-link-color: var(
+      --ogds-theme-text-reverse-color,
+      #fff
+    );
+
+    box-sizing: border-box;
+    display: block;
+    font-family: var(--ogds-primary-nav-font-family);
+    font-size: var(--ogds-primary-nav-font-size);
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    > ul {
+      display: flex;
+      flex-direction: column;
+    }
+
+    li {
+      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
+      position: relative;
+    }
+
+    > ul > li:first-child a {
+      padding-inline-start: 0;
+    }
+
+    a,
+    summary {
+      align-items: center;
+      color: var(--ogds-primary-nav-link-color);
+      cursor: pointer;
+      display: flex;
+      font-weight: 700;
+      gap: 0.5rem;
+      justify-content: space-between;
+      text-decoration: none;
+
+      &:focus-visible {
+        outline: 0.25rem solid var(--ogds-primary-nav-focus-outline-color);
+      }
+    }
+
+    > ul > li > a:hover,
+    > ul > li > a[aria-current="page"],
+    > ul > li > details:not([open]) > summary:hover {
+      position: relative;
+
+      &::before {
+        background-color: var(--ogds-primary-nav-current-indicator-color);
+        bottom: -0.5rem;
+        content: "";
+        height: 0.25rem;
+        inset-inline: 0;
+        position: absolute;
+      }
+    }
+
+    summary {
+      list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        background-color: currentColor;
+        content: "";
+        flex-shrink: 0;
+        height: var(--ogds-primary-nav-icon-size);
+        mask-image: var(--ogds-primary-nav-icon-chevron-down);
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        width: var(--ogds-primary-nav-icon-size);
+      }
+    }
+
+    details[open] > summary::after {
+      mask-image: var(--ogds-primary-nav-icon-chevron-up);
+    }
+
+    details > ul {
+      background-color: var(--ogds-primary-nav-submenu-background-color);
+      padding-block: var(--ogds-spacing-1, 0.5rem);
+    }
+
+    details > ul a {
+      color: var(--ogds-primary-nav-submenu-link-color);
+      font-weight: 400;
+      padding-inline-start: var(--ogds-spacing-4, 2rem);
+
+      &:hover {
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      &:focus-visible {
+        outline-offset: -0.25rem;
+      }
+    }
+
+    /**
+     * The breakpoint below is not exposed as a custom property because CSS
+     * media queries cannot read custom property values. Keep it in sync with
+     * --ogds-breakpoint-desktop from @ogds/tokens.
+     */
+    @media (width >= 64rem) {
+      > ul {
+        align-items: stretch;
+        flex-direction: row;
+      }
+
+      li {
+        padding-block: var(--ogds-spacing-1, 0.5rem);
+      }
+
+      > ul > li {
+        display: flex;
+
+        > a:hover,
+        > details:not([open]) > summary:hover {
+          background-color: transparent;
+          color: var(--ogds-primary-nav-link-hover-color);
+        }
+
+        &:has(> details[open]) {
+          background-color: var(--ogds-primary-nav-submenu-background-color);
+        }
+      }
+
+      details[open] > summary {
+        color: var(--ogds-primary-nav-submenu-link-color);
+      }
+
+      details > ul {
+        inline-size: 15rem;
+        inset-inline-start: 0;
+        position: absolute;
+        top: 100%;
+
+        a {
+          padding-inline-start: 0;
+        }
+      }
+    }
+  }
+}

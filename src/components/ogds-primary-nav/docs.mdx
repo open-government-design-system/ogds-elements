@@ -1,0 +1,65 @@
+import { Meta, Title, Primary, Stories } from "@storybook/addon-docs/blocks";
+
+<Meta isTemplate />
+
+<Title />
+
+Based on the [USWDS Header component](https://designsystem.digital.gov/components/header/), which documents the primary nav as part of a full site header.
+
+The primary nav lists the main sections of a site. On narrow viewports its submenus behave like an accordion; on wide viewports they become dropdown menus.
+
+## Example Primary Nav
+
+<Primary />
+
+## Author markup
+
+`<ogds-primary-nav>` expects a single `<ul>` of `<li>` items:
+
+- A plain link item contains an `<a>`.
+- A submenu item contains a `<details>` with a `<summary>` (the visible toggle) followed by a nested `<ul>` of `<a>` links.
+
+```html
+<ogds-primary-nav>
+  <ul>
+    <li><a href="/" aria-current="page">Home</a></li>
+    <li>
+      <details>
+        <summary>Benefits</summary>
+        <ul>
+          <li><a href="/benefits/apply">Apply for benefits</a></li>
+          <li><a href="/benefits/status">Check application status</a></li>
+        </ul>
+      </details>
+    </li>
+    <li><a href="/about">About</a></li>
+  </ul>
+</ogds-primary-nav>
+```
+
+Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator. Because the logic for knowing where the user is in the application
+will depend heavily on the implementation, the app consuming the component is responsible for managing the `aria-current` attribute.
+
+## Guidance
+
+### This component only lays out the nav itself
+
+`<ogds-primary-nav>` handles the nav's own responsive layout. Like the USWDS nav it's based on, it collapses from a row into columns below desktop widths. It does not hide itself behind a menu button/hamburger on narrow viewports. That's the responsibility of its parent component.
+
+### Subnavs require no JavaScript
+
+Subnavs use the browser-native `<details>`/`<summary>` elements, so they open and close without JavaScript. `<ogds-primary-nav>` adds one enhancement when it upgrades: it gives every top-level `<details>` a shared `name`, so opening one submenu closes any other open submenu, matching the USWDS dropdown behavior. The full web component version does also add `esc` button and "click outside to close" support.
+
+## Custom Element vs CSS-Only Versions
+
+### Fallbacks without JavaScript
+
+1. **Native details/summary.** Subnavs keep working without JavaScript because they use the native `<details>` element (besides exceptions noted above).
+2. **Styles.** As long as the component's styles are pulled into your application, the visual styling still works without JavaScript.
+3. **Class-based equivalent.** You can substitute `<div class="ogds-primary-nav">` in place of `<ogds-primary-nav>`. These are equivalent for styling, but since there's no JavaScript running you'll need to add `role="navigation"` and `aria-label` yourself, and give shared `name` attributes to top-level `<details>` elements for exclusive subnavs.
+
+---
+
+## More Examples
+
+<Stories />
