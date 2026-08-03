@@ -137,7 +137,7 @@ describe("outside click", () => {
 });
 
 describe("keyboard", () => {
-  it("closes an open submenu and refocuses its summary on Escape", async () => {
+  it("on Escape key press, the open submenu is closed and focus moves to its summary ", async () => {
     const el = mount(`<ogds-primary-nav>${twoSections}</ogds-primary-nav>`);
     await el.updateComplete;
     const details = el.querySelector("details") as HTMLDetailsElement;
