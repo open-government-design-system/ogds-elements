@@ -39,7 +39,7 @@ const items = `
 export default {
   title: "Components/Primary Nav",
   component: "ogds-primary-nav",
-  tags: ["experimental"],
+  tags: ["alpha"],
   args: {
     ...args,
     "default-slot": items,

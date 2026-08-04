@@ -160,7 +160,7 @@ const secondaryLinksHTML = `
 export default {
   title: "Components/Header",
   component: "ogds-header",
-  tags: ["experimental"],
+  tags: ["alpha"],
   args: {
     ...args,
     variant: "extended",
