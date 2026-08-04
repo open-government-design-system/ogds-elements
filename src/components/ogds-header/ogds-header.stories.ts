@@ -3,6 +3,12 @@ import "./index";
 import "../ogds-primary-nav";
 import "../ogds-accordion";
 import ComponentDocs from "./docs.mdx";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import type { Args } from "storybook/internal/csf";
+
+const { args, argTypes, template } = getStorybookHelpers("ogds-header", {
+  excludeCategories: ["methods"],
+});
 
 const searchStyles = html`
   <style>
@@ -104,45 +110,90 @@ const genericSearch = html`
   </form>
 `;
 
+// This has to be a string for the args-driven
+// stories below (Extended/Basic), since `template()` needs slot content as
+// HTML strings rather than lit TemplateResults. Hence no `html` tag
+const genericPrimaryNavHTML = `
+  <ogds-primary-nav>
+    <ul>
+      <li><a href="#" aria-current="page">Current section</a></li>
+      <li>
+        <details>
+          <summary>Benefits</summary>
+          <ul>
+            <li><a href="#">Navigation link</a></li>
+            <li><a href="#">Navigation link</a></li>
+            <li><a href="#">Navigation link</a></li>
+            <li><a href="#">Navigation link</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary>Resources</summary>
+          <ul>
+            <li><a href="#">Navigation link</a></li>
+            <li><a href="#">Navigation link</a></li>
+            <li><a href="#">Navigation link</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a href="#">Simple link</a></li>
+    </ul>
+  </ogds-primary-nav>
+`;
+
+const genericSearchHTML = `
+  <form class="example-search" role="search">
+    <input type="search" aria-label="Search" name="q" />
+    <button type="submit">Search</button>
+  </form>
+`;
+
+const secondaryLinksHTML = `
+  <ul class="example-secondary-links">
+    <li><a href="#">Secondary link</a></li>
+    <li><a href="#">Another secondary link</a></li>
+  </ul>
+`;
+
 export default {
   title: "Components/Header",
   component: "ogds-header",
   tags: ["experimental"],
+  args: {
+    ...args,
+    variant: "extended",
+    "logo-slot": `<div><a href="/">Project name</a></div>`,
+    "notifications-slot": `<div>Notifications</div>`,
+    "nav-secondary-slot": secondaryLinksHTML + genericSearchHTML,
+    "nav-primary-slot": genericPrimaryNavHTML,
+  },
+  argTypes,
   parameters: {
     docs: {
       page: ComponentDocs,
     },
   },
+  render: (args: Args) =>
+    html`${searchStyles} ${secondaryLinksStyles} ${template(args)}`,
 };
 
-export const Extended = {
-  render: () => html`
-    ${searchStyles} ${secondaryLinksStyles}
-    <ogds-header variant="extended">
-      <div slot="logo"><a href="/">Project name</a></div>
-      <div slot="notifications">Notifications</div>
-      <ul class="example-secondary-links" slot="nav-secondary">
-        <li><a href="#">Secondary link</a></li>
-        <li><a href="#">Another secondary link</a></li>
-      </ul>
-      ${genericSearch} ${genericPrimaryNav}
-    </ogds-header>
-  `,
-};
+export const Extended = {};
 
 export const Basic = {
-  render: () => html`
-    ${searchStyles}
-    <ogds-header variant="basic">
-      <div slot="logo"><a href="/">Project name</a></div>
-      ${genericSearch} ${genericPrimaryNav}
-    </ogds-header>
-  `,
+  args: {
+    variant: "basic",
+    "notifications-slot": "",
+    "nav-secondary-slot": genericSearchHTML,
+  },
 };
 
+// The following stories kind of need to be hand-authored markup
+// since they're showing a full layout
 export const EmpXExample = {
   name: "State agency header with info section",
-  render: () => html`
+  render: (args: Args) => html`
     <style>
       .state-with-info-example {
         --ogds-header-nav-primary-row-background-color: #fff;
@@ -164,7 +215,7 @@ export const EmpXExample = {
         }
       }
     </style>
-    <ogds-header variant="extended" class="state-with-info-example">
+    <ogds-header variant=${args.variant} class="state-with-info-example">
       <a slot="logo" href="/">
         <img
           src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"
@@ -208,7 +259,8 @@ export const MarylandFAMLIExample = {
       },
     },
   },
-  render: () => html`
+  // Like the empx example, needs to be a full hand-authored layout
+  render: (args: Args) => html`
     <style>
       .famli-register-button {
         border-radius: var(--ogds-theme-button-border-radius);
@@ -303,7 +355,7 @@ export const MarylandFAMLIExample = {
       }
     </style>
 
-    <ogds-header variant="extended" class="logged-out-example">
+    <ogds-header variant=${args.variant} class="logged-out-example">
       <a slot="logo" href="/">
         <img
           src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"
@@ -392,7 +444,8 @@ export const WorkerXExample = {
       },
     },
   },
-  render: () => html`
+  // Hand-authored markup for layout as above
+  render: (args: Args) => html`
     ${searchStyles}
     <style>
       .example-workerx-header {
@@ -421,7 +474,7 @@ export const WorkerXExample = {
       }
     </style>
 
-    <ogds-header class="example-workerx-header" variant="extended">
+    <ogds-header class="example-workerx-header" variant=${args.variant}>
       <a slot="logo" href="/">
         <img
           src="https://paidleave.maryland.gov/img/OsA2lxQa9u-400.webp"

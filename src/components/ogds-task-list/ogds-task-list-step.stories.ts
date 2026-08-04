@@ -12,9 +12,9 @@ const { args, argTypes, template } = getStorybookHelpers(
 );
 
 export default {
-  title: "Components/TaskList/TaskListStep",
+  title: "Components/Task List/Task List Step",
   component: "ogds-task-list-step",
-  tags: ["experimental"],
+  tags: ["alpha"],
   args: {
     ...args,
     status: "in-progress",

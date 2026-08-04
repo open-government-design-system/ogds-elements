@@ -17,8 +17,6 @@ const localStyles = css`
   }
 `;
 
-export type OgdsHeaderVariant = "basic" | "extended";
-
 /**
  * @summary A responsive site header, styled to match the USWDS basic and extended header patterns.
  *
@@ -47,7 +45,7 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @element ogds-header
  */
 export class OgdsHeader extends LitElement {
-  @property({ reflect: true }) variant: OgdsHeaderVariant = "extended";
+  @property({ reflect: true }) variant: "basic" | "extended" = "extended";
 
   /** @ignore */
   private _desktopQuery: MediaQueryList | null = null;
@@ -197,5 +195,7 @@ export class OgdsHeader extends LitElement {
     `;
   }
 }
+
+export type OgdsHeaderVariant = OgdsHeader["variant"];
 
 defineCustomElement("ogds-header", OgdsHeader);
