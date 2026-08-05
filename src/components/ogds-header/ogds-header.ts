@@ -44,6 +44,15 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
  * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header grid (logo/secondary nav, info, and primary nav).
  *
+ * @csspart logo - Wrapper around the logo slot.
+ * @csspart navbar - The navbar row (logo + menu button).
+ * @csspart menu-btn - The mobile menu button.
+ * @csspart nav-close - The drawer's close button.
+ * @csspart info - The info row.
+ * @csspart nav-secondary - The secondary nav area.
+ * @csspart nav-primary-row - The row containing the primary nav and notifications.
+ * @csspart notifications - Wrapper around the notifications slot.
+ *
  * @element ogds-header
  */
 export class OgdsHeader extends LitElement {
@@ -149,11 +158,12 @@ export class OgdsHeader extends LitElement {
   render() {
     return html`
       <div class="content">
-        <div class="navbar">
-          <div class="logo"><slot name="logo"></slot></div>
+        <div class="navbar" part="navbar">
+          <div class="logo" part="logo"><slot name="logo"></slot></div>
           <button
             type="button"
             class="menu-btn"
+            part="menu-btn"
             aria-controls="nav"
             aria-expanded="false"
             @click=${this._onMenuBtnClick}
@@ -161,7 +171,7 @@ export class OgdsHeader extends LitElement {
             Menu
           </button>
         </div>
-        <div class="info" hidden>
+        <div class="info" part="info" hidden>
           <slot name="info" @slotchange=${this._onOptionalSlotChange}></slot>
         </div>
         <dialog
@@ -174,18 +184,23 @@ export class OgdsHeader extends LitElement {
           <button
             type="button"
             class="nav-close"
+            part="nav-close"
             aria-label="Close menu"
             @click=${this._onCloseBtnClick}
           ></button>
-          <nav class="nav-secondary" aria-label="Secondary navigation">
+          <nav
+            class="nav-secondary"
+            part="nav-secondary"
+            aria-label="Secondary navigation"
+          >
             <slot
               name="nav-secondary"
               @slotchange=${this._onOptionalSlotChange}
             ></slot>
           </nav>
-          <div class="nav-primary-row">
+          <div class="nav-primary-row" part="nav-primary-row">
             <div class="nav-primary"><slot name="nav-primary"></slot></div>
-            <div class="notifications" hidden>
+            <div class="notifications" part="notifications" hidden>
               <slot
                 name="notifications"
                 @slotchange=${this._onOptionalSlotChange}
