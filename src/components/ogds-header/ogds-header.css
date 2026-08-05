@@ -297,6 +297,7 @@
    * to intentionally make it a different color
    */
   :host([variant="basic"]) .nav-secondary {
+    align-self: stretch;
     background-color: var(
       --ogds-header-nav-secondary-background-color,
       var(--ogds-header-nav-primary-row-background-color, transparent)
@@ -309,6 +310,7 @@
    * Basic variant only needs to account for vw on the right (inline-end) side
    */
   :host([variant="basic"]) .nav-primary-row {
+    align-self: stretch;
     flex: 1 1 auto;
     margin-inline-end: calc(-1 * var(--_ogds-header-gutter));
     margin-inline-start: var(--ogds-spacing-2, 1rem);
@@ -328,7 +330,7 @@
    * on the left (inline-start) side
    */
   :host([variant="extended"]) .navbar {
-    align-self: center;
+    align-self: stretch;
     grid-area: navbar;
     margin-inline-start: calc(-1 * var(--_ogds-header-gutter));
     padding-block: var(--ogds-spacing-3, 1.5rem);
@@ -359,21 +361,22 @@
   }
 
   /*
-   * Extended variant: .nav-secondary is opposite .navbar so only its right/inline-end 
+   * Extended variant: .nav-secondary is opposite .navbar so only its right/inline-end
    * edge reaches the viewport.
    * Its background-color needs to fall back to .navbar's so
    * --ogds-header-navbar-background-color doesn't leave a transparent gap
-   * where .nav-secondary sits
+   * where .nav-secondary sits.
    */
   :host([variant="extended"]) .nav-secondary {
     align-items: flex-end;
-    align-self: center;
+    align-self: stretch;
     background-color: var(
       --ogds-header-nav-secondary-background-color,
       var(--ogds-header-navbar-background-color, transparent)
     );
     flex-direction: column;
     grid-area: secondary;
+    justify-content: center;
     justify-self: end;
     margin-inline-end: calc(-1 * var(--_ogds-header-gutter));
     padding-inline-end: var(--_ogds-header-gutter);
