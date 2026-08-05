@@ -59,7 +59,8 @@
       position: relative;
     }
 
-    > ul > li:first-child a {
+    > ul > li:first-child a,
+    > ul > li:first-child > details > summary {
       padding-inline-start: 0;
     }
 
@@ -81,7 +82,8 @@
 
     > ul > li > a:hover,
     > ul > li > a[aria-current="page"],
-    > ul > li > details:not([open]) > summary:hover {
+    > ul > li > details:not([open]) > summary:hover,
+    > ul > li > details > summary[aria-current="page"] {
       position: relative;
 
       &::before {
@@ -183,4 +185,11 @@
       }
     }
   }
+}
+
+/* keeping this rule outside of the layer because layered CSS loses
+ * to unlayered in a specificity fight, so this was clobbered by the
+ * USWDS reset which we can expect to be a recurring issue */
+:is(.ogds-primary-nav, ogds-primary-nav) summary {
+  display: flex;
 }
