@@ -107,6 +107,11 @@ export class OgdsHeader extends LitElement {
     const dialog = this._navDialog;
     if (!dialog) return;
 
+    /* grabbing focus here (and everything that we do with it below) fixes a critical
+     * accessibility bug where, because we're using a dialog, it grabs focus automatically
+     * in chrome */
+    const previouslyFocused = document.activeElement;
+
     if (this._isDesktop()) {
       if (dialog.open && dialog.matches(":modal")) {
         dialog.close();
@@ -120,6 +125,21 @@ export class OgdsHeader extends LitElement {
       dialog.close();
       requestAnimationFrame(() => dialog.classList.remove("no-transition"));
     }
+
+    setTimeout(() => {
+      if (document.activeElement === previouslyFocused) return;
+
+      if (previouslyFocused instanceof HTMLElement) {
+        if (previouslyFocused === document.body) {
+          const hadTabIndex = document.body.hasAttribute("tabindex");
+          if (!hadTabIndex) document.body.setAttribute("tabindex", "-1");
+          document.body.focus({ preventScroll: true });
+          if (!hadTabIndex) document.body.removeAttribute("tabindex");
+        } else {
+          previouslyFocused.focus({ preventScroll: true });
+        }
+      }
+    }, 0);
   }
 
   /** @ignore */
