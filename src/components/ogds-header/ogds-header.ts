@@ -130,14 +130,14 @@ export class OgdsHeader extends LitElement {
       if (document.activeElement === previouslyFocused) return;
 
       if (previouslyFocused instanceof HTMLElement) {
-        if (previouslyFocused === document.body) {
-          const hadTabIndex = document.body.hasAttribute("tabindex");
-          if (!hadTabIndex) document.body.setAttribute("tabindex", "-1");
-          document.body.focus({ preventScroll: true });
-          if (!hadTabIndex) document.body.removeAttribute("tabindex");
-        } else {
-          previouslyFocused.focus({ preventScroll: true });
-        }
+        previouslyFocused.focus({ preventScroll: true });
+      }
+
+      if (document.activeElement !== previouslyFocused) {
+        const hadTabIndex = document.body.hasAttribute("tabindex");
+        if (!hadTabIndex) document.body.setAttribute("tabindex", "-1");
+        document.body.focus({ preventScroll: true });
+        if (!hadTabIndex) document.body.removeAttribute("tabindex");
       }
     }, 0);
   }
