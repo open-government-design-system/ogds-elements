@@ -6,9 +6,6 @@ import styles from "./ogds-task-list-step.css";
 import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 
-export type TaskStepStatus =
-  "not-started" | "in-progress" | "completed" | "cannot-start-yet";
-
 /**
  * @summary A single step within an `ogds-task-list`.
  *
@@ -28,7 +25,8 @@ export type TaskStepStatus =
  */
 export class OgdsTaskListStep extends LitElement {
   @property({ reflect: true })
-  status: TaskStepStatus = "not-started";
+  status: "not-started" | "in-progress" | "completed" | "cannot-start-yet" =
+    "not-started";
 
   @property()
   url = "";
@@ -99,5 +97,7 @@ export class OgdsTaskListStep extends LitElement {
     `;
   }
 }
+
+export type TaskStepStatus = OgdsTaskListStep["status"];
 
 defineCustomElement("ogds-task-list-step", OgdsTaskListStep);
