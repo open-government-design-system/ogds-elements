@@ -253,12 +253,8 @@
    * .info always occupies its own full-width row in both variants
    */
   .info {
-    margin-inline: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
-    padding-inline: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    margin-inline: calc(-1 * var(--_ogds-header-gutter));
+    padding-inline: var(--_ogds-header-gutter);
   }
 
   .nav-primary-row {
@@ -281,12 +277,8 @@
    * Basic, .navbar (logo area) is alone in its row so it bleeds on both sides
    */
   :host([variant="basic"]) .navbar {
-    margin-inline: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
-    padding-inline: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    margin-inline: calc(-1 * var(--_ogds-header-gutter));
+    padding-inline: var(--_ogds-header-gutter);
   }
 
   /* What follows here is mostly how we handle the full-bleed behavior
@@ -309,12 +301,8 @@
       --ogds-header-nav-secondary-background-color,
       var(--ogds-header-nav-primary-row-background-color, transparent)
     );
-    margin-inline-start: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
-    padding-inline-start: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    margin-inline-start: calc(-1 * var(--_ogds-header-gutter));
+    padding-inline-start: var(--_ogds-header-gutter);
   }
 
   /*
@@ -322,13 +310,9 @@
    */
   :host([variant="basic"]) .nav-primary-row {
     flex: 1 1 auto;
-    margin-inline-end: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
+    margin-inline-end: calc(-1 * var(--_ogds-header-gutter));
     margin-inline-start: var(--ogds-spacing-2, 1rem);
-    padding-inline-end: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    padding-inline-end: var(--_ogds-header-gutter);
   }
 
   :host([variant="extended"]) .content {
@@ -346,13 +330,9 @@
   :host([variant="extended"]) .navbar {
     align-self: center;
     grid-area: navbar;
-    margin-inline-start: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
+    margin-inline-start: calc(-1 * var(--_ogds-header-gutter));
     padding-block: var(--ogds-spacing-3, 1.5rem);
-    padding-inline-start: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    padding-inline-start: var(--_ogds-header-gutter);
   }
 
   :host([variant="extended"]) .info {
@@ -374,12 +354,8 @@
         var(--ogds-header-divider-color)
       );
     grid-area: primary;
-    margin-inline: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
-    padding-inline: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    margin-inline: calc(-1 * var(--_ogds-header-gutter));
+    padding-inline: var(--_ogds-header-gutter);
   }
 
   /*
@@ -399,12 +375,8 @@
     flex-direction: column;
     grid-area: secondary;
     justify-self: end;
-    margin-inline-end: calc(
-      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
-    );
-    padding-inline-end: calc(
-      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
-    );
+    margin-inline-end: calc(-1 * var(--_ogds-header-gutter));
+    padding-inline-end: var(--_ogds-header-gutter);
   }
 }
 
