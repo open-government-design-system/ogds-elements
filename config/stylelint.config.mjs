@@ -3,6 +3,13 @@ export default {
   extends: ["stylelint-config-standard"],
   plugins: ["stylelint-order"],
   rules: {
+    "custom-property-pattern": [
+      "^_?[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      {
+        message:
+          "Custom properties must be kebab-case, optionally prefixed with _ to mark them private/internal (not a documented @cssprop, not meant for consumers to set).",
+      },
+    ],
     "declaration-block-no-redundant-longhand-properties": null,
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
