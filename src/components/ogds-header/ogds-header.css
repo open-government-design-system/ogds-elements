@@ -33,8 +33,9 @@
    * exactly where it was. min() keeps this at 0 rather than going negative on
    * a viewport narrower than max-width.
    */
-  --_ogds-header-gutter: calc(
-    (100vw - min(100vw, var(--_ogds-header-max-width-or-100vw))) / 2
+  --_ogds-header-gutter: max(
+    var(--ogds-header-padding-inline, 0),
+    calc((100vw - min(100vw, var(--_ogds-header-max-width-or-100vw))) / 2)
   );
 
   display: block;
