@@ -17,6 +17,26 @@
   --ogds-header-overlay-color: rgb(0 0 0 / 70%);
   --ogds-header-row-gap: var(--ogds-spacing-2, 1rem);
 
+  /*
+   * Workaround needed for --_ogds-header-gutter below. eslint/css can't
+   * parse a `var()` with a fallback in a `min()`. Same bug as the one
+   * causing the FIXME re: the accordion css in the eslint config
+   */
+  --_ogds-header-max-width-or-100vw: var(--ogds-header-max-width, 100vw);
+
+  /*
+   * Private (leading underscore, not a documented @cssprop 🤫, so documenting here):
+   * the distance from the viewport edge to where a centered column of
+   * --ogds-header-max-width would sit. Rows that need a full-bleed
+   * background cancel this out via a negative margin and reapply it as padding, so the row's
+   * border/background box reaches the viewport edge while its content stays
+   * exactly where it was. min() keeps this at 0 rather than going negative on
+   * a viewport narrower than max-width.
+   */
+  --_ogds-header-gutter: calc(
+    (100vw - min(100vw, var(--_ogds-header-max-width-or-100vw))) / 2
+  );
+
   display: block;
   font-family: var(--ogds-header-font-family);
 }
@@ -28,6 +48,10 @@
 }
 
 .content {
+  /*
+   * explicitly opt back into content-box to align with a USWDS grid container
+   */
+  box-sizing: content-box;
   display: grid;
   margin-inline: auto;
   max-width: var(--ogds-header-max-width, none);
@@ -164,6 +188,17 @@
     display: inline-flex;
   }
 
+  /*
+   * Decouples the menu button's own edge inset from the logo's.
+   */
+  .navbar {
+    margin-inline-end: calc(-1 * var(--ogds-header-padding-inline, 0));
+    padding-inline-end: var(
+      --ogds-header-menu-btn-padding-inline-end,
+      var(--ogds-header-padding-inline, 0)
+    );
+  }
+
   .nav-close {
     display: block;
   }
@@ -182,7 +217,11 @@
   }
 
   .nav-primary-row {
-    border-block-start: 1px solid var(--ogds-header-divider-color);
+    border-block-start: 1px solid
+      var(
+        --ogds-header-nav-primary-row-divider-color,
+        var(--ogds-header-divider-color)
+      );
     margin-block-start: var(--ogds-spacing-2, 1rem);
     padding-block-start: var(--ogds-spacing-2, 1rem);
   }
@@ -210,6 +249,18 @@
     width: 100%;
   }
 
+  /*
+   * .info always occupies its own full-width row in both variants
+   */
+  .info {
+    margin-inline: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
+    padding-inline: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
+  }
+
   .nav-primary-row {
     align-items: center;
     flex-direction: row;
@@ -226,9 +277,58 @@
     flex-direction: row;
   }
 
+  /*
+   * Basic, .navbar (logo area) is alone in its row so it bleeds on both sides
+   */
+  :host([variant="basic"]) .navbar {
+    margin-inline: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
+    padding-inline: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
+  }
+
+  /* What follows here is mostly how we handle the full-bleed behavior
+   * for the several variants the component supports
+   * ("bleed" both in terms of the layout as well as the single prop for background colors)
+   * */
+
+  /*
+   * Basic: .nav-secondary sits at the start (left side, inline-start) of its row,
+   * so only its start edge reaches the viewport.
+   *
+   * re: background-color, falls back to .nav-primary-row's: without this, setting
+   * only --ogds-header-nav-primary-row-background-color would leave a
+   * transparent gap where .nav-secondary sits, showing the page behind it
+   * instead of one continuous band. Set --ogds-header-nav-secondary-background-color
+   * to intentionally make it a different color
+   */
+  :host([variant="basic"]) .nav-secondary {
+    background-color: var(
+      --ogds-header-nav-secondary-background-color,
+      var(--ogds-header-nav-primary-row-background-color, transparent)
+    );
+    margin-inline-start: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
+    padding-inline-start: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
+  }
+
+  /*
+   * Basic variant only needs to account for vw on the right (inline-end) side
+   */
   :host([variant="basic"]) .nav-primary-row {
     flex: 1 1 auto;
+    margin-inline-end: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
     margin-inline-start: var(--ogds-spacing-2, 1rem);
+    padding-inline-end: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
   }
 
   :host([variant="extended"]) .content {
@@ -239,10 +339,20 @@
     grid-template-columns: 1fr auto;
   }
 
+  /*
+   * Extended variant: .navbar (logo area) only needs to account for vw
+   * on the left (inline-start) side
+   */
   :host([variant="extended"]) .navbar {
     align-self: center;
     grid-area: navbar;
+    margin-inline-start: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
     padding-block: var(--ogds-spacing-3, 1.5rem);
+    padding-inline-start: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
   }
 
   :host([variant="extended"]) .info {
@@ -254,17 +364,47 @@
     display: contents;
   }
 
+  /*
+   * In extended, .nav-primary-row spans the full grid row (i.e. bleeds both sides)
+   */
   :host([variant="extended"]) .nav-primary-row {
-    border-block-start: 1px solid var(--ogds-header-divider-color);
+    border-block-start: 1px solid
+      var(
+        --ogds-header-nav-primary-row-divider-color,
+        var(--ogds-header-divider-color)
+      );
     grid-area: primary;
+    margin-inline: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
+    padding-inline: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
   }
 
+  /*
+   * Extended variant: .nav-secondary is opposite .navbar so only its right/inline-end 
+   * edge reaches the viewport.
+   * Its background-color needs to fall back to .navbar's so
+   * --ogds-header-navbar-background-color doesn't leave a transparent gap
+   * where .nav-secondary sits
+   */
   :host([variant="extended"]) .nav-secondary {
     align-items: flex-end;
     align-self: center;
+    background-color: var(
+      --ogds-header-nav-secondary-background-color,
+      var(--ogds-header-navbar-background-color, transparent)
+    );
     flex-direction: column;
     grid-area: secondary;
     justify-self: end;
+    margin-inline-end: calc(
+      -1 * (var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0))
+    );
+    padding-inline-end: calc(
+      var(--_ogds-header-gutter) + var(--ogds-header-padding-inline, 0)
+    );
   }
 }
 

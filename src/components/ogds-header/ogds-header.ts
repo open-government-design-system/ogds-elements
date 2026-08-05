@@ -28,19 +28,21 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @slot notifications - Optional. Content like an account or notifications indicator shown alongside the primary nav.
  * @slot nav-secondary - Optional. Secondary links and/or a search form. At desktop widths (extended variant), shown aligned with the logo; below the desktop breakpoint it folds into the drawer with the primary nav.
  *
- * @cssprop --ogds-header-navbar-background-color - Background color of the navbar row (logo + menu button). Transparent by default.
- * @cssprop --ogds-header-info-background-color - Background color of the info row. Transparent by default.
- * @cssprop --ogds-header-nav-primary-row-background-color - Background color of the row containing the primary nav and notifications. Transparent by default.
- * @cssprop --ogds-header-nav-secondary-background-color - Background color of the secondary nav area. Transparent by default.
+ * @cssprop --ogds-header-navbar-background-color - Background color of the navbar row (logo + menu button). Transparent by default. At desktop widths, paints edge-to-edge ("full-bleed") even though the row's content stays in the constrained column.
+ * @cssprop --ogds-header-info-background-color - Background color of the info row. Transparent by default. At desktop widths, paints edge-to-edge ("full-bleed") even though the row's content stays in the constrained column.
+ * @cssprop --ogds-header-nav-primary-row-background-color - Background color of the row containing the primary nav and notifications. Transparent by default. At desktop widths, paints edge-to-edge ("full-bleed") even though the row's content stays in the constrained column.
+ * @cssprop --ogds-header-nav-secondary-background-color - Background color of the secondary nav area. At desktop widths, paints edge-to-edge (full-bleed) on the outward-facing side (away from the row it shares with the navbar in extended, or the primary nav in basic). Defaults to that other row's own background color (falling back to transparent if neither is set), so setting just one of the two already produces one seamless band
  * @cssprop --ogds-header-menu-btn-background-color - Background color of the menu button.
  * @cssprop --ogds-header-menu-btn-color - Text/icon color of the menu button.
+ * @cssprop --ogds-header-menu-btn-padding-inline-end - The menu button's own edge inset below the desktop breakpoint, independent of the logo's. Defaults to --ogds-header-padding-inline (matching the logo). Set to 0 to make the button flush with the viewport edge while the logo keeps its normal inset.
  * @cssprop --ogds-header-nav-background-color - Background color of the navigation drawer.
  * @cssprop --ogds-header-overlay-color - Color of the backdrop behind the open drawer.
- * @cssprop --ogds-header-divider-color - Color of hairline dividers/borders.
+ * @cssprop --ogds-header-divider-color - Color of borders (e.g. the info row's border, and the default for --ogds-header-nav-primary-row-divider-color).
+ * @cssprop --ogds-header-nav-primary-row-divider-color - Color of the primary-nav row's own top divider. Defaults to --ogds-header-divider-color. Set independently (e.g. to transparent) to suppress just this divider without affecting the info row's.
  * @cssprop --ogds-header-drawer-width - Width of the navigation drawer below the desktop breakpoint.
  * @cssprop --ogds-header-icon-close-size - Height and width of the drawer's close icon.
  * @cssprop --ogds-header-icon-menu-size - Height and width of the menu button's icon.
- * @cssprop --ogds-header-max-width - Max width of the header's content, centered with auto margins (like a USWDS grid container). Unset by default, so content spans the full width of the host.
+ * @cssprop --ogds-header-max-width - Max width of the header's content column, centered with auto margins (like a USWDS .grid-container). Unset by default, so content spans the full width of the host. Sizing matches .grid-container's convention: the column itself is max-width wide, and --ogds-header-padding-inline is added outside that (rendered width caps at max-width + 2 * padding-inline) — so reuse the same max-width value you use for a page's .grid-container to align this header with it.
  * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
  * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header grid (logo/secondary nav, info, and primary nav).
  *
