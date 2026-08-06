@@ -27,6 +27,10 @@
       --ogds-theme-color-primary-darker,
       #162e51
     );
+    --ogds-primary-nav-submenu-divider-color: var(
+      --ogds-theme-color-base-lighter,
+      #dfe1e2
+    );
     --ogds-primary-nav-submenu-link-color: var(
       --ogds-theme-text-reverse-color,
       #fff
@@ -121,23 +125,31 @@
     }
 
     details > ul {
-      background-color: var(--ogds-primary-nav-submenu-background-color);
+      background-color: transparent;
       padding-block: var(--ogds-spacing-1, 0.5rem);
     }
 
+    details > ul > li {
+      border-block-start: 1px solid
+        var(--ogds-primary-nav-submenu-divider-color);
+    }
+
     details > ul a {
-      color: var(--ogds-primary-nav-submenu-link-color);
+      color: var(--ogds-primary-nav-link-color);
       font-weight: 400;
       padding-inline-start: var(--ogds-spacing-4, 2rem);
 
       &:hover {
-        background-color: transparent;
         text-decoration: underline;
       }
 
       &:focus-visible {
         outline-offset: -0.25rem;
       }
+    }
+
+    details > ul > li:has(> a:hover) {
+      background-color: var(--ogds-primary-nav-link-hover-background-color);
     }
 
     /**
@@ -174,12 +186,22 @@
       }
 
       details > ul {
+        background-color: var(--ogds-primary-nav-submenu-background-color);
         inline-size: 15rem;
         inset-inline-start: 0;
         position: absolute;
         top: 100%;
 
+        > li {
+          border-block-start: none;
+
+          &:has(> a:hover) {
+            background-color: transparent;
+          }
+        }
+
         a {
+          color: var(--ogds-primary-nav-submenu-link-color);
           padding-inline-start: 0;
         }
       }
