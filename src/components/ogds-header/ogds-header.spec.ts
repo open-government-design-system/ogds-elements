@@ -100,7 +100,7 @@ function simulateSlotChange(
   )!;
   vi.spyOn(slot, "assignedNodes").mockReturnValue(nodes);
   slot.dispatchEvent(new Event("slotchange", { bubbles: true }));
-  return slot.closest<HTMLElement>("[part]")!;
+  return slot.closest<HTMLElement>("[data-hide-when-empty]")!;
 }
 
 beforeEach(() => {

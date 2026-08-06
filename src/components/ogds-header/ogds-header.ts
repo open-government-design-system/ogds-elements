@@ -47,12 +47,15 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header (logo/secondary nav, info, and primary nav).
  *
  * @csspart logo - Wrapper around the logo slot.
- * @csspart navbar - The navbar row (logo + menu button).
+ * @csspart navbar - The navbar row (logo + menu button). At desktop widths its background paints full-bleed; see navbar-inner for the constrained content column inside it.
+ * @csspart navbar-inner - The navbar row's content column (logo + menu button), inset from navbar's edges by --ogds-header-max-width/--ogds-header-padding-inline.
  * @csspart menu-btn - The mobile menu button.
  * @csspart nav-close - The drawer's close button.
- * @csspart info - The info row.
+ * @csspart info - The info row. At desktop widths its background paints full-bleed; see info-inner for the constrained content column inside it.
+ * @csspart info-inner - The info row's content column, inset from info's edges the same way as navbar-inner.
  * @csspart nav-secondary - The secondary nav area.
- * @csspart nav-primary-row - The row containing the primary nav and notifications.
+ * @csspart nav-primary-row - The row containing the primary nav and notifications. At desktop widths its background paints full-bleed; see nav-primary-row-inner for the constrained content column inside it.
+ * @csspart nav-primary-row-inner - The primary-nav row's content column, inset from nav-primary-row's edges the same way as navbar-inner. Only present at desktop widths. Below the breakpoint this row renders inside the drawer, where there's no full-bleed row.
  * @csspart notifications - Wrapper around the notifications slot.
  *
  * @element ogds-header
@@ -149,7 +152,7 @@ export class OgdsHeader extends LitElement {
   /** @ignore */
   private _onOptionalSlotChange(event: Event) {
     const slot = event.target as HTMLSlotElement;
-    const wrapper = slot.closest<HTMLElement>("[part]");
+    const wrapper = slot.closest<HTMLElement>("[data-hide-when-empty]");
     if (!wrapper) return;
     wrapper.hidden = slot.assignedNodes({ flatten: true }).length === 0;
   }
@@ -160,6 +163,7 @@ export class OgdsHeader extends LitElement {
       <nav
         class="nav-secondary"
         part="nav-secondary"
+        data-hide-when-empty
         aria-label="Secondary navigation"
       >
         <slot
@@ -174,7 +178,12 @@ export class OgdsHeader extends LitElement {
   private _renderPrimaryContent() {
     return html`
       <div class="nav-primary"><slot name="nav-primary"></slot></div>
-      <div class="notifications" part="notifications" hidden>
+      <div
+        class="notifications"
+        part="notifications"
+        data-hide-when-empty
+        hidden
+      >
         <slot
           name="notifications"
           @slotchange=${this._onOptionalSlotChange}
@@ -190,7 +199,7 @@ export class OgdsHeader extends LitElement {
     return html`
       <div class="content">
         <div class="navbar-row" part="navbar">
-          <div class="navbar-row-inner">
+          <div class="navbar-row-inner" part="navbar-inner">
             <div class="logo" part="logo"><slot name="logo"></slot></div>
             <button
               type="button"
@@ -206,8 +215,8 @@ export class OgdsHeader extends LitElement {
           ${desktop && extended ? this._renderNavSecondary() : nothing}
         </div>
 
-        <div class="info-row" part="info" hidden>
-          <div class="info-row-inner">
+        <div class="info-row" part="info" data-hide-when-empty hidden>
+          <div class="info-row-inner" part="info-inner">
             <slot name="info" @slotchange=${this._onOptionalSlotChange}></slot>
           </div>
         </div>
@@ -217,7 +226,7 @@ export class OgdsHeader extends LitElement {
             ? html`
                 <div class="primary-row" part="nav-primary-row">
                   ${!extended ? this._renderNavSecondary() : nothing}
-                  <div class="primary-row-inner">
+                  <div class="primary-row-inner" part="nav-primary-row-inner">
                     ${this._renderPrimaryContent()}
                   </div>
                 </div>
