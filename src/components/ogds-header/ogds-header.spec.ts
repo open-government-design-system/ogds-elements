@@ -10,7 +10,7 @@ import { OgdsHeader } from "./ogds-header";
 /**
  * jsdom doesn't implement the imperative <dialog> API at all, so polyfill
  * just enough of it (open state, the close event, and :modal matching) for
- * the component's viewport-sync logic to run without throwing.
+ * the component's drawer logic to run without throwing.
  *
  * Tracking issue for this, which is also where the polyfill idea came from
  * https://github.com/jsdom/jsdom/issues/3294
@@ -100,7 +100,7 @@ function simulateSlotChange(
   )!;
   vi.spyOn(slot, "assignedNodes").mockReturnValue(nodes);
   slot.dispatchEvent(new Event("slotchange", { bubbles: true }));
-  return slot.parentElement as HTMLElement;
+  return slot.closest<HTMLElement>("[part]")!;
 }
 
 beforeEach(() => {
@@ -143,47 +143,59 @@ describe("variant", () => {
   });
 });
 
-describe("viewport sync", () => {
-  it("opens the nav non-modally at desktop widths", async () => {
+describe("desktop/mobile structure", () => {
+  it("never renders a <dialog> at desktop widths", async () => {
     mockMatchMedia(true);
     const el = mount();
     await el.updateComplete;
-    const dialog = el.shadowRoot!.querySelector("dialog")!;
-    expect(dialog.open).toBe(true);
-    expect(dialog.matches(":modal")).toBe(false);
+    expect(el.shadowRoot!.querySelector("dialog")).toBeNull();
+    expect(el.shadowRoot!.querySelector(".primary-row")).not.toBeNull();
   });
 
-  it("leaves the nav closed below the desktop breakpoint", async () => {
+  it("renders a closed <dialog> at mobile widths", async () => {
     mockMatchMedia(false);
     const el = mount();
     await el.updateComplete;
-    const dialog = el.shadowRoot!.querySelector("dialog")!;
-    expect(dialog.open).toBe(false);
+    const dialog = el.shadowRoot!.querySelector("dialog");
+    expect(dialog).not.toBeNull();
+    expect(dialog!.open).toBe(false);
   });
 
-  it("closes a modally-open nav and reopens it non-modally when resizing to desktop", async () => {
+  it("closes an open modal drawer and removes it from the DOM when resizing to desktop", async () => {
     const media = mockMatchMedia(false);
     const el = mount();
     await el.updateComplete;
     const dialog = el.shadowRoot!.querySelector("dialog")!;
     dialog.showModal();
+    expect(dialog.open).toBe(true);
 
     media.setMatches(true);
-
-    expect(dialog.open).toBe(true);
-    expect(dialog.matches(":modal")).toBe(false);
-  });
-
-  it("closes a non-modally-open nav when resizing below desktop", async () => {
-    const media = mockMatchMedia(true);
-    const el = mount();
     await el.updateComplete;
-    const dialog = el.shadowRoot!.querySelector("dialog")!;
-    expect(dialog.open).toBe(true);
-
-    media.setMatches(false);
 
     expect(dialog.open).toBe(false);
+    expect(el.shadowRoot!.querySelector("dialog")).toBeNull();
+  });
+
+  it("renders nav-secondary alongside the navbar in the extended variant", async () => {
+    mockMatchMedia(true);
+    const el = mount('<ogds-header variant="extended"></ogds-header>');
+    await el.updateComplete;
+    const navbarRow = el.shadowRoot!.querySelector(".navbar-row");
+    expect(navbarRow!.querySelector(".nav-secondary")).not.toBeNull();
+    expect(
+      el.shadowRoot!.querySelector(".primary-row .nav-secondary"),
+    ).toBeNull();
+  });
+
+  it("renders nav-secondary alongside the primary row in the basic variant", async () => {
+    mockMatchMedia(true);
+    const el = mount('<ogds-header variant="basic"></ogds-header>');
+    await el.updateComplete;
+    const primaryRow = el.shadowRoot!.querySelector(".primary-row");
+    expect(primaryRow!.querySelector(".nav-secondary")).not.toBeNull();
+    expect(
+      el.shadowRoot!.querySelector(".navbar-row .nav-secondary"),
+    ).toBeNull();
   });
 });
 
@@ -231,7 +243,7 @@ describe("menu button", () => {
     expect(dialog.open).toBe(false);
   });
 
-  it("resets aria-expanded when the nav is closed below desktop", async () => {
+  it("resets aria-expanded when the nav is closed", async () => {
     mockMatchMedia(false);
     const el = mount();
     await el.updateComplete;
@@ -242,19 +254,6 @@ describe("menu button", () => {
     dialog.close();
 
     expect(menuBtn.getAttribute("aria-expanded")).toBe("false");
-  });
-
-  it("does not reset aria-expanded from a desktop close", async () => {
-    mockMatchMedia(true);
-    const el = mount();
-    await el.updateComplete;
-    const dialog = el.shadowRoot!.querySelector("dialog")!;
-    const menuBtn = el.shadowRoot!.querySelector(".menu-btn") as HTMLElement;
-    menuBtn.setAttribute("aria-expanded", "true");
-
-    dialog.close();
-
-    expect(menuBtn.getAttribute("aria-expanded")).toBe("true");
   });
 });
 
@@ -289,7 +288,7 @@ describe("optional slots", () => {
   it("hides the info row until content is slotted", async () => {
     const el = mount();
     await el.updateComplete;
-    const wrapper = el.shadowRoot!.querySelector(".info") as HTMLElement;
+    const wrapper = el.shadowRoot!.querySelector(".info-row") as HTMLElement;
     expect(wrapper.hidden).toBe(true);
 
     simulateSlotChange(el, "info", [document.createElement("div")]);

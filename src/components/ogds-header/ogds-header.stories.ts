@@ -143,6 +143,7 @@ export const Basic = {
 export const FullBleed = {
   name: "Full-bleed rows",
   parameters: {
+    layout: "fullscreen",
     docs: {
       description: {
         story:
