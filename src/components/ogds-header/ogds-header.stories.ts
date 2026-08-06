@@ -168,6 +168,10 @@ export const FullBleed = {
         ogds-primary-nav {
           --ogds-primary-nav-link-color: white;
         }
+
+        [slot="notifications"] {
+          color: white;
+        }
       }
     </style>
     <ogds-header variant="extended" class="full-bleed-example">
