@@ -56,6 +56,16 @@ Optional slots that receive no content aren't rendered. Omit them rather than pa
 Below the desktop breakpoint (64rem), the primary and secondary nav collapse into a `<dialog>` drawer that slides in from the right when the menu button is pressed.
 This includes a backdrop, a focus trap, and Escape-to-close, all native to `<dialog>`.
 
+## Full-bleed rows
+
+At desktop widths, `--ogds-header-navbar-background-color`, `--ogds-header-info-background-color`, and `--ogds-header-nav-primary-row-background-color` all paint edge-to-edge automatically. A background color fills the full viewport width while the row's own content stays inside the `--ogds-header-max-width` column, no extra markup or opt-in required.
+
+`--ogds-header-nav-secondary-background-color` bleeds on the side facing away from whatever it shares that row with (the navbar in `extended`, the primary nav in `basic`). When it's unset, it defaults to that other row's color, so setting only `--ogds-header-navbar-background-color` (or, in `basic`, only `--ogds-header-nav-primary-row-background-color`) already gives you one seamless band with no further configuration. Set `--ogds-header-nav-secondary-background-color` explicitly if you want an intentional two-tone split instead. If you need finer-grained control than the built-in custom properties offer, every structural piece is also exposed via a shadow part (targeted with `::part()` in the CSS): `part="navbar"`, `part="info"`, `part="nav-primary-row"`, `part="nav-secondary"`, `part="menu-btn"`, `part="nav-close"`, `part="logo"`, `part="notifications"`.
+
+## Sizing model
+
+`--ogds-header-max-width` matches the [`content-box`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/box-sizing) convention of a USWDS `.grid-container`: the content column itself is `max-width` wide, and `--ogds-header-padding-inline` is added _outside_ that (so the rendered width caps at `max-width + 2 * padding-inline`). Reuse the same `max-width` value you use for your page's `.grid-container` to line the two up exactly, with no extra math. Refer to the [USWDS documentation](https://designsystem.digital.gov/utilities/layout-grid/) for `grid-container` widths.
+
 ---
 
 ## More Examples

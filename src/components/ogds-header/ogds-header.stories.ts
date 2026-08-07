@@ -140,6 +140,53 @@ export const Basic = {
   `,
 };
 
+export const FullBleed = {
+  name: "Full-bleed rows",
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        story:
+          "At desktop widths, background-color custom properties paint their row edge-to-edge automatically, while the row's own content stays inside the `--ogds-header-max-width` column. No extra markup or opt-in is required — this uses the same `--ogds-header-navbar-background-color` and `--ogds-header-nav-primary-row-background-color` props as any other example, just set to colors that contrast with the page.",
+      },
+    },
+  },
+  render: () => html`
+    ${searchStyles} ${secondaryLinksStyles}
+    <style>
+      body {
+        background-color: var(--ogds-theme-color-base-lightest);
+      }
+
+      .full-bleed-example {
+        --ogds-header-max-width: 64rem;
+        --ogds-header-nav-primary-row-background-color: var(
+          --ogds-theme-color-primary-darker
+        );
+        --ogds-header-navbar-background-color: white;
+        --ogds-header-padding-inline: var(--ogds-spacing-2);
+
+        ogds-primary-nav {
+          --ogds-primary-nav-link-color: white;
+        }
+
+        [slot="notifications"] {
+          color: white;
+        }
+      }
+    </style>
+    <ogds-header variant="extended" class="full-bleed-example">
+      <div slot="logo"><a href="/">Project name</a></div>
+      <div slot="notifications">Notifications</div>
+      <ul class="example-secondary-links" slot="nav-secondary">
+        <li><a href="#">Secondary link</a></li>
+        <li><a href="#">Another secondary link</a></li>
+      </ul>
+      ${genericSearch} ${genericPrimaryNav}
+    </ogds-header>
+  `,
+};
+
 export const EmpXExample = {
   name: "State agency header with info section",
   render: () => html`
