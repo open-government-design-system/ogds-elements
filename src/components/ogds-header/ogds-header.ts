@@ -46,6 +46,8 @@ export type OgdsHeaderVariant = "basic" | "extended";
  * @cssprop --ogds-header-padding-inline - Horizontal gutter applied alongside --ogds-header-max-width. Unset by default.
  * @cssprop --ogds-header-row-gap - Vertical gap between the rows of the header (logo/secondary nav, info, and primary nav).
  *
+ * @attr icon - Optional. When present, shows a hamburger icon on the menu button (in addition to its "Menu" label).
+ *
  * @csspart logo - Wrapper around the logo slot.
  * @csspart navbar - The navbar row (logo + menu button). At desktop widths its background paints full-bleed; see navbar-inner for the constrained content column inside it.
  * @csspart navbar-inner - The navbar row's content column (logo + menu button), inset from navbar's edges by --ogds-header-max-width/--ogds-header-padding-inline.
@@ -62,6 +64,8 @@ export type OgdsHeaderVariant = "basic" | "extended";
  */
 export class OgdsHeader extends LitElement {
   @property({ reflect: true }) variant: OgdsHeaderVariant = "extended";
+
+  @property({ type: Boolean, reflect: true }) icon = false;
 
   /*
    * Reactive: at desktop widths, nav-secondary/nav-primary/notifications
@@ -203,7 +207,7 @@ export class OgdsHeader extends LitElement {
             <div class="logo" part="logo"><slot name="logo"></slot></div>
             <button
               type="button"
-              class="menu-btn"
+              class="menu-btn ${this.icon ? "with-icon" : ""}"
               part="menu-btn"
               aria-controls="nav"
               aria-expanded="false"
