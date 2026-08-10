@@ -115,12 +115,18 @@ export class OgdsPrimaryNav extends LitElement {
   private _onKeydown = (event: KeyboardEvent) => {
     if (event.key !== "Escape") return;
 
-    const openSubmenu = this._submenus.find((details) => details.open);
-    if (openSubmenu) {
-      openSubmenu.open = false;
-      openSubmenu.querySelector<HTMLElement>(":scope > summary")?.focus();
-      event.stopPropagation();
-    }
+    const openSubmenus = this._submenus.filter((details) => details.open);
+    if (openSubmenus.length === 0) return;
+
+    const active = document.activeElement;
+    const openSubmenu =
+      openSubmenus.find(
+        (details) => active instanceof Node && details.contains(active),
+      ) ?? openSubmenus[0];
+
+    openSubmenu.open = false;
+    openSubmenu.querySelector<HTMLElement>(":scope > summary")?.focus();
+    event.stopPropagation();
   };
 
   render() {
