@@ -168,6 +168,7 @@ export class OgdsHeader extends LitElement {
         class="nav-secondary"
         part="nav-secondary"
         data-hide-when-empty
+        hidden
         aria-label="Secondary navigation"
       >
         <slot

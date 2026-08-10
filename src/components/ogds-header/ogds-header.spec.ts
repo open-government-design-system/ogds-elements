@@ -309,4 +309,19 @@ describe("optional slots", () => {
     simulateSlotChange(el, "notifications", [document.createElement("div")]);
     expect(wrapper.hidden).toBe(false);
   });
+
+  it("hides nav-secondary until content is slotted", async () => {
+    const el = mount();
+    await el.updateComplete;
+    const wrapper = el.shadowRoot!.querySelector(
+      ".nav-secondary",
+    ) as HTMLElement;
+    expect(wrapper.hidden).toBe(true);
+
+    simulateSlotChange(el, "nav-secondary", [document.createElement("div")]);
+    expect(wrapper.hidden).toBe(false);
+
+    simulateSlotChange(el, "nav-secondary", []);
+    expect(wrapper.hidden).toBe(true);
+  });
 });
