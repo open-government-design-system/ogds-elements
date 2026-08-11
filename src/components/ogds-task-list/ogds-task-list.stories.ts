@@ -1,6 +1,7 @@
 import "./ogds-task-list";
 import "./ogds-task-list-step";
 import ComponentDocs from "./docs.mdx";
+import { html } from "lit";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import type { Args } from "storybook/internal/csf";
 
