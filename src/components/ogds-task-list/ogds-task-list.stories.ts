@@ -45,33 +45,55 @@ export default {
   render: (args: Args) => template(args),
 };
 
-export const Default = {};
+export const Default = {
+  render: () => html`
+    <ogds-task-list>
+      <p slot="instruction">Finish all tasks to submit your application.</p>
+
+      <ogds-task-list-step status="completed" url="/step-1">
+        <span slot="title">Edit your profile</span>
+        <dl slot="saved-data">
+          <dt>Phone number</dt>
+          <dd>(410) 123-4567</dd>
+          <dt>Email address</dt>
+          <dd>example@example.com</dd>
+        </dl>
+      </ogds-task-list-step>
+
+      <ogds-task-list-step status="in-progress" url="/step-2">
+        <span slot="title">Edit your address</span>
+      </ogds-task-list-step>
+
+      <ogds-task-list-step status="not-started" url="/step-3">
+        <span slot="title">Submit additional supporting documents</span>
+      </ogds-task-list-step>
+
+      <ogds-task-list-step status="cannot-start-yet">
+        <span slot="title">Sign contractual agreement</span>
+      </ogds-task-list-step>
+    </ogds-task-list>
+  `,
+};
 
 export const AllStatuses = {
   args: {
     "instruction-slot": "Each possible task state.",
     "default-slot": `
       <ogds-task-list-step status="completed" url="/step-1">
-        <span slot="title">Completed task</span>
+        <span slot="title">Edit your profile</span>
         <dl slot="saved-data">
           <dt>Phone number</dt>
           <dd>(410) 123-4567</dd>
         </dl>
       </ogds-task-list-step>
       <ogds-task-list-step status="in-progress" url="/step-2">
-        <span slot="title">In progress task</span>
-        <p slot="description">
-          Short description explaining the value of completing this task.
-        </p>
+        <span slot="title">Edit your address</span>
       </ogds-task-list-step>
       <ogds-task-list-step status="not-started" url="/step-3">
-        <span slot="title">Not started task</span>
-        <p slot="description">
-          Short description explaining the value of completing this task.
-        </p>
+        <span slot="title">Submit more details</span>
       </ogds-task-list-step>
       <ogds-task-list-step status="cannot-start-yet">
-        <span slot="title">Cannot start yet task</span>
+        <span slot="title">Sign contractual agreement</span>
       </ogds-task-list-step>
     `,
   },
