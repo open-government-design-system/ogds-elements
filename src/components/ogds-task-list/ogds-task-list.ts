@@ -22,7 +22,7 @@ const headingTags = {
  * @slot instruction - Text shown below the task counter (e.g. "Finish all tasks to submit.").
  * @slot - One or more `<ogds-task-list-step>` elements.
  *
- * @cssprop --ogds-task-list-border-color - Color of the bottom border on the step list. Defaults to gray-50.
+ * @cssprop [--ogds-task-list-border-color=var(--ogds-color-gray-50)] - Color of the bottom border on the step list.
  *
  * @element ogds-task-list
  */

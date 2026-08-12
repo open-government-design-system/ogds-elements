@@ -19,7 +19,7 @@ import { defineCustomElement } from "../../utils";
  * @slot status-label - The status badge label. Defaults to the English label for the current status.
  * @slot blocked-message - Message shown when status is "cannot-start-yet". Defaults to "Not available until previous tasks are complete."
  *
- * @cssprop --ogds-task-list-step-border-color - Color of the top border divider. Defaults to gray-50.
+ * @cssprop [--ogds-task-list-step-border-color=var(--ogds-color-gray-50)] - Color of the top border divider.
  *
  * @element ogds-task-list-step
  */
