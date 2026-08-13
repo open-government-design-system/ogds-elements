@@ -1,7 +1,6 @@
 import "./ogds-task-list";
 import "./ogds-task-list-step";
 import ComponentDocs from "./docs.mdx";
-import { html } from "lit";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 import type { Args } from "storybook/internal/csf";
 
@@ -47,10 +46,9 @@ export default {
 };
 
 export const Default = {
-  render: () => html`
-    <ogds-task-list>
-      <p slot="instruction">Finish all tasks to submit your application.</p>
-
+  args: {
+    "instruction-slot": "Finish all tasks to submit your application.",
+    "default-slot": `
       <ogds-task-list-step status="completed" url="/step-1">
         <span slot="title">Edit your profile</span>
         <dl slot="saved-data">
@@ -60,20 +58,17 @@ export const Default = {
           <dd>example@example.com</dd>
         </dl>
       </ogds-task-list-step>
-
       <ogds-task-list-step status="in-progress" url="/step-2">
         <span slot="title">Edit your address</span>
       </ogds-task-list-step>
-
       <ogds-task-list-step status="not-started" url="/step-3">
         <span slot="title">Submit additional supporting documents</span>
       </ogds-task-list-step>
-
       <ogds-task-list-step status="cannot-start-yet">
         <span slot="title">Sign contractual agreement</span>
       </ogds-task-list-step>
-    </ogds-task-list>
-  `,
+    `,
+  },
 };
 
 export const AllStatuses = {
