@@ -32,7 +32,7 @@ export class OgdsTaskList extends LitElement {
    * @attr base-heading-level
    */
   @property({ type: Number, attribute: "base-heading-level" })
-  baseHeadingLevel: keyof typeof headingTags = 2;
+  baseHeadingLevel: number = 2;
 
   @state() private _completedCount = 0;
   @state() private _totalCount = 0;
@@ -60,7 +60,9 @@ export class OgdsTaskList extends LitElement {
   }
 
   render() {
-    const tag = headingTags[this.baseHeadingLevel] ?? headingTags[2];
+    const tag =
+      headingTags[this.baseHeadingLevel as keyof typeof headingTags] ??
+      headingTags[2];
     return html`
       <section aria-labelledby="counter">
         <div class="header">
