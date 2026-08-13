@@ -14,8 +14,8 @@ import styles from "./ogds-alert.css";
  * @attribute {string} type - The type of alert (info, warning, etc)
  * @attribute {string} noIcon - Use this attribute to hide the icon
  *
- * @slot heading - Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)
- * @slot body - Body content for the alert. Can contain HTML (links, etc).
+ * @slot heading - **HTML markup.** Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)
+ * @slot body - **HTML markup.** Body content for the alert. Can contain HTML (links, etc).
  *
  * @tagname ogds-alert
  */

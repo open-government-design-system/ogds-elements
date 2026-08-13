@@ -18,11 +18,11 @@ const headingTags = {
 /**
  * @summary A task progress list with a completion counter and slotted steps.
  *
- * @slot counter-label - The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
- * @slot instruction - Text shown below the task counter (e.g. "Finish all tasks to submit.").
- * @slot - One or more `<ogds-task-list-step>` elements.
+ * @slot counter-label - **Plain text.** The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
+ * @slot instruction - **Plain text.** Text shown below the task counter (e.g. "Finish all tasks to submit.").
+ * @slot - **HTML markup.** One or more `<ogds-task-list-step>` elements.
  *
- * @cssprop --ogds-task-list-border-color - Color of the bottom border on the step list. Defaults to gray-50.
+ * @cssprop [--ogds-task-list-border-color=var(--ogds-color-gray-50)] - Color of the bottom border on the step list.
  *
  * @element ogds-task-list
  */
@@ -32,7 +32,7 @@ export class OgdsTaskList extends LitElement {
    * @attr base-heading-level
    */
   @property({ type: Number, attribute: "base-heading-level" })
-  baseHeadingLevel: keyof typeof headingTags = 2;
+  baseHeadingLevel: number = 2;
 
   @state() private _completedCount = 0;
   @state() private _totalCount = 0;
@@ -60,7 +60,9 @@ export class OgdsTaskList extends LitElement {
   }
 
   render() {
-    const tag = headingTags[this.baseHeadingLevel] ?? headingTags[2];
+    const tag =
+      headingTags[this.baseHeadingLevel as keyof typeof headingTags] ??
+      headingTags[2];
     return html`
       <section aria-labelledby="counter">
         <div class="header">

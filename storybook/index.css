@@ -1,7 +1,7 @@
 :root {
   background-color: var(--usa-color-white);
   color: var(--usa-color-gray-90);
-  color-scheme: light dark;
+  color-scheme: light;
   font-family:
     "Public Sans Web",
     -apple-system,
@@ -43,7 +43,7 @@
 
   pre,
   code {
-    font-size: initial;
+    font-size: inherit;
   }
 
   :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
