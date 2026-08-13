@@ -35,7 +35,7 @@ describe("getDetailsChildren", () => {
     `);
     await el.updateComplete;
     const detailsChildren = (
-      el as unknown as {
+      el as any as {
         detailsChildren?: HTMLCollectionOf<HTMLDetailsElement>;
       }
     ).detailsChildren;
