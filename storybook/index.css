@@ -43,7 +43,7 @@
 
   pre,
   code {
-    font-size: initial;
+    font-size: inherit;
   }
 
   :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
