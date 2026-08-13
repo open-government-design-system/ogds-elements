@@ -13,7 +13,7 @@ import styles from "./ogds-accordion-toggle.css";
  * @slot expand-label - **Plain text.** Button label when all panels are collapsed. Defaults to "Expand All".
  * @slot collapse-label - **Plain text.** Button label when one or more panels are open. Defaults to "Collapse All".
  *
- * @csspart button - The toggle button.
+ * @csspart button - The toggle button itself. This being a [CSS shadow part](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Shadow_parts) will let you style it however you need to with normal CSS.
  *
  * @element ogds-accordion-toggle
  */
