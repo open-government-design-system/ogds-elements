@@ -40,7 +40,7 @@ let instanceCount = 0;
  * @cssprop --ogds-primary-nav-submenu-background-color - Background color of a submenu panel, and of its open toggle at the desktop breakpoint.
  * @cssprop --ogds-primary-nav-submenu-link-color - Text color for links inside a submenu.
  *
- * @slot - Expects a single `<ul>` of `<li>` items, each containing either an `<a>` or a `<details>` submenu.
+ * @slot - **HTML markup.** Expects a single `<ul>` of `<li>` items, each containing either an `<a>` or a `<details>` submenu.
  * @element ogds-primary-nav
  */
 export class OgdsPrimaryNav extends LitElement {

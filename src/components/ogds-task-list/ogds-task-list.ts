@@ -18,9 +18,9 @@ const headingTags = {
 /**
  * @summary A task progress list with a completion counter and slotted steps.
  *
- * @slot counter-label - The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
- * @slot instruction - Text shown below the task counter (e.g. "Finish all tasks to submit.").
- * @slot - One or more `<ogds-task-list-step>` elements.
+ * @slot counter-label - **Plain text.** The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
+ * @slot instruction - **Plain text.** Text shown below the task counter (e.g. "Finish all tasks to submit.").
+ * @slot - **HTML markup.** One or more `<ogds-task-list-step>` elements.
  *
  * @cssprop [--ogds-task-list-border-color=var(--ogds-color-gray-50)] - Color of the bottom border on the step list.
  *

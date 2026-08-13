@@ -10,8 +10,8 @@ import styles from "./ogds-accordion-toggle.css";
  *
  * @attribute {string} controls - The `id` of the `<ogds-accordion>` to control. Required.
  *
- * @slot expand-label - Button label when all panels are collapsed. Defaults to "Expand All".
- * @slot collapse-label - Button label when one or more panels are open. Defaults to "Collapse All".
+ * @slot expand-label - **Plain text.** Button label when all panels are collapsed. Defaults to "Expand All".
+ * @slot collapse-label - **Plain text.** Button label when one or more panels are open. Defaults to "Collapse All".
  *
  * @csspart button - The toggle button.
  *

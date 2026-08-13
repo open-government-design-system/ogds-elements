@@ -20,11 +20,11 @@ const localStyles = css`
 /**
  * @summary A responsive site header, styled to match the USWDS basic and extended header patterns.
  *
- * @slot logo - The site logo/wordmark, typically a link to the homepage.
- * @slot info - Optional. A banner/alert row shown between the navbar and the navigation drawer.
- * @slot nav-primary - Expects an `<ogds-primary-nav>` with the site's primary section links, or some other primary nav implementation.
- * @slot notifications - Optional. Content like an account or notifications indicator shown alongside the primary nav.
- * @slot nav-secondary - Optional. Secondary links and/or a search form. At desktop widths (extended variant), shown aligned with the logo; below the desktop breakpoint it folds into the drawer with the primary nav.
+ * @slot logo - **HTML markup.** The site logo/wordmark, typically a link to the homepage.
+ * @slot info - **HTML markup.** Optional. A banner/alert row shown between the navbar and the navigation drawer.
+ * @slot nav-primary - **HTML markup.** Expects an `<ogds-primary-nav>` with the site's primary section links, or some other primary nav implementation.
+ * @slot notifications - **HTML markup.** Optional. Content like an account or notifications indicator shown alongside the primary nav.
+ * @slot nav-secondary - **HTML markup.** Optional. Secondary links and/or a search form. At desktop widths (extended variant), shown aligned with the logo; below the desktop breakpoint it folds into the drawer with the primary nav.
  *
  * @cssprop --ogds-header-navbar-background-color - Background color of the navbar row (logo + menu button). Transparent by default.
  * @cssprop --ogds-header-info-background-color - Background color of the info row. Transparent by default.

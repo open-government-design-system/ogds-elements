@@ -26,7 +26,7 @@ import { property } from "lit/decorators.js";
  * @attribute {boolean} use-list-semantics - Adds `role="list"` to the component and `role="listitem"` to each `<details>` child, conveying the accordion as a list to assistive technologies. Mutually exclusive with `heading-level`.
  * @attribute {number} heading-level - Sets a heading level for each accordion panel by adding `role="heading"` and the corresponding `aria-level` to each `<summary>` element. Has no effect when set to `0` (the default). Mutually exclusive with `use-list-semantics`.
  *
- * @slot - The default (only) slot for the `<ogds-accordion>` expects one or more plain HTML `<details>` elements.
+ * @slot - **HTML markup.** The default (only) slot for the `<ogds-accordion>` expects one or more plain HTML `<details>` elements.
  * @element ogds-accordion
  */
 export class OgdsAccordion extends LitElement {
