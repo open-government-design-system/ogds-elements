@@ -9,9 +9,6 @@ import { defineCustomElement } from "../../utils";
 /**
  * @summary A single step within an `ogds-task-list`.
  *
- * @attribute {string} status - Completion status. One of: not-started, in-progress, completed, cannot-start-yet.
- * @attribute {string} url - URL the task title links to. Not used when status is "cannot-start-yet".
- *
  * @slot title - **Plain text.** The task title text.
  * @slot alert - **HTML markup.** Optional alert (e.g. a USWDS alert). Shown between the badge and description.
  * @slot description - **Plain text.** Optional description text.
@@ -24,10 +21,18 @@ import { defineCustomElement } from "../../utils";
  * @element ogds-task-list-step
  */
 export class OgdsTaskListStep extends LitElement {
+  /**
+   * Completion status. One of: not-started, in-progress, completed, cannot-start-yet.
+   * @attr status
+   */
   @property({ reflect: true })
   status: "not-started" | "in-progress" | "completed" | "cannot-start-yet" =
     "not-started";
 
+  /**
+   * URL the task title links to. Not used when status is "cannot-start-yet".
+   * @attr url
+   */
   @property()
   url = "";
 

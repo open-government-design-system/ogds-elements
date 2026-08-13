@@ -8,8 +8,6 @@ import styles from "./ogds-accordion-toggle.css";
 /**
  * @summary A button that expands or collapses all panels in an associated `<ogds-accordion>`.
  *
- * @attribute {string} controls - The `id` of the `<ogds-accordion>` to control. Required.
- *
  * @slot expand-label - **Plain text.** Button label when all panels are collapsed. Defaults to "Expand All".
  * @slot collapse-label - **Plain text.** Button label when one or more panels are open. Defaults to "Collapse All".
  *
@@ -21,6 +19,10 @@ export class OgdsAccordionToggle extends LitElement {
   /** @ignore */
   private static _sheet: CSSStyleSheet | null = null;
 
+  /**
+   * The `id` of the `<ogds-accordion>` to control. Required.
+   * @attr controls
+   */
   @property({ type: String, attribute: "controls" })
   controls = "";
 

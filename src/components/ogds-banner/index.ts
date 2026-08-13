@@ -90,10 +90,6 @@ const OGDS_BANNER_TRANSLATIONS: Record<
 /**
  * @summary The ogds-banner component.
  *
- * @attribute {string} lang - The element's language.
- * @attribute {string} label - The custom aria label users can override.
- * @attribute {string} tld - The top level domain for the site.
- *
  * @cssprop --ogds-banner-background-color - Sets banner background color.
  * @cssprop --ogds-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
  * @cssprop --ogds-banner-focus-outline-color - Sets banner focus outline color.
@@ -124,9 +120,21 @@ export class OgdsBanner extends LitElement {
 
   // Property declarations
   flagSrc!: string;
+  /**
+   * The element's language.
+   * @attr lang
+   */
   lang!: "en" | "es";
   isOpen!: boolean;
+  /**
+   * The custom aria label users can override.
+   * @attr label
+   */
   label!: string;
+  /**
+   * The top level domain for the site.
+   * @attr tld
+   */
   tld!: "gov" | "mil";
 
   toggle() {

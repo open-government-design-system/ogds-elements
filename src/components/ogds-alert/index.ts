@@ -11,9 +11,6 @@ import styles from "./ogds-alert.css";
 /**
  * @summary The ogds-alert component.
  *
- * @attribute {string} type - The type of alert (info, warning, etc)
- * @attribute {string} noIcon - Use this attribute to hide the icon
- *
  * @slot heading - **HTML markup.** Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)
  * @slot body - **HTML markup.** Body content for the alert. Can contain HTML (links, etc).
  *
@@ -22,9 +19,17 @@ import styles from "./ogds-alert.css";
 
 @customElement("ogds-alert")
 export class OGDSAlert extends LitElement {
+  /**
+   * The type of alert (info, warning, etc)
+   * @attr type
+   */
   @property()
   type = "info";
 
+  /**
+   * Use this attribute to hide the icon
+   * @attr no-icon
+   */
   @property({ type: Boolean, attribute: "no-icon" })
   noIcon = false;
 
