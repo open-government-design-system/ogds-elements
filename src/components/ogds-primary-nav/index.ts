@@ -41,7 +41,7 @@ let instanceCount = 0;
  * @cssprop --ogds-primary-nav-submenu-divider-color - Border color between subnav items in the nav drawer.
  * @cssprop --ogds-primary-nav-submenu-link-color - Text color for links inside a submenu at the desktop breakpoint. Below the desktop breakpoint, submenu links use --ogds-primary-nav-link-color instead, to keep sufficient contrast against the submenu's transparent background.
  *
- * @slot - Expects a single `<ul>` of `<li>` items, each containing either an `<a>` or a `<details>` submenu.
+ * @slot - **HTML markup.** Expects a single `<ul>` of `<li>` items, each containing either an `<a>` or a `<details>` submenu.
  * @element ogds-primary-nav
  */
 export class OgdsPrimaryNav extends LitElement {

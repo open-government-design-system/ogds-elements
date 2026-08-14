@@ -1,8 +1,15 @@
 import { html } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./index";
 import ComponentDocs from "./docs.mdx";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import type { Args } from "storybook/internal/csf";
 
-const items = html`
+const { args, argTypes, template } = getStorybookHelpers("ogds-primary-nav", {
+  excludeCategories: ["methods"],
+});
+
+const items = `
   <ul>
     <li><a href="#" aria-current="page">Current section</a></li>
     <li>
@@ -32,17 +39,21 @@ const items = html`
 export default {
   title: "Components/Primary Nav",
   component: "ogds-primary-nav",
-  tags: ["experimental"],
+  tags: ["alpha"],
+  args: {
+    ...args,
+    "default-slot": items,
+  },
+  argTypes,
   parameters: {
     docs: {
       page: ComponentDocs,
     },
   },
+  render: (args: Args) => template(args),
 };
 
-export const Default = {
-  render: () => html`<ogds-primary-nav>${items}</ogds-primary-nav>`,
-};
+export const Default = {};
 
 export const WithoutCustomElement = {
   render: () =>
@@ -51,7 +62,7 @@ export const WithoutCustomElement = {
       role="navigation"
       aria-label="Primary navigation"
     >
-      ${items}
+      ${unsafeHTML(items)}
     </div>`,
 };
 
@@ -67,5 +78,4 @@ export const Mobile = {
       },
     },
   },
-  render: () => html`<ogds-primary-nav>${items}</ogds-primary-nav>`,
 };

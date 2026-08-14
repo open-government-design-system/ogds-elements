@@ -6,29 +6,27 @@ import styles from "./ogds-task-list-step.css";
 import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 
-export type TaskStepStatus =
-  "not-started" | "in-progress" | "completed" | "cannot-start-yet";
-
 /**
  * @summary A single step within an `ogds-task-list`.
  *
  * @attribute {string} status - Completion status. One of: not-started, in-progress, completed, cannot-start-yet.
  * @attribute {string} url - URL the task title links to. Not used when status is "cannot-start-yet".
  *
- * @slot title - The task title text.
- * @slot alert - Optional alert (e.g. a USWDS alert). Shown between the badge and description.
- * @slot description - Optional description text.
- * @slot saved-data - Optional summary of submitted data (e.g. a `<dl>`) shown below the badge.
- * @slot status-label - The status badge label. Defaults to the English label for the current status.
- * @slot blocked-message - Message shown when status is "cannot-start-yet". Defaults to "Not available until previous tasks are complete."
+ * @slot title - **Plain text.** The task title text.
+ * @slot alert - **HTML markup.** Optional alert (e.g. a USWDS alert). Shown between the badge and description.
+ * @slot description - **Plain text.** Optional description text.
+ * @slot saved-data - **HTML markup.** Optional summary of submitted data (e.g. a `<dl>`) shown below the badge.
+ * @slot status-label - **Plain text.** The status badge label. Defaults to the English label for the current status.
+ * @slot blocked-message - **Plain text.** Message shown when status is "cannot-start-yet". Defaults to "Not available until previous tasks are complete."
  *
- * @cssprop --ogds-task-list-step-border-color - Color of the top border divider. Defaults to gray-50.
+ * @cssprop [--ogds-task-list-step-border-color=var(--ogds-color-gray-50)] - Color of the top border divider.
  *
  * @element ogds-task-list-step
  */
 export class OgdsTaskListStep extends LitElement {
   @property({ reflect: true })
-  status: TaskStepStatus = "not-started";
+  status: "not-started" | "in-progress" | "completed" | "cannot-start-yet" =
+    "not-started";
 
   @property()
   url = "";
@@ -99,5 +97,7 @@ export class OgdsTaskListStep extends LitElement {
     `;
   }
 }
+
+export type TaskStepStatus = OgdsTaskListStep["status"];
 
 defineCustomElement("ogds-task-list-step", OgdsTaskListStep);

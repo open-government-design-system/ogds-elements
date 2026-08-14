@@ -104,12 +104,12 @@ const OGDS_BANNER_TRANSLATIONS: Record<
  * @cssprop --ogds-banner-link-hover-color - Sets the default link color.
  * @cssprop --ogds-banner-text-color - Sets the default text color.
  *
- * @slot banner-text - The text for official government website text.
- * @slot banner-action - Action text label "Here's how you know."
- * @slot domain-heading - Heading text for the domain section.
- * @slot domain-text - Body text for domain section.
- * @slot https-heading - Heading for HTTPs section.
- * @slot https-text - Body text for HTTPs section.
+ * @slot banner-text - **Plain text.** The text for official government website text.
+ * @slot banner-action - **Plain text.** Action text label "Here's how you know."
+ * @slot domain-heading - **Plain text.** Heading text for the domain section.
+ * @slot domain-text - **Plain text.** Body text for domain section.
+ * @slot https-heading - **Plain text.** Heading for HTTPs section.
+ * @slot https-text - **Plain text.** Body text for HTTPs section.
  *
  * @element ogds-banner
  */

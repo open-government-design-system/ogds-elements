@@ -1,8 +1,15 @@
 import { html } from "lit";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./index";
 import ComponentDocs from "./docs.mdx";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import type { Args } from "storybook/internal/csf";
 
-const items = html`
+const { args, argTypes, template } = getStorybookHelpers("ogds-accordion", {
+  excludeCategories: ["methods"],
+});
+
+const items = `
   <details>
     <summary>First Amendment</summary>
     <p>
@@ -33,57 +40,54 @@ export default {
   title: "Components/Accordion",
   component: "ogds-accordion",
   tags: ["alpha"],
+  args: {
+    ...args,
+    "default-slot": items,
+  },
+  argTypes,
   parameters: {
     docs: {
       page: ComponentDocs,
     },
   },
+  render: (args: Args) => template(args),
 };
 
-export const Default = {
-  render: () => html`<ogds-accordion>${items}</ogds-accordion>`,
-};
+export const Default = {};
 
 export const Bordered = {
-  render: () =>
-    html`<ogds-accordion class="bordered">${items}</ogds-accordion>`,
+  args: { class: "bordered" },
 };
 
 export const WithChevronIcons = {
-  render: () =>
-    html`<ogds-accordion class="with-icon">${items}</ogds-accordion>`,
+  args: { class: "with-icon" },
 };
 
 export const WithChevronIconsRight = {
-  render: () =>
-    html`<ogds-accordion class="with-icon right">${items}</ogds-accordion>`,
+  args: { class: "with-icon right" },
 };
 
 export const WithChevronIconsBordered = {
-  render: () =>
-    html`<ogds-accordion class="with-icon bordered">${items}</ogds-accordion>`,
+  args: { class: "with-icon bordered" },
 };
 
 export const WithPlusIcons = {
-  render: () =>
-    html`<ogds-accordion class="with-icon plus">${items}</ogds-accordion>`,
+  args: { class: "with-icon plus" },
 };
 
 export const WithPlusIconsBordered = {
-  render: () =>
-    html`<ogds-accordion class="with-icon plus bordered"
-      >${items}</ogds-accordion
-    >`,
+  args: { class: "with-icon plus bordered" },
 };
 
 export const WithPlusIconsRight = {
-  render: () =>
-    html`<ogds-accordion class="with-icon plus right"
-      >${items}</ogds-accordion
-    >`,
+  args: { class: "with-icon plus right" },
 };
 
 export const WithPlusIconsRightWithoutCustomElement = {
+  // This variant intentionally doesn't render the custom element, so it
+  // isn't driven by the shared `<ogds-accordion>` args/template.
   render: () =>
-    html`<div class="ogds-accordion with-icon plus right">${items}</div>`,
+    html`<div class="ogds-accordion with-icon plus right">
+      ${unsafeHTML(items)}
+    </div>`,
 };
