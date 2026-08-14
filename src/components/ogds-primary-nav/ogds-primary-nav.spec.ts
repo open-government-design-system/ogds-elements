@@ -162,6 +162,41 @@ describe("keyboard", () => {
     expect(details.open).toBe(false);
     expect(document.activeElement).toBe(details.querySelector("summary"));
   });
+
+  it("on Escape key press with multiple submenus open (distinct author-supplied names), closes the one focus is inside", async () => {
+    const el = mount(`
+      <ogds-primary-nav>
+        <ul>
+          <li>
+            <details name="one">
+              <summary>Section one</summary>
+              <ul><li><a href="/one/a">One A</a></li></ul>
+            </details>
+          </li>
+          <li>
+            <details name="two">
+              <summary>Section two</summary>
+              <ul><li><a href="/two/a">Two A</a></li></ul>
+            </details>
+          </li>
+        </ul>
+      </ogds-primary-nav>
+    `);
+    await el.updateComplete;
+    const [first, second] = Array.from(el.querySelectorAll("details"));
+    first.open = true;
+    second.open = true;
+    const secondLink = second.querySelector("a") as HTMLAnchorElement;
+    secondLink.focus();
+
+    el.dispatchEvent(
+      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
+    );
+
+    expect(second.open).toBe(false);
+    expect(first.open).toBe(true);
+    expect(document.activeElement).toBe(second.querySelector("summary"));
+  });
 });
 
 describe("stylesheet adoption", () => {

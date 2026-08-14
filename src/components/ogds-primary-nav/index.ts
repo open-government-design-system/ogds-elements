@@ -37,8 +37,9 @@ let instanceCount = 0;
  * @cssprop --ogds-primary-nav-link-color - Text color for links and submenu toggles.
  * @cssprop --ogds-primary-nav-link-hover-background-color - Background color on hover below the desktop breakpoint.
  * @cssprop --ogds-primary-nav-link-hover-color - Text color on hover at the desktop breakpoint.
- * @cssprop --ogds-primary-nav-submenu-background-color - Background color of a submenu panel, and of its open toggle at the desktop breakpoint.
- * @cssprop --ogds-primary-nav-submenu-link-color - Text color for links inside a submenu.
+ * @cssprop --ogds-primary-nav-submenu-background-color - Background color of a submenu panel at the desktop size (where it covers page content), and of its parent nav item while open. At mobile widths, the subnav background is transparent instead to show the drawer background.
+ * @cssprop --ogds-primary-nav-submenu-divider-color - Border color between subnav items in the nav drawer.
+ * @cssprop --ogds-primary-nav-submenu-link-color - Text color for links inside a submenu at the desktop breakpoint. Below the desktop breakpoint, submenu links use --ogds-primary-nav-link-color instead, to keep sufficient contrast against the submenu's transparent background.
  *
  * @slot - **HTML markup.** Expects a single `<ul>` of `<li>` items, each containing either an `<a>` or a `<details>` submenu.
  * @element ogds-primary-nav
@@ -114,12 +115,18 @@ export class OgdsPrimaryNav extends LitElement {
   private _onKeydown = (event: KeyboardEvent) => {
     if (event.key !== "Escape") return;
 
-    const openSubmenu = this._submenus.find((details) => details.open);
-    if (openSubmenu) {
-      openSubmenu.open = false;
-      openSubmenu.querySelector<HTMLElement>(":scope > summary")?.focus();
-      event.stopPropagation();
-    }
+    const openSubmenus = this._submenus.filter((details) => details.open);
+    if (openSubmenus.length === 0) return;
+
+    const active = document.activeElement;
+    const openSubmenu =
+      openSubmenus.find(
+        (details) => active instanceof Node && details.contains(active),
+      ) ?? openSubmenus[0];
+
+    openSubmenu.open = false;
+    openSubmenu.querySelector<HTMLElement>(":scope > summary")?.focus();
+    event.stopPropagation();
   };
 
   render() {
