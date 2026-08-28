@@ -1,8 +1,8 @@
 {
   "mode": "pre",
-  "tag": "alpha",
+  "tag": "beta",
   "initialVersions": {
-    "@ogds/elements": "1.0.0-alpha.2"
+    "@ogds/elements": "1.0.0-alpha.8"
   },
   "changesets": [
     "good-needles-fix",
