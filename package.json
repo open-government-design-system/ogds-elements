@@ -1,6 +1,6 @@
 {
   "name": "@ogds/elements",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-beta",
   "type": "module",
   "customElements": "custom-elements.json",
   "types": "./dist/index.d.ts",

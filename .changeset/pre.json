@@ -4,11 +4,5 @@
   "initialVersions": {
     "@ogds/elements": "1.0.0-alpha.8"
   },
-  "changesets": [
-    "good-needles-fix",
-    "petite-dodos-call",
-    "short-oranges-rescue",
-    "sunny-stamps-rush",
-    "twenty-socks-reflect"
-  ]
+  "changesets": []
 }
