@@ -51,8 +51,10 @@ The component accepts the following inputs (props, slots, and CSS custom propert
 </ogds-primary-nav>
 ```
 
-Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator. Because the logic for knowing where the user is in the application
-will depend heavily on the implementation, the app consuming the component is responsible for managing the `aria-current` attribute.
+Add `aria-current="page"` to the current page's `<a>` to show the current-page indicator. The same attribute works on a `<summary>` too, but in this case it marks the current
+_section_ when the current page lives inside a submenu rather than being a top-level link. The indicator shows whether that submenu is open or closed. Because
+the logic for knowing where the user is in the application will depend heavily on the implementation, the app consuming the component is responsible for
+managing the `aria-current` attribute.
 
 ## Guidance
 
@@ -71,6 +73,34 @@ Subnavs use the browser-native `<details>`/`<summary>` elements, so they open an
 1. **Native details/summary.** Subnavs keep working without JavaScript because they use the native `<details>` element (besides exceptions noted above).
 2. **Styles.** As long as the component's styles are pulled into your application, the visual styling still works without JavaScript.
 3. **Class-based equivalent.** You can substitute `<div class="ogds-primary-nav">` in place of `<ogds-primary-nav>`. These are equivalent for styling, but since there's no JavaScript running you'll need to add `role="navigation"` and `aria-label` yourself, and give shared `name` attributes to top-level `<details>` elements for exclusive subnavs.
+
+## Troubleshooting
+
+### The chevron/dropdown toggle is missing, or hover/row alignment looks broken
+
+Check for an unlayered `summary { display: ... }` css rule elsewhere on the page
+(USWDS's own reset includes one). Unlayered CSS always wins over this
+component's layered styles regardless of specificity or source order, so a rule
+like that can silently override the `display: flex` the chevron icon, hover
+state, and row alignment all depend on. This component ships a small unlayered
+escape hatch specifically for `summary`'s `display` to guard against the common
+case, but a sufficiently specific unlayered override elsewhere can still beat
+it.
+
+### A submenu dropdown renders behind other page content
+
+The dropdown relies on an ambient `z-index` that you're expected to set
+yourself. There's no built-in value. That's fragile in a specific way: if any
+element between the nav and the page root establishes its own stacking context,
+that ancestor traps the nav's `z-index` inside it, so the dropdown can no
+longer compete against content outside that ancestor no matter how high you set
+it.
+
+The most common source of this behavior is a `position` with a `z-index`, but there are plenty of other, subtler ways to create new stacking
+contexts: `transform` (including a harmless identity transform like
+`translateZ(0)`, which you might add just to trigger GPU-acceleration),
+`filter`, `opacity` below `1`, `will-change`, `isolation: isolate`, and
+`contain: layout` or `paint`.
 
 ---
 
