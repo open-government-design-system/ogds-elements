@@ -78,7 +78,7 @@ Subnavs use the browser-native `<details>`/`<summary>` elements, so they open an
 
 ### The chevron/dropdown toggle is missing, or hover/row alignment looks broken
 
-Check for an unlayered `summary { display: ... }` rule elsewhere on the page
+Check for an unlayered `summary { display: ... }` css rule elsewhere on the page
 (USWDS's own reset includes one). Unlayered CSS always wins over this
 component's layered styles regardless of specificity or source order, so a rule
 like that can silently override the `display: flex` the chevron icon, hover
