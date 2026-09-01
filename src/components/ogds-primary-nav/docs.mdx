@@ -96,8 +96,7 @@ that ancestor traps the nav's `z-index` inside it, so the dropdown can no
 longer compete against content outside that ancestor no matter how high you set
 it.
 
-Obviously `position` with a `z-index` is the most common source of this
-behavior, but there are plenty of other, subtler ways to create new stacking
+The most common source of this behavior is a `position` with a `z-index`, but there are plenty of other, subtler ways to create new stacking
 contexts: `transform` (including a harmless identity transform like
 `translateZ(0)`, which you might add just to trigger GPU-acceleration),
 `filter`, `opacity` below `1`, `will-change`, `isolation: isolate`, and
