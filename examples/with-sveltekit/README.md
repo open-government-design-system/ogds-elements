@@ -1,3 +1,13 @@
 # SvelteKit
 
-This is a bare-bones example to demonstrate how to use USWDS Elements in a SvelteKit project.
+This is a bare-bones example to demonstrate how to use OGDS Elements in a SvelteKit project.
+
+## Setup
+
+```
+cd examples/with-sveltekit
+npm install
+npm run dev
+```
+
+Visit <http://localhost:5173/>
