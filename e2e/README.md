@@ -49,7 +49,7 @@ npx playwright test --config=./config/playwright.config.ts
 
 ```shell
 # Run a specific test file
-npx playwright test ./e2e/components/usa-banner/usa-banner.spec.ts --config=./config/playwright.config.ts
+npx playwright test ./e2e/components/ogds-banner/ogds-banner.spec.ts --config=./config/playwright.config.ts
 ```
 
 ### 3. Writing a New Visual Regression Test

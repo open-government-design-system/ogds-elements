@@ -1,9 +1,9 @@
 <!-- src/App.vue -->
 <script setup lang="ts">
-import { UsaBanner } from "@uswds/elements";
+import { OgdsBanner } from "@ogds/elements";
 </script>
 
 <template>
-  <usa-banner></usa-banner>
+  <ogds-banner></ogds-banner>
   <h1>My Vue App</h1>
 </template>
