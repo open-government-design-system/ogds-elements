@@ -34,9 +34,9 @@ jobs:
         id: changesets
         uses: changesets/action@8488615a623b1b9c987934bb89eae8af6a946ac1 # pin@v2.1.1
         with:
-          publish: npm run release
-          commitMode: github-api # the api is required to get signed commits on changeset bot's workflow
-          branch: main
+          publish-script: npm run release
+          # need this to have signed commits in release
+          pr-base-branch: main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HUSKY: 0
