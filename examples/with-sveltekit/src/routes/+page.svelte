@@ -1,7 +1,7 @@
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
-  import { UsaBanner } from "@uswds/elements";
+  import { OgdsBanner } from "@ogds/elements";
 </script>
 
-<usa-banner></usa-banner>
+<ogds-banner></ogds-banner>
 <h1>Welcome to SvelteKit</h1>
