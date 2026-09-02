@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ogds/elements": "1.0.0-alpha.5",
+    "@ogds/elements": "^1.0.0-beta.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

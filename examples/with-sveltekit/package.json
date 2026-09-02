@@ -26,6 +26,6 @@
 		]
 	},
 	"dependencies": {
-		"@ogds/elements": "1.0.0-alpha.4"
+		"@ogds/elements": "^1.0.0-beta.0"
 	}
 }
