@@ -1,5 +1,16 @@
 # @ogds/elements
 
+## 1.0.0-beta.1
+
+### Minor Changes
+
+- 6d56583: Refactor ogds-header component
+
+### Patch Changes
+
+- 691a241: (docs) replace references to @uswds/elements
+- 691a241: Bump @uswds/uswds from 3.13.0 to 3.14.0
+
 ## 1.0.0-beta.0
 
 ### Patch Changes
