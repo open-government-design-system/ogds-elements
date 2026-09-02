@@ -2,11 +2,14 @@
 
 import "./App.css";
 /**
- * OGDS Elements provides a React wrapper of each component.
- * Import the components you need as shown in the example the below.
- * For purposes of demonstration, we are importing the OGDS Banner component.
+ * OGDS Elements provides a React wrapper of each component. Import each one
+ * from its own module under `@ogds/elements/components/frameworks/react/`,
+ * named after the component in PascalCase — importing a wrapper directly
+ * registers only that custom element, so you don't pay for components your
+ * app never renders. For purposes of demonstration, we are importing the OGDS
+ * Banner component.
  */
-import { OgdsBanner } from "@ogds/elements/components/frameworks/react/index";
+import { OgdsBanner } from "@ogds/elements/components/frameworks/react/OgdsBanner";
 
 function App() {
   return (

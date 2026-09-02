@@ -7,8 +7,8 @@ export default defineConfig({
     vue({
       template: {
         compilerOptions: {
-          // Treat all tags starting with 'usa-' as custom elements
-          isCustomElement: (tag) => tag.startsWith("usa-"),
+          // Treat all tags starting with 'ogds-' as custom elements
+          isCustomElement: (tag) => tag.startsWith("ogds-"),
         },
       },
     }),
