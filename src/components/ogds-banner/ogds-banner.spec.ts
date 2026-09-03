@@ -1,4 +1,6 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+vi.mock("../../core/token-styles", () => ({ adoptTokenStyles: vi.fn() }));
 
 import "./index.js";
 
