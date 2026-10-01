@@ -1,5 +1,11 @@
 # @ogds/elements
 
+## 1.0.0-beta.2
+
+### Patch Changes
+
+- b1f244d: Added a `counter-separator` slot to `ogds-task-list` so the "of" in the "X of Y tasks completed" counter can be translated.
+
 ## 1.0.0-beta.1
 
 ### Minor Changes
