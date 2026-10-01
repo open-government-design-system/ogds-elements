@@ -97,6 +97,7 @@ export const AllStatuses = {
 
 export const Translated = {
   args: {
+    "counter-separator-slot": "de",
     "counter-label-slot": "tareas completadas",
     "instruction-slot": "Complete todas las tareas para enviar su solicitud.",
     "default-slot": `
