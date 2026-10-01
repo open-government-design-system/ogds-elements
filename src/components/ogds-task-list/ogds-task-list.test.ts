@@ -160,4 +160,13 @@ describe("counter", () => {
     const heading = el.shadowRoot!.querySelector(".counter");
     expect(heading?.textContent).toContain("0");
   });
+
+  it("renders a default 'of' separator between the counts", async () => {
+    const el = mount(`<ogds-task-list></ogds-task-list>`);
+    await el.updateComplete;
+    const slot = el.shadowRoot!.querySelector<HTMLSlotElement>(
+      '.counter slot[name="counter-separator"]',
+    );
+    expect(slot?.textContent).toBe("of");
+  });
 });

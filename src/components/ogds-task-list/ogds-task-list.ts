@@ -18,6 +18,7 @@ const headingTags = {
 /**
  * @summary A task progress list with a completion counter and slotted steps.
  *
+ * @slot counter-separator - **Plain text.** The word between the completed and total counts. Defaults to "of". Use an inline element (e.g. `<span>`).
  * @slot counter-label - **Plain text.** The label after the computed "X of Y" count. Defaults to "tasks completed". Use an inline element (e.g. `<span>`).
  * @slot instruction - **Plain text.** Text shown below the task counter (e.g. "Finish all tasks to submit.").
  * @slot - **HTML markup.** One or more `<ogds-task-list-step>` elements.
@@ -67,7 +68,9 @@ export class OgdsTaskList extends LitElement {
       <section aria-labelledby="counter">
         <div class="header">
           ${staticHtml`<${tag} class="counter" id="counter">
-            ${this._completedCount} of ${this._totalCount}
+            ${this._completedCount}
+            <slot name="counter-separator">of</slot>
+            ${this._totalCount}
             <slot name="counter-label">tasks completed</slot>
           </${tag}>`}
           <slot name="instruction"></slot>
