@@ -8,7 +8,7 @@ The components developed in OGDS Elements use [the same design tokens as USWDS](
 
 ## Component Documentation on Storybook
 
-Where can I see exapmles of the OGDS Elements components? How do I set this up?
+Where can I see examples of the OGDS Elements components? How do I set this up?
 
 For more detailed documentation, see the [OGDS Elements Storybook](https://ogds-elements.jbhutch01.workers.dev/).
 
