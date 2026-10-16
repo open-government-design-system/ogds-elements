@@ -14,13 +14,7 @@
     <div class="usa-overlay"></div>
     {% include "../components/header.njk" %}
     <div class="flex-fill">
-      <div class="grid-container">
-        <div class="grid-row grid-gap">
-          <div class="usa-prose">
-            {{ content | safe }}
-          </div>
-        </div>
-      </div>
+      {{ content | safe }}
     </div>
     {% include "../components/footer.njk" %}
   </body>

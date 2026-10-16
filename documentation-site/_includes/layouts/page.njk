@@ -5,14 +5,16 @@ layout: "/layouts/base.njk"
 <section class="usa-section">
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      <div class="usa-in-page-nav-container">
+      <div class="grid-col-12 tablet:grid-col-3">
         {% include "../components/side-navigation.njk" %}
-        <main id="main-content" class="grid-col-12 desktop:grid-col-9">
-          <div class="usa-prose">
-            <h1>{{ title | safe }}</h1>
-            {{ content | safe }}
-          </div>
-        </main>
+      </div>
+      <main id="main-content" class="grid-col-12 tablet:grid-col-6">
+        <div class="usa-prose">
+          <h1>{{ title | safe }}</h1>
+          {{ content | safe }}
+        </div>
+      </main>
+      <div class="grid-col-12 tablet:grid-col-3 usa-in-page-nav-container">
         {% include "../components/in-page-navigation.njk" %}
       </div>
     </div>
