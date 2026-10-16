@@ -24,6 +24,7 @@ on:
   push:
     branches:
       - main
+      - cw/eleventy
 
 jobs:
   build:
