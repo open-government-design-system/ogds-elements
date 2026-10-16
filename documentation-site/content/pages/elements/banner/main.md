@@ -1,0 +1,81 @@
+---
+layout: layouts/element-page.njk
+title: Banner
+permalink: /elements/banner/
+description: Banners identify official websites of government organizations in the United States. They also help visitors understand whether a website is official and secure.
+storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-banner--docs
+accessibility_tests_url: https://designsystem.digital.gov/components/banner/accessibility-tests/
+---
+
+## About the banner component
+
+<strong>Note:</strong> Banners and identifiers are core components. We
+recommend using both core components on most sites. Together, they are the
+most recognizable and standardized design elements of a government site.
+
+You should use the banner to identify your site as an official government site.
+
+The banner explains how to identify an official `.gov` or `.mil` domain and that these sites have secure HTTPS connections. Using the banner component is the best way to assure visitors that they’re connected to an official site.
+
+Most government sites should use the banner, but some should not use the banner. Do NOT use the banner on non-government domains such as a `.com` or `.org`.
+
+## Example
+
+<div class="element-example">
+    <ogds-banner></ogds-banner>
+</div>
+
+### Example Code
+
+```html
+<ogds-banner></ogds-banner>
+```
+
+For more code examples, see Storybook (link at the top of this page).
+
+## Guidance
+
+### About
+
+This version of `ogds-banner` (i.e. using web components) first became available as `usa-banner` in [USWDS v3.13.0](https://github.com/uswds/uswds/releases/tag/v3.13.0) and is part of the `@uswds/uswds-elements` package. This is a direct port/fork of that component.
+
+### When to use the default banner
+
+_To identify as an official government site._ Most government sites should use the banner, though non-federal government sites will need to change the text to be more accurate.
+
+### When to consider something else
+
+_If you don’t use a .gov/.mil domain and HTTPS._ The Design System’s banner text identifies `.gov` and `.mil` domains and HTTPS as indicators that a website is an official government website. Use this banner only if your site uses both the proper top-level domain (TLD) and HTTPS.
+
+_Any time it would be misleading._ The banner should be used to reduce confusion. Avoid using the banner on any site meant only for testing or otherwise not meant to be identified as an official government website.
+
+### Usability guidance
+
+_Use the provided text without customization._ The banner is most effective as an identifier and a learning tool when its message is consistent across government sites. With only a few exceptions (described in our Implementation guidance), sites should use the top-level domain (TLD)-appropriate text provided, unaltered. Use the Spanish version of the banner for Spanish-language websites.
+
+_Use the version appropriate to your website’s top-level domain (TLD)._ If your project uses a .mil top-level domain, use the .mil banner text.
+Show the banner on every page. Use the banner at the top of every page of a site. It can be confusing or misleading if it appears on some pages and not others.
+
+_Avoid distraction._ The banner should appear on every page of your site. Choose background colors that fit with your site theme, and avoid color combinations that draw excessive attention to the banner.
+
+_Keep the text up to date._ Use the most current version of the banner.
+
+### Accessibility guidance
+
+The component provides default labels for English and Spanish when `lang="en"` or `lang="es"` is passed to the component. If no `lang` attribute is passed, the English label will be used.
+
+If the default labels are not appropriate, you can pass a custom label to the component, which will be used instead and rendered as an `aria-label` attribute inside the banner.
+
+For example, if you were providing a French version of the banner, you should also add a label in French to distinguish the banner header from the main header.
+
+```html
+<usa-banner label="Un site Web officiel du gouvernement américain">
+    <!-- rest of the banner markup -->
+</usa-banner>
+```
+
+Some `.gov` websites don’t represent the federal level of the U.S. government. These sites should adapt the An official website of the United States government and Official websites use `.gov` sections to use more accurate language specific to the site.
+
+Some `.mil` websites don’t belong to an official U.S. Department of War organization. These sites should adapt the Official websites use `.mil` section to use more technically accurate language: “A .mil website operates under the approval of the U.S. Department of War.”
+
+The banner should directly follow the `skipnav` component.
