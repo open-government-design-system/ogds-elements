@@ -45,10 +45,10 @@ To share ideas, questions, or concerns with the OGDS core team and community, yo
 
 ### Contributing Code
 
-See [Contributing Code](/contributing-code)
+<a class="usa-button" href="https://github.com/open-government-design-system/ogds-elements/blob/main/CONTRIBUTING.md">Read our Contributing.md</a>
 
 ## Follow our Code of Conduct
 
 Everyone who participates in this project is expected to follow the OGDS Code of Conduct.
 
-See [Code of Conduct](/contributing-code)
+<a class="usa-button" href="https://docs.google.com/document/d/1TXmD5nLmANcOlF9ipR7wnY06iuFj6zTEYaGiZ-2X3Ug/edit?tab=t.0#heading=h.pctub6czqxup">Read our Code of Conduct</a>
