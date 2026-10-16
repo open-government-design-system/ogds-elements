@@ -1,10 +1,8 @@
 ---
-layout: layouts/base.njk
+layout: layouts/page.njk
 title: Task List
 permalink: /elements/task-list/
 ---
-
-# Task List
 
 A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 
