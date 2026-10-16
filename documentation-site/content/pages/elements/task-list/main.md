@@ -2,10 +2,9 @@
 layout: layouts/element-page.njk
 title: Task List
 permalink: /elements/task-list/
+description: A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-task-list--docs
 ---
-
-A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 
 ## Example
 
@@ -113,7 +112,3 @@ Set the status of each task using the status parameter:
 
 - **Don't rely on color alone:** Use text labels and/or icons with accessible names to convey status changes.
 - **Text progress over bars:** Do not use linear progress bars or steppers. This component is for non-linear flows, but a linear progress bar implies a linear flow. Instead, use descriptive text, such as "1 out of 3 tasks completed," or “2 out of 3 tasks remaining.”
-
-## Variations
-
-TODO: LINK OUT STORYBOOK

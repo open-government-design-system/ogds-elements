@@ -1,5 +1,5 @@
 ---
-layout: layouts/base.njk
+layout: layouts/page.njk
 title: Task List
 permalink: /elements/task-list/background-research/
 ---

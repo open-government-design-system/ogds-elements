@@ -11,6 +11,7 @@ layout: "/layouts/base.njk"
       <main id="main-content" class="grid-col-12 tablet:grid-col-6 desktop:grid-col-8">
         <div class="usa-prose">
           <h1>{{ title | safe }}</h1>
+          <p>{{ description | safe }}</p>
           {{ content | safe }}
         </div>
       </main>

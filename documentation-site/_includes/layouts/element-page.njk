@@ -2,8 +2,22 @@
 layout: "/layouts/page.njk"
 ---
 
-<p>
-<a href="#" class="usa-link usa-link--external">More {{ title | safe }} code examples on Storybook</a>
-</p>
-
 {{ content | safe }}
+<h2>More Details</h2>
+<ul>
+  {% if storybook_url %}
+    <li>
+      <a href="{{ storybook_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;code examples (Storybook)</a>
+    </li>
+  {% endif %}
+  {% if accessibility_tests_url %}
+    <li>
+      <a href="{{ accessibility_tests_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;accessibility checklists (USWDS)</a>
+    </li>
+  {% endif %}
+  {% if background_research_url %}
+    <li>
+      <a href="{{ background_research_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;background research</a>
+    </li>
+  {% endif %}
+</ul>
