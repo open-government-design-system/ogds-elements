@@ -1,7 +1,7 @@
 ---
 layout: layouts/element-page.njk
 title: Primary Navigation
-permalink: /elements/primary-nav/
+permalink: /elements/header/primary-nav/
 description: The primary nav lists the main sections of a site. On narrow viewports its submenus behave like an accordion; on wide viewports they become dropdown menus.
 storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-primary-nav--docs
 ---

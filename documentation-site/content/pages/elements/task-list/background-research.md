@@ -1,12 +1,9 @@
 ---
 layout: layouts/page.njk
-title: Task List
+title: Task List Background Research
+description: A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 permalink: /elements/task-list/background-research/
 ---
-
-# Task List Background Research
-
-A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 
 ## Research Summaries
 
