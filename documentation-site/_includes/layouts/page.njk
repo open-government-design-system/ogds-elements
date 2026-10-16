@@ -3,18 +3,18 @@ layout: "/layouts/base.njk"
 ---
 
 <section class="usa-section">
-  <div class="grid-container">
+  <div class="page-outer-margin">
     <div class="grid-row grid-gap">
-      <div class="grid-col-12 tablet:grid-col-3">
+      <div class="grid-col-12 tablet:grid-col-3 desktop:grid-col-2">
         {% include "../components/side-navigation.njk" %}
       </div>
-      <main id="main-content" class="grid-col-12 tablet:grid-col-6">
+      <main id="main-content" class="grid-col-12 tablet:grid-col-6 desktop:grid-col-8">
         <div class="usa-prose">
           <h1>{{ title | safe }}</h1>
           {{ content | safe }}
         </div>
       </main>
-      <div class="grid-col-12 tablet:grid-col-3 usa-in-page-nav-container">
+      <div class="grid-col-12 tablet:grid-col-3 desktop:grid-col-2 usa-in-page-nav-container">
         {% include "../components/in-page-navigation.njk" %}
       </div>
     </div>

@@ -2,3 +2,8 @@
   border: 1px solid black;
   padding: 1rem;
 }
+
+.page-outer-margin {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
