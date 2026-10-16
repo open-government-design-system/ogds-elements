@@ -11,6 +11,17 @@ layout: "/layouts/base.njk"
       <main id="main-content" class="grid-col-12 tablet:grid-col-6 desktop:grid-col-8">
         <div class="usa-prose">
           <h1>{{ title | safe }}</h1>
+          <p class="reference-links">
+            {% if storybook_url %}
+              <a href="{{ storybook_url }}" class="usa-link usa-link--external">Storybook</a>
+            {% endif %}
+            {% if accessibility_tests_url %}
+              <a href="{{ accessibility_tests_url }}" class="usa-link usa-link--external">Accessibility checklists</a>
+            {% endif %}
+            {% if background_research_url %}
+              <a href="{{ background_research_url }}" class="usa-link usa-link--external">Background research</a>
+            {% endif %}
+          </p>
           <p>{{ description | safe }}</p>
           {{ content | safe }}
         </div>

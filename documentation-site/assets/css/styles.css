@@ -7,3 +7,8 @@
   margin-right: 2rem;
   margin-left: 2rem;
 }
+
+.reference-links {
+  display: flex;
+  gap: 1rem;
+}
