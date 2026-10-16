@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>{{ title }}</title>
+  </head>
+
+  <body
+    class="display-flex flex-column minh-viewport"
+  >
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+    <div class="usa-overlay"></div>
+    HEADER
+    <div class="flex-fill">
+          {{ content | safe }}
+    </div>
+    FOOTER
+  </body>
+  <script webc:keep src="/assets/js/uswds.min.js"></script>
+</html>
