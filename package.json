@@ -35,6 +35,7 @@
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
+    "build-ghpages": "npm run eleventy --pathprefix=/ogds-elements/",
     "dev": "vite --config ./config/vite.config.ts",
     "eslint": "eslint .",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
