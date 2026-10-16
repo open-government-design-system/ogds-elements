@@ -20,6 +20,11 @@
 
 name: Deploy to GitHub Pages
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./documentation-site
+
 on:
   push:
     branches:

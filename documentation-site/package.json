@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build:elements && eleventy --serve",
     "build": "npm run build:elements && eleventy",
-    "build:elements": "vite build"
+    "build:elements": "vite build",
+    "build-ghpages": "npx @11ty/eleventy --pathprefix=/ogds-elements/"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.7",
