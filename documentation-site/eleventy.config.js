@@ -15,4 +15,12 @@ export default function (eleventyConfig) {
     }
     return renderInline ? mdLib.renderInline(content) : mdLib.render(content);
   });
+
+  // Copy the contents of the `assets` folder to the output folder
+  // For example, `./public/css/` ends up in `_site/css/`
+  eleventyConfig.addPassthroughCopy({
+    "./node_modules/@uswds/uswds/dist/": "/assets/",
+    "./node_modules/@ogds/tokens/build/css/": "/assets/css/",
+    "./assets/": "/assets/",
+  });
 }
