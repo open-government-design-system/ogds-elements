@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
     "@ogds/elements": "^1.0.0-alpha.7",
     "@ogds/tokens": "^1.0.0-alpha",
     "@uswds/uswds": "3.14.0",

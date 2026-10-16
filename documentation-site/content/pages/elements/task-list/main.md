@@ -35,7 +35,7 @@ A Task Progress List guides users through a complex workflow by breaking it down
 
 ### Example Code
 
-```
+```html
 <ogds-task-list>
     <span slot="instruction">Finish all tasks to submit your application.</span>
     <ogds-task-list-step status="completed" url="/step-1">
