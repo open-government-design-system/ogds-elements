@@ -5,9 +5,7 @@ description: A Task Progress List guides users through a complex workflow by bre
 permalink: /elements/task-list/background-research/
 ---
 
-## Research Summaries
-
-### Background Context
+## Research Summary
 
 The initial version of this component was created by the Family and Medical Leave (FAMLI) Program by Maryland Department of Labor (MD Labor) in June 2026\. This initiative was led by team members Amanda Beall, Casey Watts, and Matt Henry. The biggest inspiration for this component was the Task List component from the [Australian Government Department of Agriculture, Fisheries and Forestry, Desk System](https://design-system.agriculture.gov.au/components/task-list#).
 
@@ -47,7 +45,7 @@ In this document we've described some of the user research and design considerat
     - Could we use both list semantics AND headings?
         - Unfortunately we can only use [one or the other: list semantics OR headings](https://matthenry.fyi/posts/semantic-deathmatch/).
 
-## Lower confidence decisions
+### Lower confidence decisions
 
 Here are some open questions that could use further research.  
 Depending on the results of further user testing, we might either:
@@ -72,7 +70,7 @@ Lower confidence decisions:
         - Would it be confusing to shift tasks around based on status? Would there be accessibility issues?
         - Would adjusting the visual style somehow affect this?
 
-## User Research
+## Past Research
 
 ### June 2026 (Maryland Department of Labor)
 
