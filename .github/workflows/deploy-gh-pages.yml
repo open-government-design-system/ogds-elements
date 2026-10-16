@@ -39,21 +39,21 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
 
       - name: Cache npm
-        uses: actions/cache
+        uses: actions/cache@v6
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
 
       - name: Cache Eleventy .cache
-        uses: actions/cache
+        uses: actions/cache@v6
         with:
           path: ./.cache
           key: ${{ runner.os }}-eleventy-fetch-cache
@@ -63,7 +63,7 @@ jobs:
 
       - name: Upload static files as artifact
         id: deployment
-        uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: documentation-site/_site/
 
@@ -79,4 +79,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages
+        uses: actions/deploy-pages@v5
