@@ -1,7 +1,8 @@
 ---
-layout: layouts/page.njk
+layout: layouts/element-page.njk
 title: Task List
 permalink: /elements/task-list/
+storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-task-list--docs
 ---
 
 A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
