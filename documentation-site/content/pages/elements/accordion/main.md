@@ -8,15 +8,13 @@ accessibility_tests_url: https://designsystem.digital.gov/components/accordion/a
 background_research_url: /elements/accordion/background-research
 ---
 
-## Description
-
 ## Differences between the OGDS Accordion and USWDS Accordion
 
 - The OGDS implementation uses [the browser-native `<details>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details), which works even when JavaScript is not available (see [Fallbacks Without JavaScript](#fallbacks-without-javascript)).
 - The OGDS implementation allows for the icon to be on the left or the right.
 - The OGDS implementation allows for the icon itself to be customized.
 
-## Example Accordion
+## Example
 
 <div class="element-example">
     <ogds-accordion>
@@ -46,6 +44,8 @@ background_research_url: /elements/accordion/background-research
     </details>
     </ogds-accordion>
 </div>
+
+### Example Code
 
 ```html
 <ogds-accordion>
