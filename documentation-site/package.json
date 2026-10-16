@@ -8,8 +8,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "npm run build:elements && eleventy --serve",
+    "build": "npm run build:elements && eleventy",
+    "build:elements": "vite build"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.7",
