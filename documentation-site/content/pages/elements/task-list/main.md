@@ -8,7 +8,55 @@ A Task Progress List guides users through a complex workflow by breaking it down
 
 ## Example
 
-TODO: EXAMPLE GOES HERE
+<div class="element-example">
+    <ogds-task-list>
+        <span slot="instruction">Finish all tasks to submit your application.</span>
+        <ogds-task-list-step status="completed" url="/step-1">
+            <span slot="title">Edit your profile</span>
+            <dl slot="saved-data">
+                <dt>Phone number</dt>
+                <dd>(410) 123-4567</dd>
+                <dt>Email address</dt>
+                <dd>example@example.com</dd>
+            </dl>
+        </ogds-task-list-step>
+        <ogds-task-list-step status="in-progress" url="/step-2">
+            <span slot="title">Edit your address</span>
+        </ogds-task-list-step>
+        <ogds-task-list-step status="not-started" url="/step-3">
+            <span slot="title">Submit additional supporting documents</span>
+        </ogds-task-list-step>
+        <ogds-task-list-step status="cannot-start-yet">
+            <span slot="title">Sign contractual agreement</span>
+        </ogds-task-list-step>
+    </ogds-task-list>
+</div>
+
+### Example Code
+
+```
+<ogds-task-list>
+    <span slot="instruction">Finish all tasks to submit your application.</span>
+    <ogds-task-list-step status="completed" url="/step-1">
+        <span slot="title">Edit your profile</span>
+        <dl slot="saved-data">
+            <dt>Phone number</dt>
+            <dd>(410) 123-4567</dd>
+            <dt>Email address</dt>
+            <dd>example@example.com</dd>
+        </dl>
+    </ogds-task-list-step>
+    <ogds-task-list-step status="in-progress" url="/step-2">
+        <span slot="title">Edit your address</span>
+    </ogds-task-list-step>
+    <ogds-task-list-step status="not-started" url="/step-3">
+        <span slot="title">Submit additional supporting documents</span>
+    </ogds-task-list-step>
+    <ogds-task-list-step status="cannot-start-yet">
+        <span slot="title">Sign contractual agreement</span>
+    </ogds-task-list-step>
+</ogds-task-list>
+```
 
 ## Inputs
 
