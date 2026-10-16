@@ -59,13 +59,7 @@ A Task Progress List guides users through a complex workflow by breaking it down
 </ogds-task-list>
 ```
 
-## Inputs
-
-The component accepts the following inputs (props, slots, and CSS custom properties).
-
-TODO: EMBED OR LINK TO STORYBOOK HERE
-
----
+For more code examples, see Storybook (link at the top of this page).
 
 ## Guidance
 
