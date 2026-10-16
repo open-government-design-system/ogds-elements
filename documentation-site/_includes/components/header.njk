@@ -1,54 +1,30 @@
-<ogds-header>
-  <div slot="logo">
-    <a href="/">Project name</a>
+<div class="usa-overlay"></div>
+<header class="usa-header usa-header--basic">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo">
+        <em class="usa-logo__text">
+          <a href="/">Open Government Design System</a>
+        </em>
+      </div>
+      <button type="button" class="usa-menu-btn">Menu</button>
+    </div>
+    <nav aria-label="Primary navigation" class="usa-nav">
+      <button type="button" class="usa-nav__close">
+        <img src="/assets/img/usa-icons/close.svg" role="img" alt="Close"/>
+      </button>
+      <ul class="usa-nav__primary usa-accordion">
+        <li class="usa-nav__primary-item">
+          <a href="javascript:void(0);" class="usa-nav-link">
+            <span>OGDS Elements</span>
+          </a>
+        </li>
+        <li class="usa-nav__primary-item">
+          <a href="javascript:void(0);" class="usa-nav-link">
+            <span>About OGDS</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <span slot="nav-primary"></span>
-  <ogds-primary-nav slot="nav-primary">
-    <ul>
-      <li>
-        <a href="#" aria-current="page">Current section</a>
-      </li>
-      <li>
-        <details>
-          <summary>Benefits</summary>
-          <ul>
-            <li><a href="#">Navigation link</a></li>
-            <li><a href="#">Navigation link</a></li>
-            <li><a href="#">Navigation link</a></li>
-            <li><a href="#">Navigation link</a></li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Resources</summary>
-          <ul>
-            <li><a href="#">Navigation link</a></li>
-            <li><a href="#">Navigation link</a></li>
-            <li><a href="#">Navigation link</a></li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <a href="#">Simple link</a>
-      </li>
-    </ul>
-  </ogds-primary-nav>
-  <span slot="nav-primary"></span>
-  <div slot="notifications">Notifications</div>
-  <span slot="nav-secondary"></span>
-  <ul class="example-secondary-links" slot="nav-secondary">
-    <li>
-      <a href="#">Secondary link</a>
-    </li>
-    <li>
-      <a href="#">Another secondary link</a>
-    </li>
-  </ul>
-  <span slot="nav-secondary"></span>
-  <form class="example-search" role="search" slot="nav-secondary">
-    <input type="search" aria-label="Search" name="q">
-      <button type="submit">Search</button>
-    </form>
-    <span slot="nav-secondary"></span>
-  </ogds-header>
+</header>
