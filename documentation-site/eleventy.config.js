@@ -1,7 +1,9 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { HtmlBasePlugin } from "@11ty/eleventy";
 
 export default function (eleventyConfig) {
   eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(HtmlBasePlugin);
 
   let mdLib;
 
