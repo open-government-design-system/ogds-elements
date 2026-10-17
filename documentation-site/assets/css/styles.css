@@ -65,6 +65,7 @@
     "column-center"
     "column-left"
     "column-right"
+    "row-pre-footer"
     "row-footer";
 }
 
@@ -76,10 +77,11 @@
 @media (width >= 640px) {
   .grid-wrapper {
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: [fullbleed-start] 0 [main-start] 2fr 7fr 3fr [main-end] 0 [fullbleed-end];
+    grid-template-columns: [full-width-start] 0 [main-start] 2fr [center-start] 7fr [center-end] 3fr [main-end] 0 [full-width-end];
     grid-template-areas:
       ". . row-header . ."
       ". column-left column-center column-right ."
+      ". . row-pre-footer . ."
       ". . row-footer . .";
   }
 }
@@ -100,4 +102,15 @@ main {
   font-size: 1.2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  background-color: lightblue;
+}
+
+.grid-row-full-width {
+  display: grid;
+  grid-column: full-width;
+  grid-template-columns: subgrid;
+}
+
+.grid-row-full-width--centered-content {
+  grid-column: center;
 }
