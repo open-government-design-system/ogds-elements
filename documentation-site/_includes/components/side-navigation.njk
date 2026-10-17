@@ -1,4 +1,24 @@
-{% set navigationOptions = { listClass: "usa-sidenav", listItemClass: "usa-sidenav__item", activeAnchorClass: "usa-current", useAriaCurrentAttr: true, activeKey: eleventyNavigation.key} %}
+{% set navPages = collections.all | eleventyNavigation("Elements") %}
+{% macro renderNavListItem(entry) %}
+  {% if entry.children.length %}
+    <details {%- for child in entry.children %} {% if child.parent == entry.title and child.url == page.url %} class="is-active" open {% endif %} {% endfor %}>
+      <summary>{{ entry.title }}</summary>
+      <ul role="list">
+        {%- for child in entry.children %}
+          {{ renderNavListItem(child) }}
+        {% endfor -%}
+      </ul>
+    </details>
+  {% else %}
+    <li>
+      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" {% endif %}>{{ entry.title }}</a>
+    </li>
+  {%- endif -%}
+{%- endmacro %}
 <nav>
-  {{ collections.all | eleventyNavigation("Elements") | eleventyNavigationToHtml(navigationOptions) | safe }}
+  <ogds-accordion>
+    {%- for entry in navPages %}
+      {{ renderNavListItem(entry) }}
+    {%- endfor -%}
+  </ogds-accordion>
 </nav>

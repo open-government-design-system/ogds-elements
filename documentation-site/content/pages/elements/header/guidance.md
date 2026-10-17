@@ -1,10 +1,11 @@
 ---
 layout: layouts/element-page.njk
-title: Header
+title: Header Guidance
 permalink: /elements/header/
 eleventyNavigation:
-    key: Header
-    parent: Elements
+    key: Header Guidance
+    parent: Header
+    order: 2
 description: A header helps users identify where they are and provides a quick, organized way to reach the main sections of a website.
 storybook_url: TKTKTK
 accessibility_tests_url: TKTKTK

@@ -1,10 +1,11 @@
 ---
 layout: layouts/element-page.njk
-title: Banner
+title: Banner Guidance
 permalink: /elements/banner/
 eleventyNavigation:
-    key: Banner
-    parent: Elements
+    key: Banner Guidance
+    parent: Banner
+    order: 2
 description: Banners identify official websites of government organizations in the United States. They also help visitors understand whether a website is official and secure.
 storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-banner--docs
 accessibility_tests_url: https://designsystem.digital.gov/components/banner/accessibility-tests/
