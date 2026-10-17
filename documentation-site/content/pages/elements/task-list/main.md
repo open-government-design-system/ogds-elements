@@ -6,7 +6,6 @@ eleventyNavigation:
     key: Task List Guidance
     parent: Task List
 description: A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
-storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-task-list--docs
 ---
 
 ## Example
