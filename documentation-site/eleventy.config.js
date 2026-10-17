@@ -1,7 +1,9 @@
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { HtmlBasePlugin } from "@11ty/eleventy";
 
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(HtmlBasePlugin);
 

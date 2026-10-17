@@ -2,6 +2,9 @@
 layout: layouts/element-page.njk
 title: Accordion
 permalink: /elements/accordion/
+eleventyNavigation:
+    key: Accordion
+    parent: Elements
 description: Accordions show and hide sections of related content on a page.
 storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-accordion--docs
 accessibility_tests_url: https://designsystem.digital.gov/components/accordion/accessibility-tests/

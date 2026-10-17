@@ -1,34 +1,4 @@
-<nav aria-label="Side navigation">
-  <ul class="usa-sidenav">
-    <li class="usa-sidenav__item">
-      <a href="/elements/accordion/">Accordion</a>
-      <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="/elements/accordion/accordion-toggle">Accordion Toggle</a>
-        </li>
-      </ul>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="/elements/banner/">Banner</a>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="/elements/header/">Header</a>
-      <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="/elements/header/primary-nav/">Primary Navigation</a>
-        </li>
-      </ul>
-    </li>
-    <li class="usa-sidenav__item">
-      <a href="/elements/task-list/">Task List</a>
-      <ul class="usa-sidenav__sublist">
-        <li class="usa-sidenav__item">
-          <a href="/elements/task-list/task-list-step">Task List Step</a>
-        </li>
-        <li class="usa-sidenav__item">
-          <a href="/elements/task-list/background-research">Background Research</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
+{% set navigationOptions = { listClass: "usa-sidenav", listItemClass: "usa-sidenav__item", activeAnchorClass: "usa-current", useAriaCurrentAttr: true, activeKey: eleventyNavigation.key} %}
+<nav>
+  {{ collections.all | eleventyNavigation("Elements") | eleventyNavigationToHtml(navigationOptions) | safe }}
 </nav>

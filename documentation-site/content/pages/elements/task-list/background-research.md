@@ -3,6 +3,10 @@ layout: layouts/page.njk
 title: Task List Background Research
 description: A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 permalink: /elements/task-list/background-research/
+eleventyNavigation:
+    key: Task List Background Research
+    title: Background Research
+    parent: Task List
 ---
 
 ## Research Summary
