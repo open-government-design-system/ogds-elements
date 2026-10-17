@@ -26,3 +26,81 @@
 .usa-sidenav__item:has(+ .usa-sidenav__item) {
   border-top: 0;
 }
+
+/* grid layout */
+
+.grid-* {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.grid-row-header {
+  grid-area: row-header;
+}
+.grid-row-pre-footer {
+  grid-area: row-pre-footer;
+}
+.grid-row-footer {
+  grid-area: row-footer;
+}
+
+.grid-left-column {
+  grid-area: column-left;
+}
+.grid-center-column {
+  grid-area: column-center;
+}
+.grid-right-column {
+  grid-area: column-right;
+}
+
+.grid-wrapper {
+  display:grid;
+  gap: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  min-height: 100vh;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "row-header"
+    "column-center"
+    "column-left"
+    "column-right"
+    "row-pre-footer"
+    "row-footer";
+}
+
+.usa-nav-container {
+  padding: 0;
+  margin: 0;
+}
+
+@media (width >= 640px) {
+  .grid-wrapper {
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 2fr 7fr 3fr;
+    grid-template-areas:
+      ". row-header ."
+      "column-left column-center column-right"
+      ". row-pre-footer ."
+      ". row-footer .";
+  }
+}
+
+/* don't let <pre> blocks break the layout */
+/* https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/ */
+pre {
+  max-width: 100%;
+  overflow: scroll;
+}
+
+main {
+  min-width: 0;
+}
+
+/* custom footer */
+.simple-footer {
+  font-size: 1.2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

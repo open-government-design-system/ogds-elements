@@ -11,13 +11,22 @@
     <title>{{ title }}</title>
   </head>
   <body class="display-flex flex-column minh-viewport">
-    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
-    <div class="usa-overlay"></div>
-    {% include "../components/header.njk" %}
-    <div class="flex-fill">
+    <div class="grid-wrapper">
+      <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+      <div class="usa-overlay"></div>
+      <div class="grid-row-header">
+        {% include "../components/header.njk" %}
+      </div>
       {{ content | safe }}
+      <div class="grid-row-pre-footer">
+        <div class="usa-footer__return-to-top">
+          <a href="#top" class="usa-link">Return to top</a>
+        </div>
+      </div>
+      <div class="grid-row-footer">
+        {% include "../components/footer.njk" %}
+      </div>
     </div>
-    {% include "../components/footer.njk" %}
   </body>
   <script webc:keep src="/assets/js/uswds.min.js"></script>
 </html>
