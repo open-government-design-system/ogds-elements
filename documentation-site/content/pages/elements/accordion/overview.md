@@ -1,15 +1,12 @@
 ---
 layout: layouts/element-page.njk
-title: Accordion Guidance
+title: Accordion Overview
 permalink: /elements/accordion/
 eleventyNavigation:
-    key: Accordion Guidance
+    key: Accordion Overview
     parent: Accordion
     order: 2
 description: Accordions show and hide sections of related content on a page.
-storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-accordion--docs
-accessibility_tests_url: https://designsystem.digital.gov/components/accordion/accessibility-tests/
-background_research_url: /elements/accordion/background-research
 ---
 
 ## Differences between the OGDS Accordion and USWDS Accordion
