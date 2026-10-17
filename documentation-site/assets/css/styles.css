@@ -12,3 +12,9 @@
   display: flex;
   gap: 1rem;
 }
+
+/* custom left sidebar */
+:where([role="list"]) {
+  list-style: none;
+  padding-inline-start: 0;
+}

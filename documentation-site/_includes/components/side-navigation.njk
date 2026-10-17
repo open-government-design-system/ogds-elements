@@ -1,24 +1,28 @@
 {% set navPages = collections.all | eleventyNavigation("Elements") %}
 {% macro renderNavListItem(entry) %}
   {% if entry.children.length %}
-    <details {%- for child in entry.children %} {% if child.parent == entry.title and child.url == page.url %} class="is-active" open {% endif %} {% endfor %}>
-      <summary>{{ entry.title }}</summary>
-      <ul role="list">
-        {%- for child in entry.children %}
-          {{ renderNavListItem(child) }}
-        {% endfor -%}
-      </ul>
-    </details>
-  {% else %}
     <li>
-      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" {% endif %}>{{ entry.title }}</a>
+      <ogds-accordion>
+        <details name="exclusive-group" {%- for child in entry.children %} {% if child.parent == entry.title and child.url == page.url %} class="is-active" open {% endif %} {% endfor %}>
+          <summary>{{ entry.title }}</summary>
+          <ul role="list">
+            {%- for child in entry.children %}
+              {{ renderNavListItem(child) }}
+            {% endfor -%}
+          </ul>
+        </details>
+      </ogds-accordion>
+    </li>
+  {% else %}
+    <li class="usa-sidenav__item">
+      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" class="usa-current" {% endif %}>{{ entry.title }}</a>
     </li>
   {%- endif -%}
 {%- endmacro %}
 <nav>
-  <ogds-accordion>
+  <ul class="usa-sidenav" role="list">
     {%- for entry in navPages %}
       {{ renderNavListItem(entry) }}
     {%- endfor -%}
-  </ogds-accordion>
+  </ul>
 </nav>
