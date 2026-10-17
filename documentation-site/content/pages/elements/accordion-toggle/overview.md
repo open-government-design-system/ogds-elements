@@ -1,12 +1,12 @@
 ---
 layout: layouts/element-page.njk
-title: Accordion Toggle
+title: Accordion Toggle Overview
 permalink: /elements/accordion/accordion-toggle/
 eleventyNavigation:
-    key: Accordion Toggle
-    parent: Accordion
+    key: Accordion Toggle Overview
+    parent: Accordion Toggle
+    order: 1
 description: The accordion toggle provides a single button to expand or collapse all panels in an associated accordion.
-storybook_url: https://ogds-elements.jbhutch01.workers.dev/?path=/docs/components-accordion-toggle--docs
 ---
 
 ## Example
