@@ -18,3 +18,11 @@
   list-style: none;
   padding-inline-start: 0;
 }
+
+.usa-sidenav {
+  border-bottom: 0;
+}
+
+.usa-sidenav__item:has(+ .usa-sidenav__item) {
+  border-top: 0;
+}
