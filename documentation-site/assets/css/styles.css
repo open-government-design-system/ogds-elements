@@ -60,7 +60,7 @@
   column-gap: 1.5rem;
   min-height: 100vh;
   grid-template-rows: 1fr;
-  grid-template-columns: [full-width-start] 0 [center-start] 1fr [center-end] 0 [full-width-end];
+  grid-template-columns: [full-width-start] 0 [main-start] 1fr [main-end] 0 [full-width-end];
   grid-template-areas:
     "row-header row-header row-header"
     ". column-center ."
@@ -82,15 +82,31 @@
 }
 
 .grid-row-full-width--centered-content {
-  grid-column: center;
+  grid-column: main;
 }
 
+/* breakpoint where the right side in-page navigation disappears */
 @media (width >= 640px) {
   .grid-wrapper {
     grid-template-rows: auto 1fr auto auto;
     grid-template-columns: [full-width-start] 0 [main-start] 2fr [center-start] 7fr [center-end] 3fr [main-end] 0 [full-width-end];
     grid-template-areas:
       ". . row-header . ."
+      ". column-left column-center column-right ."
+      ". . row-pre-footer . ."
+      ". . row-footer . .";
+  }
+
+  .grid-row-full-width--centered-content {
+    grid-column: center;
+  }
+}
+
+/* breakpoint where the nav bar changes to have a menu button */
+@media (640px < width < 1024px) {
+  .grid-wrapper {
+    grid-template-areas:
+      "row-header row-header row-header row-header row-header"
       ". column-left column-center column-right ."
       ". . row-pre-footer . ."
       ". . row-footer . .";
