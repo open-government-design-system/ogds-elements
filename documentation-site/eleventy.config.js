@@ -31,4 +31,10 @@ export default function (eleventyConfig) {
     "./node_modules/@ogds/tokens/build/css/": "/assets/css/",
     "./assets/": "/assets/",
   });
+
+  eleventyConfig.addCollection("alphabeticalSort", function (collectionsApi) {
+    return collectionsApi.getAll().sort(function (a, b) {
+      return a.data.title.localeCompare(b.data.title);
+    });
+  });
 }

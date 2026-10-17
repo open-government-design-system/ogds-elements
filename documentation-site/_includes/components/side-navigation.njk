@@ -1,4 +1,4 @@
-{% set navPages = collections.all | eleventyNavigation("Elements") %}
+{% set navPages = collections.alphabeticalSort | eleventyNavigation("Elements") %}
 {% macro renderNavListItem(entry) %}
   {% if entry.children.length %}
     <li>
