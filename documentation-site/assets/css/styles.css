@@ -66,7 +66,6 @@
     "column-center"
     "column-left"
     "column-right"
-    "row-pre-footer"
     "row-footer";
 }
 
@@ -82,7 +81,6 @@
     grid-template-areas:
       ". row-header ."
       "column-left column-center column-right"
-      ". row-pre-footer ."
       ". row-footer .";
   }
 }
