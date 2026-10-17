@@ -113,3 +113,8 @@ main {
   padding-bottom: 2rem;
   background-color: lightblue;
 }
+
+.sidenav-header-elements {
+  font-size: 1.4rem;
+  padding-bottom: 1rem;
+}
