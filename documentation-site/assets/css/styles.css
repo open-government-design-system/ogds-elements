@@ -56,7 +56,8 @@
 
 .grid-wrapper {
   display: grid;
-  gap: 1rem;
+  row-gap: 1rem;
+  column-gap: 1.5rem;
   min-height: 100vh;
   grid-template-rows: 1fr;
   grid-template-columns: [full-width-start] 0 [center-start] 1fr [center-end] 0 [full-width-end];
