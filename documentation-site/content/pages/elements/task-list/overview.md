@@ -1,10 +1,11 @@
 ---
 layout: layouts/element-page.njk
-title: Task List
+title: Task List Overview
 permalink: /elements/task-list/
 eleventyNavigation:
-    key: Task List Guidance
+    key: Task List Overview
     parent: Task List
+    order: 1
 description: A Task Progress List guides users through a complex workflow by breaking it down into a clear set of related tasks, each with its own action and completion status.
 ---
 
