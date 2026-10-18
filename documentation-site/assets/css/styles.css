@@ -7,6 +7,9 @@
 /* quick links at the top of a component's page */
 .reference-links {
   display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
   gap: 1rem;
 }
 

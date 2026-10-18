@@ -2,22 +2,17 @@
 layout: "/layouts/page.njk"
 ---
 
+{% macro usaLink(name, href) %}
+  <a href="{{ href }}" class="usa-link
+    {% if href == page.url %} usa-current {% endif %}
+    {% if href.includes("http") %} modern-external-link{% endif %}">
+    <span>{{ name }}</span>
+  </a>
+{% endmacro %}
+{% set navPages = collections.alphabeticalSort | eleventyNavigation(eleventyNavigation.parent) %}
+<div class="reference-links">
+  {% for page in navPages %}
+    {{ usaLink(page.title, page.url) }}
+  {% endfor %}
+</div>
 {{ content | safe }}
-<h2>More Details</h2>
-<ul>
-  {% if storybook_url %}
-    <li>
-      <a href="{{ storybook_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;code examples (Storybook)</a>
-    </li>
-  {% endif %}
-  {% if accessibility_tests_url %}
-    <li>
-      <a href="{{ accessibility_tests_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;accessibility checklists (USWDS)</a>
-    </li>
-  {% endif %}
-  {% if background_research_url %}
-    <li>
-      <a href="{{ background_research_url }}" class="usa-link usa-link--external">{{ title | safe }}&nbsp;background research</a>
-    </li>
-  {% endif %}
-</ul>
