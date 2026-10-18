@@ -15,6 +15,23 @@ export default function (eleventyConfig) {
     mdLib.set({ html: true, typographer: true });
 
     mdLib.renderer.rules.bullet_list_open = () => `<ul class="usa-list">`;
+
+    mdLib.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+      const token = tokens[idx];
+      const href = token.attrGet("href");
+
+      // in Eleventy we use relative links for local site links
+      // and we use http links for external sites
+      // but if this changes, we'll need another way to determine which links are external
+      if (href.includes("http")) {
+        token.attrSet("target", "_blank");
+        token.attrSet("rel", "noreferrer");
+        token.attrSet("class", "usa-link modern-external-link");
+      } else {
+        token.attrSet("class", "usa-link");
+      }
+      return self.renderToken(tokens, idx, options);
+    };
   });
 
   eleventyConfig.addFilter("asMarkdown", (content, renderInline = false) => {

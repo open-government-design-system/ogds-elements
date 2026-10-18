@@ -15,7 +15,7 @@
     </li>
   {% else %}
     <li class="usa-sidenav__item">
-      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" class="usa-current" {% endif %}>{{ entry.title }}</a>
+      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" {% endif %} class="{% if entry.url == page.url %}usa-current{% endif %} {% if entry.url.includes("http") %}modern-external-link{% endif %}">{{ entry.title }}</a>
     </li>
   {%- endif -%}
 {%- endmacro %}
