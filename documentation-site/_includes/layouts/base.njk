@@ -13,19 +13,19 @@
     <title>{{ title }}</title>
   </head>
   <body class="display-flex flex-column minh-viewport">
-    <div class="grid-wrapper">
+    <div class="cssgrid-wrapper">
       <a class="usa-skipnav" href="#main-content">Skip to main content</a>
       <div class="usa-overlay"></div>
-      <div class="grid-area-header">
+      <div class="cssgrid-area-header">
         {% include "../components/header.njk" %}
       </div>
       {{ content | safe }}
-      <div class="grid-area-pre-footer">
+      <div class="cssgrid-area-pre-footer">
         <div class="usa-footer__return-to-top">
           <a href="#top" class="usa-link">Return to top</a>
         </div>
       </div>
-      <footer class="grid-area-footer subgrid subgrid-full-width simple-footer">
+      <footer class="cssgrid-area-footer subgrid subgrid-full-width simple-footer">
         {% include "../components/footer.njk" %}
       </footer>
     </div>

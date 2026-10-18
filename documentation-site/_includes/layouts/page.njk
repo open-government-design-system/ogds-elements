@@ -2,10 +2,10 @@
 layout: "/layouts/base.njk"
 ---
 
-<div class="grid-area-left-column">
+<div class="cssgrid-area-left-column">
   {% include "../components/side-navigation.njk" %}
 </div>
-<main id="main-content" class="grid-area-center-column">
+<main id="main-content" class="cssgrid-area-center-column">
   <div class="usa-prose">
     <h1>{{ title | safe }}</h1>
     <p class="reference-links">
@@ -23,6 +23,6 @@ layout: "/layouts/base.njk"
     {{ content | safe }}
   </div>
 </main>
-<div class="grid-area-right-column">
+<div class="cssgrid-area-right-column">
   {% include "../components/in-page-navigation.njk" %}
 </div>

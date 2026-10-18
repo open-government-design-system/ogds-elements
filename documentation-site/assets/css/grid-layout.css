@@ -12,44 +12,48 @@
 
 /* grid areas */
 
-.grid-area-header {
+.cssgrid-area-header {
   grid-area: header;
 }
-.grid-area-pre-footer {
+.cssgrid-area-pre-footer {
   grid-area: pre-footer;
 }
-.grid-area-footer {
+.cssgrid-area-footer {
   grid-area: footer;
 }
 
-.grid-area-left-column {
+.cssgrid-area-left-column {
   grid-area: column-left;
 }
-.grid-area-center-column {
+.cssgrid-area-center-column {
   grid-area: column-center;
 }
-.grid-area-right-column {
+.cssgrid-area-right-column {
   grid-area: column-right;
 }
 
-.grid-wrapper {
+.cssgrid-wrapper {
   display: grid;
   row-gap: var(--layout-row-gap);
   min-height: 100vh;
   --layout-left-column-width: 0;
   --layout-center-column-width: 1fr;
   --layout-right-column-width: 0;
-  grid-template-columns: [full-width-start] var(
-      --layout-page-outer-spacing
-    ) [padded-full-width-start] 0 [left-column-start] var(
+  grid-template-columns:
+    [full-width-start] var(--layout-page-outer-spacing)
+    [padded-full-width-start] 0 [left-column-start] var(
       --layout-left-column-width
-    ) [left-column-end] var(--layout-column-gap) [content-start] var(
+    )
+    [left-column-end] var(--layout-column-gap) [content-start] var(
       --layout-center-column-width
-    ) [content-end] var(--layout-column-gap) [right-column-start] var(
+    )
+    [content-end] var(--layout-column-gap) [right-column-start] var(
       --layout-right-column-width
-    ) [right-column-end] 0 [padded-full-width-end] var(
+    )
+    [right-column-end] 0 [padded-full-width-end] var(
       --layout-page-outer-spacing
-    ) [full-width-end];
+    )
+    [full-width-end];
   grid-template-areas:
     "header header header header header header header header header"
     ". . . . column-center . . . ."
@@ -62,7 +66,7 @@
 /* desktop size */
 /* breakpoint where the right side in-page navigation disappears */
 @media (1024px < width) {
-  .grid-wrapper {
+  .cssgrid-wrapper {
     --layout-left-column-width: 2fr;
     --layout-center-column-width: 6fr;
     --layout-right-column-width: 2fr;
