@@ -1,147 +1,21 @@
+/* for examples of the components running, above the code snippets */
 .element-example {
   border: 1px solid black;
   padding: 1rem;
 }
 
-.page-outer-margin {
-  margin-right: 2rem;
-  margin-left: 2rem;
-}
-
+/* quick links at the top of a component's page */
 .reference-links {
   display: flex;
   gap: 1rem;
 }
 
-/* custom left sidebar */
-:where([role="list"]) {
-  list-style: none;
-  padding-inline-start: 0;
-}
-
-.usa-sidenav {
-  border-bottom: 0;
-}
-
-.usa-sidenav__item:has(+ .usa-sidenav__item) {
-  border-top: 0;
-}
-
-/* == grid layout == */
-
-/* grid layout css variables */
-:root {
-  --layout-page-outer-spacing: 1rem;
-  --layout-column-gap: 0;
-  --layout-row-gap: 1rem;
-  --layout-left-column-width: 2fr;
-  --layout-center-column-width: 7fr;
-  --layout-right-column-width: 3fr;
-}
-
-/* grid areas */
-
-.grid-area-header {
-  grid-area: header;
-}
-.grid-area-pre-footer {
-  grid-area: pre-footer;
-}
-.grid-area-footer {
-  grid-area: footer;
-}
-
-.grid-area-left-column {
-  grid-area: column-left;
-}
-.grid-area-center-column {
-  grid-area: column-center;
-}
-.grid-area-right-column {
-  grid-area: column-right;
-}
-
-.grid-wrapper {
-  display: grid;
-  row-gap: var(--layout-row-gap);
-  min-height: 100vh;
-  --layout-left-column-width: 0;
-  --layout-center-column-width: 1fr;
-  --layout-right-column-width: 0;
-  grid-template-columns: [full-width-start] var(--layout-page-outer-spacing) [padded-full-width-start] 0 [left-column-start] var(--layout-left-column-width) [left-column-end] var(--layout-column-gap) [content-start] var(--layout-center-column-width) [content-end] var(--layout-column-gap) [right-column-start] var(--layout-right-column-width) [right-column-end] 0 [padded-full-width-end] var(--layout-page-outer-spacing) [full-width-end];
-  grid-template-areas:
-    "header header header header header header header header header"
-    ". . . . column-center . . . ."
-    ". . . . column-left . . . ."
-    ". . . . column-right . . . ."
-    ". . . . pre-footer . . . ."
-    ". . . . footer . . . .";
-}
-
-/* desktop size */
-/* breakpoint where the right side in-page navigation disappears */
-@media (1024px < width) {
-  .grid-wrapper {
-    --layout-left-column-width: 2fr;
-    --layout-center-column-width: 6fr;
-    --layout-right-column-width: 2fr;
-    --layout-column-gap: 2rem;
-    grid-template-areas:
-      ". . . . header . . . ."
-      ". . column-left . column-center . column-right . ."
-      ". . . . pre-footer . . . ."
-      ". . . . footer . . . .";
-  }
-}
-
-/* subgrid utilities */
-
-.subgrid {
-  display: grid;
-  grid-template-columns: subgrid;
-}
-
-.subgrid-full-width {
-  grid-column: full-width;
-}
-
-.subgrid-padded-full-width {
-  grid-column: padded-full-width;
-}
-
-.subgrid-content-width {
-  grid-column: content;
-}
-
-/* don't let <pre> blocks break the layout */
-/* https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/ */
-pre {
-  max-width: 100%;
-  overflow: scroll;
-}
-
-main {
-  min-width: 0;
-}
-
-/* custom footer */
+/* custom simple footer */
 .simple-footer {
   font-size: 1.2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   background-color: lightblue;
-}
-
-/* custom side nav */
-.sidenav-header-elements {
-  font-size: 1.4rem;
-  padding-bottom: 1rem;
-}
-
-/* workaround to get the old header working with this new grid layout */
-.usa-nav-container {
-  padding: 0;
-  margin: 0;
 }
 
 /* workaround to get external links displaying better in the navigation bar */
