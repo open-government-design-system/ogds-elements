@@ -55,11 +55,13 @@
       --layout-page-outer-spacing
     )
     [full-width-end];
+  grid-template-rows: auto auto auto auto 1fr auto auto;
   grid-template-areas:
     "header header header header header header header header header"
     ". . . . column-center . . . ."
     ". . . . column-left . . . ."
     ". . . . column-right . . . ."
+    ". . . . . . . . ."
     ". . . . pre-footer . . . ."
     ". . . . footer . . . .";
 }
@@ -74,9 +76,11 @@
     --layout-center-column-width: 6fr;
     --layout-right-column-width: 2fr;
     --layout-column-gap: 2rem;
+    grid-template-rows: auto auto 1fr auto auto;
     grid-template-areas:
       ". . . . header . . . ."
       ". . column-left . column-center . column-right . ."
+      ". . . . . . . . ."
       ". . . . pre-footer . . . ."
       ". . . . footer . . . .";
   }
