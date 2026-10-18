@@ -1,6 +1,7 @@
 /* == grid layout == */
 
 /* grid layout css variables */
+
 :root {
   --layout-page-outer-spacing: 1rem;
   --layout-column-gap: 0;
@@ -64,7 +65,9 @@
 }
 
 /* desktop size */
-/* breakpoint where the right side in-page navigation disappears */
+/* below this breakpoint (above code) the navigation bar is full-width and hidden behind a menu button */
+/* above this breakpoint (below code), the navigation bar is fully shown */
+
 @media (1024px < width) {
   .cssgrid-wrapper {
     --layout-left-column-width: 2fr;
@@ -80,6 +83,8 @@
 }
 
 /* subgrid utilities */
+/* these can be used to have a full-width background (e.g. color or image) */
+/* and its content can still be aligned with the grid columns from the parent grid */
 
 .subgrid {
   display: grid;
