@@ -143,3 +143,9 @@ main {
   padding: 0;
   margin: 0;
 }
+
+/* workaround to get external links displaying better in the navigation bar */
+.usa-nav__primary .usa-link--external::after {
+  margin-top: 0;
+  margin-left: 0.25rem;
+}
