@@ -1,13 +1,4 @@
-{% macro usaNavLink(href, name) %}
-  <a href="{{ href }}" class="usa-nav-link{% if href == page.url %} usa-current{% endif %}">
-    <span>{{ name }}</span>
-  </a>
-{% endmacro %}
-{% macro usaNavLinkExternal(href, name) %}
-  <a href="{{ href }}" class="usa-nav-link usa-link--external">
-    <span>{{ name }}</span>
-  </a>
-{% endmacro %}
+{% import "macros/usaNavLink.njk" as navLink %}
 <header class="usa-header usa-header--basic">
   <div class="usa-nav-container">
     <div class="usa-navbar">
@@ -24,16 +15,16 @@
       </button>
       <ul class="usa-nav__primary usa-accordion">
         <li class="usa-nav__primary-item">
-          {{ usaNavLink("/about/", "About OGDS") }}
+          {{ navLink.link("/about/", "About OGDS", page.url) }}
         </li>
         <li class="usa-nav__primary-item">
-          {{ usaNavLink("/elements/", "OGDS Elements") }}
+          {{ navLink.link("/elements/", "OGDS Elements", page.url) }}
         </li>
         <li class="usa-nav__primary-item">
-          {{ usaNavLinkExternal("https://docs.google.com/document/d/10XN6ZsRt9aAOH1PUmtfcCCEBZQUSgs1cCI5krYBOoi4/edit?tab=t.0", "Join the effort") }}
+          {{ navLink.link("https://docs.google.com/document/d/10XN6ZsRt9aAOH1PUmtfcCCEBZQUSgs1cCI5krYBOoi4/edit?tab=t.0", "Join the effort", page.url) }}
         </li>
         <li class="usa-nav__primary-item">
-          {{ usaNavLinkExternal("https://docs.google.com/document/d/1TXmD5nLmANcOlF9ipR7wnY06iuFj6zTEYaGiZ-2X3Ug/edit?tab=t.0#heading=h.pctub6czqxup", "Code of Conduct") }}
+          {{ navLink.link("https://docs.google.com/document/d/1TXmD5nLmANcOlF9ipR7wnY06iuFj6zTEYaGiZ-2X3Ug/edit?tab=t.0#heading=h.pctub6czqxup", "Code of Conduct", page.url) }}
         </li>
       </ul>
     </nav>

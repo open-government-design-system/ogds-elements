@@ -1,3 +1,4 @@
+{% import "macros/usaNavLink.njk" as navLink %}
 {% set navPages = collections.alphabeticalSort | eleventyNavigation("Elements") %}
 {% macro renderNavListItem(entry) %}
   {% if entry.children.length %}
@@ -15,7 +16,7 @@
     </li>
   {% else %}
     <li class="usa-sidenav__item">
-      <a href="{{ entry.url }}" {% if entry.url == page.url %} aria-current="page" {% endif %} class="{% if entry.url == page.url %}usa-current{% endif %} {% if entry.url.includes("http") %}modern-external-link{% endif %}">{{ entry.title }}</a>
+      {{ navLink.link(entry.url, entry.title, page.url) }}
     </li>
   {%- endif -%}
 {%- endmacro %}

@@ -1,0 +1,7 @@
+{% macro link(href, name, pageUrl) %}
+  {% set isExternal = href.includes("http") %}
+  {% set isCurrentPage = (href == pageUrl) %}
+  <a href="{{ href }}" class="usa-nav-link{% if isCurrentPage %} usa-current{% endif %}{% if isExternal %} usa-link--external{% endif %}">
+    {{ name }}
+  </a>
+{% endmacro %}
