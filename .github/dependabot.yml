@@ -18,6 +18,14 @@ updates:
       # vite-plugin-bundlesize build check. Remove once that's fixed upstream.
       - dependency-name: "vite"
         update-types: ["version-update:semver-major"]
+
+      # TypeScript 7 is the big Golang rewrite, and it's not compatible with some dependencies
+      # that rely on the Compiler API (https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API)
+      # which is not available anymore. Specifically, vite-plugin-dts and @typescript-eslint/*.
+      #
+      # For now, let's stay on TypeScript 6.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
     groups:
       components:
         patterns:
