@@ -60,7 +60,7 @@ updates:
           - "vite"
           - "vite-plugin-*"
           - "vitest"
-          - "@vitest/"
+          - "@vitest/*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
