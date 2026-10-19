@@ -62,6 +62,13 @@ updates:
         patterns:
           - "*sass*"
           - "*css*"
+  - package-ecosystem: "npm"
+    directory: "/documentation-site"
+    schedule:
+      interval: "monthly"
+      time: "08:00"
+      timezone: "America/New_York"
+      day: "monday"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
