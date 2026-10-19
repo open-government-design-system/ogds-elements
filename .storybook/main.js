@@ -27,6 +27,7 @@ const config = {
     options: {},
   },
   core: {
+    disableTelemetry: true,
     builder: {
       name: "@storybook/builder-vite",
       options: {
