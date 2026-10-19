@@ -109,11 +109,6 @@
 
 /* don't let <pre> blocks break the layout */
 /* https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/ */
-pre {
-  max-width: 100%;
-  overflow: scroll;
-}
-
 main {
   min-width: 0;
 }
