@@ -19,6 +19,7 @@ const config = {
       },
     },
     "@storybook/addon-a11y",
+    "@storybook/addon-vitest",
     "storybook-addon-tag-badges",
     "storybook/viewport",
   ],
