@@ -6,10 +6,11 @@ describe("defineCustomElement", () => {
   let customElementsGetSpy: ReturnType<typeof vi.spyOn>;
   let Component: CustomElementConstructor;
   let tagName: string;
+  let tagCounter = 0;
 
   beforeEach(() => {
     Component = class extends HTMLElement {};
-    tagName = "usa-test-element";
+    tagName = `usa-test-element-${tagCounter++}`;
 
     customElementsDefineSpy = vi.spyOn(customElements, "define");
     customElementsGetSpy = vi.spyOn(customElements, "get");
