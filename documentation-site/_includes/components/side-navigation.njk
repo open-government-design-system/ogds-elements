@@ -16,7 +16,7 @@
     </li>
   {% else %}
     <li class="usa-sidenav__item">
-      {{ navLink.link(entry.url, entry.title, page.url) }}
+      {{ navLink.link(href=entry.url, title=entry.title, pageUrl=page.url) }}
     </li>
   {%- endif -%}
 {%- endmacro %}
