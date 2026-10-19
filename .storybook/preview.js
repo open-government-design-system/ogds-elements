@@ -16,6 +16,9 @@ setStorybookHelpersConfig({
 /** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {
   parameters: {
+    a11y: {
+      test: "error",
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
