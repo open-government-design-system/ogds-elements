@@ -18,50 +18,50 @@ updates:
       # vite-plugin-bundlesize build check. Remove once that's fixed upstream.
       - dependency-name: "vite"
         update-types: ["version-update:semver-major"]
+
+      # TypeScript 7 is the big Golang rewrite, and it's not compatible with some dependencies
+      # that rely on the Compiler API (https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API)
+      # which is not available anymore. Specifically, vite-plugin-dts and @typescript-eslint/*.
+      #
+      # For now, let's stay on TypeScript 6.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+
     groups:
-      components:
+      custom-element:
         patterns:
-          - "lit"
-          - "typescript"
-          - "*types*"
-          - "@open-wc/form*"
-          - "*custom-element*"
-          - "*shadow-dom*"
-      uswds:
+          - "@custom-elements-manifest/analyzer"
+          - "custom-element-*"
+
+      eslint:
         patterns:
-          - "*uswds*"
-      vite:
+          - "@eslint/*"
+          - "eslint"
+          - "eslint-*"
+
+      playwright:
         patterns:
-          - "vite"
-      utilities:
-        patterns:
-          - "wait-on"
-          - "concurrently"
-      linting:
-        patterns:
-          - "*lint*"
-          - "*prettier*"
-          - "globals"
-          - "husky"
-          - "lint-staged"
+          - "*playwright*"
+
       storybook:
         patterns:
           - "*storybook*"
-      testing:
+
+      stylelint:
         patterns:
-          - "*test*"
-          - "*axe*"
-          - "playwright"
-          - "http-server"
-          - "@open-wc/testing-helpers"
-          - "jsdom"
-          - "*express*"
-          - "serve-static"
-          - "web-vitals"
-      assets:
+          - "*stylelint*"
+
+      uswds:
         patterns:
-          - "*sass*"
-          - "*css*"
+          - "*uswds*"
+
+      vite:
+        patterns:
+          - "vite"
+          - "vite-plugin-*"
+          - "vitest"
+          - "@vitest/*"
+
   - package-ecosystem: "npm"
     directory: "/documentation-site"
     schedule:
@@ -69,6 +69,7 @@ updates:
       time: "08:00"
       timezone: "America/New_York"
       day: "monday"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
