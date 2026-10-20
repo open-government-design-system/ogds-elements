@@ -17,7 +17,7 @@
     "@11ty/eleventy": "^3.1.7",
     "@11ty/eleventy-navigation": "^1.0.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
-    "@ogds/elements": "^1.0.0-alpha.7",
+    "@ogds/elements": "file:..",
     "@ogds/tokens": "^1.0.0-alpha",
     "@uswds/uswds": "3.14.0",
     "prettier": "^3.9.10",
