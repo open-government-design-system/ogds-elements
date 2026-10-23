@@ -1,0 +1,18 @@
+---
+layout: "/layouts/page.njk"
+---
+
+{% macro usaLink(name, href) %}
+  <a href="{{ href }}" class="usa-link
+    {% if href == page.url %} usa-current {% endif %}
+    {% if href.includes("http") %} modern-external-link{% endif %}">
+    <span>{{ name }}</span>
+  </a>
+{% endmacro %}
+{% set navPages = collections.alphabeticalSort | eleventyNavigation(eleventyNavigation.parent) %}
+<div class="reference-links">
+  {% for page in navPages %}
+    {{ usaLink(page.title, page.url) }}
+  {% endfor %}
+</div>
+{{ content | safe }}

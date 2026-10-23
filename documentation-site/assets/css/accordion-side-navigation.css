@@ -1,0 +1,18 @@
+/* custom accordion side navigation */
+:where([role="list"]) {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.usa-sidenav {
+  border-bottom: 0;
+}
+
+.usa-sidenav__item:has(+ .usa-sidenav__item) {
+  border-top: 0;
+}
+
+.sidenav-header-elements {
+  font-size: 1.4rem;
+  padding-bottom: 1rem;
+}

@@ -1,0 +1,30 @@
+{% import "macros/usaNavLink.njk" as navLink %}
+{% set navPages = collections.alphabeticalSort | eleventyNavigation("Elements") %}
+{% macro renderNavListItem(entry) %}
+  {% if entry.children.length %}
+    <li>
+      <ogds-accordion>
+        <details name="exclusive-group" {%- for child in entry.children %} {% if child.parent == entry.title and child.url == page.url %} class="is-active" open {% endif %} {% endfor %}>
+          <summary>{{ entry.title }}</summary>
+          <ul role="list">
+            {%- for child in entry.children %}
+              {{ renderNavListItem(child) }}
+            {% endfor -%}
+          </ul>
+        </details>
+      </ogds-accordion>
+    </li>
+  {% else %}
+    <li class="usa-sidenav__item">
+      {{ navLink.link(href=entry.url, title=entry.title, pageUrl=page.url) }}
+    </li>
+  {%- endif -%}
+{%- endmacro %}
+<nav>
+  <div class="sidenav-header-elements">OGDS Elements Documentation</div>
+  <ul class="usa-sidenav" role="list">
+    {%- for entry in navPages %}
+      {{ renderNavListItem(entry) }}
+    {%- endfor -%}
+  </ul>
+</nav>

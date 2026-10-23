@@ -1,0 +1,120 @@
+/* == grid layout == */
+
+/* grid layout css variables */
+
+:root {
+  --layout-page-outer-spacing: 1rem;
+  --layout-column-gap: 0;
+  --layout-row-gap: 1rem;
+  --layout-left-column-width: 2fr;
+  --layout-center-column-width: 7fr;
+  --layout-right-column-width: 3fr;
+}
+
+/* grid areas */
+
+.cssgrid-area-header {
+  grid-area: header;
+}
+.cssgrid-area-pre-footer {
+  grid-area: pre-footer;
+}
+.cssgrid-area-footer {
+  grid-area: footer;
+}
+
+.cssgrid-area-left-column {
+  grid-area: column-left;
+}
+.cssgrid-area-center-column {
+  grid-area: column-center;
+}
+.cssgrid-area-right-column {
+  grid-area: column-right;
+}
+
+.cssgrid-wrapper {
+  display: grid;
+  row-gap: var(--layout-row-gap);
+  min-height: 100vh;
+  --layout-left-column-width: 0;
+  --layout-center-column-width: 1fr;
+  --layout-right-column-width: 0;
+  grid-template-columns:
+    [full-width-start] var(--layout-page-outer-spacing)
+    [padded-full-width-start] 0 [left-column-start] var(
+      --layout-left-column-width
+    )
+    [left-column-end] var(--layout-column-gap) [content-start] var(
+      --layout-center-column-width
+    )
+    [content-end] var(--layout-column-gap) [right-column-start] var(
+      --layout-right-column-width
+    )
+    [right-column-end] 0 [padded-full-width-end] var(
+      --layout-page-outer-spacing
+    )
+    [full-width-end];
+  grid-template-rows: auto auto auto auto 1fr auto auto;
+  grid-template-areas:
+    "header header header header header header header header header"
+    ". . . . column-center . . . ."
+    ". . . . column-left . . . ."
+    ". . . . column-right . . . ."
+    ". . . . . . . . ."
+    ". . . . pre-footer . . . ."
+    ". . . . footer . . . .";
+}
+
+/* desktop size */
+/* below this breakpoint (above code) the navigation bar is full-width and hidden behind a menu button */
+/* above this breakpoint (below code), the navigation bar is fully shown */
+
+@media (1024px < width) {
+  .cssgrid-wrapper {
+    --layout-left-column-width: 2fr;
+    --layout-center-column-width: 6fr;
+    --layout-right-column-width: 2fr;
+    --layout-column-gap: 2rem;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas:
+      ". . . . header . . . ."
+      ". . column-left . column-center . column-right . ."
+      ". . . . . . . . ."
+      ". . . . pre-footer . . . ."
+      ". . . . footer . . . .";
+  }
+}
+
+/* subgrid utilities */
+/* these can be used to have a full-width background (e.g. color or image) */
+/* and its content can still be aligned with the grid columns from the parent grid */
+
+.subgrid {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.subgrid-full-width {
+  grid-column: full-width;
+}
+
+.subgrid-padded-full-width {
+  grid-column: padded-full-width;
+}
+
+.subgrid-content-width {
+  grid-column: content;
+}
+
+/* don't let <pre> blocks break the layout */
+/* https://css-tricks.com/auto-sizing-columns-css-grid-auto-fill-vs-auto-fit/ */
+main {
+  min-width: 0;
+}
+
+/* workaround to get the traditional USWDS header working with this new grid layout */
+.usa-nav-container {
+  padding: 0;
+  margin: 0;
+}

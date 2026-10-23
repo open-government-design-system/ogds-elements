@@ -1,0 +1,26 @@
+{
+  "name": "documentation-site",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build:elements && eleventy --serve",
+    "build": "npm run build:elements && eleventy",
+    "build:elements": "vite build",
+    "build-ghpages": "npm run build:elements && eleventy --pathprefix=ogds-elements"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.7",
+    "@11ty/eleventy-navigation": "^1.0.5",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.2",
+    "@ogds/elements": "file:..",
+    "@ogds/tokens": "^1.0.0-alpha",
+    "@uswds/uswds": "3.14.0",
+    "prettier": "^3.9.10",
+    "vite": "^8.3.4"
+  }
+}
