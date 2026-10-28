@@ -54,18 +54,35 @@
     }
 
     > ul {
+      /* mobile indicator should be a border rather than underline */
+      --_ogds-primary-nav-indicator-inset-block: 0;
+      --_ogds-primary-nav-indicator-inset-inline: 0 auto;
+      --_ogds-primary-nav-indicator-width: 0.25rem;
+      --_ogds-primary-nav-indicator-height: auto;
+
       display: flex;
       flex-direction: column;
     }
 
     li {
-      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
       position: relative;
     }
 
-    > ul > li:first-child a,
-    > ul > li:first-child > details > summary {
-      padding-inline-start: 0;
+    /* links/summaries need to own their own spacing to the touch
+       targets are the right size */
+    > ul > li > a,
+    > ul > li > details > summary {
+      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
+      position: relative;
+
+      &::before {
+        background-color: var(--ogds-primary-nav-current-indicator-color);
+        height: var(--_ogds-primary-nav-indicator-height);
+        inset-block: var(--_ogds-primary-nav-indicator-inset-block);
+        inset-inline: var(--_ogds-primary-nav-indicator-inset-inline);
+        position: absolute;
+        width: var(--_ogds-primary-nav-indicator-width);
+      }
     }
 
     a,
@@ -84,20 +101,17 @@
       }
     }
 
-    > ul > li > a:hover,
-    > ul > li > a[aria-current="page"],
-    > ul > li > details:not([open]) > summary:hover,
-    > ul > li > details > summary[aria-current="page"] {
-      position: relative;
+    > ul > li > a[aria-current="page"]::before,
+    > ul > li > details > summary[aria-current="page"]::before {
+      content: "";
+    }
 
-      &::before {
-        background-color: var(--ogds-primary-nav-current-indicator-color);
-        bottom: -0.5rem;
-        content: "";
-        height: 0.25rem;
-        inset-inline: 0;
-        position: absolute;
-      }
+    > ul
+      > li:has(
+        > a:hover:not([aria-current="page"]),
+        > details:not([open]) > summary:hover:not([aria-current="page"])
+      ) {
+      background-color: var(--ogds-primary-nav-link-hover-background-color);
     }
 
     summary {
@@ -137,7 +151,8 @@
     details > ul a {
       color: var(--ogds-primary-nav-link-color);
       font-weight: 400;
-      padding-inline-start: var(--ogds-spacing-4, 2rem);
+      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
+      padding-inline-start: var(--ogds-spacing-6, 3rem);
 
       &:hover {
         text-decoration: underline;
@@ -159,21 +174,42 @@
      */
     @media (width >= 64rem) {
       > ul {
+        /* indicator should be an underline above mobile sizes */
+        --_ogds-primary-nav-indicator-inset-block: auto 0;
+        --_ogds-primary-nav-indicator-inset-inline: var(--ogds-spacing-2, 1rem);
+        --_ogds-primary-nav-indicator-width: auto;
+        --_ogds-primary-nav-indicator-height: 0.25rem;
+
         align-items: stretch;
         flex-direction: row;
       }
 
-      li {
+      > ul > li > a,
+      > ul > li > details > summary {
         padding-block: var(--ogds-spacing-1, 0.5rem);
       }
 
       > ul > li {
         display: flex;
 
+        &:first-child {
+          margin-inline-start: calc(-1 * var(--ogds-spacing-2, 1rem));
+        }
+
+        &:has(
+          > a:hover:not([aria-current="page"]),
+          > details:not([open]) > summary:hover:not([aria-current="page"])
+        ) {
+          background-color: transparent;
+        }
+
         > a:hover,
         > details:not([open]) > summary:hover {
-          background-color: transparent;
           color: var(--ogds-primary-nav-link-hover-color);
+
+          &::before {
+            content: "";
+          }
         }
 
         &:has(> details[open]) {
@@ -202,7 +238,7 @@
 
         a {
           color: var(--ogds-primary-nav-submenu-link-color);
-          padding-inline-start: 0;
+          padding: var(--ogds-spacing-1, 0.5rem) var(--ogds-spacing-2, 1rem);
         }
       }
     }
