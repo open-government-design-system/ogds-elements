@@ -61,9 +61,9 @@
     "manifest:build": "cem analyze --config ./config/custom-elements-manifest.config.js",
     "manifest:watch": "cem analyze --config ./config/custom-elements-manifest.config.js --watch --dev",
     "release": "npm run build && changeset publish",
-    "test": "vitest",
-    "test:ci": "vitest run",
-    "test:storybook:ci": "vitest --project=storybook",
+    "test": "vitest --config config/vitest.config.js",
+    "test:ci": "vitest --config config/vitest.config.js run",
+    "test:storybook:ci": "vitest --config config/vitest.config.js --project=storybook",
     "vite:preview": "vite preview --config ./config/vite.config.ts"
   },
   "dependencies": {
