@@ -68,9 +68,21 @@
       position: relative;
     }
 
-    > ul > li:first-child a,
-    > ul > li:first-child > details > summary {
-      padding-inline-start: 0;
+    /* links/summaries need to own their own spacing to the touch
+       targets are the right size */
+    > ul > li > a,
+    > ul > li > details > summary {
+      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
+      position: relative;
+
+      &::before {
+        background-color: var(--ogds-primary-nav-current-indicator-color);
+        height: var(--_ogds-primary-nav-indicator-height);
+        inset-block: var(--_ogds-primary-nav-indicator-inset-block);
+        inset-inline: var(--_ogds-primary-nav-indicator-inset-inline);
+        position: absolute;
+        width: var(--_ogds-primary-nav-indicator-width);
+      }
     }
 
     a,
@@ -139,7 +151,8 @@
     details > ul a {
       color: var(--ogds-primary-nav-link-color);
       font-weight: 400;
-      padding-inline-start: var(--ogds-spacing-4, 2rem);
+      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
+      padding-inline-start: var(--ogds-spacing-6, 3rem);
 
       &:hover {
         text-decoration: underline;
@@ -171,12 +184,24 @@
         flex-direction: row;
       }
 
-      li {
+      > ul > li > a,
+      > ul > li > details > summary {
         padding-block: var(--ogds-spacing-1, 0.5rem);
       }
 
       > ul > li {
         display: flex;
+
+        &:first-child {
+          margin-inline-start: calc(-1 * var(--ogds-spacing-2, 1rem));
+        }
+
+        &:has(
+          > a:hover:not([aria-current="page"]),
+          > details:not([open]) > summary:hover:not([aria-current="page"])
+        ) {
+          background-color: transparent;
+        }
 
         > a:hover,
         > details:not([open]) > summary:hover {
@@ -213,7 +238,7 @@
 
         a {
           color: var(--ogds-primary-nav-submenu-link-color);
-          padding-inline-start: 0;
+          padding: var(--ogds-spacing-1, 0.5rem) var(--ogds-spacing-2, 1rem);
         }
       }
     }
