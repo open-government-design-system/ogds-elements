@@ -54,7 +54,7 @@
     }
 
     > ul {
-      /* mobile indicator should be a border rather than underline*/
+      /* mobile indicator should be a border rather than underline */
       --_ogds-primary-nav-indicator-inset-block: 0;
       --_ogds-primary-nav-indicator-inset-inline: 0 auto;
       --_ogds-primary-nav-indicator-width: 0.25rem;
@@ -65,7 +65,6 @@
     }
 
     li {
-      padding: var(--ogds-spacing-105, 0.75rem) var(--ogds-spacing-2, 1rem);
       position: relative;
     }
 
@@ -90,20 +89,17 @@
       }
     }
 
-    > ul > li > a:hover,
-    > ul > li > a[aria-current="page"],
-    > ul > li > details:not([open]) > summary:hover,
-    > ul > li > details > summary[aria-current="page"] {
-      position: relative;
+    > ul > li > a[aria-current="page"]::before,
+    > ul > li > details > summary[aria-current="page"]::before {
+      content: "";
+    }
 
-      &::before {
-        background-color: var(--ogds-primary-nav-current-indicator-color);
-        bottom: -0.5rem;
-        content: "";
-        height: 0.25rem;
-        inset-inline: 0;
-        position: absolute;
-      }
+    > ul
+      > li:has(
+        > a:hover:not([aria-current="page"]),
+        > details:not([open]) > summary:hover:not([aria-current="page"])
+      ) {
+      background-color: var(--ogds-primary-nav-link-hover-background-color);
     }
 
     summary {
@@ -184,8 +180,11 @@
 
         > a:hover,
         > details:not([open]) > summary:hover {
-          background-color: transparent;
           color: var(--ogds-primary-nav-link-hover-color);
+
+          &::before {
+            content: "";
+          }
         }
 
         &:has(> details[open]) {
