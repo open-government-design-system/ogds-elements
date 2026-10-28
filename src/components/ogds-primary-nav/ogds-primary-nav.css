@@ -54,6 +54,12 @@
     }
 
     > ul {
+      /* mobile indicator should be a border rather than underline*/
+      --_ogds-primary-nav-indicator-inset-block: 0;
+      --_ogds-primary-nav-indicator-inset-inline: 0 auto;
+      --_ogds-primary-nav-indicator-width: 0.25rem;
+      --_ogds-primary-nav-indicator-height: auto;
+
       display: flex;
       flex-direction: column;
     }
@@ -159,6 +165,12 @@
      */
     @media (width >= 64rem) {
       > ul {
+        /* indicator should be an underline above mobile sizes */
+        --_ogds-primary-nav-indicator-inset-block: auto 0;
+        --_ogds-primary-nav-indicator-inset-inline: var(--ogds-spacing-2, 1rem);
+        --_ogds-primary-nav-indicator-width: auto;
+        --_ogds-primary-nav-indicator-height: 0.25rem;
+
         align-items: stretch;
         flex-direction: row;
       }
