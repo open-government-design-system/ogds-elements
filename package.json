@@ -81,7 +81,6 @@
     "@storybook/addon-a11y": "^10.6.2",
     "@storybook/addon-docs": "^10.6.2",
     "@storybook/addon-links": "^10.6.2",
-    "@storybook/test-runner": "^0.26.0",
     "@storybook/web-components-vite": "^10.6.2",
     "@types/express": "^5.0.6",
     "@types/node": "^26.4.0",
