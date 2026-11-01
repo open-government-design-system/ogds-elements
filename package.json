@@ -100,7 +100,7 @@
     "custom-elements-manifest": "^2.1.0",
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-storybook": "10.6.2",
+    "eslint-plugin-storybook": "10.6.5",
     "express": "^5.2.1",
     "husky": "^9.1.7",
     "jsdom": "^30.0.1",
