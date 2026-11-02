@@ -263,10 +263,12 @@
   }
 
   .navbar-row-inner {
-    padding-inline-end: var(
-      --ogds-header-menu-btn-padding-inline-end,
-      var(--ogds-header-padding-inline, 0)
-    );
+    flex: 1 1 auto; /* grow to fill, shrink to prevent overflow */
+    margin-inline: 0;
+    max-width: none;
+    padding-block: 0;
+    padding-inline: var(--_ogds-header-gutter) 0;
+    width: auto;
   }
 
   .nav-close {

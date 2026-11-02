@@ -32,7 +32,6 @@ const localStyles = css`
  * @cssprop --ogds-header-nav-secondary-background-color - Background color of the secondary nav area. At desktop widths, paints edge-to-edge ("full-bleed") on the outward-facing side (away from the row it shares with the navbar in extended, or the primary nav in basic). Defaults to that other row's own background color (falling back to transparent if neither is set), so setting just one of the two already produces one shared background color.
  * @cssprop --ogds-header-menu-btn-background-color - Background color of the menu button.
  * @cssprop --ogds-header-menu-btn-color - Text/icon color of the menu button.
- * @cssprop --ogds-header-menu-btn-padding-inline-end - The menu button's own edge inset below the desktop breakpoint, independent of the logo's. Defaults to --ogds-header-padding-inline (matching the logo). Set to 0 to make the button flush with the viewport edge while the logo keeps its normal inset.
  * @cssprop --ogds-header-nav-background-color - Background color of the navigation drawer.
  * @cssprop --ogds-header-overlay-color - Color of the backdrop behind the open drawer.
  * @cssprop --ogds-header-divider-color - Color of borders (e.g. the info row's border, and the default for --ogds-header-nav-primary-row-divider-color).
