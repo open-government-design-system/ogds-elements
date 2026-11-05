@@ -28,6 +28,8 @@ jobs:
         working-directory: .
         run: npm run build
 
+      - run: npm clean-install
+
       - run: npm run build-ghpages
 
       - name: Upload static files as artifact
