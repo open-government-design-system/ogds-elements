@@ -24,6 +24,10 @@ jobs:
       - name: Setup project
         uses: ./.github/actions/setup
 
+      - name: Build the elements library
+        working-directory: .
+        run: npm run build
+
       - run: npm run build-ghpages
 
       - name: Upload static files as artifact
