@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
 
       - name: Setup project
-        uses: ./.github/actions/setup
+        uses: $/.github/actions/setup
         with:
           skipInstall: "true" # we need to skip the install step because we need to update npm first for OIDC
 
@@ -32,7 +32,7 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # pin@v2.1.2
+        uses: changesets/action@v2.1.2
         with:
           publish-script: npm run release
           # need this to have signed commits in release

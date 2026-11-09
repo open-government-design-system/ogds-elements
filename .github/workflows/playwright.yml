@@ -18,10 +18,10 @@ jobs:
     env:
       HOME: /root
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
 
       - name: Setup project
-        uses: ./.github/actions/setup
+        uses: $/.github/actions/setup
 
       - name: Install Playwright Browsers
         run: npm run playwright:install
@@ -29,7 +29,7 @@ jobs:
       - name: Run Playwright tests
         run: npm run playwright:test
 
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v7.0.2
         id: artifact-upload
         if: ${{ !cancelled() }}
         with:
@@ -38,7 +38,7 @@ jobs:
           retention-days: 30
 
       - name: Comment on PR with report link
-        uses: thollander/actions-comment-pull-request@24bffb9b452ba05a4f3f77933840a6a841d1b32b # pin v3.0.1
+        uses: thollander/actions-comment-pull-request@v3.0.1
         if: ${{ failure() }}
         with:
           message: |

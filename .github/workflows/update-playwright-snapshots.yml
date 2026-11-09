@@ -19,12 +19,12 @@ jobs:
       HOME: /root
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
         with:
           ref: ${{ github.event.inputs.branch }}
 
       - name: Setup project
-        uses: ./.github/actions/setup
+        uses: $/.github/actions/setup
 
       - name: Install Playwright Browsers
         run: npm run playwright:install
@@ -33,7 +33,7 @@ jobs:
         run: npm run playwright:update-screenshots
 
       - name: Upload new screenshots
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: playwright-snapshots
           path: e2e/**/*-snapshots/

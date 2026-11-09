@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v7.0.1
 
       - name: Setup project
-        uses: ./.github/actions/setup
+        uses: $/.github/actions/setup
 
       - name: Install playwright
         run: npm run playwright:install
