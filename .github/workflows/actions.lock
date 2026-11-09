@@ -30,6 +30,8 @@ workflows:
         - 'actions/checkout@v7.0.1'
         - 'actions/setup-node@v4.4.0'
         - 'actions/upload-artifact@v7.0.2'
+    '.github/workflows/verify-lockfile.yml':
+        - 'actions/checkout@v7.0.1'
 dependencies:
     'actions/checkout@v7.0.1':
         ref: 'v7.0.1'
