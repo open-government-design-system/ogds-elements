@@ -30,6 +30,13 @@ npm run start
 
 This runs Storybook on port 8008 at `http://localhost:8008`.
 
+### Running Tests
+
+- `npm run test` - unit tests
+- `npm run test:ci` — same, but without watching for file changes
+- `npm run test:storybook` — run all stories as tests (smoke tests, interaction tests, and accessibility checks)
+- `npm run test:storybook:ci` — same, but without watching for file changes
+
 ---
 
 ### Creating stories
