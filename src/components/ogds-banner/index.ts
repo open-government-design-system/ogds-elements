@@ -2,8 +2,6 @@ import { LitElement, html, css, unsafeCSS } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import colorTokens from "@ogds/tokens/styles/css/colors.css";
-import spacingTokens from "@ogds/tokens/styles/css/spacing.css";
 import breakpointTokens from "@ogds/tokens/styles/css/breakpoints.css";
 import styles from "./ogds-banner.css";
 
@@ -13,6 +11,7 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
 import iconClose from "../../shared/icons/close.svg";
 import iconExpandMore from "../../shared/icons/expand_more.svg";
 import iconExpandLess from "../../shared/icons/expand_less.svg";
+import { adoptTokenStyles } from "../../core/token-styles";
 import { defineCustomElement } from "../../utils";
 
 interface OgdsBannerTranslations {
@@ -145,6 +144,11 @@ export class OgdsBanner extends LitElement {
     this.tld = "gov";
   }
 
+  override connectedCallback() {
+    super.connectedCallback();
+    adoptTokenStyles();
+  }
+
   // Get English or Spanish strings. Default to English if an unknown `lang` is passed.
   // Ex: <usa-banner lang="zy"></usa-banner>
   protected get _bannerText() {
@@ -220,8 +224,6 @@ export class OgdsBanner extends LitElement {
       }
     `,
     breakpointTokens,
-    colorTokens,
-    spacingTokens,
     styles,
   ];
 
